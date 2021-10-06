@@ -1,0 +1,64 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;1,400&display=swap');
+body {
+font-family: 'Fira Sans', sans-serif !important;
+}
+.navbar-dark {
+    background: #ebebeb;
+}
+.project-navbar .navbar-nav .nav-link {
+    color: black;
+}
+.project-navbar .navbar-nav .nav-link:hover {
+    color: black;
+}
+.project-navbar .navbar-header {
+    background-color: #ebebeb;
+}
+.jstree-default .jstree-anchor.jstree-clicked {
+    color: #f59e0b;
+}
+.jstree-default .jstree-wholerow.jstree-wholerow-clicked {
+    border-right: 2px solid #f59e0b;
+}
+pre .btn {
+	float: right;
+	outline: none;
+}
+
+/*-- BUTTON---*/
+
+//copy button in code block
+  position: relative;
+}
+.btn-copy {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #eee;
+    background-image: linear-gradient(#fcfcfc,#eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    padding: 2px 6px;
+    position: absolute;
+    right: 20px;
+}
+.btn-copy span {
+    margin-left: 5px;
+}
+.highlight:hover .btn-copy{
+  opacity: 1;
+}
+
+</style>

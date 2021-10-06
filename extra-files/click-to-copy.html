@@ -1,0 +1,26 @@
+<!-- 
+Based on:
+  https://stackoverflow.com/a/48078807
+  https://www.linchenguang.com/2020/09/09/Add-clipboard-to-next-code-block/
+-->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script>
+!function (e, t, a) {
+  /* code */
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet>';
+   // copyHtml += '  <i class="fa fa-globe"></i><span>copy</span>';
+ copyHtml += '<svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>';
+    copyHtml += '</button>';
+    $( ".language-html,.language-bash,.language-php" ).before(copyHtml);
+    new Clipboard('.btn-copy', {
+        target: function(trigger) {
+            return trigger.nextElementSibling;
+        }
+    });
+  }
+  initCopyCode();
+}(window, document);
+
+</script>
