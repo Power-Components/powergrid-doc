@@ -1,6 +1,6 @@
 # Update Data
 
-Some PowerGrid features like [Cell Action Buttons](https://livewire-powergrid-doc.docsforge.com/main/cell-action-buttons/) and [Row Action Buttons](https://livewire-powergrid-doc.docsforge.com/main/row-action-buttons/) will modify data in your Table.
+Some PowerGrid features like [Cell Action Buttons](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/) and [Row Action Buttons](https://livewire-powergrid.docsforge.com/main/row-action-buttons/) will modify data in your Table.
 
 To save this data, you must uncomment configure the `update()` method. 
 
@@ -12,7 +12,7 @@ First, uncomment the `update()` method and the `updateMessages()` method.
 
 The `update()` method will receive data from your `field` and try to update it in your Datasource.
 
-For example, you added a column with the field `name` and configured [Edit on click](https://livewire-powergrid-doc.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable) on it.
+For example, you added a column with the field `name` and configured [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable) on it.
 
 ```php
 Column::add()

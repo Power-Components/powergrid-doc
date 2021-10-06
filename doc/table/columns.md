@@ -63,7 +63,7 @@ Example:
 
 ### placeholder(string $placeholder)
 
-Sets the placeholder for this column when using a [Column Filter](https://livewire-powergrid-doc.docsforge.com/main/column-filters/).
+Sets the placeholder for this column when using a [Column Filter](https://livewire-powergrid.docsforge.com/main/column-filters/).
 
 Example:
 
@@ -73,7 +73,7 @@ Example:
 
 ### field(string $field)
 
-Links the column to an existing [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) field or [Custom Column](https://livewire-powergrid-doc.docsforge.com/main/custom-columns/).
+Links the column to an existing [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) field or [Custom Column](https://livewire-powergrid.docsforge.com/main/custom-columns/).
 
 Example:
 
@@ -83,7 +83,7 @@ Example:
 
 ### searchable()
 
-By default, columns are not included when searching with [Search Input](https://livewire-powergrid-doc.docsforge.com/main/features-setup/#showsearchinput).
+By default, columns are not included when searching with [Search Input](https://livewire-powergrid.docsforge.com/main/features-setup/#showsearchinput).
 
 This method allows the column's content to be searched with this feature.
 
@@ -101,7 +101,7 @@ Example:
 
 `->sortable()`
 
-> **❗ Important:** If your column fetches data via relationship, you must `join` the related table in your [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) query.
+> **❗ Important:** If your column fetches data via relationship, you must `join` the related table in your [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) query.
 
 ---
 

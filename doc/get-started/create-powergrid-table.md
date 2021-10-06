@@ -1,6 +1,6 @@
 # Create a PowerGrid Table
 
-> **❗ Important:** You must have PowerGrid [installed](https://livewire-powergrid-doc.docsforge.com/main/install/) and properly [configured](https://livewire-powergrid-doc.docsforge.com/main/configure/) before proceeding.
+> **❗ Important:** You must have PowerGrid [installed](https://livewire-powergrid.docsforge.com/main/install/) and properly [configured](https://livewire-powergrid.docsforge.com/main/configure/) before proceeding.
 
 <br>
 

@@ -1,6 +1,6 @@
 # Cell Action Buttons
 
-Cell Action buttons can be configured in each column inside the [columns()](https://livewire-powergrid-doc.docsforge.com/main/columns/) method.
+Cell Action buttons can be configured in each column inside the [columns()](https://livewire-powergrid.docsforge.com/main/columns/) method.
 
 This method is inside your PowerGrid file (e.g. `DishTable.php`).
 
@@ -49,7 +49,7 @@ Column::add()
     ->editOnClick($canEdit),
 ```
 
-> **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid-doc.docsforge.com/main/update-data/) method to be configured.
+> **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
 ---
 
@@ -74,7 +74,7 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
-> **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid-doc.docsforge.com/main/update-data/) method to be configured.
+> **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
 ---
 

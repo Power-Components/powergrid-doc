@@ -1,6 +1,6 @@
 # Column Filters
 
-Filters can be configured under each column, inside the [columns()](https://livewire-powergrid-doc.docsforge.com/main/columns/) method.
+Filters can be configured under each column, inside the [columns()](https://livewire-powergrid.docsforge.com/main/columns/) method.
 
 ## Usage
 
@@ -74,7 +74,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/).
 - `$name`: datasource field name to be displayed in options.
 - `$dataField`: field used by the filter.
 
@@ -95,7 +95,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/).
 - `$name`: datasource field name to be displayed in options.
 - `$dataField`: field used by the filter.
 
@@ -140,7 +140,7 @@ public function columns(): array
 
 ## Filter by Relationship
 
-To filter by relationships, add each relationship of your main [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) Table in the `relationSearch` method.
+To filter by relationships, add each relationship of your main [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) Table in the `relationSearch` method.
 
 The relationships must be added in the format:
 

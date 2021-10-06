@@ -32,7 +32,7 @@ The example above creates two custom columns:
 - *name_uppercase*: transforms the dish name to UPPER CASE.
 - *price_after_taxes*: returns the dish price including taxes, making use of a fictitious tax calculator class.
 
-> **❗ Important:** After creating a Custom column, you must include it in your Table using the [Column::add()](https://livewire-powergrid-doc.docsforge.com/main/columns/) method.
+> **❗ Important:** After creating a Custom column, you must include it in your Table using the [Column::add()](https://livewire-powergrid.docsforge.com/main/columns/) method.
 
 ## Examples
 

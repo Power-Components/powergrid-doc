@@ -51,4 +51,4 @@ Then, the `$type` property can be used in your `datasource()` method:
     }
 ```
 
-> 💡 Read more about the [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) method.
+> 💡 Read more about the [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) method.
