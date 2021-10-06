@@ -61,6 +61,16 @@ Example:
 
 ---
 
+### placeholder(string $placeholder)
+
+Sets the placeholder for this column when using a [Column Filter](https://livewire-powergrid-doc.docsforge.com/main/column-filters/).
+
+Example:
+
+`->title('Price')`
+
+---
+
 ### field(string $field)
 
 Links the column to an existing [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) field or [Custom Column](https://livewire-powergrid-doc.docsforge.com/main/custom-columns/).
@@ -73,7 +83,9 @@ Example:
 
 ### searchable()
 
-Allows the column's content to be searched when using the [Search Input](https://livewire-powergrid-doc.docsforge.com/main/features-setup/#showsearchinput)
+By default, columns are not included when searching with [Search Input](https://livewire-powergrid-doc.docsforge.com/main/features-setup/#showsearchinput).
+
+This method allows the column's content to be searched with this feature.
 
 Example:
 
