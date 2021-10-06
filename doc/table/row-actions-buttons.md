@@ -1,11 +1,6 @@
-# Column Actions
-
-**** WIP ****
+# Row Action Buttons
 
 Row Action buttons can be configured inside `actions()` method, for each row or `header()` method.
-
-- action does what?
-- header does what?
 
 ## Usage
 
@@ -70,7 +65,9 @@ Example:
 
 ### emit(string $event, array $params)
 
-Emit works with event listeners. Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in Livewire documentation.
+Emit works with event listeners. 
+
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in Livewire documentation.
 
 The code below:
 
@@ -84,7 +81,7 @@ Button::add('view')
 
 is equivalent to:
 
-```html 
+```html
 <button wire:click="$emit('postAdded', ['key' => 1])">
 ```
 
@@ -93,6 +90,13 @@ is equivalent to:
 ### openModal(string $component, array $params)
 
 Opens a modal window.
+
+You must install [Livewire UI Component](https://github.com/livewire-ui/modal) to use this functionality. More information is also available at its documentation.
+
+Parameters:
+
+- `$component`: You must pass the `View` of Livewire Modal component.
+- `$params`: This is the component parameter.
 
 Example:
 
@@ -126,7 +130,7 @@ Example:
 
 Sets Action's permission.
 
-If  `false`, button will ????
+If  `$can` is `false`, the button will not be rendered.
 
 Example:
 
@@ -140,29 +144,3 @@ Button::add('edit-dish')
 ```
 
 ---
-
-## Examples
-
-### View Button
-
-The example below opens the record view page.
-
-```php
-Button::add('view-dish')
-```
-
-### Edit Button
-
-The example below opens the record edit page.
-
-```php
-Button::add('edit-dish')
-```
-
-### Delete Button
-
-The example below deletes the record.
-
-```php
-Button::add('delete-dish')
-```

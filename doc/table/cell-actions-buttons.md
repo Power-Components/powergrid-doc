@@ -78,18 +78,22 @@ Column::add()
 
 ---
 
-### clickToCopy(bool $hasPermission, string $label)
+### clickToCopy(bool $hasPermission, string $caption)
 
 If `$hasPermission` is `true`, PowerGrid appends a `click to copy button` to your table cell.
+
+The argument `$caption` sets the button caption.
 
 Example:
 
 ```php
 //...
+$canCopy = true; //User has permission to copy
+
 Column::add()
     ->title('Name')
     ->field('name'),
-    ->clickToCopy(),
+    ->clickToCopy($canCopy, 'Copy name to clipboard'),
 ```
 
 ---
