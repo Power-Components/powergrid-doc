@@ -28,6 +28,10 @@ These methods enable input for filters at your column header.
 
 Adds an input text filter on the column.
 
+Parameters:
+
+- `$dataField`: field used by the filter.
+
 Example:
 
 `->makeInputText('name')`
@@ -37,6 +41,12 @@ Example:
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
 Adds a filter for boolean values.
+
+Parameters:
+
+- `$dataField`: field used by the filter.
+- `$trueLabel`: select option displayed for `true` (E.g, 'Active')
+- `$trueLabel`: select option displayed for `false` (E.g, 'Inactive')
 
 Example:
 
@@ -48,7 +58,9 @@ Example:
 
 Includes a specific field on the page to filter between the specific date in the column.
 
-Default class: `col-3`
+Parameters:
+
+- `$class`: class to be applied, by default: `col-3`.
 
 Example:
 
@@ -56,15 +68,15 @@ Example:
 
 ---
 
-### makeInputSelect($data_source, string $display_field, string $relation_id, array $settings)
+### makeInputSelect($dataSource, string $name, string $dataField, array $settings)
 
 Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$data_source`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
-- `$display_field`: value to be fetched from the datasource.
-- `$relation_id`:  datasource row ID.
+- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$name`: datasource field name to be displayed in options.
+- `$dataField`: field used by the filter.
 
 Options:
 
@@ -77,15 +89,15 @@ Example:
 
 ---
 
-### makeInputMultiSelect($data_source, string $display_field, string $relation_id)
+### makeInputMultiSelect($dataSource, string $name, string $dataField)
 
 Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$data_source`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
-- `$display_field`: value to be fetched from the datasource.
-- `$relation_id`:  datasource row ID.
+- `$dataSource`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$name`: datasource field name to be displayed in options.
+- `$dataField`: field used by the filter.
 
 Example:
 
