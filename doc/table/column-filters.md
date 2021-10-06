@@ -1,7 +1,5 @@
 # Column Filters
 
-**** WIP ****
-
 Filters can be configured under each column, inside the [columns()](https://livewire-powergrid-doc.docsforge.com/main/columns/) method.
 
 ## Usage
@@ -28,7 +26,7 @@ These methods enable input for filters at your column header.
 
 ### makeInputText(string $dataField)
 
-Renders a text field filter for the column.
+Adds an input text filter on the column.
 
 Example:
 
@@ -38,7 +36,7 @@ Example:
 
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
-Filter for boolean columns.
+Adds a filter for boolean values.
 
 Example:
 
@@ -48,7 +46,7 @@ Example:
 
 ### makeInputDatePicker(string $class)
 
-Include a specific field on the page to filter between the specific date in the column.
+Includes a specific field on the page to filter between the specific date in the column.
 
 Default class: `col-3`
 
@@ -60,17 +58,34 @@ Example:
 
 ### makeInputSelect($data_source, string $display_field, string $relation_id, array $settings)
 
-Include a specific field on the page to filter a hasOne relation in the column.
+Includes a specific field on the page to filter a hasOne relation in the column.
+
+Parameters:
+
+- `$data_source`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$display_field`: value to be fetched from the datasource.
+- `$relation_id`:  datasource row ID.
+
+Options:
+
+- `live-search =>  [true/false]` feature works only with Bootstrap.
+- `class => ''` adds a class to your select element.
 
 Example:
 
-`->makeInputSelect(Category::all(), 'category', 'category_id', ['live_search' => true ,'class' => ''])`
+`->makeInputSelect(Category::all(), 'category', 'category_id', ['live-search' => true])`
 
 ---
 
 ### makeInputMultiSelect($data_source, string $display_field, string $relation_id)
 
-Include a specific field on the page to filter a hasOne relation in the column.
+Includes a specific field on the page to filter a hasOne relation in the column.
+
+Parameters:
+
+- `$data_source`: parameter must be a [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/).
+- `$display_field`: value to be fetched from the datasource.
+- `$relation_id`:  datasource row ID.
 
 Example:
 
@@ -80,9 +95,9 @@ Example:
 
 ### makeInputRange(string $dataField, string $thousands, string $decimal)
 
-Generates a min and max input for range filter.
+Adds a range filter input (min and max values).
 
-In the next example, you can see a range filter for quantity.
+The following example adds a range filter on "Dish Quality" column, filtering with `quantity` field.
 
 ```php
 public function columns(): array
@@ -115,7 +130,9 @@ public function columns(): array
 
 To filter by relationships, add each relationship of your main [Datasource](https://livewire-powergrid-doc.docsforge.com/main/datasource/) Table in the `relationSearch` method.
 
-The relationships must be added in the format: `'model_name' => ['search_column_A', 'search_column_B'...]`.
+The relationships must be added in the format:
+
+`'model_name' => ['search_column_A', 'search_column_B'...]`.
 
 Example:  
 
