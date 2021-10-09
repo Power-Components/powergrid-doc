@@ -36,7 +36,7 @@ A similar situation happens when editing dates: the date is sent as `dd/mm/yyyy`
 PowerGrid will NOT perform this conversion automatically. You must treat this data in your code, parsing and converting the value and saving on the correct database field.
 
 ```php
-public function update(array $dish): bool
+public function update(array $data): bool
 {
     // Gets price_formatted (4.947,70 €) and convert to price (44947.70).
     
@@ -59,9 +59,9 @@ public function update(array $dish): bool
   try {
       // Update query
       $updated = Dish::query()
-        ->find($dish['id'])
+        ->find($data['id'])
         ->update([
-          $dish['field'] => $dish['value']
+          $data['field'] => $data['value']
         ]);
   } catch (QueryException $exception) {
       $updated = false;

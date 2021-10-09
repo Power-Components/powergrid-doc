@@ -13,19 +13,19 @@ Optionally, you can pass a `closure` as  a second parameter to process the data 
 The example above creates 4 custom columns:
 
 - *id*: `id` field.
-- *name*: `name`.
-- *name_uppercase*: returns the `name` transformed to UPPER CASE.
-- *price_after_taxes*: returns the dish price including taxes, making use of a fictitious tax calculator class.
+- *name*: `name` field.
+- *name_uppercase*: returns the `name` field transformed to UPPER CASE.
+- *price_after_taxes*: returns the price including taxes, making use of a fictitious tax calculator class.
 
 ```php
 //..
 public function addColumns(): ?PowerGridEloquent
 {
-  ->addColumn('id')
-  ->addColumn('name')
   return PowerGrid::eloquent()
+    ->addColumn('id')
+    ->addColumn('name')
     ->addColumn('name_uppercase', function (Dish $model) {
-      return strtoupper($dish->name);
+      return strtoupper($model->name);
     })
     ->addColumn('price_after_taxes', function (Dish $model) {
       return taxCalculator::vat($model->price, 'PT');
@@ -33,7 +33,7 @@ public function addColumns(): ?PowerGridEloquent
 }
 ```
 
-> **❗ Important:** After creating a Custom column, you must include it in your Table using the [Column::add()](https://livewire-powergrid.docsforge.com/main/columns/) method.
+> **❗ Important:** After creating a column, you must include it in your Table using the [Column::add()](https://livewire-powergrid.docsforge.com/main/include-columns/) method.
 
 ## Closure Examples
 

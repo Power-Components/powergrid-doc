@@ -24,7 +24,7 @@ public function datasource(): ?Builder
 }
 ```
 
-Some features like [Column sortable()](https://livewire-powergrid.docsforge.com/main/columns/#sortable) or [Column Filters](https://livewire-powergrid.docsforge.com/main/column-filters/)  may require you to `join` your relationship in your Datasource. This will make the relationship table fields available in the same result row.
+Some features like [Column sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) or [Column Filters](https://livewire-powergrid.docsforge.com/main/column-filters/)  may require you to `join` your relationship in your Datasource. This will make the relationship table fields available in the same result row.
 
 The following example shows how to `join` the `categories` relationship:
 

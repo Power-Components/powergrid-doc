@@ -1,6 +1,6 @@
 # Column Filters
 
-Filters can be configured under each column, inside the [columns()](https://livewire-powergrid.docsforge.com/main/columns/) method.
+Filters can be configured under each column, inside the [columns()](https://livewire-powergrid.docsforge.com/main/include-columns/) method.
 
 ## Usage
 
