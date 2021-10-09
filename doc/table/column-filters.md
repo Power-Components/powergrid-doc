@@ -54,13 +54,17 @@ Example:
 
 ---
 
-### makeInputDatePicker(string $class)
+### makeInputDatePicker(string $dataField, array $settings = [], string $classAttr = '')
 
 Includes a specific field on the page to filter between the specific date in the column.
 
 Parameters:
 
-- `$class`: class to be applied, by default: `col-3`.
+- `$dataField`: field used by the filter.
+- `$settings`: Settings must be passed as "key => value". Availables keys are:
+  - `'only_future' => true`: Will not allow to select dates in the past.
+  - `'no_weekends' => true`: Will not allow to select weekends.
+- `$classAttr`: class to be applied.
 
 Example:
 

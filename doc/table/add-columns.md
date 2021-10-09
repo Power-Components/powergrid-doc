@@ -1,22 +1,28 @@
-# Custom Columns
+# Add Columns
 
-You can create Custom using the `addColumns()` method.
+Before adding columns to your table, you must make [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) fields available as columns.
 
-This method is inside your PowerGrid file (e.g. `DishTable.php`).
+To make a new column, use the `addColumns()` method. This method is inside your PowerGrid file (e.g. `DishTable.php`).
 
 ## Usage
 
-The `addColumns()` expects two arguments:
+The `addColumns()` method requires the datasource `$field` name as the first parameter.
 
-- *string* `$field` with the column name.
-- `closure function` retuning the data processed for this column.
+Optionally, you can pass a `closure` as  a second parameter to process the data coming from your field.
 
-Example:
+The example above creates 4 custom columns:
+
+- *id*: `id` field.
+- *name*: `name`.
+- *name_uppercase*: returns the `name` transformed to UPPER CASE.
+- *price_after_taxes*: returns the dish price including taxes, making use of a fictitious tax calculator class.
 
 ```php
 //..
 public function addColumns(): ?PowerGridEloquent
 {
+  ->addColumn('id')
+  ->addColumn('name')
   return PowerGrid::eloquent()
     ->addColumn('name_uppercase', function (Dish $model) {
       return strtoupper($dish->name);
@@ -27,20 +33,15 @@ public function addColumns(): ?PowerGridEloquent
 }
 ```
 
-The example above creates two custom columns:
-
-- *name_uppercase*: transforms the dish name to UPPER CASE.
-- *price_after_taxes*: returns the dish price including taxes, making use of a fictitious tax calculator class.
-
 > **❗ Important:** After creating a Custom column, you must include it in your Table using the [Column::add()](https://livewire-powergrid.docsforge.com/main/columns/) method.
 
-## Examples
+## Closure Examples
 
 Sometimes, you need to display data in a human-friendly way.
 
 This is often the case with date, currency and boolean values.
 
-Let's check some examples!
+Let's check some examples using `closures` to format data!
 
 ### Date
 

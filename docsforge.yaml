@@ -9,8 +9,8 @@ sidebar:
   PowerGrid Table:
   - Features Setup: doc/table/features-setup.md
   - Datasource: doc/table/datasource.md
-  - Columns: doc/table/columns.md
-  - Custom Columns: doc/table/custom-columns.md
+  - Add Columns: doc/table/add-columns.md
+  - Include Columns: doc/table/include-columns.md
   - Column Filters: doc/table/column-filters.md
   - Cell Action Buttons : doc/table/cell-actions-buttons.md
   - Row Action Buttons : doc/table/row-actions-buttons.md

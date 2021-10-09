@@ -1,4 +1,4 @@
-# Columns
+# Include Columns
 
 Table columns are controlled by the `columns()` method.
 
@@ -6,7 +6,7 @@ You can find this method is inside your PowerGrid file (e.g., `DishTable.php`).
 
 ## Usage
 
-To add a column, include a new `Column::add()` in the `columns()` method.
+To display a column to your table, include a new `Column::add()` in the `columns()` method.
 
 Place your code inside the method's `return []` statement.
 

@@ -30,7 +30,9 @@ Enables and displays checkboxes on each table row.
 
 ## showPerPage(int $perPage)
 
-Set the number of rows in each page (default: 10).
+Shows a dropdown menu to select the number of rows per page  (default: 10).
+
+Set the parameter `$perPage` to show a fixed number of rows instead of allowing the user to select.
 
 Example:
 
