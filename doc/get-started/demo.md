@@ -1,15 +1,14 @@
 # Demo
 
-Requirements
+## Requirements
 
-- PHP 7.4.1+
-- [Laravel 8x]
+- PHP 7.4.1+ and [Laravel 8x](https://laravel.com/docs/8.x/installation)
 
-----
+## Quick Demo Table
 
 PowerGrid offers you a demo Table with just 2 commands.
 
-This table make use of the `User Model` and generates data on the fly. No data is saved in your database.
+The demo Table makes use of your `User Model` and generate data on the fly. No changes are saved in your database.
 
 To run it, require PowerGrid via [Composer](https://getcomposer.org/). Run:
 
@@ -25,11 +24,13 @@ php artisan powergrid:demo
 
 You must include the route below in your `routes/web.php` file:
 
-``Route::view('/powergrid', 'powergrid-demo');`
+`Route::view('/powergrid', 'powergrid-demo');`
 
 Now, just access `http://your.app/powergrid` and click around!
 
 ----
+
+## Demo Repository
 
 We also provide a full Laravel installation with PowerGrid.
 

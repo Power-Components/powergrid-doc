@@ -11,7 +11,7 @@
 
 ### 1. Via Composer
 
-To install via [Composer](https://getcomposer.org/), run:
+Require PowerGrid via [Composer](https://getcomposer.org/), run:
 
 ```bash
 composer require power-components/livewire-powergrid
