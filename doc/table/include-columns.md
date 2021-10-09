@@ -4,7 +4,7 @@ Table columns are controlled by the `columns()` method.
 
 You can find this method is inside your PowerGrid file (e.g., `DishTable.php`).
 
-> **❗ Important:** Before proceeding, you must [Add the column](hhttps://livewire-powergrid.docsforge.com/main/add-columns/) to be have it available for incluing.
+> **❗ Important:** Before proceeding, check if you have [Added the column](hhttps://livewire-powergrid.docsforge.com/main/add-columns/) in order to have it available for including.
 
 ## Usage
 

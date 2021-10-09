@@ -10,12 +10,12 @@ The `addColumns()` method requires the datasource `$field` name as the first par
 
 Optionally, you can pass a `closure` as  a second parameter to process the data coming from your field.
 
-The example above creates 4 custom columns:
+The example above creates 4 columns:
 
-- *id*: `id` field.
-- *name*: `name` field.
-- *name_uppercase*: returns the `name` field transformed to UPPER CASE.
-- *price_after_taxes*: returns the price including taxes, making use of a fictitious tax calculator class.
+- *id*:  based on the `id` field.
+- *name*: based on the `name` field.
+- *name_uppercase*: returns the `name` field value transformed to UPPER CASE.
+- *price_after_taxes*: returns the `price` value with taxes. This example uses a fictitious tax calculator class.
 
 ```php
 //..
