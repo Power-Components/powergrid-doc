@@ -24,7 +24,11 @@ php artisan powergrid:demo
 
 You must include the route below in your `routes/web.php` file:
 
-`Route::view('/powergrid', 'powergrid-demo');`
+```php
+//...
+
+Route::view('/powergrid', 'powergrid-demo');
+```
 
 Now, just access `http://your.app/powergrid` and click around! We hope you like it!
 
