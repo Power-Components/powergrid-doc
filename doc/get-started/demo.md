@@ -8,9 +8,9 @@
 
 PowerGrid offers you a demo Table with just 2 commands.
 
-The demo Table makes use of your `User Model` and generate data on the fly. No changes are saved in your database.
+The Table uses the structure of `User Model` and generate data on the fly. No changes are saved in your database.
 
-To run it, require PowerGrid via [Composer](https://getcomposer.org/). Run:
+First, require PowerGrid via [Composer](https://getcomposer.org/). Run:
 
 ```bash
 composer require power-components/livewire-powergrid
@@ -22,22 +22,24 @@ Next, generate the demo. Run the command:
 php artisan powergrid:demo
 ```
 
-You must include the route below in your `routes/web.php` file:
+Now, you must include the route below in your `routes/web.php` file:
 
 ```php
+<?php
 //...
 
 Route::view('/powergrid', 'powergrid-demo');
 ```
 
-Now, just access `http://your.app/powergrid` and click around! We hope you like it!
+Everything is ready! Access `http://your-app.example/powergrid` (change *your-app.example* to your app domain) and click around!
 
-> 💡 **TIP:**  To have PowerGrid fully running, proceeded to [Install](https://livewire-powergrid.docsforge.com/main/install/) and [Configure](https://livewire-powergrid.docsforge.com/main/install/).
+
+> 💡 **TIP:**  To have PowerGrid fully running, proceed to [Install](https://livewire-powergrid.docsforge.com/main/install/) and [Configure](https://livewire-powergrid.docsforge.com/main/configure/).
 
 ----
 
 ## Demo Repository
 
-We also provide a demo repository containing PowerGrid in a Laravel project.
+We also provide a demo repository with PowerGrid fully configured in a Laravel project.
 
-Visit our the [repository](https://github.com/Power-Components/powergrid-demo)  and follow the README instructions on how to install and run it.
+Visit the [repository](https://github.com/Power-Components/powergrid-demo) and follow the README instructions on how to install and run it.
