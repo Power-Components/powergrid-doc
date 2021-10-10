@@ -26,12 +26,14 @@ You must include the route below in your `routes/web.php` file:
 
 `Route::view('/powergrid', 'powergrid-demo');`
 
-Now, just access `http://your.app/powergrid` and click around!
+Now, just access `http://your.app/powergrid` and click around! We hope you like it!
+
+> 💡 **TIP:**  To have PowerGrid fully running, proceeded to [Install](https://livewire-powergrid.docsforge.com/main/install/) and [Configure](https://livewire-powergrid.docsforge.com/main/install/).
 
 ----
 
 ## Demo Repository
 
-We also provide a full Laravel installation with PowerGrid.
+We also provide a demo repository containing PowerGrid in a Laravel project.
 
-Visit our [Demo repository](https://github.com/Power-Components/powergrid-demo)  and follow the README instructions on how to install and run it.
+Visit our the [repository](https://github.com/Power-Components/powergrid-demo)  and follow the README instructions on how to install and run it.
