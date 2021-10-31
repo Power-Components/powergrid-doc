@@ -90,6 +90,35 @@ Next, include jQuery and Bootstrap scripts in your page.
 @powerGridScripts
 ```
 
+## 4. Tailwind settings
+
+### 4.1 Dark Mode
+
+To enable Dark Mode, configure the `DarkMode` class in `tailwind.config.js` file as follows:
+
+```json
+module.exports = {
+    darkMode: 'class',
+}
+```
+
+### 4.2 JIT
+
+If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tailwind.config.js` file:
+
+```json
+module.exports = {
+    mode: ‘jit’,
+    purge: [
+        //…
+        './vendor/power-components/livewire-powergrid/resources/views/**/*.blade.php',
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php',
+    ],
+}
+```
+
+> 💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
+
 ## 5. Cache
 
 Cache is enabled by default. When using collections, it improves search performance.
