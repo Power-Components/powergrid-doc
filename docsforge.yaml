@@ -15,6 +15,7 @@ sidebar:
   - Cell Action Buttons : doc/table/cell-actions-buttons.md
   - Row Action Buttons : doc/table/row-actions-buttons.md
   - Update Data: doc/table/update-data.md
+  - Queue Export: doc/table/queue-export.md
   
  # Extend PowerGrid:
  #   - Theme template: doc/extend/theme-template.md
