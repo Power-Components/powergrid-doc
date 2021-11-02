@@ -119,6 +119,22 @@ module.exports = {
 
 > 💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
 
+### 4.3 Tailwind Forms
+
+If you use Tailwind forms, please consider modifying your `tailwind.config.js' to use the class strategy as follows:
+
+```json
+plugins: [
+  require("@tailwindcss/forms")({
+    strategy: 'class',
+  }),
+],
+
+}
+```
+
+> 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
+
 ## 5. Cache
 
 Cache is enabled by default. When using collections, it improves search performance.
