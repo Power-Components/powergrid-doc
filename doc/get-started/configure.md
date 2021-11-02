@@ -121,15 +121,16 @@ module.exports = {
 
 ### 4.3 Tailwind Forms
 
-If you use Tailwind forms, please consider modifying your `tailwind.config.js' to use the class strategy as follows:
+If you use Tailwind forms, please consider modifying your `tailwind.config.js` to use the strategy `class` as follows:
 
 ```json
-plugins: [
-  require("@tailwindcss/forms")({
-    strategy: 'class',
-  }),
-],
-
+module.exports = {
+   //...
+  plugins: [
+    require("@tailwindcss/forms")({
+      strategy: 'class',
+    }),
+  ]
 }
 ```
 
