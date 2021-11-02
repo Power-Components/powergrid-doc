@@ -11,10 +11,10 @@ Example of usage:
 public function setUp()
 {
    $this->showCheckBox()
-   ->showRecordCount('short')
-   ->showPerPage()
-   ->showSearchInput()
-   ->showExportOption('download', ['excel', 'csv']);
+      ->showRecordCount('short')
+      ->showPerPage()
+      ->showSearchInput()
+      ->showExportOption('download', ['excel', 'csv']);
 }
 ```
 
@@ -76,6 +76,8 @@ Available file types:
 Example:
 
 `->showExportOption('my-dish-table', ['excel', 'csv])`
+
+> 💡 If you are working with lots of data, we recommend to use [Queue Export](https://livewire-powergrid.docsforge.com/main/queue-export/).
 
 ---
 
