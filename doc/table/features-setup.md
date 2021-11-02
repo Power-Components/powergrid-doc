@@ -11,10 +11,10 @@ Example of usage:
 public function setUp()
 {
    $this->showCheckBox()
-   ->showRecordCount('short')
-   ->showPerPage()
-   ->showSearchInput()
-   ->showExportOption('download', ['excel', 'csv']);
+      ->showRecordCount('short')
+      ->showPerPage()
+      ->showSearchInput()
+      ->showExportOption('download', ['excel', 'csv']);
 }
 ```
 
