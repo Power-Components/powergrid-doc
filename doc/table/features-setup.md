@@ -44,7 +44,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/features/showPerPage.png)
+<img class="result-image" alt="showPerPage" src="../img/examples/features/showPerPage.png">
 
 ---
 
