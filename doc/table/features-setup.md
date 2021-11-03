@@ -26,6 +26,10 @@ You can chain the methods to configure the following features:
 
 Enables and displays checkboxes on each table row.
 
+Result:
+
+![clickToCopy](../img/examples/features/showCheckBox.png)
+
 ---
 
 ## showPerPage(int $perPage)
@@ -36,13 +40,21 @@ Set the parameter `$perPage` to show a fixed number of rows instead of allowing 
 
 Example:
 
-`->showPerPage(50)`
+`->showPerPage()`
+
+Result:
+
+![clickToCopy](../img/examples/features/showPerPage.png)
 
 ---
 
 ## showSearchInput()
 
 Enables the search functionality and show the search input field at the page top.
+
+Result:
+
+![clickToCopy](../img/examples/features/showSearchInput.png)
 
 ---
 
@@ -58,7 +70,11 @@ Available modes:
 
 Example:
 
-`->showRecordCount('short')`
+`->showRecordCount('full')`
+
+Result:
+
+![clickToCopy](../img/examples/features/showRecordCount.png)
 
 ---
 
@@ -77,6 +93,10 @@ Example:
 
 `->showExportOption('my-dish-table', ['excel', 'csv])`
 
+Result:
+
+![clickToCopy](../img/examples/features/showExportOption.png)
+
 > 💡 If you are working with lots of data, we recommend to use [Queue Export](https://livewire-powergrid.docsforge.com/main/queue-export/).
 
 ---
@@ -88,3 +108,7 @@ Displays the button to hide/show (toggle) columns.
 Example:
 
 `->showToggleColumns()`
+
+Result:
+
+![clickToCopy](../img/examples/features/showToggleColumns.png)

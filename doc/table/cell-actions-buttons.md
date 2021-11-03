@@ -33,9 +33,11 @@ These methods will add action buttons to each cell of a specific column in your 
 
 ### editOnClick(bool $isEditable)
 
-If `$isEditable` is `true`, the table cell will be converted into an input text.
+If `$isEditable` is `true`, an "action link" will be displayed in the cell.
 
-The user can edit the content and save it by hit `<enter>`.
+When the user clicks on this link, the cell is converted into an input text.
+
+The content can be edited and saved by pressing the `<enter>` key.
 
 Example:
 
@@ -48,6 +50,10 @@ Column::add()
     ->field('name'),
     ->editOnClick($canEdit),
 ```
+
+Result:
+
+![editOnClick](../img/examples/cell_buttons/editOnClick.png)
 
 > **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
@@ -74,6 +80,10 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
+Result: 
+
+![toggleable](../img/examples/cell_buttons/toggleable.png)
+
 > **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
 ---
@@ -95,5 +105,9 @@ Column::add()
     ->field('name'),
     ->clickToCopy($canCopy, 'Copy name to clipboard'),
 ```
+
+Result:
+
+![clickToCopy](../img/examples/cell_buttons/clickToCopy.png)
 
 ---

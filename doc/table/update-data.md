@@ -1,27 +1,38 @@
 # Update Data
 
-Some PowerGrid features like [Cell Action Buttons](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/) and [Row Action Buttons](https://livewire-powergrid.docsforge.com/main/row-action-buttons/) will modify data in your Table.
+Some PowerGrid features like [Cell Action Buttons](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/) and [Row Action Buttons](https://livewire-powergrid.docsforge.com/main/row-action-buttons/) allow the user to modify Table data and update the database.
 
-To save this data, you must uncomment configure the `update()` method. 
-
-You can find this method inside your PowerGrid file (e.g. `DishTable.php`).
+You will need to configure your PowerGrid Table file (e.g. `DishTable.php`) to save data.
 
 ## Usage
 
-First, uncomment the `update()` method and the `updateMessages()` method.
+First you must uncomment both, the `update()` method and the `updateMessages()` method.
 
-The `update()` method will receive data from your `field` and try to update it in your Datasource.
+```php
+  public function update(array $data ): bool
+  {
+      //...
+  }
+  public function updateMessages(string $status, string $field = '_default_message'): string
+  {
+      //...
+  }
+```
 
-For example, you added a column with the field `name` and configured [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable) on it.
+The `update()` method will receive data from your `field` and try to update it in your database.
+
+Let's take the following example:
+
+The column "Name" reads the field `name` and is configured to [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable).
 
 ```php
 Column::add()
     ->title('Dish name')
     ->field('name')
-    ->editOnClick(true),
+    ->editOnClick(),
 ```
 
-When the user edits a dish name and presses `<enter>`, the `update()` method will look for data with the row ID and update the field `name` for this row.
+When the user edits a dish name, the `update()` method will "catch" all data sent for the that row ID and perform a database update on `name` for this row.
 
 > **❗ Important:** You must treat and validate all data before the update query takes place. Additionally, you can also verify if the user has permission to edit data.
 
@@ -48,7 +59,6 @@ public function update(array $data): bool
             ->replaceMatches('/[^Z0-9\.]/', '');
     }
 
-  
       //Parses the date from d/m.Y (25/05/2021) 
 
       if ($data['field'] == 'created_at_formatted' && $data['value'] != '') {
@@ -74,9 +84,9 @@ public function update(array $data): bool
 
 The update operation will generate `success` or `error` messages.
 
-A `_default_message` key is provided with a generic message.
+A `_default_message` key is provided with a generic message to be used for all fields.
 
-Custom messages for specific fields (columns) can be configured inside the `updateMessages()`.
+Custom messages can be configured for specific fields (columns) inside the `updateMessages()` method.
 
 The following example shows the generic message and custom messages for `name` and `price` field.
 
@@ -87,7 +97,7 @@ public function updateMessages(string $status, string $field = '_default_message
         'success'   => [
           '_default_message' => __('Data has been updated successfully!'),
 
-          //'custom_field' => __('Succes with custom field.'),
+          //'custom_field' => __('Success updating custom field.'),
           'name' => 'Dish name updated successfully!'), // Custom message for name field
           'price' => 'Price updated! Inform the chef!'), // Custom message for price field
           

@@ -36,7 +36,9 @@ Example:
 
 `->makeInputText('name')`
 
----
+Result:
+
+![clickToCopy](../img/examples/filters/makeInputText.png)
 
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
@@ -51,6 +53,10 @@ Parameters:
 Example:
 
 `->makeBooleanFilter('in_stock', 'yes', 'no')`
+
+Result:
+
+![clickToCopy](../img/examples/filters/makeBooleanFilter.png)
 
 ---
 
@@ -69,6 +75,10 @@ Parameters:
 Example:
 
 `->makeInputDatePicker()`
+
+Result:
+
+![clickToCopy](../img/examples/filters/makeInputDatePicker.png)
 
 ---
 
@@ -89,7 +99,11 @@ Options:
 
 Example:
 
-`->makeInputSelect(Category::all(), 'category', 'category_id', ['live-search' => true])`
+`->makeInputSelect(Kitchen::all(), 'state', 'kitchen_id', ['live-search' => true])`
+
+Result:
+
+![clickToCopy](../img/examples/filters/makeInputSelect.png)
 
 ---
 
@@ -105,7 +119,11 @@ Parameters:
 
 Example:
 
-`->makeInputSelect(Category::all(), 'category', 'category_id'])`
+`->makeInputMultiSelect(Kitchen::all(), 'state', 'kitchen_id')`
+
+Result:
+
+![clickToCopy](../img/examples/filters/makeInputMultiSelect.png)
 
 ---
 
@@ -135,12 +153,16 @@ public function columns(): array
 {
   return [
     Column::add()
-      ->title('Price in EUR')
-      ->field('price_in_eur')
+      ->title('Price')
+      ->field('price_in_brl')
       ->makeInputRange('price', '.', ','),
   ];
 }
 ```
+
+Result:
+
+![clickToCopy](../img/examples/filters/makeInputRange.png)
 
 ## Filter by Relationship
 
