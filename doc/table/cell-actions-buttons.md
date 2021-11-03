@@ -11,7 +11,7 @@ You can add buttons to your each cell of a column by chaining [Cell Action metho
 The following example adds a `toggleable` button to each cell of "In Stock" column.
 
 ```php
-//..
+//...
 public function columns(): array
 {
   $canEdit = true; //User has edit permission
@@ -53,7 +53,7 @@ Column::add()
 
 Result:
 
-![editOnClick](../img/examples/cell_buttons/editOnClick.png)
+<img class="result-image" alt="editOnClick" src="../img/examples/cell_buttons/editOnClick.png"/>
 
 > **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
@@ -80,9 +80,9 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
-Result: 
+Result:
 
-![toggleable](../img/examples/cell_buttons/toggleable.png)
+<img class="result-image" alt="toggleable" src="../img/examples/cell_buttons/toggleable.png"/>
 
 > **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
@@ -108,6 +108,6 @@ Column::add()
 
 Result:
 
-![clickToCopy](../img/examples/cell_buttons/clickToCopy.png)
+<img class="result-image" alt="clickToCopy" src="../img/examples/cell_buttons/clickToCopy.png"/>
 
 ---

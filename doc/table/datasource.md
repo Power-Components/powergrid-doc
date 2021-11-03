@@ -24,7 +24,9 @@ public function datasource(): ?Builder
 }
 ```
 
-Some features like [Column sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) or [Column Filters](https://livewire-powergrid.docsforge.com/main/column-filters/)  may require you to `join` your relationship in your Datasource. This will make the relationship table fields available in the same result row.
+## Join Tables
+
+Some features like [Column sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) or [Column Filters](https://livewire-powergrid.docsforge.com/main/column-filters/) may require you to join your relationship in your Datasource. This will make the relationship table fields available in the same result row.
 
 The following example shows how to `join` the `categories` relationship:
 
@@ -36,4 +38,17 @@ public function datasource(): ?Builder
       $categories->on('dishes.category_id', '=', 'categories.id'); 
   })->select('dishes.*', 'categories.name as category_name'); 
 }
+```
+
+## Keys conflict
+
+You might encounter a conflict between primary keys using the same field name (E.g,  `id`).
+
+To fix this problem, declare your `$primaryKey` and `$sortField` properties as the example shows:
+
+```php
+//...
+public string $primaryKey = 'dishes.id';
+
+public string $sortField = 'dishes.id';
 ```

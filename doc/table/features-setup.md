@@ -28,7 +28,7 @@ Enables and displays checkboxes on each table row.
 
 Result:
 
-![clickToCopy](../img/examples/features/showCheckBox.png)
+<img class="result-image" alt="showCheckBox" src="../img/examples/features/showCheckBox.png" width="200"/>
 
 ---
 
@@ -44,7 +44,7 @@ Example:
 
 Result:
 
-<img class="result-image" alt="showPerPage" src="../img/examples/features/showPerPage.png">
+<img class="result-image" alt="showPerPage" src="../img/examples/features/showPerPage.png"/>
 
 ---
 
@@ -54,7 +54,7 @@ Enables the search functionality and show the search input field at the page top
 
 Result:
 
-![clickToCopy](../img/examples/features/showSearchInput.png)
+<img class="result-image" alt="showSearchInput" src="../img/examples/features/showSearchInput.png"/>
 
 ---
 
@@ -74,7 +74,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/features/showRecordCount.png)
+<img class="result-image" alt="showRecordCount" src="../img/examples/features/showRecordCount.png" width="400"/>
 
 ---
 
@@ -95,7 +95,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/features/showExportOption.png)
+<img class="result-image" alt="showExportOption" src="../img/examples/features/showExportOption.png"/>
 
 > 💡 If you are working with lots of data, we recommend to use [Queue Export](https://livewire-powergrid.docsforge.com/main/queue-export/).
 
@@ -111,4 +111,4 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/features/showToggleColumns.png)
+<img class="result-image" alt="showToggleColumns" src="../img/examples/features/showToggleColumns.png"/>

@@ -134,6 +134,10 @@ module.exports = {
 }
 ```
 
+This approach will avoid layout conflicts such as:
+
+<img class="result-image" alt="Tailwind-Forms-Conflict" src="../img/conflict_tailwindforms.png">
+
 > 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
 
 ## 5. Cache

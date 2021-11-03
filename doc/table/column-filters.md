@@ -38,7 +38,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeInputText.png)
+<img width="200" class="result-image" alt="makeInputText" src="../img/examples/filters/makeInputText.png"/>
 
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
@@ -56,7 +56,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeBooleanFilter.png)
+<img width="100" class="result-image" alt="makeBooleanFilter" src="../img/examples/filters/makeBooleanFilter.png"/>
 
 ---
 
@@ -78,7 +78,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeInputDatePicker.png)
+<img class="result-image" alt="makeInputDatePicker" src="../img/examples/filters/makeInputDatePicker.png" width="200"/>
 
 ---
 
@@ -103,7 +103,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeInputSelect.png)
+<img class="result-image" alt="makeInputSelect" src="../img/examples/filters/makeInputSelect.png" width="100" />
 
 ---
 
@@ -123,7 +123,7 @@ Example:
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeInputMultiSelect.png)
+<img class="result-image" alt="makeInputMultiSelect" src="../img/examples/filters/makeInputMultiSelect.png" width="100" />
 
 ---
 
@@ -162,7 +162,7 @@ public function columns(): array
 
 Result:
 
-![clickToCopy](../img/examples/filters/makeInputRange.png)
+<img class="result-image" alt="makeInputRange" src="../img/examples/filters/makeInputRange.png" width="100" />
 
 ## Filter by Relationship
 
