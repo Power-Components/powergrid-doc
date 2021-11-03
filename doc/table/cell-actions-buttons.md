@@ -53,7 +53,7 @@ Column::add()
 
 Result:
 
-<img class="result-image" alt="editOnClick" src="../img/examples/cell_buttons/editOnClick.png"/ width="300">
+<img class="result-image" alt="editOnClick" src="../img/examples/cell_buttons/editOnClick.png" width="300"/>
 
 > **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
