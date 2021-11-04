@@ -11,7 +11,7 @@ You can add buttons to your each cell of a column by chaining [Cell Action metho
 The following example adds a `toggleable` button to each cell of "In Stock" column.
 
 ```php
-//..
+//...
 public function columns(): array
 {
   $canEdit = true; //User has edit permission
@@ -33,9 +33,11 @@ These methods will add action buttons to each cell of a specific column in your 
 
 ### editOnClick(bool $isEditable)
 
-If `$isEditable` is `true`, the table cell will be converted into an input text.
+If `$isEditable` is `true`, an "action link" will be displayed in the cell.
 
-The user can edit the content and save it by hit `<enter>`.
+When the user clicks on this link, the cell is converted into an input text.
+
+The content can be edited and saved by pressing the `<enter>` key.
 
 Example:
 
@@ -48,6 +50,10 @@ Column::add()
     ->field('name'),
     ->editOnClick($canEdit),
 ```
+
+Result:
+
+<img class="result-image" alt="editOnClick" src="../img/examples/cell_buttons/editOnClick.png" width="300"/>
 
 > **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
@@ -74,6 +80,10 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
+Result:
+
+<img class="result-image" alt="toggleable" src="../img/examples/cell_buttons/toggleable.png" width="100"/>
+
 > **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
 ---
@@ -95,5 +105,9 @@ Column::add()
     ->field('name'),
     ->clickToCopy($canCopy, 'Copy name to clipboard'),
 ```
+
+Result:
+
+<img class="result-image" alt="clickToCopy" src="../img/examples/cell_buttons/clickToCopy.png" width="200"/>
 
 ---

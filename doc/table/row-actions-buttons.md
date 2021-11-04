@@ -6,9 +6,9 @@ Row Action buttons can be configured inside `actions()` method, for each row or 
 
 To add a button, include a new `Button::add(string $action)` in the `actions()` or `header()` method.
 
-Place your code inside the method's `return []` statement.
+Next, place your `Button::add(string $action)` code inside the method's `return []` statement.
 
-Then, configure your Button by chaining [Button methods](#button-methods) to `Button::add(string $action)`.
+Then, configure this Button by chaining [Button methods](#button-methods) to it.
 
 Example:
 
@@ -17,12 +17,12 @@ Example:
 public function header(): array
 {
     return [
-    Button::add('new-modal')
-        ->caption('New window')
-        ->class('bg-gray-300')
-        ->openModal('new', []),
-        
-    //...
+        Button::add('new-modal')
+            ->caption('New window')
+            ->class('bg-gray-300')
+            ->openModal('new', []),
+            
+        //...
     ];
 }
 ```
@@ -65,9 +65,9 @@ Example:
 
 ### emit(string $event, array $params)
 
-Emit works with event listeners. 
+Emit works with event listeners.
 
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in Livewire documentation.
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
 
 The code below:
 

@@ -26,23 +26,47 @@ You can chain the methods to configure the following features:
 
 Enables and displays checkboxes on each table row.
 
+Result:
+
+<img class="result-image" alt="showCheckBox" src="../img/examples/features/showCheckBox.png" width="200"/>
+
 ---
 
 ## showPerPage(int $perPage)
 
-Shows a dropdown menu to select the number of rows per page  (default: 10).
+Shows a dropdown menu for selecting the number of rows displayed per page (default: 10).
 
-Set the parameter `$perPage` to show a fixed number of rows instead of allowing the user to select.
+By default, `$perPage` accepts the values: `10`, `25`, `50`, `100` and `0` (zero represents "show all").
 
-Example:
+If you need a different set of values, you may override the `$perPageValues` array. See the following example:
 
-`->showPerPage(50)`
+```php
+class DishesTable extends PowerGridComponent
+{
+   //Custom per page values
+   public array $perPageValues = [0, 5, 10, 1000, 5000];
+
+    public function setUp()
+    {
+        $this->showPerPage(10);
+    }
+
+    //....
+```
+
+Result:
+
+<img class="result-image" alt="showPerPage" src="../img/examples/features/showPerPage.png"/>
 
 ---
 
 ## showSearchInput()
 
 Enables the search functionality and show the search input field at the page top.
+
+Result:
+
+<img class="result-image" alt="showSearchInput" src="../img/examples/features/showSearchInput.png"/>
 
 ---
 
@@ -58,7 +82,11 @@ Available modes:
 
 Example:
 
-`->showRecordCount('short')`
+`->showRecordCount('full')`
+
+Result:
+
+<img class="result-image" alt="showRecordCount" src="../img/examples/features/showRecordCount.png" width="400"/>
 
 ---
 
@@ -77,6 +105,10 @@ Example:
 
 `->showExportOption('my-dish-table', ['excel', 'csv])`
 
+Result:
+
+<img class="result-image" alt="showExportOption" src="../img/examples/features/showExportOption.png"/>
+
 > 💡 If you are working with lots of data, we recommend to use [Queue Export](https://livewire-powergrid.docsforge.com/main/queue-export/).
 
 ---
@@ -88,3 +120,7 @@ Displays the button to hide/show (toggle) columns.
 Example:
 
 `->showToggleColumns()`
+
+Result:
+
+<img class="result-image" alt="showToggleColumns" src="../img/examples/features/showToggleColumns.png"/>

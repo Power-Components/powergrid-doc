@@ -36,7 +36,9 @@ Example:
 
 `->makeInputText('name')`
 
----
+Result:
+
+<img width="200" class="result-image" alt="makeInputText" src="../img/examples/filters/makeInputText.png"/>
 
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
@@ -51,6 +53,10 @@ Parameters:
 Example:
 
 `->makeBooleanFilter('in_stock', 'yes', 'no')`
+
+Result:
+
+<img width="100" class="result-image" alt="makeBooleanFilter" src="../img/examples/filters/makeBooleanFilter.png"/>
 
 ---
 
@@ -69,6 +75,10 @@ Parameters:
 Example:
 
 `->makeInputDatePicker()`
+
+Result:
+
+<img class="result-image" alt="makeInputDatePicker" src="../img/examples/filters/makeInputDatePicker.png" width="200"/>
 
 ---
 
@@ -89,7 +99,11 @@ Options:
 
 Example:
 
-`->makeInputSelect(Category::all(), 'category', 'category_id', ['live-search' => true])`
+`->makeInputSelect(Kitchen::all(), 'state', 'kitchen_id', ['live-search' => true])`
+
+Result:
+
+<img class="result-image" alt="makeInputSelect" src="../img/examples/filters/makeInputSelect.png" width="100" />
 
 ---
 
@@ -105,7 +119,11 @@ Parameters:
 
 Example:
 
-`->makeInputSelect(Category::all(), 'category', 'category_id'])`
+`->makeInputMultiSelect(Kitchen::all(), 'state', 'kitchen_id')`
+
+Result:
+
+<img class="result-image" alt="makeInputMultiSelect" src="../img/examples/filters/makeInputMultiSelect.png" width="100" />
 
 ---
 
@@ -135,12 +153,16 @@ public function columns(): array
 {
   return [
     Column::add()
-      ->title('Price in EUR')
-      ->field('price_in_eur')
+      ->title('Price')
+      ->field('price_in_brl')
       ->makeInputRange('price', '.', ','),
   ];
 }
 ```
+
+Result:
+
+<img class="result-image" alt="makeInputRange" src="../img/examples/filters/makeInputRange.png" width="100" />
 
 ## Filter by Relationship
 
