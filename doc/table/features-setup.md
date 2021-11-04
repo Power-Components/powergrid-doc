@@ -34,13 +34,27 @@ Result:
 
 ## showPerPage(int $perPage)
 
-Shows a dropdown menu to select the number of rows per page  (default: 10).
+Shows a dropdown menu for selecting the number of rows displayed per page (default: 10).
 
-Set the parameter `$perPage` to show a fixed number of rows instead of allowing the user to select.
+By default, `$perPage` accepts the following values: `10`, `25`, `50`, `100` and `0` (zero represents "show all").
+
+If you need a different set of values, you may override the `$perPageValues` array. See the following example:
 
 Example:
 
-`->showPerPage()`
+```php
+class DishesTable extends PowerGridComponent
+{
+   //Custom per page values
+   public array $perPageValues = [0, 5, 10, 1000, 5000];
+
+    public function setUp()
+    {
+        $this->showPerPage(10);
+    }
+
+    //....
+```
 
 Result:
 
