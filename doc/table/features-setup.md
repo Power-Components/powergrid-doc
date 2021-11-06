@@ -117,6 +117,7 @@ Result:
 
 Displays the button to hide/show (toggle) columns.
 
+> Works fine without inline filters
 Example:
 
 `->showToggleColumns()`
