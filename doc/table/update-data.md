@@ -112,7 +112,7 @@ public function update(array $data): bool
   
   return $updated;
 }
-
+```
 
 ## Messages
 
