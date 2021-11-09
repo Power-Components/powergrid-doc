@@ -76,9 +76,43 @@ public function update(array $data): bool
   } catch (QueryException $exception) {
       $updated = false;
   }
+
   return $updated;
 }
 ```
+
+## Reload data after update
+
+To reload data after a successful update, add `$this->fillData()` inside the `update()` method.
+
+This might be useful when the data is changed with [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable) and the table must be re-sorted.
+
+Example:
+
+```php
+public function update(array $data): bool
+{
+  //...
+
+  try {
+      // Update query
+      $updated = Dish::query()
+        ->find($data['id'])
+        ->update([
+          $data['field'] => $data['value']
+        ]);
+  } catch (QueryException $exception) {
+      $updated = false;
+  }
+
+  // Reload data after a successful update
+  if ($updated) (
+      $this->fillData();
+  }
+  
+  return $updated;
+}
+
 
 ## Messages
 
