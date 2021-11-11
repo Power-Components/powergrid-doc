@@ -36,6 +36,31 @@ When the user edits a dish name, the `update()` method will "catch" all data sen
 
 > **❗ Important:** You must treat and validate all data before the update query takes place. Additionally, you can also verify if the user has permission to edit data.
 
+## Custom columns
+
+If your Table has [Custom Columns](https://livewire-powergrid.docsforge.com/main/add-columns/#closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
+
+For instance, the custom column `name_uppercase` must update the database field `name`. See the example below:
+
+```php
+public function addColumns(): ?PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('name')
+    ->addColumn('name_uppercase', function (Dish $model) {
+      return strtoupper($model->name);
+    });
+}
+
+public function update(array $data): bool
+{
+    //Read from column name_uppercase
+    if ($data['field'] == 'name_uppercase') {
+          $data['field'] = 'name'; // Update the database field name
+    }
+    //...
+```
+
 ## Treating data
 
 Some data needs to be treated and formatted to fit your database field type.
@@ -52,7 +77,7 @@ public function update(array $data): bool
     // Gets price_formatted (4.947,70 €) and convert to price (44947.70).
     
     if ($data['field'] == 'price_formatted') {
-          $data['field'] = 'price'; //Update the field price
+          $data['field'] = 'price'; //Update the database field price
           $data['value'] = Str::of($data['value'])
             ->replace('.', '')
             ->replace(',', '.')
@@ -62,7 +87,7 @@ public function update(array $data): bool
       //Parses the date from d/m.Y (25/05/2021) 
 
       if ($data['field'] == 'created_at_formatted' && $data['value'] != '') {
-        $data['field'] = 'created_at'; // Updates created_at
+        $data['field'] = 'created_at'; // Updates the database field created_at
         $data['value'] =  Carbon::createFromFormat('d/m/Y', $data['value']);
       }
       
