@@ -131,7 +131,7 @@ public function update(array $data): bool
   }
 
   // Reload data after a successful update
-  if ($updated) (
+  if ($updated) {
       $this->fillData();
   }
   
