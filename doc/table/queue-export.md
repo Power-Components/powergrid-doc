@@ -22,8 +22,6 @@ To enable Queue Export, you must configure the following properties in your Powe
 Example:
 
 ```php
-<?php 
-
 class DishesTable extends PowerGridComponent
 {
 
@@ -37,6 +35,8 @@ class DishesTable extends PowerGridComponent
 
   //...
 ```
+
+---
 
 ## Back-end
 
@@ -61,6 +61,8 @@ public function onBatchFinally(Batch $batch)
    // TODO add to success log.
 }
 ```
+
+---
 
 ## Front-end
 

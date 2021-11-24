@@ -12,7 +12,7 @@ To display a column to your table, include a new `Column::add()` in the `columns
 
 Place your code inside the method's `return []` statement.
 
-You should always provide both [title()](#titlestring-title) and [field()](#fieldstring-field).  View all [Column Methods](#column-methods).
+You should always provide both [title()](#titlestring-title) and [field()](#fieldstring-field-string-datafield).  View all [Column Methods](#column-methods).
 
 Example:
 
@@ -73,13 +73,19 @@ Example:
 
 ---
 
-### field(string $field)
+### field(string $field, string $dataField)
 
 Links the column to an existing [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) field or [Custom Column](https://livewire-powergrid.docsforge.com/main/custom-columns/).
 
 Example:
 
 `->field('price_formatted')`
+
+Optionally, you may pass a second parameter `$dataField` referring to the data source table and field. This is useful when you join tables and must maintain unique field names.
+
+For example:
+
+`->field('category_name', 'categories.name')`
 
 ---
 
@@ -95,7 +101,7 @@ Example:
 
 ---
 
-### sortable(string $tableWithColumn = '')
+### sortable()
 
 Adds a sort button to the column header.
 

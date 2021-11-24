@@ -40,6 +40,8 @@ Result:
 
 <img width="200" class="result-image" alt="makeInputText" src="../img/examples/filters/makeInputText.png"/>
 
+---
+
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
 Adds a filter for boolean values.

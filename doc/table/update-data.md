@@ -36,6 +36,8 @@ When the user edits a dish name, the `update()` method will "catch" all data sen
 
 > **❗ Important:** You must treat and validate all data before the update query takes place. Additionally, you can also verify if the user has permission to edit data.
 
+---
+
 ## Custom columns
 
 If your Table has [Custom Columns](https://livewire-powergrid.docsforge.com/main/add-columns/#closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
@@ -60,6 +62,8 @@ public function update(array $data): bool
     }
     //...
 ```
+
+---
 
 ## Treating data
 
@@ -106,6 +110,8 @@ public function update(array $data): bool
 }
 ```
 
+---
+
 ## Reload data after update
 
 To reload data after a successful update, add `$this->fillData()` inside the `update()` method.
@@ -139,9 +145,11 @@ public function update(array $data): bool
 }
 ```
 
-## Messages
+---
 
-The update operation will generate `success` or `error` messages.
+## Update Messages
+
+By default, PowerGrid displays `success` or `error` messages after the updating process is finished.
 
 A `_default_message` key is provided with a generic message to be used for all fields.
 
@@ -171,4 +179,17 @@ public function updateMessages(string $status, string $field = '_default_message
 
     ];
     //...
+```
+
+---
+
+## Disable Update Messages
+
+If you wish to disable update messages, you may override `$showUpdateMessages` in your PowerGrid class.
+
+```php
+class DishesTable extends PowerGridComponent
+{
+    //Display Update messages
+    $showUpdateMessages = false
 ```
