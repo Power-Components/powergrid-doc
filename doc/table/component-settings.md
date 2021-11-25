@@ -49,11 +49,8 @@ To add a custom event to your PowerGrid Table, override the function `getListene
 ```php
     protected function getListeners()
     {
-        return array_merge([
-            'myCustomEvent',
-            'anotherCustomEvent',
-            $this->listeners
-        ]);
+        $this->listeners[] = 'myCustomEvent';
+        return $this->listeners;
     }
 ```
 
