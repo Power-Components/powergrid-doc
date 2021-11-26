@@ -57,7 +57,7 @@ Result:
 
 > **❗ Important:** editOnClick on click requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
-> **❗ Important:** Currently this feature DOES NOT support Joined columns (E.g., 'categories.name', on column setting, $primaryKey or $sortField).
+> **❗ ️Important:** This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
 
 ### toggleable(bool $isToggleable, string $trueLabel, string $falseLabel)
 
@@ -86,7 +86,7 @@ Result:
 
 > **❗ Important:** toggleable requires [Update Data](https://livewire-powergrid.docsforge.com/main/update-data/) method to be configured.
 
-> **❗ Important:** Currently this feature DOES NOT support Joined columns (E.g., 'categories.name', on column setting, $primaryKey or $sortField).
+> **❗ ️Important:** This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
 ---
 
 ### clickToCopy(bool $hasPermission, string $caption)
