@@ -69,10 +69,10 @@ public function columns(): array
 {
       //...
       Column::add()
-          ->title(__('Categoria'))
-          ->field('category_name')
+          ->title(__('Category'))
+          ->field('category_name', 'categories.name')
           ->makeInputMultiSelect(Category::all(), 'name', 'category_id')
-          ->sortable('categories.name'),
+          ->sortable(),
       //...
 }
 ```
