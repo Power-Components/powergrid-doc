@@ -57,7 +57,7 @@ The following example shows the usage of Alpine 2.8 CDN:
 
 <br>
 
-📝 **NOTE:** Tailwind requires Alpine 2.8+.
+📝 **NOTE:** Tailwind theme requires Alpine 2.8+.
 
 <br>
 

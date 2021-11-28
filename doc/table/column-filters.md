@@ -28,6 +28,8 @@ These methods enable input for filters at your column header.
 
 Adds an input text filter on the column.
 
+Available filters are: `Is/Is not`, `Contains/Does not contain`, `Starts with/Ends with`,`Is null/Is not null`, `Is blank\Is not Blank`, `Is blank\Is not blank`,  `Is empty/Is not empty`. "Empty" covers "Blank + Null".
+
 Parameters:
 
 - `$dataField`: field used by the filter.
