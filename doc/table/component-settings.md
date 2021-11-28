@@ -4,6 +4,26 @@ You can configure your PowerGrid Tables by setting some properties in your Table
 
 <br>
 
+## Sort by Field and Direction
+
+You can pre-configure your Table to be sorted by a certain field (`$sortField`) and direction (`$sortDirection`).
+
+The following example loads your Table sorted by `name` in `descending` order:
+
+```php
+class DishesTable extends PowerGridComponent
+{
+    use ActionButton;
+
+    public string $sortField = 'name';
+    
+    public string $sortDirection = 'desc';
+
+    //...
+```
+
+---
+
 ## Event Listeners
 
 By default, PowerGrid is listening to the following events:
@@ -71,25 +91,5 @@ class DishesTable extends PowerGridComponent
 <br/>
 
 > 📝 **NOTE:** You might need to adjust the [->sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) method in your fields when joining tables in your dataset.
-
----
-
-## Sort by Field and Direction
-
-You can pre-configure your Table to be sorted by a certain field (`$sortField`) and direction (`$sortDirection`).
-
-The following example loads your Table sorted by `name` in `descending` order:
-
-```php
-class DishesTable extends PowerGridComponent
-{
-    use ActionButton;
-
-    public string $sortField = 'name';
-    
-    public string $sortDirection = 'desc';
-
-    //...
-```
 
 ---
