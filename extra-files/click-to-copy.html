@@ -5,6 +5,11 @@ Based on:
 -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 <script>
+
+//Hides github from menubar
+$('a[title="Browse Repository"]').hide();
+
+/*create copy button when page loaded*/
 !function (e, t, a) {
   /* code */
   var initCopyCode = function(){
