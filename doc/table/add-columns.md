@@ -61,7 +61,7 @@ public function addColumns(): ?PowerGridEloquent
 }
 ```
 
-The example above produces the HTML `<a href="https://www.google.com/maps/search/123,456">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
+The example above produces the HTML `<a href="https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
 
 <br/>
 
