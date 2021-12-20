@@ -43,6 +43,28 @@ This is often the case with date, currency and boolean values.
 
 Let's check some examples using `closures` to format data!
 
+
+### Link in cell
+
+You can use `closures` to render `HTML` inside table cells.
+
+The example below creates a new column called `location_link` containing a link formed by the `lat_long` field and the `location_name` field.
+
+```php
+//..
+public function addColumns(): ?PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('location_link', function (Dish $model) {
+      return '<a href="https://www.google.com/maps/search/' . $model->lat_long . '">'. $model->location_name .'</a>'; 
+    });
+}
+```
+
+The example above produces the HTML `<a href="https://www.google.com/maps/search/123,456">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
+
+<br/>
+
 ### Date
 
 The database field `created_at` has date stored as `yyyy-mm-dd H:i:s` (2021-01-20 10:05:44).
