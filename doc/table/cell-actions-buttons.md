@@ -139,6 +139,7 @@ Column::add()
 
 Result:
 <img class="result-image" alt="withSum" src="../img/examples/cell_buttons/withSum.png" width="350"/>
+
 ---
 
 ### withCount(string $label = 'Count', bool $header = false, bool $footer = false)
