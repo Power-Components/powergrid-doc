@@ -112,3 +112,87 @@ Result:
 <img class="result-image" alt="clickToCopy" src="../img/examples/cell_buttons/clickToCopy.png" width="200"/>
 
 ---
+
+### withSum(string $label = 'Sum', bool $header = false, bool $footer = false)
+
+> **❗ Important:** This will pre-process all the data in your database to work with the sum of all records. **->get()**;
+
+> **❗ Important:** In all cases, only one request is made;
+
+Will display the sum of all records in the field
+
+The argument `$label` sets the button caption.
+
+If `$header` is `true`, Powergrid will create a row in the table below the filters.
+
+If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+
+Example:
+
+```php
+//...
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+```
+
+Result:
+<img class="result-image" alt="withSum" src="../img/examples/cell_buttons/withSum.png" width="350"/>
+---
+
+### withCount(string $label = 'Count', bool $header = false, bool $footer = false)
+
+Will display the count of all records in the field
+
+The argument `$label` sets the button caption.
+
+If `$header` is `true`, Powergrid will create a row in the table below the filters.
+
+If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+
+Example:
+
+```php
+//...
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+    ->withCount('Count', true, false)
+```
+
+Result:
+<img class="result-image" alt="withCount" src="../img/examples/cell_buttons/withCount.png" width="350"/>
+
+---
+
+### withAvg(string $label = 'Avg', bool $header = false, bool $footer = false)
+
+Will display the avg of all records in the field
+
+The argument `$label` sets the button caption.
+
+If `$header` is `true`, Powergrid will create a row in the table below the filters.
+
+If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+
+The `$rounded` argument returns the rounded value of num to specified precision
+
+Example:
+
+```php
+//...
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+    ->withCount('Count', true, true)
+    ->withAvg('Avg', true, false, 2)
+```
+
+Result:
+<img class="result-image" alt="withAvg" src="../img/examples/cell_buttons/withAvg.png" width="350"/>
+
+---
+

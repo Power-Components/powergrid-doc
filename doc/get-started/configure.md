@@ -28,38 +28,37 @@ Scripts must be included before the `</body>` tag.
 
 ## 2. Alpine JS
 
-PowerGrid loads Alpine JS 3.0 by default.
+Powergrid requires alpinejs version [^3.0](https://alpinejs.dev/)
 
-If you already have Alpine JS loaded in your project, please change `'js_framework'` to null (no quotes).
-
+### 2.1 As a config
 ```php
     /*
     |--------------------------------------------------------------------------
     | JS Framework
     |--------------------------------------------------------------------------
     */
-    'js_framework' => null,
+    'alpinejs_cdn' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js',
 ```
 
-If you need to use a different version, change the URL inside the key `alpinejs` under `js_framework_cdn`.
+### 2.2 As a module
+You can also use it along with your app.js file and import it.
 
-The following example shows the usage of Alpine 2.8 CDN:
+Run the following command to install it.
 
-```php
-    /*
-    |--------------------------------------------------------------------------
-    | Frameworks CDN
-    |--------------------------------------------------------------------------
-    */
-    'js_framework_cdn' => [
-        'alpinejs' => 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js'
+Please change `'alpinejs_cdn'` to null (no quotes).
+
+```bash
+npm install alpinejs
 ```
+```javascript
+import Alpine from 'alpinejs'
 
-<br>
+window.Alpine = Alpine
 
-📝 **NOTE:** Tailwind requires Alpine 2.8+.
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 
-<br>
+Alpine.start()
+```
 
 ## 3. Choose your Theme
 
@@ -96,7 +95,7 @@ Next, include jQuery and Bootstrap scripts in your page.
 
 To enable Dark Mode, configure the `DarkMode` class in `tailwind.config.js` file as follows:
 
-```json
+```javascript
 module.exports = {
     darkMode: 'class',
 }
@@ -106,14 +105,30 @@ module.exports = {
 
 If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tailwind.config.js` file:
 
-```json
+For Tailwind 2.x
+```javascript
 module.exports = {
-    mode: ‘jit’,
-    purge: [
-        //…
-        './vendor/power-components/livewire-powergrid/resources/views/**/*.blade.php',
-        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php',
-    ],
+  mode: 'jit',
+  purge: [
+      // ....
+      './app/Http/Livewire/**/*Table.php',
+      './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
+      './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
+  ]
+  // ....
+}
+```
+
+For Tailwind 3.x - [read](https://tailwindcss.com/docs/upgrade-guide#migrating-to-the-jit-engine)
+```javascript
+module.exports = {
+  content: [
+      // ....
+      './app/Http/Livewire/**/*Table.php',
+      './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
+      './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
+  ]
+  // ....
 }
 ```
 
@@ -123,7 +138,7 @@ module.exports = {
 
 If you use Tailwind forms, please consider modifying your `tailwind.config.js` to use the strategy `class` as follows:
 
-```json
+```javascript
 module.exports = {
    //...
   plugins: [
