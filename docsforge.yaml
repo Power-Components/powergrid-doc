@@ -1,6 +1,7 @@
 sidebar:
   Get Started:
   - PowerGrid: doc/get-started/powergrid.md
+  - Upgrade From V1: doc/get-started/upgrade-v1.md
   - Demo: doc/get-started/demo.md
   - Install: doc/get-started/install.md
   - Configure: doc/get-started/configure.md
