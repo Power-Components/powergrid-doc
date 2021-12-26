@@ -29,18 +29,17 @@ class DishesTable extends PowerGridComponent
 By default, PowerGrid is listening to the following events:
 
 ```php
-class DishesTable extends PowerGridComponent
-{
-
-    protected $listeners = [
-        'eventChangeDatePiker' => 'eventChangeDatePiker',
-        'eventInputChanged'    => 'eventInputChanged',
-        'eventToggleChanged'   => 'eventInputChanged',
-        'eventMultiSelect'     => 'eventMultiSelect',
-        'eventRefresh'         => '$refresh',
-        'eventToggleColumn'    => 'toggleColumn',
-    ];
-
+    protected function getListeners()
+    {
+        return [
+            'pg:datePicker-' . $this->tableName   => 'datePikerChanged',
+            'pg:editable-' . $this->tableName     => 'inputTextChanged',
+            'pg:toggleable-' . $this->tableName   => 'inputTextChanged',
+            'pg:multiSelect-' . $this->tableName  => 'multiSelectChanged',
+            'pg:toggleColumn-' . $this->tableName => 'toggleColumn',
+            'eventRefresh'                        => '$refresh',
+        ];
+    }
     //...
 ```
 

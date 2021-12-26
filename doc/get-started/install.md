@@ -6,6 +6,7 @@
 - [Laravel 8x](https://laravel.com/docs/8.x/installation)
 - [Livewire 2x](https://laravel-livewire.com)
 - [Tailwind](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [Alpine 3x](https://alpinejs.dev/)
 
 ## Installation
 

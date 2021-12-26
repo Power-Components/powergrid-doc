@@ -39,6 +39,8 @@ This example uses the Dish Model, so we typed `M`:
 
 In this example, the Dish Model is located at App\Models\Dish.
 
+If you don't specify App\Models -powergrid will create based on default App\Models directory.
+
 
 ---
 
@@ -52,6 +54,7 @@ Supported databases are: MySQL, Postgre and SQLite.
 
 If desirable, type `yes` to use this feature.
 
+> If you don't use the 'id' column as the primary key, you should make sure your model is `protected $primaryKey = null`;
 
 ---
 
