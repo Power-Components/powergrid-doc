@@ -32,8 +32,12 @@ You can pass arguments to your PowerGrid Table using the `<livewire>` tag.
 
 For example, include the argument "type" in your tag to load only "pasta" dishes.
 
+You can also put the "tableName" argument as well - this will avoid some conflict sending events to the same livewire component
+
 ```html
-    <livewire:dish-table type='pasta'/>
+    <livewire:dish-table type="pasta" tableName="table1"/>
+
+    <livewire:dish-table type="desserts" tableName="table2"/>
 ```
 
 The argument should be declared as a `public property` inside your PowerGrid table (in this example: `DishTable.php`).
@@ -43,7 +47,7 @@ Then, the `$type` property can be used in your `datasource()` method:
 ```php
     public string $type;
 
-    //...
+    public string $tableName = 'default';
 
     public function datasource(): ?Builder
     {
