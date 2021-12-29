@@ -6,7 +6,8 @@ Now in **version 2** some structural things have changed from the minimal versio
 `config/livewire-powergrid.config`
 
 ```php
-<!-- 🚫 Before -->
+     <!-- 🚫 Before -->
+     
     'js_framework' => 'alpinejs',
     //'js_framework' => null, // If you already have Alpine included in your project
 
@@ -25,14 +26,16 @@ Now in **version 2** some structural things have changed from the minimal versio
     ],
 
 
-<!-- ✅ After -->
-    'alpinejs_cdn' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js',
+    <!-- ✅ After -->
+    
+    'alpinejs_cdn' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', null, // If you already have Alpine included in your project
 
 ```
 
 Powergrid alpine scripts are loaded by default inside **@powerScripts**, but if you want to import them along with your **app.js** file, do so:
 
-_resources/js/app.js_
+1. In `config/livewire-powergrid.config` set null
+2. in `resources/js/app.js` :
 ```javascript
 import Alpine from 'alpinejs'
 
