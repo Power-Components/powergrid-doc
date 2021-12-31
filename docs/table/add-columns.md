@@ -33,7 +33,7 @@ public function addColumns(): ?PowerGridEloquent
 }
 ```
 
-!> **❗ Important:** After creating a column, you must include it in your Table using the [Column::add()](table/include-columns) method.
+> **❗ Important:** After creating a column, you must include it in your Table using the [Column::add()](table/include-columns) method.
 
 ## Closure Examples
 
@@ -42,6 +42,28 @@ Sometimes, you need to display data in a human-friendly way.
 This is often the case with date, currency and boolean values.
 
 Let's check some examples using `closures` to format data!
+
+
+### Link in cell
+
+You can use `closures` to render `HTML` inside table cells.
+
+The example below creates a new column called `location_link` containing a link formed by the `lat_long` field and the `location_name` field.
+
+```php
+//..
+public function addColumns(): ?PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('location_link', function (Dish $model) {
+      return '<a href="https://www.google.com/maps/search/' . $model->lat_long . '">'. $model->location_name .'</a>'; 
+    });
+}
+```
+
+The example above produces the HTML `<a href="https://www.google.com/maps/search/123,456">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
+
+<br/>
 
 ### Date
 
