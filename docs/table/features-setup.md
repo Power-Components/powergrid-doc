@@ -107,7 +107,7 @@ Result:
 
 <img class="result-image" alt="showExportOption" src="../_media/examples/features/showExportOption.png"/>
 
-> 💡 If you are working with lots of data, we recommend to use [Queue Export](https://livewire-powergrid.docsforge.com/main/queue-export/).
+> 💡 If you are working with lots of data, we recommend to use [Queue Export](table/queue-export).
 
 ---
 

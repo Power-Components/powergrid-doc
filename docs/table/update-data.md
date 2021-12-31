@@ -1,6 +1,6 @@
 # Update Data
 
-Some PowerGrid features like [Cell Action Buttons](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/) and [Row Action Buttons](https://livewire-powergrid.docsforge.com/main/row-action-buttons/) allow the user to modify Table data and update the database.
+Some PowerGrid features like [Cell Action Buttons](table/cell-action-buttons) and [Row Action Buttons](table/row-action-buttons) allow the user to modify Table data and update the database.
 
 You will need to configure your PowerGrid Table file (e.g. `DishTable.php`) to save data.
 
@@ -23,7 +23,7 @@ The `update()` method will receive data from your `field` and try to update it i
 
 Let's take the following example:
 
-The column "Name" reads the field `name` and is configured to [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable).
+The column "Name" reads the field `name` and is configured to [Edit on click](table/cell-action-buttons?id=editonclickbool-iseditable).
 
 ```php
 Column::add()
@@ -40,7 +40,7 @@ When the user edits a dish name, the `update()` method will "catch" all data sen
 
 ## Custom columns
 
-If your Table has [Custom Columns](https://livewire-powergrid.docsforge.com/main/add-columns/#closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
+If your Table has [Custom Columns](table/add-columns?id=closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
 
 For instance, the custom column `name_uppercase` must update the database field `name`. See the example below:
 
@@ -116,7 +116,7 @@ public function update(array $data): bool
 
 To reload data after a successful update, add `$this->fillData()` inside the `update()` method.
 
-This might be useful when the data is changed with [Edit on click](https://livewire-powergrid.docsforge.com/main/cell-action-buttons/#editonclickbool-iseditable) and the table must be re-sorted.
+This might be useful when the data is changed with [Edit on click](table/cell-action-buttons?=editonclickbool-iseditable) and the table must be re-sorted.
 
 Example:
 

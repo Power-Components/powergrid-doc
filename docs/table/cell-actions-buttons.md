@@ -1,6 +1,6 @@
 # Cell Action Buttons
 
-Cell Action buttons can be configured in each column inside the [columns()](https://livewire-powergrid.docsforge.com/main/include-columns/) method.
+Cell Action buttons can be configured in each column inside the [columns()](table/include-columns) method.
 
 This method is inside your PowerGrid file (e.g. `DishTable.php`).
 

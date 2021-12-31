@@ -109,7 +109,7 @@ Example:
 
 `->sortable()` 
 
-!> **❗ Important:** If your column fetches data via relationship, you must `join` the related table in your [Datasource](https://livewire-powergrid.docsforge.com/main/datasource/) query.
+!> **❗ Important:** If your column fetches data via relationship, you must `join` the related table in your [Datasource](table/datasource) query.
 
 ---
 
