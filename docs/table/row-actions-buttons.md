@@ -91,7 +91,7 @@ is equivalent to:
 
 Opens a modal window.
 
-You must install [Livewire UI Component](https://github.com/livewire-ui/modal) to use this functionality. More information is also available at its documentation.
+You must install [Wire Elements Modal](https://github.com/wire-elements/modal) to use this functionality. More information is also available at its documentation.
 
 Parameters:
 

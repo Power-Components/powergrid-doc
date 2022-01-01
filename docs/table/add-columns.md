@@ -67,7 +67,7 @@ The example above produces the HTML `<a href="https://www.google.com/maps/search
 
 ### Date
 
-The database field `created_at` has date stored as `yyyy-mm-dd H:i:s` (2021-01-20 10:05:44).
+The database field `created_at` has date stored as `yyyy-mm-dd H:i:s` 2021-01-20 10:05:44.
 
 The following code demonstrates a new custom column `created_at_formatted`.
 

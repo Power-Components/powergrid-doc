@@ -21,8 +21,8 @@ Please look into our previous issues to verify if your bug/question or feature r
 ## Credits
 Created by: [Luan Freitas](https://twitter.com/luanfreitasdev)
 
-- [Contributors](../../contributors)
-- Docs by [DanSysAnalyst](https://twitter.com/DanSysAnalyst)
+- [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors)
+- Doc by [DanSysAnalyst](https://twitter.com/DanSysAnalyst)
 - Logo & artwork by [Caneco](https://github.com/caneco)
 
 
