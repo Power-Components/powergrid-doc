@@ -1,6 +1,6 @@
 ## Upgrade From V1
 
-Now in **version 2** some structural things have changed from the minimal version of [Alpinejs](https://alpinejs.dev/). This means that the backend of your tables will not be affected!.
+> In this version, AlpineJs ^3 is a requirement
 
   - Alpine v2 is no longer supported - uses v3
   - `livewire-powergrid.config `- js_framework now is `alpinejs_cnd`
