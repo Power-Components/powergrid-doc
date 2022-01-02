@@ -49,6 +49,29 @@ import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 Alpine.start()
 ```
 
+
+___
+
+#### Event Listeners
+
+```php
+    <!-- 🚫 Before -->
+    protected function getListeners()
+    {
+        $this->listeners[] = 'editDish';
+        return $this->listeners;
+    }
+    
+    
+    <!-- ✅ After -->
+    protected function getListeners(): array
+    {
+        return array_merge(
+            parent::getListeners(), ['editDish']);
+    }
+```
+
+
 <hr />
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/get-started/demo?id=demo">Next →</a></span>
