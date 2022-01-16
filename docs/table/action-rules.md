@@ -49,6 +49,11 @@ public function actionRules(): array
 }
 ```
 
+Result:
+
+<img class="result-image" alt="disable" src="../_media/examples/action_rules/example.png" width="600"/>
+
+
 Modifiers can be combined under the same rule. For example:
 
 ```php
@@ -82,7 +87,7 @@ Example:
 // Disable order for out of stock
 
 Rule::for('order-dish')
-    ->when(fn($dish) => $dish->in_stock === false)
+    ->when(fn($dish) => (bool) $dish->in_stock === false)
     ->disable(),
 ```
 
