@@ -8,7 +8,7 @@
 
 Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid)
 
-📚 Published at [https://livewire-powergrid.docsforge.com/](https://livewire-powergrid.docsforge.com/).
+📚 Published at [https://livewire-powergrid.com](https://livewire-powergrid.com).
 
 ## Support
 
