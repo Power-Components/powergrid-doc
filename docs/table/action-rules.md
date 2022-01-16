@@ -74,7 +74,7 @@ Available modifiers:
 - [Caption](table/action-rules?id=captionstring-caption)
 - [Emit](table/action-rules?id=emitstring-event-array-params-)
 - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
-- [Redirect](table/action-rules?id=redirectstring-route-string-target-_blank)
+- [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
 - [Rows](table/action-rules?id=rows)
 
 ### disable()
@@ -164,11 +164,12 @@ Sets button's redirect URL.
 Example:
 
 ```php
-// Redirects to "out of stock" page URL.
 
-Rule::for('order-dish')
-    ->when(fn($dish) => $dish->in_stock === false)
-    ->redirect(fn($dish) => 'https://www.dish.test/sorry-out-of-stock?dish='.$dish->id, '_blank'),
+// Redirects to Google search for exotic dishes
+
+Rule::for('read-more')
+    ->when(fn($dish) => $dish->is_exotic === true)
+    ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
 ```
 
 ### rows()

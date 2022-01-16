@@ -52,7 +52,7 @@
     - [Caption](table/action-rules?id=captionstring-caption)
     - [Emit](table/action-rules?id=emitstring-event-array-params-)
     - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
-    - [Redirect](table/action-rules?id=redirectstring-route-string-target-_blank)
+    - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
     - [Rows](table/action-rules?id=rows)
 
   - [<p>Update Data</p>](table/row-actions-buttons?id=row-action-buttons)
