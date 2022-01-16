@@ -23,7 +23,7 @@ The preceding examples make use of the `DishTable` table. You must replace `dish
 If your PowerGrid Table is located in a sub-folder (e.g.: Restaurants/DishTable.php), use:
 
 ```html
-    <livewire:restaurants-dish-table/>
+    <livewire:restaurants.dish-table/>
 ```
 
 ## Passing arguments
