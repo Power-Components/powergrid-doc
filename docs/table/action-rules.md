@@ -47,9 +47,20 @@ public function actionRules(): array
 }
 ```
 
-## Rules
+Modifiers can be combined in one rule. For example:
 
-Available rules:
+```php
+// Sets the button class to spicy  and caption with emoji
+
+Rule::for('order-dish')
+    ->when(fn($dish) => $dish->is_spicy === true)
+    ->caption('Order 🔥 🔥 🔥')
+    ->setAttribute('class', 'bg-spicy'),
+```
+
+## Modifiers
+
+Available modifiers:
 
 - [Disable](table/action-rules?id=disable)
 - [Hide](table/action-rules?id=hide)
