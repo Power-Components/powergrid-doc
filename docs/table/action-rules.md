@@ -51,13 +51,13 @@ public function actionRules(): array
 
 Available rules:
 
-- [Disable](table/row-actions-buttons?id=disable)
-- [Hide](table/row-actions-buttons?id=hide)
-- [Caption](table/row-actions-buttons?id=caption)
-- [Emit](table/row-actions-buttons?id=emit)
-- [setAttribute](table/row-actions-buttons?id=setAttribute)
-- [Redirect](table/row-actions-buttons?id=redirect)
-- [Rows](table/row-actions-buttons?id=rows)
+- [Disable](table/action-rules?id=disable)
+- [Hide](table/action-rules?id=hide)
+- [Caption](table/action-rules?id=captionstring-caption)
+- [Emit](table/action-rules?id=emitstring-event-array-params-)
+- [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
+- [Redirect](table/action-rules?id=redirectstring-route-string-target-_blank)
+- [Rows](table/action-rules?id=rows)
 
 ### disable()
 
