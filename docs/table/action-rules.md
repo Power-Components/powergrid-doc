@@ -10,8 +10,8 @@ PowerGrid offers a set of `Action Rules` which can be combined together to contr
 
 `Action Rules` must be declared inside the array in the `actionRules()` method. There are 2 types of Rules available:
 
-- `Rules::for`: Rules for a specific action button.
-- `Rules::rows`: Rules to be applied on rows matching the condition.
+- `Rule::for`: Rules for a specific action button.
+- `Rule::rows`: Rules to be applied on rows matching the condition.
 
 Following the "Out of stock" use case in the introduction, we will have the folowing code:
 
@@ -111,11 +111,11 @@ Sets the button caption value.
 Example:
 
 ```php
-// Changes the caption for dishes in promotion
+// Changes the caption for dishes on sale
 
 Rule::for('order-dish')
-    ->when(fn($dish) => $dish->in_promotion === true)
-    ->caption('Order Now *PROMOTION*'),
+    ->when(fn($dish) => $dish->on_sale === true)
+    ->caption('Order 💰 ON SALE 💰'),
 ```
 
 ---
@@ -168,7 +168,9 @@ Rule::for('order-dish')
 
 ### rows()
 
-Modify the row matching the rule. This is normally used with [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null) Modifier.
+Modify the row matching the rule condition. 
+
+This modifier is normally used with [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null) Modifier.
 
 Example:
 
