@@ -84,6 +84,7 @@ The code below:
     protected function getListeners()
     {
         $this->listeners[] = 'editDish';
+        $this->listeners[] = 'deleteDish';
         return $this->listeners;
     }
 ```
@@ -96,7 +97,7 @@ Changed to:
     protected function getListeners(): array
     {
         return array_merge(
-            parent::getListeners(), ['editDish']);
+            parent::getListeners(), ['editDish', 'deleteDish']);
     }
 ```
 
