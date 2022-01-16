@@ -157,7 +157,7 @@ Rule::for('order-dish')
 
 ---
 
-### redirect(string $route, string $target = '_blank')
+### redirect(Closure $closure, string $target = '_blank')
 
 Sets button's redirect URL.
 
@@ -168,7 +168,7 @@ Example:
 
 Rule::for('order-dish')
     ->when(fn($dish) => $dish->in_stock === false)
-    ->redirect('https://www.dish.test/sorry-out-of-stock', '_blank'),
+    ->redirect(fn($dish) => 'https://www.dish.test/sorry-out-of-stock?dish='.$dish->id, '_blank'),
 ```
 
 ### rows()
