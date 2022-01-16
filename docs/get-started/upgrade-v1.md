@@ -7,7 +7,7 @@ This page will give you important information to upgrade from v1.x.
 ### Configuration
 
 1. Alpine v2 is no longer supported. Please use Alpine JS v3.
-2. The item `livewire-powergrid.config ` in `config/livewire-powergrid.php` is now renamed to `alpinejs_cnd`.
+2. The configuration keys `js_framework_cdn` and `js_framework` in `config/livewire-powergrid.php` are now combined and renamed to `alpinejs_cnd`.
 
 The code below:
 
@@ -54,7 +54,11 @@ Alpine scripts are loaded by default with the `@powerScripts` blade directive.
 
 However, if you prefer to import them manually in your `app.js` file, follow these steps:
 
-Step 1: In `config/livewire-powergrid.config` set `alpinejs_cdn` to `null`.
+Step 1: In `config/livewire-powergrid.config` set the configuration key `alpinejs_cdn` to `null`.
+
+```php
+    'alpinejs_cdn' => null,
+```
 
 Step 2: Add the following code to `resources/js/app.js` :
 
@@ -87,7 +91,6 @@ The code below:
 Changed to:
 
 ```php
-    
     <!-- ✅ After -->
 
     protected function getListeners(): array
