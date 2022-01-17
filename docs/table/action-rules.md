@@ -10,7 +10,7 @@ PowerGrid offers a set of `Action Rules` which can be combined to control style,
 
 `Action Rules` must be declared inside the array in the `actionRules()` method. There are 2 types of Rules available:
 
-- `Rule::for`: Rules for a specific action button.
+- `Rule::button`: Rules for a specific action button.
 - `Rule::rows`: Rules to be applied on rows matching the condition.
 - `Rule::checkbox`: Rules to be applied on the checkbox available on each row.
 
@@ -38,7 +38,7 @@ public function actionRules(): array
 {
     return [
         // Hide order button when dish is out of stock
-        Rule::for('order-dish')
+        Rule::button('order-dish')
             ->when(fn($dish) => $dish->in_stock === false)
             ->hide(),
 
@@ -60,7 +60,7 @@ Modifiers can be combined under the same rule. For example:
 ```php
 // Sets the button class to spicy and caption with emoji
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy === true)
     ->caption('Order 🔥 🔥 🔥')
     ->setAttribute('class', 'bg-spicy'),
@@ -88,7 +88,7 @@ Example:
 ```php
 // Disable order for out of stock
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => (bool) $dish->in_stock === false)
     ->disable(),
 ```
@@ -104,7 +104,7 @@ Example:
 ```php
 // Hide order for out of stock
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => $dish->in_stock === false)
     ->hide(),
 ```
@@ -120,7 +120,7 @@ Example:
 ```php
 // Changes the caption for dishes on sale
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => $dish->on_sale === true)
     ->caption('Order 💰 ON SALE 💰'),
 ```
@@ -136,7 +136,7 @@ Example:
 ```php
 // Emits an alert for spice dishes
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy === true)
     ->emit('showSpiceAlert', ['id' => 'id']),
 ```
@@ -152,7 +152,7 @@ Example:
 ```php
 // Sets the button class to spicy 🔥
 
-Rule::for('order-dish')
+Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy === true)
     ->setAttribute('class', 'bg-spicy'),
 ```
@@ -169,7 +169,7 @@ Example:
 
 // Redirects to Google search for exotic dishes
 
-Rule::for('read-more')
+Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic === true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
 ```
