@@ -1,10 +1,10 @@
 # Action Rules
 
-Sometimes you need to control the style of a row, column or the buttons available based on the record value, user access level or the combination of both.
+Sometimes you need to control the behavior of rows, checkboxes or buttons based on record value, user access level or the combination of different conditions.
 
 A common example is when a product is out of stock, the button "Order" must be hidden the row must have a red background clearly indicating to the user this product is not available.
 
-PowerGrid offers a set of `Action Rules` which can be combined together to control content and behavior of `Action Buttons` and table rows.
+PowerGrid offers a set of `Action Rules` which can be combined to control style, content and behavior of `Action Buttons` and table rows.
 
 ## Usage
 
@@ -12,8 +12,9 @@ PowerGrid offers a set of `Action Rules` which can be combined together to contr
 
 - `Rule::for`: Rules for a specific action button.
 - `Rule::rows`: Rules to be applied on rows matching the condition.
+- `Rule::checkbox`: Rules to be applied on the checkbox available on each row.
 
-Following the "Out of stock" use case in the introduction, we will have the folowing code:
+Following the "Out of stock" use case in the introduction, we will have the following code:
 
 ```php
 //..
@@ -76,6 +77,7 @@ Available modifiers:
 - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
 - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
 - [Rows](table/action-rules?id=rows)
+- [Checkbox](table/action-rules?id=checkbox)
 
 ### disable()
 
@@ -174,7 +176,7 @@ Rule::for('read-more')
 
 ### rows()
 
-Modify the row matching the rule condition. 
+Modify the row matching the rule condition.
 
 This modifier is normally used with [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null) Modifier.
 
@@ -186,4 +188,25 @@ Example:
 Rule::rows()
     ->when(fn($dish) => $dish->in_stock === false)
     ->setAttribute('class', 'bg-red-200'),
+```
+
+### checkbox()
+
+Modify the behavior of the checkbox available on each row.
+
+Checkboxes can be disabled or hidden using the `disable()` and `hide()` Modifiers.
+
+Example:
+
+```php
+// Hide the checkbox when the dish is out of stock
+Rule::checkbox()
+    ->when(fn($dish) => $dish->in_stock === false)
+    ->hide(),
+
+// Disable the checkbox when the dish is read only
+
+Rule::checkbox()
+    ->when(fn($dish) => $dish->read_only === true)
+    ->disable(),
 ```

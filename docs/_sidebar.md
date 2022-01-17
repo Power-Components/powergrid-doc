@@ -54,6 +54,7 @@
     - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
     - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
     - [Rows](table/action-rules?id=rows)
+    - [Checkbox](table/action-rules?id=checkbox)
 
   - [<p>Update Data</p>](table/row-actions-buttons?id=row-action-buttons)
     - [Usage](table/update-data?id=usage)
