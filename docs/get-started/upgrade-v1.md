@@ -54,7 +54,7 @@ Alpine scripts are loaded by default with the `@powerScripts` blade directive.
 
 However, if you prefer to import them manually in your `app.js` file, follow these steps:
 
-Step 1: In `config/livewire-powergrid.config` set the configuration key `alpinejs_cdn` to `null`.
+Step 1: In `config/livewire-powergrid.config` set the configuration key `alpinejs_cdn` to `null` (no quotes).
 
 ```php
     'alpinejs_cdn' => null,
@@ -72,7 +72,7 @@ import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 Alpine.start()
 ```
 
-___
+Read more about Alpine JS [configuration](get-started/configure?id=_2-alpine-js).
 
 #### Event Listeners
 
