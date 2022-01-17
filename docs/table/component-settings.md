@@ -93,6 +93,6 @@ class DishesTable extends PowerGridComponent
 
 <br/>
 
-> 📝 **NOTE:** You might need to adjust the [->sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) method in your fields when joining tables in your dataset.
+> 📝 **NOTE:** You might need to adjust the [->sortable()](table/include-columns?id=sortable) method in your fields when joining tables in your dataset.
 
 ---
