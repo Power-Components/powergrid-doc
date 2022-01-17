@@ -97,9 +97,15 @@ Changed to:
     protected function getListeners(): array
     {
         return array_merge(
-            parent::getListeners(), ['editDish', 'deleteDish']);
+            parent::getListeners(), 
+            [
+                'edit-dish'   => 'editDish',
+                'delete-dish' => 'deleteDish'
+            ]);
     }
 ```
+
+Read more about [Event Listeners](table/component-settings?id=event-listeners).
 
 <hr />
 <footer style="float: right; font-size: larger">

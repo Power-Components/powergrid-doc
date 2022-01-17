@@ -32,12 +32,12 @@ By default, PowerGrid is listening to the following events:
     protected function getListeners()
     {
         return [
-            'pg:datePicker-' . $this->tableName   => 'datePikerChanged',
-            'pg:editable-' . $this->tableName     => 'inputTextChanged',
-            'pg:toggleable-' . $this->tableName   => 'inputTextChanged',
-            'pg:multiSelect-' . $this->tableName  => 'multiSelectChanged',
-            'pg:toggleColumn-' . $this->tableName => 'toggleColumn',
-            'eventRefresh'                        => '$refresh',
+            'pg:datePicker-'   .  $this->tableName  => 'datePikerChanged',
+            'pg:editable-'     .  $this->tableName  => 'inputTextChanged',
+            'pg:toggleable-'   .  $this->tableName  => 'inputTextChanged',
+            'pg:multiSelect-'  .  $this->tableName  => 'multiSelectChanged',
+            'pg:toggleColumn-' .  $this->tableName  => 'toggleColumn',
+            'eventRefresh'                          => '$refresh',
         ];
     }
     //...
@@ -49,7 +49,11 @@ To add a custom event to your PowerGrid Table, override the function `getListene
     protected function getListeners(): array
     {
         return array_merge(
-            parent::getListeners(), ['edit-dish' => 'editDish']);
+            parent::getListeners(), 
+            [
+                'edit-dish'   => 'editDish',
+                'delete-dish' => 'deleteDish'
+            ]);
     }
 ```
 
