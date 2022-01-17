@@ -69,23 +69,11 @@ This sorting method can be useful when your table has a rooms list, for example.
 
 Sorting as string:
 
-10
-11
-1a
-1b
-2
-3
-...
+10, 11, 1a, 1b, 2, 3...
 
 Sorting as Number (desirable)
 
-1a
-1b
-2
-3
-...
-10
-11
+1a, 1b, 2, 3, ..., 10, 11
 
 <br/>
 
