@@ -67,15 +67,25 @@ This sorting method can be useful when your table has a rooms list, for example.
 
 **Rooms table**
 
-| Sorting as string | Sorting as Number (desirable) |
-|-----------|-----------|
-| 10        | 1a        |
-| 11        | 1b        |
-| 1a        | 2         |
-| 1b        | 3         |
-| 2         | ...       |
-| 3         | 10        |
-| ...       | 11        |
+Sorting as string:
+
+10
+11
+1a
+1b
+2
+3
+...
+
+Sorting as Number (desirable)
+
+1a
+1b
+2
+3
+...
+10
+11
 
 <br/>
 
