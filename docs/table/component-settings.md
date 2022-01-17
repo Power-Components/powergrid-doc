@@ -58,3 +58,41 @@ To add a custom event to your PowerGrid Table, override the function `getListene
 ```
 
 ---
+
+## Sort String as Number
+
+To sort string as numbers, you must declare `$withSortStringNumber` as  `true`.
+
+This sorting method can be useful when your table has a rooms list, for example.
+
+**Rooms table**
+
+| Sorting as string | Sorting as Number (desirable) |
+|-----------|-----------|
+| 10        | 1a        |
+| 11        | 1b        |
+| 1a        | 2         |
+| 1b        | 3         |
+| 2         | ...       |
+| 3         | 10        |
+| ...       | 11        |
+
+<br/>
+
+Set up:
+
+```php
+class DishesTable extends PowerGridComponent
+{
+    use ActionButton;
+
+    public bool $withSortStringNumber = true;
+
+    //...
+```
+
+<br/>
+
+> 📝 **NOTE:** You might need to adjust the [->sortable()](https://livewire-powergrid.docsforge.com/main/include-columns/#sortable) method in your fields when joining tables in your dataset.
+
+---
