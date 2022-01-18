@@ -75,7 +75,9 @@ Rules can be applied to 3 different targets:
 
 ## Modifiers
 
-The `Modifiers` take effect when the  condition in the Rule is satisfied. You can use more than one `Modifier` per rule.
+The `Modifiers` will take effect when the Rule condition is satisfied. You can use more than one `Modifier` under the same rule.
+
+Available methods:
 
 - [Disable](table/action-rules?id=disable)
 - [Hide](table/action-rules?id=hide)
@@ -91,7 +93,7 @@ Disables the target (available for Buttons and Checkboxes).
 Example:
 
 ```php
-// Disable order for out of stock
+// Disable order button for dishes out of stock
 
 Rule::button('order-dish')
     ->when(fn($dish) => (bool) $dish->in_stock === false)
@@ -107,7 +109,7 @@ Hides the target (available for Buttons and Checkboxes).
 Example:
 
 ```php
-// Hide order for out of stock
+// Hide checkbox for dishes out of stock
 
 Rule::checkbox()
     ->when(fn($dish) => $dish->in_stock === false)
