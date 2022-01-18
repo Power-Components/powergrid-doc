@@ -65,6 +65,22 @@ Rule::button('order-dish')
     ->setAttribute('class', 'bg-spicy'),
 ```
 
+A `Rule` must have only one `when()` condition.
+
+If you need more conditions on a specific `Target`, just create a new `Rule` for it. For example:
+
+```php
+//Sets the caption according to dish country
+
+Rule::button('order-dish')
+    ->when(fn($dish) => $dish->country === 'Brazil')
+    ->caption('Order 🇧🇷')
+
+Rule::button('order-dish')
+    ->when(fn($dish) => $dish->country === 'Portugal')
+    ->caption('Order 🇵🇹')
+```
+
 ## Rule targets
 
 Rules can be applied to 3 different targets:
