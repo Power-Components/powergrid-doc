@@ -4,7 +4,7 @@ Sometimes you need to control the behavior of rows, checkboxes, or buttons based
 
 A common example is to list products of stock with a red background and without the "Order" button.
 
-PowerGrid offers a set of `Action Rules` which can be combined to control style, content, and behavior of `Action Buttons` and table rows.
+PowerGrid offers a set of `Action Rules` which can be combined to control style, content, and behavior of `Action Buttons`, `Action Checkboxes` and table rows.
 
 ## Usage
 
