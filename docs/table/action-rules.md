@@ -1,29 +1,27 @@
 # Action Rules
 
-Sometimes you need to control the behavior of rows, checkboxes or buttons based on record value, user access level or the combination of different conditions.
+Sometimes you need to control the behavior of rows, checkboxes, or buttons based on record value, user permission or the combination of multiple conditions.
 
-A common example is when a product is out of stock, the button "Order" must be hidden the row must have a red background clearly indicating to the user this product is not available.
+A common example is to list products of stock with a red background and without the "Order" button.
 
-PowerGrid offers a set of `Action Rules` which can be combined to control style, content and behavior of `Action Buttons` and table rows.
+PowerGrid offers a set of `Action Rules` which can be combined to control style, content, and behavior of `Action Buttons` and table rows.
 
 ## Usage
 
-`Action Rules` must be declared inside the array in the `actionRules()` method. There are 2 types of Rules available:
+`Action Rules` must be declared inside the array returned by the `actionRules()` method.
 
-- `Rule::button`: Rules for a specific action button.
-- `Rule::rows`: Rules to be applied on rows matching the condition.
-- `Rule::checkbox`: Rules to be applied on the checkbox available on each row.
+Each rule must have a call to the `when()` method with a condition, followed by one or more `modifier` methods. The modifiers will take effect when the condition is satisfied.
 
-Following the "Out of stock" use case in the introduction, we will have the following code:
+The following code represents the "Out of stock" use case described in this page introduction:
 
 ```php
 //..
 
+// Create an Action Button for ordering a dish.
+
 public function actions(): array
 {
     return [
-
-        // Button for ordering a dish.
         Button::add('order-dish')
             ->caption('Order')
             ->class('bg-blue-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
@@ -32,7 +30,7 @@ public function actions(): array
     ];
 }
 
-// Rules for order button
+// Rules
 
 public function actionRules(): array
 {
@@ -42,9 +40,11 @@ public function actionRules(): array
             ->when(fn($dish) => $dish->in_stock === false)
             ->hide(),
 
-        // Set a row red background for when dish is out of stock
+        // Set red background on rows for dishes which are not free and are out of stock 
         Rule::rows()
-            ->when(fn($dish) => $dish->in_stock === false)
+            ->when(function ($dish) { 
+                return $dish->price > 0 && $dish->in_stock === false;
+            })
             ->setAttribute('class', 'bg-red-200'),
     ];
 }
@@ -53,7 +53,6 @@ public function actionRules(): array
 Result:
 
 <img class="result-image" alt="disable" src="../_media/examples/action_rules/example.png" width="600"/>
-
 
 Modifiers can be combined under the same rule. For example:
 
@@ -66,9 +65,17 @@ Rule::button('order-dish')
     ->setAttribute('class', 'bg-spicy'),
 ```
 
+## Rule targets
+
+Rules can be applied to 3 different targets:
+
+- `Rule::button`: Rules for a specific action button when the condition is satisfied.
+- `Rule::rows`: Rules to be applied to rows matching the condition.
+- `Rule::checkbox`: Rules to be applied to each checkbox on all table rows matching the condition.
+
 ## Modifiers
 
-Available modifiers:
+The `Modifiers` take effect when the  condition in the Rule is satisfied. You can use more than one `Modifier` per rule.
 
 - [Disable](table/action-rules?id=disable)
 - [Hide](table/action-rules?id=hide)
@@ -76,12 +83,10 @@ Available modifiers:
 - [Emit](table/action-rules?id=emitstring-event-array-params-)
 - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
 - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
-- [Rows](table/action-rules?id=rows)
-- [Checkbox](table/action-rules?id=checkbox)
 
 ### disable()
 
-Disables the button.
+Disables the target (available for Buttons and Checkboxes).
 
 Example:
 
@@ -97,14 +102,14 @@ Rule::button('order-dish')
 
 ### hide()
 
-Hides the button.
+Hides the target (available for Buttons and Checkboxes).
 
 Example:
 
 ```php
 // Hide order for out of stock
 
-Rule::button('order-dish')
+Rule::checkbox()
     ->when(fn($dish) => $dish->in_stock === false)
     ->hide(),
 ```
@@ -113,7 +118,7 @@ Rule::button('order-dish')
 
 ### caption(string $caption)
 
-Sets the button caption value.
+Sets the target caption value (available for Buttons).
 
 Example:
 
@@ -129,7 +134,7 @@ Rule::button('order-dish')
 
 ### emit(string $event = '', array $params = [])
 
-Sets the button's event to be emitted.
+Sets the event emitted by the target (available for Buttons).
 
 Example:
 
@@ -145,23 +150,23 @@ Rule::button('order-dish')
 
 ### setAttribute(string $attribute = null, string $value = null)
 
-Sets the button's given attribute to the given value.
+Sets the target's specified attribute to the given value.
 
 Example:
 
 ```php
-// Sets the button class to spicy 🔥
+//Change row background to red when dish is out of stock
 
-Rule::button('order-dish')
-    ->when(fn($dish) => $dish->is_spicy === true)
-    ->setAttribute('class', 'bg-spicy'),
+Rule::rows()
+    ->when(fn($dish) => $dish->in_stock === false)
+    ->setAttribute('class', 'bg-red-200'),
 ```
 
 ---
 
 ### redirect(Closure $closure, string $target = '_blank')
 
-Sets button's redirect URL.
+Sets target's redirect URL (available for Buttons).
 
 Example:
 
@@ -172,41 +177,4 @@ Example:
 Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic === true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
-```
-
-### rows()
-
-Modify the row matching the rule condition.
-
-This modifier is normally used with [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null) Modifier.
-
-Example:
-
-```php
-// Set a row red background for out of stock rows
-
-Rule::rows()
-    ->when(fn($dish) => $dish->in_stock === false)
-    ->setAttribute('class', 'bg-red-200'),
-```
-
-### checkbox()
-
-Modify the behavior of the checkbox available on each row.
-
-Checkboxes can be disabled or hidden using the `disable()` and `hide()` Modifiers.
-
-Example:
-
-```php
-// Hide the checkbox when the dish is out of stock
-Rule::checkbox()
-    ->when(fn($dish) => $dish->in_stock === false)
-    ->hide(),
-
-// Disable the checkbox when the dish is read only
-
-Rule::checkbox()
-    ->when(fn($dish) => $dish->read_only === true)
-    ->disable(),
 ```
