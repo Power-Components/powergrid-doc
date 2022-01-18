@@ -10,7 +10,11 @@ PowerGrid offers a set of `Action Rules` which can be combined to control style,
 
 `Action Rules` must be declared inside the array returned by the `actionRules()` method.
 
-Each rule must have a call to the `when()` method with a condition, followed by one or more `modifier` methods. The modifiers will take effect when the condition is satisfied.
+Each `Rule` is enforced on a specific `Target` (e.g: Button 'foo').
+
+The `Rule` must contain one `when()` condition method and one or more `modifier` methods.
+
+The modifiers will take effect when the condition is satisfied.
 
 The following code represents the "Out of stock" use case described in this page introduction:
 
@@ -54,6 +58,8 @@ Result:
 
 <img class="result-image" alt="disable" src="../_media/examples/action_rules/example.png" width="600"/>
 
+### Combining modifiers
+
 Modifiers can be combined under the same rule. For example:
 
 ```php
@@ -65,12 +71,14 @@ Rule::button('order-dish')
     ->setAttribute('class', 'bg-spicy'),
 ```
 
+### Multiple Rules for the same Target
+
 A `Rule` must have only one `when()` condition.
 
-If you need more conditions on a specific `Target`, just create a new `Rule` for it. For example:
+You must create a new `Rule` to match a different condition on the `Target`. For example:
 
 ```php
-//Sets the caption according to dish country
+//Captions per country on 'Order button'
 
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->country === 'Brazil')
@@ -79,6 +87,11 @@ Rule::button('order-dish')
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->country === 'Portugal')
     ->caption('Order 🇵🇹')
+
+//Disable order for dishes without country
+Rule::button('order-dish')
+    ->when(fn($dish) => $dish->country === '')
+    ->disable()
 ```
 
 ## Rule targets
