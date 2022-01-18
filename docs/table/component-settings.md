@@ -63,17 +63,46 @@ To add a custom event to your PowerGrid Table, override the function `getListene
 
 To sort string as numbers, you must declare `$withSortStringNumber` as  `true`.
 
-This sorting method can be useful when your table has a rooms list, for example.
+This sorting method can be useful when your table has a rooms list, for example:
 
-**Rooms table**
-
-Sorting as string:
-
-10, 11, 1a, 1b, 2, 3...
-
-Sorting as Number (desirable)
-
-1a, 1b, 2, 3, ..., 10, 11
+<table>
+   <thead>
+      <tr>
+         <th>Sorting as string</th>
+         <th>Sorting as Number (desirable)</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>10</td>
+         <td>1a</td>
+      </tr>
+      <tr>
+         <td>11</td>
+         <td>1b</td>
+      </tr>
+      <tr>
+         <td>1a</td>
+         <td>2</td>
+      </tr>
+      <tr>
+         <td>1b</td>
+         <td>3</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>…</td>
+      </tr>
+      <tr>
+         <td>3</td>
+         <td>10</td>
+      </tr>
+      <tr>
+         <td>…</td>
+         <td>11</td>
+      </tr>
+   </tbody>
+</table>
 
 <br/>
 
