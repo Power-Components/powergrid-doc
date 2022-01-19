@@ -1,11 +1,15 @@
 ## Upgrade From V1
 
-> In this version, AlpineJs ^3 is a requirement
+PowerGrid is now on version 2.x.
 
-  - Alpine v2 is no longer supported - uses v3
-  - `livewire-powergrid.config `- js_framework now is `alpinejs_cnd`
+This page will give you important information to upgrade from v1.x.
 
-`config/livewire-powergrid.config`
+### Configuration
+
+1. Alpine v2 is no longer supported. Please use Alpine JS v3.
+2. The configuration keys `js_framework_cdn` and `js_framework` in `config/livewire-powergrid.php` are now combined and renamed to `alpinejs_cnd`.
+
+The code below:
 
 ```php
      <!-- 🚫 Before -->
@@ -26,18 +30,37 @@
         'alpinejs' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js',
         //'alpinejs' => 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js' //Alpine 2.8
     ],
+```
 
+Changed to:
 
+```php
     <!-- ✅ After -->
-    
-    'alpinejs_cdn' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', null, // If you already have Alpine included in your project
+
+    /*
+    |--------------------------------------------------------------------------
+    | AlpineJS CDN
+    |--------------------------------------------------------------------------
+    |
+    | Define here the CDN source for imported AlpineJS
+    |
+    */
+
+    'alpinejs_cdn' => 'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js', // null - If you already have Alpine included in your project
 
 ```
 
-Powergrid alpine scripts are loaded by default inside **@powerScripts**, but if you want to import them along with your **app.js** file, do so:
+Alpine scripts are loaded by default with the `@powerScripts` blade directive.
 
-1. In `config/livewire-powergrid.config` set null
-2. in `resources/js/app.js` :
+However, if you prefer to import them manually in your `app.js` file, follow these steps:
+
+Step 1: In `config/livewire-powergrid.config` set the configuration key `alpinejs_cdn` to `null` (no quotes).
+
+```php
+    'alpinejs_cdn' => null,
+```
+
+Step 2: Add the following code to `resources/js/app.js` :
 
 ```javascript
 import Alpine from 'alpinejs'
@@ -49,31 +72,42 @@ import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 Alpine.start()
 ```
 
-
-___
+Read more about Alpine JS [configuration](get-started/configure?id=_2-alpine-js).
 
 #### Event Listeners
 
+The code below:
+
 ```php
     <!-- 🚫 Before -->
+
     protected function getListeners()
     {
         $this->listeners[] = 'editDish';
+        $this->listeners[] = 'deleteDish';
         return $this->listeners;
-    }
-    
-    
-    <!-- ✅ After -->
-    protected function getListeners(): array
-    {
-        return array_merge(
-            parent::getListeners(), ['editDish']);
     }
 ```
 
+Changed to:
+
+```php
+    <!-- ✅ After -->
+
+    protected function getListeners(): array
+    {
+        return array_merge(
+            parent::getListeners(), 
+            [
+                'edit-dish'   => 'editDish',
+                'delete-dish' => 'deleteDish'
+            ]);
+    }
+```
+
+Read more about [Event Listeners](table/component-settings?id=event-listeners).
 
 <hr />
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/get-started/demo?id=demo">Next →</a></span>
 </footer>
-
