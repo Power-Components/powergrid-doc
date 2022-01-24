@@ -37,7 +37,7 @@ By default, PowerGrid is listening to the following events:
             'pg:toggleable-'   .  $this->tableName  => 'inputTextChanged',
             'pg:multiSelect-'  .  $this->tableName  => 'multiSelectChanged',
             'pg:toggleColumn-' .  $this->tableName  => 'toggleColumn',
-            'eventRefresh'                          => '$refresh',
+            'pg:eventRefresh-' .  $this->tableName  => '$refresh',
         ];
     }
     //...
