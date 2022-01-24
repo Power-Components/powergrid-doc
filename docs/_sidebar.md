@@ -31,6 +31,7 @@
       - [Link in cell](table/add-columns.md?id=link-in-cell)
       - [Date](table/add-columns.md?id=sort-by-join-column)
       - [Currency](table/add-columns.md?id=currency)
+      - [Text summary](table/add-columns.md?id=text-summary)
       - [Boolean](table/add-columns.md?id=boolean)
   - [<p>Include Columns</p>](table/include-columns.md?id=include-columns)
     - [Usage](table/include-columns.md?id=usage)

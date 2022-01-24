@@ -104,6 +104,45 @@ public function addColumns(): ?PowerGridEloquent
 }
 ```
 
+### Text summary
+
+Large amounts of text can compromise the readability of your table. This is often the case with a product description, list of items, or blog posts.
+
+It is a common practice to display an introduction of your text, an excerpt containing a certain number of words, instead of the full content.
+
+This example shows how to trim the full text:
+
+```text
+//database column: $dish->description
+
+Homemade Lasagna with our slow-cooked beef ragù, traditional bechamel and parmesan. Lasagna is comfort food and it's always good when prepared correctly.
+```
+
+Into:
+
+```text
+"Homemade Lasagna with our slow-cooked beef ragù, traditional..."
+```
+
+Code:
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+
+//...
+
+public function addColumns(): ?PowerGridEloquent
+{
+
+  return PowerGrid::eloquent()
+    ->addColumn('description_excerpt', function (Dish $model) {
+        return Str::words($model->description, 8); //Gets the first 8 words
+    });
+}
+```
+
 ### Boolean
 
 True/false is not friendly for the end user. Displaying "Yes/No" is a better alternative.
