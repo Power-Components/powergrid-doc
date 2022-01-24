@@ -110,15 +110,14 @@ Large amounts of text can compromise the readability of your table. This is ofte
 
 It is a common practice to display an introduction of your text, an excerpt containing a certain number of words, instead of the full content.
 
-This example shows how to trim the full text:
+This example shows how to trim the full text in the `$dish->description` database field:
 
 ```text
-//database column: $dish->description
-
-Homemade Lasagna with our slow-cooked beef ragù, traditional bechamel and parmesan. Lasagna is comfort food and it's always good when prepared correctly.
+Homemade Lasagna with our slow-cooked beef ragù, traditional bechamel and parmesan. 
+Lasagna is comfort food and it's always good when prepared correctly.
 ```
 
-Into:
+Into a new column named `description_excerpt`:
 
 ```text
 "Homemade Lasagna with our slow-cooked beef ragù, traditional..."
