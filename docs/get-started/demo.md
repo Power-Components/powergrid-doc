@@ -44,12 +44,19 @@ We also provide a demo repository with PowerGrid fully configured in a Laravel p
 
 Visit the [repository](https://github.com/Power-Components/powergrid-demo) and follow the README instructions on how to install and run it.
 
-### Youtube 
+<br/>
 
-[Live beer and code](https://www.youtube.com/watch?v=Mml5aagMOm4&t=20s) (pt-BR)
+### Youtube
 
-[Laravel Daily](https://www.youtube.com/watch?v=Qj0GLZJzDLY&t=4s)
+Check out some PowerGrid reviews and usage videos on Youtube:
 
+- Livewire PowerGrid com Luan Freitas - Live Coding at [Live beer and code](https://www.youtube.com/watch?v=Mml5aagMOm4&t=20s) (🇧🇷 pt-BR)
+
+- Livewire PowerGrid: Quick Datatable Package [REVIEW] by [Laravel Daily](https://www.youtube.com/watch?v=Qj0GLZJzDLY&t=4s)
+
+- Tio Jobs Analisa As Novas Action Rules Do Pacote Power-Components PowerGrid by [Icaro Jobs](https://www.youtube.com/watch?v=8WLLHan1b-U) (🇧🇷 pt-BR)
+
+All videos were recorded by community members. If you like them, don't forget to hit 👍 Like, share and subscribe to their channels. Your reaction contributes to the community!
 
 <hr/>
 <footer style="float: right; font-size: larger">
