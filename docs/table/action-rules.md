@@ -2,7 +2,7 @@
 
 Sometimes you need to control the behavior of rows, checkboxes, or buttons based on record value, user permission or the combination of multiple conditions.
 
-A common example is to list products of stock with a red background and without the "Order" button.
+A common example is to list out-of-stock products with a red background and without the "Order" button.
 
 PowerGrid offers a set of `Action Rules` which can be combined to control style, content, and behavior of `Action Buttons`, `Action Checkboxes` and table rows.
 
@@ -16,7 +16,7 @@ The `Rule` must contain one `when()` condition method and one or more `modifier`
 
 The modifiers will take effect when the condition is satisfied.
 
-The following code represents the "Out of stock" use case described in this page introduction:
+The following code represents the "out-of-stock" use case described in this page introduction:
 
 ```php
 //..
@@ -39,15 +39,15 @@ public function actions(): array
 public function actionRules(): array
 {
     return [
-        // Hide order button when dish is out of stock
+        // Hide order button when dish is out-of-stock
         Rule::button('order-dish')
-            ->when(fn($dish) => $dish->in_stock === false)
+            ->when(fn($dish) => $dish->in_stock == false)
             ->hide(),
 
-        // Set red background on rows for dishes which are not free and are out of stock 
+        // Set red background on rows for dishes which are not free and are out-of-stock 
         Rule::rows()
             ->when(function ($dish) { 
-                return $dish->price > 0 && $dish->in_stock === false;
+                return $dish->price > 0 && $dish->in_stock == false;
             })
             ->setAttribute('class', 'bg-red-200'),
     ];
@@ -66,9 +66,9 @@ Modifiers can be combined under the same rule. For example:
 // Sets the button class to spicy and caption with emoji
 
 Rule::button('order-dish')
-    ->when(fn($dish) => $dish->is_spicy === true)
+    ->when(fn($dish) => $dish->is_spicy == true)
     ->caption('Order 🔥 🔥 🔥')
-    ->setAttribute('class', 'bg-spicy'),
+    ->setAttribute('class', 'bg-orange-400'),
 ```
 
 ### Multiple Rules for the same Target
@@ -122,10 +122,10 @@ Disables the target (available for Buttons and Checkboxes).
 Example:
 
 ```php
-// Disable order button for dishes out of stock
+// Disable order button for dishes out out-of-stock
 
 Rule::button('order-dish')
-    ->when(fn($dish) => (bool) $dish->in_stock === false)
+    ->when(fn($dish) => (bool) $dish->in_stock == false)
     ->disable(),
 ```
 
@@ -141,7 +141,7 @@ Example:
 // Hide checkbox for dishes out of stock
 
 Rule::checkbox()
-    ->when(fn($dish) => $dish->in_stock === false)
+    ->when(fn($dish) => $dish->in_stock == false)
     ->hide(),
 ```
 
@@ -157,7 +157,7 @@ Example:
 // Changes the caption for dishes on sale
 
 Rule::button('order-dish')
-    ->when(fn($dish) => $dish->on_sale === true)
+    ->when(fn($dish) => $dish->on_sale == true)
     ->caption('Order 💰 ON SALE 💰'),
 ```
 
@@ -173,7 +173,7 @@ Example:
 // Emits an alert for spice dishes
 
 Rule::button('order-dish')
-    ->when(fn($dish) => $dish->is_spicy === true)
+    ->when(fn($dish) => $dish->is_spicy == true)
     ->emit('showSpiceAlert', ['id' => 'id']),
 ```
 
@@ -189,7 +189,7 @@ Example:
 //Change row background to red when dish is out of stock
 
 Rule::rows()
-    ->when(fn($dish) => $dish->in_stock === false)
+    ->when(fn($dish) => $dish->in_stock == false)
     ->setAttribute('class', 'bg-red-200'),
 ```
 
@@ -206,6 +206,6 @@ Example:
 // Redirects to Google search for exotic dishes
 
 Rule::button('read-more')
-    ->when(fn($dish) => $dish->is_exotic === true)
+    ->when(fn($dish) => $dish->is_exotic == true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
 ```
