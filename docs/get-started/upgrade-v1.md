@@ -50,7 +50,7 @@ Changed to:
 
 ```
 
-Alpine scripts are loaded by default with the `@powerScripts` blade directive.
+Alpine scripts are loaded by default with the `@powerGridScripts` blade directive.
 
 However, if you prefer to import them manually in your `app.js` file, follow these steps:
 
