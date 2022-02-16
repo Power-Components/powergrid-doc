@@ -169,5 +169,5 @@ Button::add('edit-dish')
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/update-data">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/bulk-actions">Next →</a></span>
 </footer>
