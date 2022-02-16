@@ -45,6 +45,7 @@
   - [<p>Row Action Buttons</p>](table/row-actions-buttons?id=row-action-buttons)
     - [Usage](table/row-actions-buttons?id=usage)
     - [Cell Action Methods](table/row-actions-buttons?id=button-methods)
+  - [<p>Bulk Actions</p>](table/bulk-actions.md?id=usage)
   - [<p>Action Rules</p>](table/action-rules?id=action-rules)
     - [Usage](table/action-rules?id=usage)
     - [Targets](table/action-rules?id=rule-targets)
