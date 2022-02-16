@@ -52,6 +52,7 @@
     - [Hide](table/action-rules?id=hide)
     - [Caption](table/action-rules?id=captionstring-caption)
     - [Emit](table/action-rules?id=emitstring-event-array-params-)
+    - [EmitTo](table/action-rules?id=emittostring-to-string-event-array-params-) 
     - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
     - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
   - [<p>Update Data</p>](table/row-actions-buttons?id=row-action-buttons)
