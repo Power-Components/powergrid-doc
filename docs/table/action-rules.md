@@ -102,6 +102,7 @@ Available methods:
 - [Hide](table/action-rules?id=hide)
 - [Caption](table/action-rules?id=captionstring-caption)
 - [Emit](table/action-rules?id=emitstring-event-array-params-)
+- [EmitTo](table/action-rules?id=emittostring-event-array-params-) 
 - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
 - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
 
@@ -161,6 +162,21 @@ Example:
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
     ->emit('showSpiceAlert', ['id' => 'id']),
+```
+
+---
+
+### emitTo(string $to = '', string $event = '', array $params = [])
+
+Sets the event emitted to [other components](https://laravel-livewire.com/docs/2.x/events#scope-by-name) by the target (available for Buttons).
+
+Example:
+
+```php
+// Emits an alert for spice dishes
+Rule::button('order-dish')
+    ->when(fn($dish) => $dish->is_spicy == true)
+    ->emitTo('alert-component', 'showSpiceAlert', ['id' => 'id']),
 ```
 
 ---
