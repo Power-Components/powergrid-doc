@@ -168,16 +168,19 @@ Rule::button('order-dish')
 
 ### emitTo(string $to = '', string $event = '', array $params = [])
 
-Sets the event emitted to [other components](https://laravel-livewire.com/docs/2.x/events#scope-by-name) by the target (available for Buttons).
+Sets an event and a target to which the event will be emitted to (available for Buttons).
 
 Example:
 
 ```php
-// Emits an alert for spice dishes
+// Emits the event showSpiceAlert to a third part alert-component on click
+
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
     ->emitTo('alert-component', 'showSpiceAlert', ['id' => 'id']),
 ```
+
+Read more in [Livewire](https://laravel-livewire.com/docs/2.x/events#scope-by-name) documentation.
 
 ---
 
