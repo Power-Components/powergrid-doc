@@ -141,8 +141,6 @@ Column::add()
 Result:
 <img class="result-image" alt="withSum" src="../_media/examples/cell_buttons/withSum.png" width="350"/>
 
-💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the sum output.
-
 ---
 
 ### withCount(string $label = 'Count', bool $header = false, bool $footer = false)
@@ -169,8 +167,6 @@ Column::add()
 Result:
 <img class="result-image" alt="withCount" src="../_media/examples/cell_buttons/withCount.png" width="350"/>
 
-💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the count output.
-
 ---
 
 ### withAvg(string $label = 'Avg', bool $header = false, bool $footer = false)
@@ -194,27 +190,11 @@ Column::add()
     ->field('price')
     ->withSum('Sum', true, false)
     ->withCount('Count', true, true)
-    ->withAvg('Avg', true, false, 2),
+    ->withAvg('Avg', true, false),
 ```
 
 Result:
 <img class="result-image" alt="withAvg" src="../_media/examples/cell_buttons/withAvg.png" width="350"/>
-
-💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the average output.
-
-### Formatting Column Totals
-
-If you want to format the total resulting from `withSum()`, `withCount()` or, `withAverage()` you can use each of the respective methods: `->formatSum()`, `->formatCount()` and `->formatAvg()`. Each method requires a parameter `callable` where you can format the result.
-
-The code below shows how to format the `withSum()` on Price column and display it as Currency:
-
-```php
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
-    ->withSum('Sum', true, false)
-    ->formatSum(fn ($sum) =>  'R$ ' . number_format($sum, 2, '.', ',')), //12934.96 ➔ R$ 1,2934.96
-```
 
 ---
 <hr/>
