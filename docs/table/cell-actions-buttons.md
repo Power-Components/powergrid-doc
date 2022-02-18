@@ -141,7 +141,7 @@ Column::add()
 Result:
 <img class="result-image" alt="withSum" src="../_media/examples/cell_buttons/withSum.png" width="350"/>
 
-💡 *Tip* Read more about [formatting](#/table/cell-actions-buttons?id=formatting-column-totals) the sum output.
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the sum output.
 
 ---
 
@@ -169,7 +169,7 @@ Column::add()
 Result:
 <img class="result-image" alt="withCount" src="../_media/examples/cell_buttons/withCount.png" width="350"/>
 
-💡 *Tip* Read more about [formatting](#/table/cell-actions-buttons?id=formatting-column-totals) the count output.
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the count output.
 
 ---
 
@@ -200,7 +200,7 @@ Column::add()
 Result:
 <img class="result-image" alt="withAvg" src="../_media/examples/cell_buttons/withAvg.png" width="350"/>
 
-💡 *Tip* Read more about [formatting](#/table/cell-actions-buttons?id=formatting-column-totals) the average output.
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the average output.
 
 ### Formatting Column Totals
 
@@ -219,5 +219,5 @@ Column::add()
 ---
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
+    <span><a style="text-decoration: none;" href="table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
 </footer>
