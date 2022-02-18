@@ -179,8 +179,6 @@ If `$header` is `true`, Powergrid will create a row in the table below the filte
 
 If `$footer` is `true`, Powergrid will create a row in the footer of the table.
 
-The `$rounded` argument returns the rounded value of num to specified precision
-
 Example:
 
 ```php
