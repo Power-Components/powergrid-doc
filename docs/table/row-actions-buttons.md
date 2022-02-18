@@ -87,6 +87,30 @@ is equivalent to:
 
 ---
 
+### emitTo(string $to, string $event, array $params)
+
+Emit works with event listeners.
+
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+
+The code below:
+
+```php
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->emitTo('admin-component','postAdded', ['key' => 'id']),
+```
+
+is equivalent to:
+
+```html
+<button wire:click="$emitTo('admin-component', 'postAdded', ['key' => 1])">
+```
+
+---
+
 ### openModal(string $component, array $params)
 
 Opens a modal window.
@@ -145,5 +169,5 @@ Button::add('edit-dish')
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/update-data">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/bulk-actions">Next →</a></span>
 </footer>

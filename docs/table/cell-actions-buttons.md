@@ -126,7 +126,7 @@ The argument `$label` sets the button caption.
 
 If `$header` is `true`, Powergrid will create a row in the table below the filters.
 
-If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+If `$footer` is `true`, Powergrid will create a row in the footer of the table.
 
 Example:
 
@@ -135,11 +135,13 @@ Example:
 Column::add()
     ->title(__('Price'))
     ->field('price')
-    ->withSum('Sum', true, false)
+    ->withSum('Sum', true, false),
 ```
 
 Result:
 <img class="result-image" alt="withSum" src="../_media/examples/cell_buttons/withSum.png" width="350"/>
+
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the sum output.
 
 ---
 
@@ -151,7 +153,7 @@ The argument `$label` sets the button caption.
 
 If `$header` is `true`, Powergrid will create a row in the table below the filters.
 
-If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+If `$footer` is `true`, Powergrid will create a row in the footer of the table.
 
 Example:
 
@@ -161,11 +163,13 @@ Column::add()
     ->title(__('Price'))
     ->field('price')
     ->withSum('Sum', true, false)
-    ->withCount('Count', true, false)
+    ->withCount('Count', true, false),
 ```
 
 Result:
 <img class="result-image" alt="withCount" src="../_media/examples/cell_buttons/withCount.png" width="350"/>
+
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the count output.
 
 ---
 
@@ -177,7 +181,7 @@ The argument `$label` sets the button caption.
 
 If `$header` is `true`, Powergrid will create a row in the table below the filters.
 
-If `$footer` is` true`, Powergrid will create a row in the footer of the table.
+If `$footer` is `true`, Powergrid will create a row in the footer of the table.
 
 The `$rounded` argument returns the rounded value of num to specified precision
 
@@ -190,14 +194,30 @@ Column::add()
     ->field('price')
     ->withSum('Sum', true, false)
     ->withCount('Count', true, true)
-    ->withAvg('Avg', true, false, 2)
+    ->withAvg('Avg', true, false, 2),
 ```
 
 Result:
 <img class="result-image" alt="withAvg" src="../_media/examples/cell_buttons/withAvg.png" width="350"/>
 
+💡 *Tip* Read more about [formatting](table/cell-actions-buttons?id=formatting-column-totals) the average output.
+
+### Formatting Column Totals
+
+If you want to format the total resulting from `withSum()`, `withCount()` or, `withAverage()` you can use each of the respective methods: `->formatSum()`, `->formatCount()` and `->formatAvg()`. Each method requires a parameter `callable` where you can format the result.
+
+The code below shows how to format the `withSum()` on Price column and display it as Currency:
+
+```php
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+    ->formatSum(fn ($sum) =>  'R$ ' . number_format($sum, 2, '.', ',')), //12934.96 ➔ R$ 1,2934.96
+```
+
 ---
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
+    <span><a style="text-decoration: none;" href="table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
 </footer>
