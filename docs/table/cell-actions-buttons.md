@@ -195,6 +195,63 @@ Result:
 <img class="result-image" alt="withAvg" src="../_media/examples/cell_buttons/withAvg.png" width="350"/>
 
 ---
+
+### withMin(string $label = 'Min', bool $header = false, bool $footer = false)
+
+Will display the min of all records in the field
+
+The argument `$label` sets the button caption.
+
+If `$header` is `true`, Powergrid will create a row in the table below the filters.
+
+If `$footer` is `true`, Powergrid will create a row in the footer of the table.
+
+Example:
+
+```php
+//...
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+    ->withCount('Count', true, true)
+    ->withAvg('Avg', true, false),
+    ->withMin('Min', true, false),
+```
+
+Result:
+<img class="result-image" alt="withAvg" src="../_media/examples/cell_buttons/withMin.png" width="350"/>
+
+---
+
+### withMax(string $label = 'Max', bool $header = false, bool $footer = false)
+
+Will display the max of all records in the field
+
+The argument `$label` sets the button caption.
+
+If `$header` is `true`, Powergrid will create a row in the table below the filters.
+
+If `$footer` is `true`, Powergrid will create a row in the footer of the table.
+
+Example:
+
+```php
+//...
+Column::add()
+    ->title(__('Price'))
+    ->field('price')
+    ->withSum('Sum', true, false)
+    ->withCount('Count', true, true)
+    ->withAvg('Avg', true, false),
+    ->withMin('Min', true, false),
+    ->withMax('Max', true, false),
+```
+
+Result:
+<img class="result-image" alt="withMax" src="../_media/examples/cell_buttons/withMax.png" width="350"/>
+
+---
 <hr/>
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
