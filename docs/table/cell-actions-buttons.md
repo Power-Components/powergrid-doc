@@ -197,5 +197,5 @@ Result:
 ---
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/row-actions-buttons?id=row-action-buttons">Next →</a></span>
 </footer>
