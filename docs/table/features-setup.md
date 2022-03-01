@@ -128,3 +128,20 @@ Result:
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/datasource?id=datasource">Next →</a></span>
 </footer>
+
+## persist(array $items)
+
+If you need the state of columns and filters to be saved in cookies, you can use the persist method.
+
+Example:
+
+`->persist(['columns', 'filters'])`
+
+Result:
+
+![Output](../_media/persist.gif)
+
+<hr/>
+<footer style="float: right; font-size: larger">
+    <span><a style="text-decoration: none;" href="#/table/datasource?id=datasource">Next →</a></span>
+</footer>
