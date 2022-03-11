@@ -107,6 +107,13 @@ Changed to:
 
 Read more about [Event Listeners](table/component-settings?id=event-listeners).
 
+> **❗ Important:**  Republish views if you have previously published
+```bash
+php artisan vendor:publish --tag=livewire-powergrid-views && php artisan view:clear
+```
+
+
+
 <hr />
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/get-started/demo?id=demo">Next →</a></span>

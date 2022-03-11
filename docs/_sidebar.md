@@ -21,6 +21,7 @@
     - [showRecordCount](table/features-setup.md?id=showrecordcountstring-mode)
     - [showExportOption](table/features-setup.md?id=showexportoptionstring-filename-array-type)
     - [showToggleColumns](table/features-setup.md?id=showtogglecolumns)
+    - [persist](table/features-setup.md?id=persistarray-items)
   - [<p>Datasource</p>](table/datasource.md?id=datasource)
     - [Join Tables](table/datasource.md?id=join-tables)
     - [Keys Conflict](table/datasource.md?id=keys-conflict)

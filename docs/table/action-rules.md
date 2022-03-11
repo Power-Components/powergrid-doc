@@ -211,3 +211,8 @@ Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic == true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
 ```
+
+<hr/>
+<footer style="float: right; font-size: larger">
+    <span><a style="text-decoration: none;" href="#/table/update-data">Next →</a></span>
+</footer>
