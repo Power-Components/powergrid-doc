@@ -2,6 +2,9 @@
 
 A Bulk Action is an efficient way to perform actions on one or more selected rows at the same time.
 
+**❗ Important:** Only available for Tailwind theme
+
+
 To illustrate, imagine you that you need to select several "dishes" and mark them as "Sold-out".
 
 ## Usage
