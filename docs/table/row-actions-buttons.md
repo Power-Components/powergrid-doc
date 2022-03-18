@@ -176,7 +176,7 @@ Example:
 
 Sets Action's permission.
 
-If  `$can` is `false`, the button will not be rendered.
+If `$can` is `false`, the button will not be rendered.
 
 Example:
 
