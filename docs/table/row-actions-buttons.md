@@ -150,6 +150,18 @@ Example:
 
 ---
 
+### target(string $target)
+
+Sets the target for the specified route.
+
+By default: `_blank`.
+
+Example:
+
+`->target('_self')`
+
+---
+
 ### can(bool $can)
 
 Sets Action's permission.
