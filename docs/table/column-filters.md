@@ -194,5 +194,5 @@ The example above adds the relationship to the `kitchen`  Model and allows the c
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/cell-actions-buttons?id=cell-action-buttons">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/column-summary?id=column-summary">Next →</a></span>
 </footer>
