@@ -2,6 +2,8 @@
   - [<p>PowerGrid</p>](get-started/powergrid.md)
   - [<p>Upgrade From V1</p>](get-started/upgrade-v1.md)
   - [<p>Demo</p>](get-started/demo.md)
+    - [Quick demo](get-started/demo?id=quick-demo-table)
+    - [Demo Repository](get-started/demo?id=demo-repository)
   - [<p>Install</p>](get-started/install.md)
   - [<p>Configure</p>](get-started/configure.md)
     - [Include Scripts and Style](get-started/configure.md?id=_1-include-scripts-and-styles)
