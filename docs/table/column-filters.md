@@ -131,7 +131,7 @@ Result:
 
 ---
 
-### mmakeInputEnumSelect(array $enumCases, string $dataField = null, array $settings = [])
+### makeInputEnumSelect(array $enumCases, string $dataField = null, array $settings = [])
 
 Includes a select filter based in a PHP Enum.
 
@@ -182,7 +182,7 @@ In PowerGrid you can make use of [closures](table/add-columns.md?id=closure-exam
 })
 ```
 
-Includind the column with filter.
+Including the column with filter.
 
 ```php
 //...
@@ -196,7 +196,7 @@ Column::add()
 
 Result:
 
-<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelect.png" width="100" />
+<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelect.png" width="150" />
 
 To display your `labels` instead of case values, you can inlcude the `labelPowergridFilter` method inside your enum.
 
@@ -218,7 +218,7 @@ enum Diet: int
 }
 ```
 
-<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelectLabel.png" width="100" />
+<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelectLabel.png" width="150" />
 
 ---
 
