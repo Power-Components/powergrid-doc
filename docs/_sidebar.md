@@ -36,6 +36,7 @@
       - [Currency](table/add-columns.md?id=currency)
       - [Text summary](table/add-columns.md?id=text-summary)
       - [Boolean](table/add-columns.md?id=boolean)
+      - [Enum](table/add-columns.md?id=enum)
   - [<p>Include Columns</p>](table/include-columns.md?id=include-columns)
     - [Usage](table/include-columns.md?id=usage)
     - [Column Methods](table/include-columns.md?id=column-methods)

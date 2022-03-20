@@ -135,7 +135,7 @@ Result:
 
 Includes a select filter based in a PHP Enum.
 
-Available only  in `Php 8.1+`.
+Available only in `Php 8.1+`.
 
 Parameters:
 
@@ -171,18 +171,9 @@ enum Diet: int
 }
 ```
 
-In PowerGrid you can make use of [closures](table/add-columns.md?id=closure-examples) to display your Enum labels instead of the default database values.
+In PowerGrid you can make use of [closures](table/add-columns.md?id=enum) to display your Enum labels instead of the default database values.
 
-```php
-//...
-
-// Adding column with labels
-->addColumn('diet', function (Dish $dish) {
-    return Diet::from($dish->diet)->labels();
-})
-```
-
-Including the column with filter.
+Including the column with filter:
 
 ```php
 //...

@@ -159,6 +159,45 @@ public function addColumns(): ?PowerGridEloquent
     });
 }
 ```
+
+### Enum
+
+To display custom labels instead of enum cases, you can add a label method in your Enum and use a `closure` to display it's values.
+
+```php
+<?php
+
+enum Diet: int
+{
+    case ALL      = 0;
+    case VEGAN    = 1;
+    case CELIAC   = 2;
+
+    public function labels(): string
+    {
+        return match ($this) {
+            self::ALL         => "🍽️ All diets",
+            self::VEGAN       => "🌱 Suitable for Vegans",
+            self::CELIAC      => "🥜 Suitable for Celiacs",
+        };
+    }
+}
+```
+
+Available only in `Php 8.1+`.
+
+```php
+//..
+public function addColumns(): ?PowerGridEloquent
+{
+
+  return PowerGrid::eloquent()
+    ->addColumn('diet', function (Dish $dish) {
+        return Diet::from($dish->diet)->labels();
+    });
+}
+```
+
 <hr/>
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/include-columns?id=include-columns">Next →</a></span>
