@@ -162,7 +162,9 @@ public function addColumns(): ?PowerGridEloquent
 
 ### Enum
 
-To display custom labels instead of enum cases, you can add a label method in your Enum and use a `closure` to display it's values.
+If you have an Enum with labels, you can use a `closure` to display label values instead of default `case` values.
+
+Available only in `Php 8.1+`.
 
 ```php
 <?php
@@ -184,7 +186,7 @@ enum Diet: int
 }
 ```
 
-Available only in `Php 8.1+`.
+The following example makes your table rows show `🍽️ All diets` instead of the database value `0`.
 
 ```php
 //..
