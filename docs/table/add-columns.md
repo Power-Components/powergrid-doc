@@ -159,6 +159,47 @@ public function addColumns(): ?PowerGridEloquent
     });
 }
 ```
+
+### Enum
+
+If you have an Enum with labels, you can use a `closure` to display label values instead of default `case` values.
+
+Available only in `Php 8.1+`.
+
+```php
+<?php
+
+enum Diet: int
+{
+    case ALL      = 0;
+    case VEGAN    = 1;
+    case CELIAC   = 2;
+
+    public function labels(): string
+    {
+        return match ($this) {
+            self::ALL         => "🍽️ All diets",
+            self::VEGAN       => "🌱 Suitable for Vegans",
+            self::CELIAC      => "🥜 Suitable for Celiacs",
+        };
+    }
+}
+```
+
+The following example makes your table rows show `🍽️ All diets` instead of the database value `0`.
+
+```php
+//..
+public function addColumns(): ?PowerGridEloquent
+{
+
+  return PowerGrid::eloquent()
+    ->addColumn('diet', function (Dish $dish) {
+        return Diet::from($dish->diet)->labels();
+    });
+}
+```
+
 <hr/>
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/include-columns?id=include-columns">Next →</a></span>
