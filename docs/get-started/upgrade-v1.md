@@ -7,7 +7,7 @@ This page will give you important information to upgrade from v1.x.
 ### Configuration
 
 1. Alpine v2 is no longer supported. Please use Alpine JS v3.
-2. The configuration keys `js_framework_cdn` and `js_framework` in `config/livewire-powergrid.php` are now combined and renamed to `alpinejs_cnd`.
+2. The configuration keys `js_framework_cdn` and `js_framework` in `config/livewire-powergrid.php` are now combined and renamed to `alpinejs_cdn`.
 
 The code below:
 

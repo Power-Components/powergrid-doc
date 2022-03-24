@@ -189,6 +189,22 @@ Button::add('edit-dish')
     ->can($canClickButton),
 ```
 
+
+---
+
+### tooltip(string $tooltip)
+
+Sets the button tooltip (title attribute).
+
+Example:
+
+```php
+Button::add('edit-dish')
+    ->caption('Edit')
+    ->route('dish.edit', ['dish' => 'id'])
+    ->tooltip('Edit Record'),
+```
+
 <hr/>
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/bulk-actions">Next →</a></span>
