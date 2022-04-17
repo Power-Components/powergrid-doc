@@ -101,7 +101,7 @@ Available file types:
 
 Example:
 
-`->showExportOption('my-dish-table', ['excel', 'csv])`
+`->showExportOption('my-dish-table', ['excel', 'csv'])`
 
 Result:
 

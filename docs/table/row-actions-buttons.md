@@ -150,11 +150,33 @@ Example:
 
 ---
 
+### target(string $target)
+
+Sets the target for the specified route.
+
+By default: `_blank`.
+
+Example:
+
+`->target('_self')`
+
+---
+
+### tooltip(string $tooltip)
+
+Sets the button tool tip.
+
+Example:
+
+`->tooltip('create new user')`
+
+---
+
 ### can(bool $can)
 
 Sets Action's permission.
 
-If  `$can` is `false`, the button will not be rendered.
+If `$can` is `false`, the button will not be rendered.
 
 Example:
 
@@ -165,6 +187,22 @@ Button::add('edit-dish')
     ->caption('Edit')
     ->route('dish.edit', ['dish' => 'id'])
     ->can($canClickButton),
+```
+
+
+---
+
+### tooltip(string $tooltip)
+
+Sets the button tooltip (title attribute).
+
+Example:
+
+```php
+Button::add('edit-dish')
+    ->caption('Edit')
+    ->route('dish.edit', ['dish' => 'id'])
+    ->tooltip('Edit Record'),
 ```
 
 <hr/>

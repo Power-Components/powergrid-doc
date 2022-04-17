@@ -1,9 +1,5 @@
 # Demo
 
-### Requirements
-
-- PHP 7.4.1+ and [Laravel 8x](https://laravel.com/docs/8.x/installation)
-
 ### Quick Demo Table
 
 PowerGrid offers you a demo Table with just 2 commands.
