@@ -131,6 +131,88 @@ Result:
 
 ---
 
+### makeInputEnumSelect(array $enumCases, string $dataField = null, array $settings = [])
+
+Includes a select filter based in a PHP Enum.
+
+Available only in `Php 8.1+`.
+
+Parameters:
+
+- `$enumCases`: parameter must be a `enum`.
+- `$dataField`: field used by the filter.
+- `$settings`: Settings
+
+Usage:  `->makeInputEnumSelect(Diet::cases(), 'dishes.diet')`
+
+Example:
+
+Consider the following Enum with Dietary restrictions.
+
+The database field `diet` contains the `int` values (0, 1 or 2). In this Enum we added a method `label()` to display a human friendly value for each case.
+
+```php
+<?php
+
+enum Diet: int
+{
+    case ALL      = 0;
+    case VEGAN    = 1;
+    case CELIAC   = 2;
+
+    public function labels(): string
+    {
+        return match ($this) {
+            self::ALL         => "🍽️ All diets",
+            self::VEGAN       => "🌱 Suitable for Vegans",
+            self::CELIAC      => "🥜 Suitable for Celiacs",
+        };
+    }
+}
+```
+
+In PowerGrid you can make use of [closures](table/add-columns.md?id=enum) to display your Enum labels instead of the default database values.
+
+Including the column with filter:
+
+```php
+//...
+
+//Including column
+Column::add()
+    ->field('diet', 'dishes.diet')
+    ->makeInputEnumSelect(Diet::cases(), 'dishes.diet')
+    ->title(__('Dieta')),
+```
+
+Result:
+
+<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelect.png" width="150" />
+
+To display your `labels` instead of case values, you can inlcude the `labelPowergridFilter` method inside your enum.
+
+```php
+<?php
+
+enum Diet: int
+{
+    //...
+
+   /**
+     * Sends labels to PowerGrid Enum Input
+     *
+     */
+    public function labelPowergridFilter(): string
+    {
+        return $this->labels();
+    }
+}
+```
+
+<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelectLabel.png" width="150" />
+
+---
+
 ### makeInputRange(string $dataField, string $thousands, string $decimal)
 
 Adds a range filter input (min and max values).
@@ -194,5 +276,5 @@ The example above adds the relationship to the `kitchen`  Model and allows the c
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/cell-actions-buttons?id=cell-action-buttons">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/column-summary?id=column-summary">Next →</a></span>
 </footer>
