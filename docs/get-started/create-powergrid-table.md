@@ -59,5 +59,5 @@ You can also see the syntax to include the Table in your page:
 ![Output](../_media/create_output.png)
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/use-your-powergrid-table?id=use-your-powergrid-table">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/get-started/use-your-powergrid-table">Use your PowerGrid Table →</a></span>
 </footer>

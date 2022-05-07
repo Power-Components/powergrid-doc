@@ -202,5 +202,5 @@ public function addColumns(): ?PowerGridEloquent
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/include-columns?id=include-columns">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/include-columns">Include Columns →</a></span>
 </footer>

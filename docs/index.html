@@ -14,42 +14,14 @@
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index,follow">
 
-  <link rel="icon" href="./_media/logomark@1x.png">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" title="vue"/>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap" rel="stylesheet">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="og:title" content="Livewire Powergrid">
   <meta name="og:description" content="Livewire PowerGrid is a component for generating dynamic tables with your Laravel Models and Collections.">
   <meta name="og:image" content="./_media/logo@1x.png">
-
-  <style>
-    body, p {
-      font-family: Karla, sans-serif !important;
-    }
-    .markdown-section code, .markdown-section pre {
-      background-color: #ebebeb;
-    }
-    .sidebar li>a>p {
-      font-weight: 600;
-      margin: 0;
-    }
-    .sidebar li>a>div {
-      font-size:1rem
-    }
-    .app-name-link img {
-      width: 200px;
-    }
-    :root {
-      --docsifytabs-border-color: #ededed;
-      --docsifytabs-tab-highlight-color: #df622b;
-      --base-font-size: 14px;
-      --theme-hue: 325;
-    }
-    .sidebar::-webkit-scrollbar {
-      width: 6px;
-    }
-  </style>
+  <link rel="icon" href="./_media/logomark@1x.png">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" title="vue"/>
+  <link rel="stylesheet" href="./style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <div data-app id="main"></div>
@@ -66,6 +38,7 @@
     search: {
       placeholder: 'Search',
       noData: 'No Results!',
+      depth: 6,
     },
     noEmoji: true,
     externalLinkTarget: '_blank',
@@ -79,6 +52,10 @@
     themeable: {
       readyTransition : true,
       responsiveTables: true
+    },
+    toc: {
+      tocMaxLevel: 5,
+      target: 'h2, h3, h4, h5, h6'
     },
     plugins: [
       function(hook) {
@@ -94,6 +71,7 @@
     ]
   }
 </script>
+<script src="//unpkg.com/docsify-plugin-toc"></script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
@@ -101,6 +79,5 @@
 <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
-
 </body>
 </html>

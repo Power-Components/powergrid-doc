@@ -52,9 +52,11 @@ Check out some PowerGrid reviews and usage videos on Youtube:
 
 - Tio Jobs Analisa As Novas Action Rules Do Pacote Power-Components PowerGrid by [Icaro Jobs](https://www.youtube.com/watch?v=8WLLHan1b-U) (🇧🇷 pt-BR)
 
+- Laravel Livewire: Crea DataTables en Minutos con Powergrid [REVIEW] by [Code with Luis](https://www.youtube.com/watch?v=sV6Rs2y8fWk)
+
 All videos were recorded by community members. If you like them, don't forget to hit 👍 Like, share and subscribe to their channels. Your reaction contributes to the community!
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/install?id=install">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/get-started/install">Install →</a></span>
 </footer>

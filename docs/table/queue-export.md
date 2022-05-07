@@ -16,7 +16,7 @@ To enable Queue Export, you must configure the following properties in your Powe
 
 - `$queues`: Number of queues to be used.
 - `$onQueue`: Queue name. If blank, `default` will be used.
-- `$onConnection`: Connection. Read more in [Laravel Queue Documentation](https://laravel.com/docs/8.x/queues#connections-vs-queues).
+- `$onConnection`: Connection. Read more in [Laravel Queue Documentation](https://laravel.com/docs/8.x/queues#introduction).
 - `$showExporting`: Show the export progress on the screen if `true` (default).
 
 Example:
@@ -87,5 +87,5 @@ public function onBatchExecuting(Batch $batch)
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/component-settings?id=component-settings">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/component-settings">Component Settings →</a></span>
 </footer>

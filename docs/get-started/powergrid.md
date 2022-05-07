@@ -14,5 +14,5 @@ Source code is available at the [PowerGrid](https://github.com/Power-Components/
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/upgrade-v1?id=upgrade-from-v1">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/get-started/upgrade-guide">Release Notes →</a></span>
 </footer>
