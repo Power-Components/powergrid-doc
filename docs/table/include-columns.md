@@ -35,7 +35,9 @@ public function columns(): array
         ->sortable(),
   ];
 }
-// or using make() method
+```
+`or using make() method`
+```php
 public function columns(): array
 {
   return [

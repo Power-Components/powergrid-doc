@@ -68,7 +68,7 @@ If your Table has [Custom Columns](table/add-columns?id=closure-examples), you m
 For instance, the custom column `name_uppercase` must update the database field `name`. See the example below:
 
 ```php
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
   return PowerGrid::eloquent()
             ->addColumn('name')

@@ -19,7 +19,7 @@ The example above creates 4 columns:
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
   return PowerGrid::eloquent()
     ->addColumn('id')
@@ -34,6 +34,98 @@ public function addColumns(): ?PowerGridEloquent
 ```
 
 > **❗ Important:** After creating a column, you must include it in your Table using the [Column::add()](table/include-columns) method.
+
+### Sortable
+> **❗ Important:** Whenever the column name is different from the one in the database, remember to reference it in dataField in the [Column::field()](table/include-columns?id=fieldstring-field-string-datafield) method otherwise sortable will not work.
+
+```php
+//..
+<!-- 🚫 Wrong -->
+public function addColumns(): PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('created_at', function (Dish $dish) {
+      return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
+    })
+}
+
+public function columns(): PowerGridEloquent
+{
+  Column::add()
+       ->title('Created At')
+       ->field('created_at') 🚫
+       ->searchable()
+       ->sortable(),
+}
+```
+
+```php
+//..
+<!-- ✅ Right -->
+public function addColumns(): PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('created_at_formatted', function (Dish $dish) {
+      return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
+    })
+}
+
+public function columns(): PowerGridEloquent
+{
+  Column::add()
+       ->title('CREATED AT')
+       ->field('created_at_formatted', 'created_at') ✅
+       ->searchable()
+       ->sortable(),
+}
+```
+
+
+### Searchable
+> **❗ Important:** Always add the actual column name in the database if it is searchable.
+
+```php
+//..
+<!-- 🚫 Wrong -->
+public function addColumns(): PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('price_formatted', function (Dish $dish) {
+      return $fmt->formatCurrency($dish->price, "EUR");
+    })
+}
+
+public function columns(): PowerGridEloquent
+{
+  Column::add()
+       ->title('Price')
+       ->field('price_formatted', 'price') 
+       ->searchable()
+       ->sortable(),
+}
+```
+
+```php
+//..
+<!-- ✅ Right -->
+public function addColumns(): PowerGridEloquent
+{
+  return PowerGrid::eloquent()
+    ->addColumn('price')
+    ->addColumn('price_formatted', function (Dish $dish) {
+      return $fmt->formatCurrency($dish->price, "EUR");
+    })
+}
+
+public function columns(): PowerGridEloquent
+{
+  Column::add()
+       ->title('Price')
+       ->field('price_formatted', 'price') ✅
+       ->searchable()
+       ->sortable(),
+}
+```
 
 ## Closure Examples
 
@@ -52,7 +144,7 @@ The example below creates a new column called `location_link` containing a link 
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
   return PowerGrid::eloquent()
     ->addColumn('location_link', function (Dish $model) {
@@ -75,7 +167,7 @@ In this column, date is parsed and displayed as `d/m/Y H:i` (20/01/2021 10:05).
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
 
   return PowerGrid::eloquent()
@@ -93,7 +185,7 @@ This custom column displays the `price` amount (`170.90`) formatted as Portugues
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
   $fmt = new NumberFormatter('pt_PT', NumberFormatter::CURRENCY);
 
@@ -132,7 +224,7 @@ use Illuminate\Support\Str;
 
 //...
 
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
 
   return PowerGrid::eloquent()
@@ -150,7 +242,7 @@ In this example, we have a new custom column `available` which displays "yes"/"n
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
 
   return PowerGrid::eloquent()
@@ -190,7 +282,7 @@ The following example makes your table rows show `🍽️ All diets` instead of 
 
 ```php
 //..
-public function addColumns(): ?PowerGridEloquent
+public function addColumns(): PowerGridEloquent
 {
 
   return PowerGrid::eloquent()

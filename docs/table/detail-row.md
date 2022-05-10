@@ -1,19 +1,19 @@
 # Detail Row
 
-Em alguns casos precisamos mostrar mais informações na tabela como, por exemplo: _ao selecionar um produto gostaria de ver quais 
-ingredientes esse produto tem ou outras informações como estoque, faturamento, etc_.
+In some cases we need to show more information in the table, for example: 
+_when selecting a product I would like to see which ingredients this product has or other information such as stock, billing, etc_.
 
-> Nota: O back-end será consultado somente quando fizer o toggle.
+> Note: The backend will only be queried when toggle.
 
 ## Usage
 
-Para usar o **Detail Row** você precisará: 
+To use the **Detail Row** you will need:
 
-* Estar com o tailwind tema ativo
-* Usar a classe Detail dentro de `setUp`.
-* Ter uma view blade para mostrar os detalhes.
+* Tailwind theme active
+* Use the Detail class inside `setUp`.
+* Have a blade view to show the details.
 
-Esse é um exemplo:
+This is an example:
 
 ```php
     public function setUp(): array
@@ -42,22 +42,21 @@ Result:
 
 ### View
 
-Existem duas maneiras de você especificar a view blade com o details:
+There are two ways you can specify the blade view with details:
 
-* Passando no parãmetro `->view('components.detail')`
-* Alterando o comportamento em [Action Rules]()
-
+* Passing the parameter `->view('components.detail')`
+* Changing behavior in [Action Rules]()
 ---
 
 ### Parameters
 
-No Detail, você poderá acessar qualquer variável do componente livewire powergrid e passar outros parâmetros em conjunto, para isso faça:
+In Detail, you can access any variable of the livewire powergrid component and pass other parameters together, for that do:
 
 ```php
 ->options(['name' => 'Luan'])
 ```
 
-Na view, poderá acessar o método dessa maneira (Examplo):
+In the view, you can access the method like this (Example):
 
 ```php
 <div>
@@ -67,10 +66,11 @@ Na view, poderá acessar o método dessa maneira (Examplo):
 
 ```
 
-### Collapse
+### Toggle
 
-Você poderá fazer o toggle do detail através do método `toggleDetail` em [Button]() ou simplesmente chamando o método
-`$this->toggleDetail(string $id)` passando o Id como parâmetro. 
+You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](table/row-actions-buttons?id=toggledetail) or simply by calling the method
+`$this->toggleDetail(string $id)` passing the Id as a parameter.
+
 
 <hr/>
 <footer style="float: right; font-size: larger">

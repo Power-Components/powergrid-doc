@@ -2,31 +2,32 @@
 
 ### Dependencies
 
-Para manter o projeto sempre atualizado com as últimas recomentações, optamos por atualizar as versões mínimas requiridas do projeto para ter maior suporte e durabilidade
+Powergrid was born with the intention of always keeping as close as possible to the latest laravel update, so we updated the minimum versions of php, tailwind and livewire for greater support and durability.
 
-[Veja mais](get-started/upgrade-guide?id=dependency-upgrades)
+[Read more](get-started/upgrade-guide?id=dependency-upgrades)
 
 ---
 
 ### Improved setUp method
 
-Mudamos a maneira como tratamos a inicialização do componente powergrid para facilitar a inclusão de novos métodos e melhorias em partes isoladas.
+We changed the way we handle powergrid component initialization to make it easier to add new methods and improvements to isolated parts.
 
-[Veja mais](table/features-setup?id=features-setup)
+[Read more](table/features-setup?id=features-setup)
 
 ---
 
 ### Export using openspout/openspout
 
-Removemos o pacote anterior [box/spout](https://github.com/box/spout) pelo [openspout/openspout](https://github.com/openspout/openspout). Isso trará novas oportunidades e melhorias na exportação e compatibilidades com PHP 8 superior.
+We removed the previous package [box/spout](https://github.com/box/spout) by [openspout/openspout](https://github.com/openspout/openspout). 
+This will bring new opportunities and improvements in export and PHP 8 higher compatibility.
 
-[Veja mais](https://github.com/openspout/openspout#copyright-and-license)
+[Read more](https://github.com/openspout/openspout#copyright-and-license)
 
 ---
 
 ### Ability to place stripes on export
 
-A partir dessa versão podemos definir a própria cor na listragem de exportação passando o parâmetro `striped('color')` (somente XLS) .
+From this version we can define the color itself in the export listing by passing the `striped('color')` parameter (XLS only) .
 
 ```php
     public function setUp(): array
@@ -43,13 +44,13 @@ Result:
 
 <img class="result-image" alt="validation" src="../_media/examples/features/striped.png" width="500"/>
 
-[Veja mais](https://github.com/openspout/openspout#copyright-and-license)
+[Read more](https://github.com/openspout/openspout#copyright-and-license)
 
 ---
 
 ### Design improvement
 
-Fizemos algumas melhorias no layout (tailwind only).
+We made some layout improvements (tailwind only).
 
 Result:
 
@@ -59,12 +60,12 @@ Result:
 
 ### Show ErrorBag in editOnClick line
 
-Agora podemos mostrar uma mensagem de erro diretamente na linha do editOnClick após ser verificada
-pelo método `$this->validate()` no backend.
+Now we can show an error message directly on the editOnClick line after being checked
+via the `$this->validate()` method in the backend.
 
-Será ativado quando `$showErrorBag = true`;
+It will be activated when `$showErrorBag = true`;
 
-Aqui está um exemplo:
+Here's an example:
 
 ```php
     public bool $showErrorBag = true;
@@ -101,9 +102,9 @@ Result:
 
 ### Detail row (tailwind only)
 
-Agora podemos inserir detalhes para cada linha reaproveitando os detalhes do componente.
+Now we can enter details for each row reusing the component details.
 
-Exemplo:
+Example:
 ```php
    use PowerComponents\LivewirePowerGrid\Detail;
 
@@ -133,9 +134,9 @@ Result - Detail open:
 
 <img class="result-image" alt="validation" src="../_media/examples/features/detail-row-open.png" width="500"/>
 
-Também podemos trocar a view para uma linha específica utilizando [Action Rules](table/action-rules?id=action-rules).
+We can also switch the view to a specific row using [Action Rules](table/action-rules?id=action-rules).
 
-`toggleDetail()` method fará o toggle do detail.
+`toggleDetail()` method will toggle the detail.
 
 ```php
     public function actions(): array
@@ -159,15 +160,15 @@ Também podemos trocar a view para uma linha específica utilizando [Action Rule
 
 ```
 
-[Veja mais](get-started/release-notes?id=improved-setup-method)
+[Read more](get-started/release-notes?id=improved-setup-method)
 
 ---
 
 ### Column make
 
-As novas tabelas criadas virão com `Column::make` ao invés de `Column::add()->title ...`
+New tables will be created with `Column::make` instead of `Column::add()->title ...`
 
-Exemplo anterior (não depreciado).
+Previous example (not deprecated).
 ```php
     <!-- Before -->
     public function columns(): array
@@ -179,7 +180,7 @@ Exemplo anterior (não depreciado).
          ];
     }
 ```
-Agora:
+Now:
 ```php
     <!-- After -->
     public function columns(): array
@@ -195,9 +196,9 @@ Agora:
 
 ### Button make
 
-As novas tabelas criadas virão com `Button::make` ao invés de `Button::add()->title ...`
+Similar the column, the buttons will also come with `Button::make`
 
-Exemplo anterior (não depreciado).
+Previous example (not deprecated).
 ```php
     <!-- Before -->
     public function actions(): array
@@ -208,7 +209,7 @@ Exemplo anterior (não depreciado).
          ];
     }
 ```
-Agora:
+Now:
 ```php
     <!-- After -->
     public function actions(): array

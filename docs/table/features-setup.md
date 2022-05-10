@@ -55,6 +55,8 @@ Here are some actions for the table header defined inside `setup`:
 * includeViewOnTop
 * includeViewOnBottom
 
+## Header
+
 ### showSearchInput
 
 Enables the search functionality and show the search input field at the page top.
@@ -132,7 +134,7 @@ Result:
 
 ---
 
-# Footer
+## Footer
 
 Here are some actions for the table footer defined inside `setup`:
 * > showPerPage, showRecordCount, pagination,  includeViewOnTop and includeViewOnBottom 
@@ -261,7 +263,7 @@ Result:
 <img class="result-image" alt="includeViewOnBottom" src="../_media/examples/features/footer-includeViewOnBottom.png"/>
 
 ---
-### Exportable
+## Exportable
 
 Enable the `export to file` functionality and shows export button at the page top.
 
@@ -315,7 +317,7 @@ Result:
 
 ---
 
-### persist
+## Persist
 
 If you need the state of columns and filters to be saved in cookies, you can use the persist method.
 
