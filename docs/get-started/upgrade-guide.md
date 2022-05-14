@@ -82,7 +82,7 @@ Read more about [setUp](table/features-setup?id=features-setup).
 
 Change To:
 ```php
-     <!-- 🚫 Before -->
+     <!-- ✅ After -->
     public function addColumns(): PowerGridEloquent
 ```
 
@@ -96,7 +96,7 @@ Change To:
   
 
 ```php
-     <!-- ✅ After -->
+    <!-- 🚫 Before -->
     public function update(array $data): bool
     {
       //...
@@ -106,7 +106,7 @@ Change To:
 Change To:
 
 ```php
-    <!-- 🚫 Before -->
+    <!-- ✅ After -->
     // when update from editable 
     public function onUpdatedEditable(string $id, string $field, string $value): void
     {

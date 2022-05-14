@@ -176,3 +176,24 @@ aside.toc-nav {
     border-color: #42b983;
     padding: 0.2rem 1rem !important;
 }
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 6px;
+    cursor: pointer;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: rgba(211, 211, 211, 0.808);
+    cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #a0aec0;
+}
+
+not.language-php .markdown-section code {
+    border-radius: 4px;
+    background: #cfd4d9;
+}

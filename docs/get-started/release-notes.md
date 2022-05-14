@@ -44,7 +44,7 @@ Result:
 
 <img class="result-image" alt="validation" src="../_media/examples/features/striped.png" width="500"/>
 
-[Read more](https://github.com/openspout/openspout#copyright-and-license)
+[Read more](table/features-setup?id=striped)
 
 ---
 

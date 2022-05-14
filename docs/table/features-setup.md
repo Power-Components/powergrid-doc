@@ -290,6 +290,8 @@ Example:
 ->make('my-export'),
 ```
 
+### Types
+
 Available file types:
 
 - *excel - Exportable::TYPE_XLS* 
@@ -300,6 +302,8 @@ Example:
 ```php
 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
+
+### Striped 
 
 You can also pass the `striped` parameter with the name of the color to be generated with striped lines.
 

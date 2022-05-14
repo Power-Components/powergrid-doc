@@ -22,4 +22,5 @@
   - [Queue Export](table/queue-export.md)
   - [Component Settings](table/component-settings.md)
   - [Detail Row](table/detail-row.md)
+- [Themes](custom-theme.md)
 - [Support](support.md)

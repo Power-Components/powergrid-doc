@@ -74,5 +74,5 @@ You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/support">Support →</a></span>
+    <span><a style="text-decoration: none;" href="#/custom-theme">Themes →</a></span>
 </footer>
