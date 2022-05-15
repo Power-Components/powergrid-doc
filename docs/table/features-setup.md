@@ -290,6 +290,7 @@ Example:
 ->make('my-export'),
 ```
 
+--- 
 ### Types
 
 Available file types:
@@ -302,6 +303,8 @@ Example:
 ```php
 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
+
+--- 
 
 ### Striped 
 
@@ -316,6 +319,23 @@ Example:
 Result:
 
 <img class="result-image" alt="showExportOption" src="../_media/examples/features/showExportOption.png"/>
+
+--- 
+
+### Column width
+
+Specify column and size if you need to increase [column width](https://github.com/openspout/openspout/blob/4.x/docs/documentation.md#column-widths) on export.
+
+> XLSX only
+
+Example:
+
+```php
+->columnWidth([
+    2 => 30,
+    4 => 20,
+]),
+```
 
 > 💡 If you are working with lots of data, we recommend to use [Queue Export](table/queue-export).
 
