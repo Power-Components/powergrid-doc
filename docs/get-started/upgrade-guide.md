@@ -26,7 +26,8 @@ npm run dev
 
 ### Deprecations
 
-* [Update Data](https://2x.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
+* [Update Method](https://2x.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
+* [UpdateMessages Method](https://2x.livewire-powergrid.com/#/table/update-data?id=update-messages)
 * Tailwind v2 support
 
 ---
@@ -88,7 +89,7 @@ Change To:
 
 ---
 
-### Changing updateMessages method
+### Changing update method
 
 * Now we have specific methods for each situation:
   * **onUpdatedEditable**
@@ -120,6 +121,11 @@ Change To:
     {
     }
 ```
+
+### Change Custom Theme
+
+If you used a custom theme outside of powergrid, you will need to update some things in it.
+
 
 ### 
 
