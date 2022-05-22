@@ -26,8 +26,8 @@ npm run dev
 
 ### Deprecations
 
-* [Update Method](https://2x.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
-* [UpdateMessages Method](https://2x.livewire-powergrid.com/#/table/update-data?id=update-messages)
+* [Update Method](https://v2.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
+* [UpdateMessages Method](https://v2.livewire-powergrid.com/#/table/update-data?id=update-messages)
 * Tailwind v2 support
 
 ---

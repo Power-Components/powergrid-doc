@@ -1,3 +1,3 @@
 * Version v3
 
-    * [Version v2](https://2x.livewire-powergrid.com/#/)
+    * [Version v2](https://v2.livewire-powergrid.com/#/)
