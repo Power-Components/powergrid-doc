@@ -216,7 +216,7 @@ Now:
     {
          return [
              // make(string $action, string $caption)
-             Button::add('detail', 'Detail')
+             Button::make('detail', 'Detail')
          ];
     }
 ```
