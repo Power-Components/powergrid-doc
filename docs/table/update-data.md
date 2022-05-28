@@ -77,7 +77,7 @@ public function addColumns(): PowerGridEloquent
             });
 }
 
-public function onUpdatedEditable(string $id, string $field, string $value): bool
+public function onUpdatedEditable(string $id, string $field, string $value): void
 {
     //Read from column name_uppercase
     if ($field == 'name_uppercase') {
@@ -101,7 +101,7 @@ A similar situation happens when editing dates: the date is sent as `dd/mm/yyyy`
 PowerGrid will NOT perform this conversion automatically. You must treat this data in your code, parsing and converting the value and saving on the correct database field.
 
 ```php
-public function onUpdatedEditable(string $id, string $field, string $value): bool
+public function onUpdatedEditable(string $id, string $field, string $value): void
 {
     // Gets price_formatted (4.947,70 €) and convert to price (44947.70).
     
@@ -119,14 +119,14 @@ public function onUpdatedEditable(string $id, string $field, string $value): boo
         $field =  Carbon::createFromFormat('d/m/Y', $value);
     }
       
-  try {
-      $updated = Dish::query()
+    try {
+        Dish::query()
             ->find($id)
             ->update([
-              $field => $value
-            ]);
-  } catch (QueryException $exception) {
-  }
+                $field => $value
+        ]);
+    } catch (QueryException) {
+    }
 }
 ```
 

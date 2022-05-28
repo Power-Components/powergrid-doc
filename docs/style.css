@@ -132,22 +132,7 @@ body, p {
 menu, ol, ul {
     list-style: initial !important;
 }
-.page_toc div[class^="lv"] a span {
-    color: #505d6b !important;
-}
-.page_toc div.active a span {
-    color: #008080 !important;
-}
-.page_toc div.active {
-    border-left-color: #008080 !important;
-    transition: border-left-color 0.23s;
-}
-aside.toc-nav {
-    position: fixed;
-    top: 70px;
-    overflow-y: hidden !important;
-    max-height: 80% !important;
-}
+
 .sidebar ul li.active>a {
     color: #008080 !important;
     font-weight: 600;

@@ -30,6 +30,7 @@
     el: '#main',
     loadSidebar: true,
     auto2top: true,
+    subMaxLevel: 2,
     loadNavbar: true,
     executeScript: true,
     logo: '_media/logo@2x-sm.png',
@@ -53,10 +54,6 @@
       readyTransition : true,
       responsiveTables: true
     },
-    toc: {
-      tocMaxLevel: 5,
-      target: 'h2, h3, h4, h5, h6'
-    },
     plugins: [
       function(hook) {
         const footer = [
@@ -71,7 +68,6 @@
     ]
   }
 </script>
-<script src="//unpkg.com/docsify-plugin-toc"></script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
