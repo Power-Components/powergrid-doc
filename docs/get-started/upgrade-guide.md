@@ -78,7 +78,7 @@ Read more about [setUp](table/features-setup?id=features-setup).
 ### Remove (? nullable) from addColumns
 ```php
      <!-- 🚫 Before -->
-    public function addColumns(): PowerGridEloquent
+    public function addColumns(): ?PowerGridEloquent
 ```
 
 Change To:
