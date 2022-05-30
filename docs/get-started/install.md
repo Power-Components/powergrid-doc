@@ -2,10 +2,10 @@
 
 ## Requirements
 
-- PHP 7.4.1+
-- [Laravel 8x+](https://laravel.com/docs/8.x/installation)
-- [Livewire 2x](https://laravel-livewire.com)
-- [Tailwind](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- PHP 8.0+
+- [Laravel 8.75+](https://laravel.com/docs/8.x/installation)
+- [Livewire 2.10+](https://laravel-livewire.com)
+- [Tailwind v3](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Alpine 3x](https://alpinejs.dev/)
 
 ## Installation
@@ -30,7 +30,7 @@ The configuration file will be available at: `config/livewire-powergrid.php`.
 
 ### 3. Publish files (OPTIONAL)
 
-Skip this step if you don't need to customize views or language files.
+Skip this step if you don't need to customize views (not recommended) or language files.
 
 To publish Views, run:
 
@@ -45,5 +45,5 @@ php artisan vendor:publish --tag=livewire-powergrid-lang
 ```
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/configure?id=configure">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/get-started/configure">Configure →</a></span>
 </footer>

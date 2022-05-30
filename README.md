@@ -4,7 +4,7 @@
 
 ------
 
-# PowerGrid Doc
+# PowerGrid Doc - v3
 
 Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid)
 

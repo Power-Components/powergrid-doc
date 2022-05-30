@@ -87,5 +87,5 @@ Now, you can select some rows and when you click on "Mark as Sold-out" button, a
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/action-rules">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/action-rules">Action Rules →</a></span>
 </footer>

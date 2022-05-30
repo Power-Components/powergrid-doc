@@ -12,9 +12,7 @@ The following example adds a range filter (min/max) to the "Dish Quantity" colum
 public function columns(): array
 {
   return [
-    Column::add()
-        ->title('Dish Quantity')
-        ->field('quantity'),
+    Column::make('Dish Quantity', 'quantity'),
         ->makeInputRange(),
   ];
 }
@@ -36,7 +34,7 @@ Parameters:
 
 Example:
 
-`->makeInputText('name')`
+`->makeInputText(dataField: 'name')`
 
 Result:
 
@@ -52,11 +50,11 @@ Parameters:
 
 - `$dataField`: field used by the filter.
 - `$trueLabel`: select option displayed for `true` (E.g, 'Active')
-- `$trueLabel`: select option displayed for `false` (E.g, 'Inactive')
+- `$falseLabel`: select option displayed for `false` (E.g, 'Inactive')
 
 Example:
 
-`->makeBooleanFilter('in_stock', 'yes', 'no')`
+`->makeBooleanFilter(dataField: 'in_stock', trueLabel: 'yes', falseLabel: 'no')`
 
 Result:
 
@@ -68,6 +66,30 @@ Result:
 
 Includes a specific field on the page to filter between the specific date in the column.
 
+Configure a linguagem no arquivo `config/livewire-powergrid.php` como no exemplo de acordo com a sua `config/app` - locale.
+```php
+ 'plugins' => [
+        // ..
+        'flatpickr' => [
+            // ..
+            'locales'   => [
+                'pt_BR' => [
+                    'locale'     => 'pt',
+                    'dateFormat' => 'd/m/Y H:i',
+                    'enableTime' => true,
+                    'time_24hr'  => true,
+                ],
+                'uk' => [
+                    'locale'     => 'uk',
+                    'dateFormat' => 'd/m/Y',
+                    'enableTime' => false,
+                    'time_24hr'  => true,
+                ],
+            ],
+        ],
+    ],
+```
+
 Parameters:
 
 - `$dataField`: field used by the filter.
@@ -78,7 +100,7 @@ Parameters:
 
 Example:
 
-`->makeInputDatePicker()`
+`->makeInputDatePicker('created_at')`
 
 Result:
 
@@ -223,9 +245,7 @@ The following example adds a range filter on "Dish Quality" column, filtering wi
 public function columns(): array
 {
   return [
-    Column::add()
-        ->title('Dish Quantity')
-        ->field('quantity'),
+      Column::make('Dish Quantity', 'quantity'),
   ];
 }
 ```
@@ -238,10 +258,8 @@ PowerGrid parses the formatted `1.170,90` into a decimal number (`1170.90`) and 
 public function columns(): array
 {
   return [
-    Column::add()
-      ->title('Price')
-      ->field('price_in_brl')
-      ->makeInputRange('price', '.', ','),
+      Column::make('Price', 'price_in_brl')
+          ->makeInputRange('price', '.', ','),
   ];
 }
 ```
@@ -276,5 +294,5 @@ The example above adds the relationship to the `kitchen`  Model and allows the c
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/column-summary?id=column-summary">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/column-summary">Column Summary →</a></span>
 </footer>

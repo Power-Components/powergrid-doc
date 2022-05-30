@@ -189,7 +189,6 @@ Button::add('edit-dish')
     ->can($canClickButton),
 ```
 
-
 ---
 
 ### tooltip(string $tooltip)
@@ -205,7 +204,22 @@ Button::add('edit-dish')
     ->tooltip('Edit Record'),
 ```
 
+---
+
+### toggleDetail()
+
+Toggle the [detailRow](table/detail-row)
+
+Example:
+
+```php
+Button::add('toggle-detail')
+    ->caption('Toggle Detail')
+    ->toggleDetail(),
+```
+
+
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/bulk-actions">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/bulk-actions">Bulk Actions →</a></span>
 </footer>

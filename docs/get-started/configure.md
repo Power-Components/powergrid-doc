@@ -68,6 +68,11 @@ Your Theme can be set at `config/livewire-powergrid.php`.
 
 To change to Bootstrap 5, modify your `theme` option as follows:
 
+> 💡 Read more how to customize your [Theme](table/custom-theme).
+
+--- 
+
+## 4. Bootstrap 5 settings
 ```php
     /*
     |--------------------------------------------------------------------------
@@ -77,20 +82,26 @@ To change to Bootstrap 5, modify your `theme` option as follows:
     'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
 ```
 
+Some features are not available in the Bootstrap version:
+* [Filters outside](get-started/configure?id=_7-filters)
+* [Detail Row](table/detail-row)
+
 Next, include jQuery and Bootstrap scripts in your page.
 
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+        crossorigin="anonymous"></script>
         
 <!-- after -->
 @powerGridScripts
 ```
 
-## 4. Tailwind settings
+## 5. Tailwind settings
 
-#### 4.1 Dark Mode
+#### 5.1 Dark Mode
 
 To enable Dark Mode, configure the `DarkMode` class in `tailwind.config.js` file as follows:
 
@@ -100,25 +111,10 @@ module.exports = {
 }
 ```
 
-#### 4.2 JIT Production
+#### 5.2 JIT Production
 
 If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tailwind.config.js` file:
 
-For Tailwind 2.x
-```javascript
-module.exports = {
-  mode: 'jit',
-  purge: [
-      // ....
-      './app/Http/Livewire/**/*Table.php',
-      './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
-      './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
-  ]
-  // ....
-}
-```
-
-For Tailwind 3.x - [read](https://tailwindcss.com/docs/upgrade-guide#migrating-to-the-jit-engine)
 ```javascript
 module.exports = {
   content: [
@@ -133,7 +129,7 @@ module.exports = {
 
 > 💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
 
-#### 4.3 Tailwind Forms
+#### 5.3 Tailwind Forms
 
 If you use Tailwind forms, please consider modifying your `tailwind.config.js` to use the strategy `class` as follows:
 
@@ -154,7 +150,7 @@ This approach will avoid layout conflicts such as:
 
 > 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
 
-## 5. Cache
+## 6. Cache
 
 Cache is enabled by default. When using collections, it improves search performance.
 
@@ -173,7 +169,7 @@ Example:
     'cached_data' => false,
 ```
 
-## 6. Filters
+## 7. Filters
 
 PowerGrid offers inline and outside filters.
 
@@ -194,7 +190,7 @@ Example:
     'filter' => 'outside',
 ```
 
-## 7. New Release Notification
+## 8. New Release Notification
 
 PowerGrid can verify if a new release is available when you create a new PowerGrid Table.
 
@@ -202,13 +198,13 @@ PowerGrid can verify if a new release is available when you create a new PowerGr
 
 To enable this feature, follow the next steps:
 
-**7.1. Require composer as a developer dependency, running:**
+**8.1. Require composer as a developer dependency, running:**
 
  ```bash
  composer require composer/composer --dev
  ```
 
-**7.2. Change 'check_version' to `true` in `config/livewire-powergrid.php`.**
+**8.2. Change 'check_version' to `true` in `config/livewire-powergrid.php`.**
 
 ```php
     /*
@@ -220,5 +216,5 @@ To enable this feature, follow the next steps:
 ```
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/create-powergrid-table?id=create-a-powergrid-table">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/get-started/create-powergrid-table">Create a PowerGrid Table →</a></span>
 </footer>

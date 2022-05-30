@@ -214,5 +214,5 @@ Rule::button('read-more')
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/update-data">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/update-data">Update Data →</a></span>
 </footer>

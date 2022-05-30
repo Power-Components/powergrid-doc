@@ -36,6 +36,21 @@ public function columns(): array
   ];
 }
 ```
+`or using make() method`
+```php
+public function columns(): array
+{
+  return [
+    Column::make(title: 'ID', field: 'id'),
+
+    Column::make(title: 'Dish name', field: 'name')
+        ->searchable(),
+
+    Column::make(title: 'Price + taxes', field: 'price_after_taxes')
+        ->sortable(),
+  ];
+}
+```
 
 ## Column Methods
 
@@ -162,5 +177,5 @@ Example:
 ---
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/column-filters?id=column-filters">Next →</a></span>
+    <span><a style="text-decoration: none;" href="#/table/column-filters">Column Filters →</a></span>
 </footer>
