@@ -51,6 +51,41 @@ Column::add()
     ->editOnClick($canEdit),
 ```
 
+> When pressing enter, powergrid will send the received value to a public property, which you can use however you want, 
+but we recommend using the native powergrid method: `onUpdatedEditable`
+
+```php
+public ?string $name = null;
+
+public function onUpdatedEditable($id, $field, $value): void
+{   
+    User::query()->find($id)->update([
+            $field => $value,
+    );
+}
+```
+
+### Validation
+
+> To do the validation, make sure you put **$rules** and the **validate()** method before saving
+
+```php
+public ?string $name = null;
+
+protected array $rules = [
+     'name.*' => ['required', 'min:6'],
+];
+
+public function onUpdatedEditable($id, $field, $value): void
+{   
+    $this->validate();
+    
+    User::query()->find($id)->update([
+            $field => $value,
+    );
+}
+```
+
 Result:
 
 <img class="result-image" alt="editOnClick" src="../_media/examples/cell_buttons/editOnClick.png" width="300"/>
@@ -58,6 +93,8 @@ Result:
 !> **❗ Important:** editOnClick on click requires [Update Data](table/update-data?id=update-data) method to be configured.
 
 !> **❗ ️Important:** This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
+
+--- 
 
 ### toggleable(bool $isToggleable, string $trueLabel, string $falseLabel)
 
@@ -80,6 +117,16 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
+> To get the data from a toggleable, use the `onUpdatedToggleable` method
+
+```php
+public function onUpdatedToggleable($id, $field, $value): void
+{
+   Dish::query()->find($id)->update([
+       $field => $value,
+   ]);
+}
+```
 Result:
 
 <img class="result-image" alt="toggleable" src="../_media/examples/cell_buttons/toggleable.png" width="100"/>

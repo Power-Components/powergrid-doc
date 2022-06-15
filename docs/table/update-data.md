@@ -1,6 +1,6 @@
 # Update Data
 
-Some PowerGrid features like [Cell Action Buttons](table/cell-action-buttons) and [Row Action Buttons](table/row-action-buttons) allow the user to modify Table data and update the database.
+Some PowerGrid features like [Cell Action Buttons](table/cell-actions-buttons) and [Row Action Buttons](table/row-actions-buttons) allow the user to modify Table data and update the database.
 
 You will need to configure your PowerGrid Table file (e.g. `DishTable.php`) to save data.
 
@@ -11,7 +11,7 @@ You will need to configure your PowerGrid Table file (e.g. `DishTable.php`) to s
 
 ### editOnClick
 
-The column "Name" reads the field `name` and is configured to [editOnClick](table/cell-action-buttons?id=editonclickbool-iseditable).
+The column "Name" reads the field `name` and is configured to [editOnClick](table/cell-actions-buttons?id=editonclickbool-iseditable).
 
 ```php
 Column::add()
