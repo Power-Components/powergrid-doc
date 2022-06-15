@@ -2,6 +2,7 @@
   - [PowerGrid](get-started/powergrid.md)
   - [Release Notes](get-started/release-notes.md)
   - [Upgrade Guide](get-started/upgrade-guide.md)
+  - [Troubleshooting](get-started/troubleshooting.md)
   - [Demo](get-started/demo.md)
   - [Install](get-started/install.md)
   - [Configure](get-started/configure.md)
