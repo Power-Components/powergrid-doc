@@ -162,16 +162,6 @@ Example:
 
 ---
 
-### tooltip(string $tooltip)
-
-Sets the button tool tip.
-
-Example:
-
-`->tooltip('create new user')`
-
----
-
 ### can(bool $can)
 
 Sets Action's permission.
