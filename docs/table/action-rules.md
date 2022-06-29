@@ -192,7 +192,7 @@ Sets the specified target attribute to the given value.
 
 Example:
 
-* Change row background to red when dish is out of stock
+Change row background to red when dish is out of stock
 
 ```php
 
@@ -212,7 +212,7 @@ Rule::rows()
 
 ```
 
-* Add wire:click attribute when dish is out of stock
+Add wire:click attribute when dish is out of stock
 
 ```php
 
@@ -248,6 +248,20 @@ Example:
 Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic == true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
+```
+
+---
+
+### bladeComponent(string $component, array $params)
+
+Change blade component when dish is out of stock
+
+Example:
+
+```php
+Rule::button('read-more')
+    ->when(fn($dish) => $dish->in_stock == false)
+    ->bladeComponent('another-custom-button', ['dishId' => 'id']),
 ```
 
 <hr/>

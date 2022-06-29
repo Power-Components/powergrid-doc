@@ -208,6 +208,34 @@ Button::add('toggle-detail')
     ->toggleDetail(),
 ```
 
+### bladeComponent(string $component, array $params)
+
+Allows you to add a custom component overriding all default behavior
+
+Example:
+
+```php
+Button::add('my-custom-button')
+    ->bladeComponent('my-custom-button', ['dishId' => 'id']),
+```
+
+`view/components/my-custom-button.blade.php`
+
+```html
+<button type="button"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    My Custom Button #{{ $dishId }}
+</button>
+```
+
+`Output`
+
+```html
+<button type="button"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    My Custom Button #1
+</button>
+```
 
 <hr/>
 <footer style="float: right; font-size: larger">
