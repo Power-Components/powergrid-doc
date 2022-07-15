@@ -151,14 +151,17 @@ If you need a different set of values, you may override the `$perPageValues` arr
 ```php
 class DishesTable extends PowerGridComponent
 {
+    //Custom per page
+    public int $perPage = 5;
+    
     //Custom per page values
-    public array $perPageValues = [0, 5, 10, 1000, 5000];
+    public array $perPageValues = [0, 5, 10, 20, 50];
 
     public function setUp(): array
     {
         return [
             Footer::make()
-                ->showPerPage()
+                ->showPerPage($this->perPage, $this->perPageValues)
         ]   
     }
     //....
