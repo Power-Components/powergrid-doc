@@ -186,15 +186,53 @@ Read more in [Livewire](https://laravel-livewire.com/docs/2.x/events#scope-by-na
 
 ### setAttribute(string $attribute = null, string $value = null)
 
-Sets the target's specified attribute to the given value.
+Sets the specified target attribute to the given value. 
+
+> Multiples are issued for the target **button** only
 
 Example:
 
+Change row background to red when dish is out of stock
+
 ```php
-//Change row background to red when dish is out of stock
+
 Rule::rows()
     ->when(fn($dish) => $dish->in_stock == false)
-    ->setAttribute('class', 'bg-red-200'),
+    ->setAttribute('class', '!bg-red-200'),
+
+```
+
+`Output:`
+
+```html
+
+<button class="bg-indigo-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm !bg-red-200">
+        Edit
+</button>
+
+```
+
+Add wire:click attribute when dish is out of stock
+
+```php
+
+Rule::button('edit')
+    ->when(fn($dish) => $dish->in_stock == false)
+    ->setAttribute('class', '!bg-red-200')
+    ->setAttribute('wire:click', ['action' => [
+        'params' => 1,
+        'dishId' => 'id',
+    ]]),
+
+```
+
+`Output:`
+
+```html
+<button class="bg-indigo-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm !bg-red-200" 
+        wire:click="action({"params":1,"dishId":2})">
+        Edit
+</button>
 ```
 
 ---
@@ -210,6 +248,20 @@ Example:
 Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic == true)
     ->redirect(fn($dish) => 'https://www.google.com/search?q='.$dish->name, '_blank'),
+```
+
+---
+
+### bladeComponent(string $component, array $params)
+
+Change blade component when dish is out of stock
+
+Example:
+
+```php
+Rule::button('read-more')
+    ->when(fn($dish) => $dish->in_stock == false)
+    ->bladeComponent('another-custom-button', ['dishId' => 'id']),
 ```
 
 <hr/>
