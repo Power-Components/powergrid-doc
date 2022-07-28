@@ -93,7 +93,7 @@ Result:
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
 ```php 
-Header::includeViewOnTop('components/datatable/header-top.blade.php')
+Header::includeViewOnTop('components.datatable.header-top')
 ```
 
 > Inside the view you can use the component's variables
@@ -116,7 +116,7 @@ Result:
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
 ```php 
-Header::includeViewOnBottom('components/datatable/header-bottom.blade.php')
+Header::includeViewOnBottom('components.datatable.header-bottom')
 ```
 
 > Inside the view you can use the component's variables
@@ -223,7 +223,7 @@ Result:
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
 ```php 
-Footer::includeViewOnTop('components/datatable/footer-top.blade.php')
+Footer::includeViewOnTop('components.datatable.footer-top')
 ```
 
 > Inside the view you can use the component's variables
@@ -246,7 +246,7 @@ Result:
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
 ```php 
-Header::includeViewOnBottom('components/datatable/footer-bottom.blade.php')
+Header::includeViewOnBottom('components.datatable.footer-bottom')
 ```
 
 > Inside the view you can use the component's variables
