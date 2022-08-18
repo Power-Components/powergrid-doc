@@ -6,8 +6,8 @@ Please look into our previous issues to verify if your bug/question or feature r
 
 📣 Submit a [new issue](https://github.com/Power-Components/livewire-powergrid/issues).
 
-## How to contribute
+## Contributing
 
-🇺🇸 [How to contribute to PowerGrid](https://github.com/Power-Components/como-contribuir-com-o-powergrid/blob/main/README-EN.md) - Translation by [@DanSysAnalyst](https://github.com/DanSysAnalyst)
+We appreciate your interest in contributing with PowerGrid.
 
-🇧🇷 [Guia para contribuir com o Powergrid](https://github.com/Power-Components/como-contribuir-com-o-powergrid/) - by [Claudio Pereira](https://github.com/cpereiraweb)
+Please read the [Contributing Guide](https://github.com/Power-Components/livewire-powergrid/blob/main/CONTRIBUTING.md).
