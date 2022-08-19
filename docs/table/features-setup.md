@@ -186,7 +186,7 @@ Available modes:
 Example:
 
 ```php
-Footer::showRecordCount(mode: 'full')
+Header::showRecordCount(mode: 'full')
 ```
 
 Result:
