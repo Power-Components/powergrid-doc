@@ -135,10 +135,6 @@ This is often the case with date, currency and boolean values.
 
 Let's check some examples using `closures` to format data!
 
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
-
 
 ### Link in cell
 
@@ -152,16 +148,12 @@ public function addColumns(): PowerGridEloquent
 {
   return PowerGrid::eloquent()
     ->addColumn('location_link', function (Dish $model) {
-      return '<a href="https://www.google.com/maps/search/' . e($model->lat_long) . '">'. e($model->location_name) .'</a>'; 
+      return '<a href="https://www.google.com/maps/search/' . $model->lat_long . '">'. $model->location_name .'</a>'; 
     });
 }
 ```
 
 The example above produces the HTML `<a href="https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
-
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
 
 <br/>
 
@@ -237,14 +229,10 @@ public function addColumns(): PowerGridEloquent
 
   return PowerGrid::eloquent()
     ->addColumn('description_excerpt', function (Dish $model) {
-        return Str::words(e($model->description), 8); //Gets the first 8 words
+        return Str::words($model->description, 8); //Gets the first 8 words
     });
 }
 ```
-
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
 
 ### Boolean
 
