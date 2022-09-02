@@ -153,6 +153,106 @@ Result:
 
 ---
 
+### Select filter with labels
+
+In some cases, you might want to change the displayed label for each option in your select filter.
+
+For example, imagine a column `code` which holds numeric values representing certain product conditions.
+
+The code 0 represents "Best before", 1 represents "Expiring" and 2 represents "Expired".
+
+To build a table with a filter based on Database values, you can use:
+
+```php
+
+ public function addColumns(): PowerGridEloquent
+    {
+        return PowerGrid::eloquent()
+            //...
+            ->addColumn('code');
+    }
+
+    public function columns(): array
+    {
+        return [
+            //...
+            Column::add()
+                ->title('code')
+                ->field('code', 'code')
+                ->makeInputSelect(Dish::select('code')->distinct()->get(), 'code', 'code')
+        ];
+    }
+```
+
+However, it results in very non-user-friendly Table:
+
+<img class="result-image" alt="makeInputSelect" src="../_media/examples/filters/selectWithoutLabel.png" width="500" />
+
+A better alternative is to pass the `$name` parameter to `makeInputSelect` and  `makeInputMultiSelect` to display a friendly value for the select option.
+
+Let's see a full example:
+
+First, let's create a method in `Dish` Model which will return a collection containing each code with the respective label.
+
+This is very convenient as we can refer to it any time we need access to our product codes.
+
+```php
+// File: app/Models/Dish.php
+
+<?php 
+
+class Dish extends Model
+{
+    //...
+
+    public static function codes()
+    {
+        return collect(
+            [
+                ['code' => 0,  'label' => 'Best before'],
+                ['code' => 1,  'label' => 'Expiring'],
+                ['code' => 2,  'label' => 'Expired'],
+            ]
+        );
+    }
+}
+```
+
+Now, we can use this method in `DishTable` to access our collection of codes.
+
+```php
+
+ public function addColumns(): PowerGridEloquent
+    {
+        return PowerGrid::eloquent()
+            /*
+              Returns the 'label' key of the first collection item matching the database value in column "code"
+            */
+            ->addColumn('code_label', fn ($dish) => Dish::codes()->firstWhere('code', $dish->code)['label'])
+            ->addColumn('code');
+    }
+
+    public function columns(): array
+    {
+        return [
+            //...
+            Column::add()
+                ->title('code')
+                ->field('code_label', 'code')
+                /*
+                Uses the codes collection as datasource for the options with the key "label" as the option label.
+                */
+                ->makeInputSelect(Dish::codes(), 'label', 'code'),
+        ];
+    }
+```
+
+The example above results in a much more user-friendly table:
+
+<img class="result-image" alt="makeInputSelect" src="../_media/examples/filters/selectWithLabel.png" width="500" />
+
+---
+
 ### makeInputEnumSelect(array $enumCases, string $dataField = null, array $settings = [])
 
 Includes a select filter based in a PHP Enum.
