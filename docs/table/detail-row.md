@@ -27,13 +27,23 @@ This is an example:
         ];
     }
 ```
-`view/components.detail.blade.php`
+
+You can access your model data in the view file using the variable `$row`.
+
 ```html
+<!-- File: resources/views/components/detail.blade.php -->
+
 <div class="p-2 bg-white border border-slate-200">
     <div>Id {{ $id }}</div>
     <div>Options @json($options)</div>
+
+    @if ($row->calories < 100)
+        <div>Diet dish!</div>
+    @endif
+
 </div>
 ```
+
 Result:
 
 <img class="result-image" alt="disable" src="../_media/examples/features/detail-row-open.png" width="600"/>
@@ -45,6 +55,7 @@ Result:
 There are two ways you can specify the blade view with details:
 
 * Passing the parameter `->view('components.detail')`
+* Model data is available with the variable `$row`.
 * Changing behavior in [Action Rules]()
 ---
 
@@ -59,11 +70,17 @@ In Detail, you can access any variable of the livewire powergrid component and p
 In the view, you can access the method like this (Example):
 
 ```php
-<div>
-   {{ $tableName }} 
-   {{ data_get($options, 'name') }} // or $options['name'] 
-</div>
 
+<div class="p-2 bg-white border border-slate-200">
+    <div>Table: {{ $tableName }} </div>
+    <div>Id: {{ $id }}</div>
+    <div>Name: {{ $row->name }}</div>
+    <div>Options: @json($options)</div>
+
+    <div class="flex justify-end">
+        <button wire:click.prevent="toggleDetail('{{ $id }}')" class="p-1 text-xs bg-red-600 text-white rounded-lg">Close</button>
+    </div>
+</div>
 ```
 
 ### Toggle
