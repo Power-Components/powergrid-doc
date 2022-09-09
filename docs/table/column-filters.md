@@ -31,6 +31,7 @@ Available filters are: `Is/Is not`, `Contains/Does not contain`, `Starts with/En
 Parameters:
 
 - `$dataField`: field used by the filter.
+- `$options`: filter options (read below).
 
 Example:
 
@@ -40,7 +41,45 @@ Result:
 
 <img width="200" class="result-image" alt="makeInputText" src="../_media/examples/filters/makeInputText.png"/>
 
----
+Sometimes, you may want to restrict which text filters can be used in a specific column.
+
+For example, it could be dangerous to find a partial result (contains) for a document number in the column "Document".
+
+You may set available filters by passing an array `['filters' => [filter1, filter2]]` to the `$options` parameter.
+
+The example below displays only the filter "is":
+
+```php
+Column::add()
+    ->title(__('Dish'))
+    ->field('name')
+    ->searchable()
+    ->makeInputText('name', options: ['filters' => ['is']]), //Display only filter "Is"
+```
+
+Available filters options are:
+
+<style>
+    td::before { display: none }
+  <!-- @see https://github.com/docsifyjs/docsify/issues/794 -->
+</style>
+
+| **Key**      | **Filter**       |
+|--------------|------------------|
+| is           | Is               |
+| is_not       | Is not           |
+| contains     | Contains         |
+| contains_not | Does not contain |
+| starts_with  | Starts with      |
+| ends_with    | Ends with        |
+| is_empty     | Is empty         |
+| is_not_empty | Is not empty     |
+| is_null      | Is null          |
+| is_not_null  | Is null          |
+| is_blank     | Is blank         |
+| is_not_blank | Is not blank     |
+
+
 
 ### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
 
