@@ -104,6 +104,8 @@ Available methods:
 - [Emit](table/action-rules?id=emitstring-event-array-params-)
 - [EmitTo](table/action-rules?id=emittostring-to-string-event-array-params-) 
 - [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
+- [hideToggleable](table/action-rules?id=hidetoggleable)
+- [showtoggleable](table/action-rules?id=showtoggleable)
 - [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
 
 ### disable()
@@ -186,7 +188,7 @@ Read more in [Livewire](https://laravel-livewire.com/docs/2.x/events#scope-by-na
 
 ### setAttribute(string $attribute = null, string $value = null)
 
-Sets the specified target attribute to the given value. 
+Sets the specified target attribute to the given value.
 
 > Multiples are issued for the target **button** only
 
@@ -233,6 +235,40 @@ Rule::button('edit')
         wire:click="action({"params":1,"dishId":2})">
         Edit
 </button>
+```
+
+---
+
+### hideToggleable()
+
+Hides the [Toggleable](table/cell-actions-buttons?id=toggleablebool-istoggleable-string-truelabel-string-falselabel) switch for the row.
+
+Toggleable must be configured in the column. This feature will only hide the Toggleable, not disable it.
+
+Example:
+
+```php
+// Hide Toggleable for Soft deleted dishes
+Rule::button('read-more')
+    ->when(fn ($dish) => $dish->trashed() == true)
+    ->hideToggleable(),
+```
+
+---
+
+### showToggleable()
+
+Shows the [Toggleable](table/cell-actions-buttons?id=toggleablebool-istoggleable-string-truelabel-string-falselabel) switch for the row.
+
+Toggleable must be configured in the column. This feature will only show the Toggleable, not disable it.
+
+Example:
+
+```php
+// Hide Toggleable for Soft deleted dishes
+Rule::button('read-more')
+    ->when(fn ($dish) => $dish->trashed() == false)
+    ->showToggleable(),
 ```
 
 ---
