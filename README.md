@@ -10,6 +10,12 @@ Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livew
 
 Published at: [https://livewire-powergrid.com/](https://livewire-powergrid.com/)
 
+## Contribute
+
+Contributions are welcome!
+
+Would you like to contribute to the docs? Great!!! Please check the [Contribution guidelines](CONTRIBUTING.md).
+
 ## Support
 
 For questions, issues, bug reports and feature requests, please use [PowerGrid](https://github.com/Power-Components/livewire-powergrid) official GitHub Repository.
