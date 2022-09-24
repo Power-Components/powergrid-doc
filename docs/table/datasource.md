@@ -24,6 +24,26 @@ public function datasource(): ?Builder
 }
 ```
 
+## Custom Primary Key
+
+By default, PowerGrid uses the field `id` as your Model's primary key.
+
+If your model uses a custom primary key, you must configure the property `$primaryKey` in your PowerGrid component.
+
+The next example uses the column `custom_id` as primary key.
+
+```php
+final class RestaurantsTable extends PowerGridComponent
+{
+    use ActionButton;
+
+    public string $primaryKey = 'restaurants.custom_id';
+
+    public string $sortField = 'restaurants.custom_id';
+
+     //...
+```
+
 ## Join Tables
 
 Some features like [Column sortable()](table/include-columns?id=sortable) or [Column Filters](table/column-filters) may require you to join your relationship in your Datasource. This will make the relationship table fields available in the same result row.
