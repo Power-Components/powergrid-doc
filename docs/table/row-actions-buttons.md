@@ -111,7 +111,7 @@ is equivalent to:
 
 ---
 
-### dispatch(string $to, string $event, array $params)
+### dispatch(string $event, array $params)
 
 Dispatch browser events.
 
