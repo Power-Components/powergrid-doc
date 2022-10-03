@@ -33,11 +33,16 @@ You can chain the methods to configure the following features:
 
 Enables and displays checkboxes on each table row.
 
+If your database table has a custom id column, you must pass the column name in the `$attribute` argument.
+
 Example:
+
 ```php
 public function setUp(): array
 {
     $this->showCheckBox();
+    //$this->showCheckBox('my_custom_table_id);
+
 }
 ```
 
