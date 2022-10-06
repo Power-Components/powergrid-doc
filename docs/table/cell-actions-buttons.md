@@ -31,19 +31,25 @@ public function columns(): array
 
 These methods will add action buttons to each cell of a specific column in your Table.
 
-### editOnClick(bool $isEditable)
+### editOnClick(hasPermission: true, fallback: 'Type here', saveOnMouseOut: false)
 
-If `$isEditable` is `true`, an "action link" will be displayed in the cell.
+If `$hasPermission` is `true`, an "action link" will be displayed in the cell.
+
+If the value is null and `$fallback` is filled, the input value will receive this value.
+
+If `$saveOnMouseOut` is true, clicking anywhere outside will save the data
 
 When the user clicks on this link, the cell is converted into an input text.
 
 The content can be edited and saved by pressing the `<enter>` key.
 
+When pressing esc the value entered will be canceled and returned to the normal state.
+
 Example:
 
 ```php
 //...
-$canEdit = true; //User has edit permission
+$canEdit = auth()->can('user_edit'); // User has edit permission
 
 Column::add()
     ->title('Name')
@@ -61,7 +67,7 @@ public function onUpdatedEditable($id, $field, $value): void
 {   
     User::query()->find($id)->update([
             $field => $value,
-    );
+    ]);
 }
 ```
 
