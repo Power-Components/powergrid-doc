@@ -31,13 +31,13 @@ public function columns(): array
 
 These methods will add action buttons to each cell of a specific column in your Table.
 
-### editOnClick(hasPermission: true, fallback: 'Type here', saveOnMouseOutSide: false)
+### editOnClick(hasPermission: true, fallback: 'Type here', saveOnMouseOut: false)
 
 If `$hasPermission` is `true`, an "action link" will be displayed in the cell.
 
 If the value is null and `$fallback` is filled, the input value will receive this value.
 
-If `$saveOnMouseOutSide` is true, clicking anywhere outside will save the data
+If `$saveOnMouseOut` is true, clicking anywhere outside will save the data
 
 When the user clicks on this link, the cell is converted into an input text.
 
