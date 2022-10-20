@@ -261,6 +261,30 @@ Button::add('my-custom-button')
 </button>
 ```
 
+---
+
+### id(string $value)
+
+Add custom id attribute.
+
+The code below:
+
+```php
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->id('view'), 
+```
+
+is equivalent to:
+
+```html
+<button id="view-1"> // 1 - is the value set in the current row using primaryKey = id.
+```
+
+---
+
 <hr/>
 <footer style="float: right; font-size: larger">
     <span><a style="text-decoration: none;" href="#/table/bulk-actions">Bulk Actions →</a></span>
