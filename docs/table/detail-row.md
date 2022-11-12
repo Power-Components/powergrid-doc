@@ -83,6 +83,15 @@ In the view, you can access the method like this (Example):
 </div>
 ```
 
+### collapseOthers
+
+* By default, powergrid will keep the open state of other details when you toggle a row using `toggleDetail`. To close the last open use:
+```php
+->collapseOthers()
+```
+
+---
+
 ### Toggle
 
 You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](table/row-actions-buttons?id=toggledetail) or simply by calling the method
