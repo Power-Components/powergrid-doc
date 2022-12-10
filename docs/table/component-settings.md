@@ -120,11 +120,7 @@ class DishesTable extends PowerGridComponent
 
 <br/>
 
-> 📝 **NOTE:** You might need to adjust the [->sortable()](table/include-columns?id=sortable) method in your fields when joining tables in your dataset.
+> 📝 **NOTE:** You might need to adjust the [->sortable()](include-columns?id=sortable) method in your fields when joining tables in your dataset.
 
 ---
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/detail-row">Detail Row →</a></span>
-</footer>

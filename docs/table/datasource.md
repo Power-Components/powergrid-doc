@@ -32,7 +32,7 @@ If your model uses a custom primary key, you must configure the property `$prima
 
 The next example uses the column `custom_id` as primary key.
 
-```php
+```php{5,7}
 final class RestaurantsTable extends PowerGridComponent
 {
     use ActionButton;
@@ -46,11 +46,11 @@ final class RestaurantsTable extends PowerGridComponent
 
 ## Join Tables
 
-Some features like [Column sortable()](table/include-columns?id=sortable) or [Column Filters](table/column-filters) may require you to join your relationship in your Datasource. This will make the relationship table fields available in the same result row.
+Some features like [Column sortable()](include-columns?id=sortable) or [Column Filters](column-filters) may require you to join your relationship in your Datasource. This will make the relationship table fields available in the same result row.
 
 The following example shows how to `join` the `categories` relationship:
 
-```php
+```php{5-7}
 //..
 public function datasource(): ?Builder
 {
@@ -72,7 +72,7 @@ You might encounter a conflict between primary keys using the same field name (E
 
 To fix this problem, declare your `$primaryKey` and `$sortField` properties as the example shows:
 
-```php
+```php{2,4}
 //...
 public string $primaryKey = 'dishes.id';
 
@@ -94,7 +94,4 @@ public function columns(): array
       //...
 }
 ```
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/add-columns">Add Columns →</a></span>
-</footer>
+

@@ -17,8 +17,3 @@
 
 Source code is available at the [PowerGrid](https://github.com/Power-Components/livewire-powergrid) official GitHub Repository.
 
-
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/release-notes">Release Notes →</a></span>
-</footer>

@@ -1,10 +1,17 @@
+# Upgrade Guide
+
 ### Upgrade From V2
 
 PowerGrid is now on version 3.x.
 
 This page will give you important information to upgrade from v2.x.
 
-> **❗ Important:**  Republish views if you have previously published
+::: warning
+Republish views if you have previously published
+:::
+
+--- 
+
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-views --force && php artisan view:clear
 ```
@@ -48,7 +55,7 @@ npm run dev
 
 Changed to:
 
-```php
+```php{6-20}
     <!-- ✅ After -->
     use PowerComponents\LivewirePowerGrid\Header;
     use PowerComponents\LivewirePowerGrid\Footer;
@@ -71,7 +78,7 @@ Changed to:
     }
 ```
 
-Read more about [setUp](table/features-setup?id=features-setup).
+Read more about [setUp](../table/features-setup?id=features-setup).
 
 ---
 
@@ -125,11 +132,3 @@ Change To:
 ### Change Custom Theme
 
 If you used a custom theme outside of powergrid, you will need to update some things in it.
-
-
-### 
-
-<hr />
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/demo">Demo →</a></span>
-</footer>

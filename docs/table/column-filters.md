@@ -1,6 +1,6 @@
 # Column Filters
 
-Filters can be configured under each column, inside the [columns()](table/include-columns?id=include-columns) method.
+Filters can be configured under each column, inside the [columns()](include-columns?id=include-columns) method.
 
 ## Usage
 
@@ -38,7 +38,7 @@ Example:
 
 Result:
 
-<img width="200" class="result-image" alt="makeInputText" src="../_media/examples/filters/makeInputText.png"/>
+![Output](/_media/examples/filters/makeInputText.png)
 
 ---
 
@@ -58,7 +58,7 @@ Example:
 
 Result:
 
-<img width="100" class="result-image" alt="makeBooleanFilter" src="../_media/examples/filters/makeBooleanFilter.png"/>
+![Output](/_media/examples/filters/makeBooleanFilter.png)
 
 ---
 
@@ -104,7 +104,7 @@ Example:
 
 Result:
 
-<img class="result-image" alt="makeInputDatePicker" src="../_media/examples/filters/makeInputDatePicker.png" width="200"/>
+![Output](/_media/examples/filters/makeInputDatePicker.png)
 
 ---
 
@@ -114,7 +114,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$dataSource`: parameter must be a [Datasource](table/datasource?id=datasource).
+- `$dataSource`: parameter must be a [Datasource](datasource?id=datasource).
 - `$name`: datasource field name to be displayed in options.
 - `$dataField`: field used by the filter.
 
@@ -129,7 +129,7 @@ Example:
 
 Result:
 
-<img class="result-image" alt="makeInputSelect" src="../_media/examples/filters/makeInputSelect.png" width="100" />
+![Output](/_media/examples/filters/makeInputSelect.png)
 
 ---
 
@@ -139,7 +139,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 
 Parameters:
 
-- `$dataSource`: parameter must be a [Datasource](table/datasource?id=datasource).
+- `$dataSource`: parameter must be a [Datasource](datasource?id=datasource).
 - `$name`: datasource field name to be displayed in options.
 - `$dataField`: field used by the filter.
 
@@ -149,7 +149,7 @@ Example:
 
 Result:
 
-<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputMultiSelect.png" width="100" />
+![Output](/_media/examples/filters/makeInputMultiSelect.png)
 
 ---
 
@@ -186,7 +186,7 @@ To build a table with a filter based on Database values, you can use:
 
 However, it results in very non-user-friendly Table:
 
-<img class="result-image" alt="makeInputSelect" src="../_media/examples/filters/selectWithoutLabel.png" width="500" />
+![Output](/_media/examples/filters/selectWithoutLabel.png)
 
 A better alternative is to pass the `$name` parameter to `makeInputSelect` and  `makeInputMultiSelect` to display a friendly value for the select option.
 
@@ -249,7 +249,7 @@ Now, we can use this method in `DishTable` to access our collection of codes.
 
 The example above results in a much more user-friendly table:
 
-<img class="result-image" alt="makeInputSelect" src="../_media/examples/filters/selectWithLabel.png" width="500" />
+![Output](/_media/examples/filters/selectWithLabel.png)
 
 ---
 
@@ -293,7 +293,7 @@ enum Diet: int
 }
 ```
 
-In PowerGrid you can make use of [closures](table/add-columns.md?id=enum) to display your Enum labels instead of the default database values.
+In PowerGrid you can make use of [closures](add-columns.html#enum) to display your Enum labels instead of the default database values.
 
 Including the column with filter:
 
@@ -309,7 +309,7 @@ Column::add()
 
 Result:
 
-<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelect.png" width="150" />
+![Output](/_media/examples/filters/makeInputEnumSelect.png)
 
 To display your `labels` instead of case values, you can inlcude the `labelPowergridFilter` method inside your enum.
 
@@ -331,7 +331,7 @@ enum Diet: int
 }
 ```
 
-<img class="result-image" alt="makeInputMultiSelect" src="../_media/examples/filters/makeInputEnumSelectLabel.png" width="150" />
+![Output](/_media/examples/filters/makeInputEnumSelectLabel.png)
 
 ---
 
@@ -366,11 +366,11 @@ public function columns(): array
 
 Result:
 
-<img class="result-image" alt="makeInputRange" src="../_media/examples/filters/makeInputRange.png" width="100" />
+![Output](/_media/examples/filters/makeInputRange.png)
 
 ## Filter by Relationship
 
-To filter by relationships, add each relationship of your main [Datasource](table/datasource?id=datasource) Table in the `relationSearch` method.
+To filter by relationships, add each relationship of your main [Datasource](datasource?id=datasource) Table in the `relationSearch` method.
 
 The relationships must be added in the format:
 
@@ -392,7 +392,3 @@ public function relationSearch(): array
 
 The example above adds the relationship to the `kitchen`  Model and allows the column `name` to be searched.
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/column-summary">Column Summary →</a></span>
-</footer>

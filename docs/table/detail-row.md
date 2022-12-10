@@ -46,7 +46,7 @@ You can access your model data in the view file using the variable `$row`.
 
 Result:
 
-<img class="result-image" alt="disable" src="../_media/examples/features/detail-row-open.png" width="600"/>
+![Output](/_media/examples/features/detail-row-open.png)
 
 --- 
 
@@ -95,11 +95,6 @@ In the view, you can access the method like this (Example):
 
 ### Toggle
 
-You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](table/row-actions-buttons?id=toggledetail) or simply by calling the method
+You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](row-actions-buttons?id=toggledetail) or simply by calling the method
 `$this->toggleDetail(string $id)` passing the Id as a parameter.
 
-
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/custom-theme">Themes →</a></span>
-</footer>

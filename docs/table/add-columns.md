@@ -1,6 +1,6 @@
 # Add Columns
 
-Before adding columns to your table, you must make [Datasource](table/datasource) fields available as columns.
+Before adding columns to your table, you must make [Datasource](datasource) fields available as columns.
 
 To make a new column, use the `addColumns()` method. This method is inside your PowerGrid file (e.g. `DishTable.php`).
 
@@ -33,10 +33,14 @@ public function addColumns(): PowerGridEloquent
 }
 ```
 
-> **❗ Important:** After creating a column, you must include it in your Table using the [Column::add()](table/include-columns) method.
+::: warning
+After creating a column, you must include it in your Table using the [Column::add()](include-columns) method.
+::: 
 
 ### Sortable
-> **❗ Important:** Whenever the column name is different from the one in the database, remember to reference it in dataField in the [Column::field()](table/include-columns?id=fieldstring-field-string-datafield) method otherwise sortable will not work.
+::: warning
+Whenever the column name is different from the one in the database, remember to reference it in dataField in the [Column::field()](include-columns?id=fieldstring-field-string-datafield) method otherwise sortable will not work.
+:::
 
 ```php
 //..
@@ -59,7 +63,7 @@ public function columns(): PowerGridEloquent
 }
 ```
 
-```php
+```php{17}
 //..
 <!-- ✅ Right -->
 public function addColumns(): PowerGridEloquent
@@ -82,7 +86,11 @@ public function columns(): PowerGridEloquent
 
 
 ### Searchable
-> **❗ Important:** Always add the actual column name in the database if it is searchable.
+
+::: warning
+Always add the actual column name in the database if it is searchable.
+:::
+<br/>
 
 ```php
 //..
@@ -135,10 +143,9 @@ This is often the case with date, currency and boolean values.
 
 Let's check some examples using `closures` to format data!
 
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
-
+::: warning
+When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
+:::
 
 ### Link in cell
 
@@ -150,18 +157,18 @@ The example below creates a new column called `location_link` containing a link 
 //..
 public function addColumns(): PowerGridEloquent
 {
-  return PowerGrid::eloquent()
-    ->addColumn('location_link', function (Dish $model) {
-      return '<a href="https://www.google.com/maps/search/' . e($model->lat_long) . '">'. e($model->location_name) .'</a>'; 
-    });
+    return PowerGrid::eloquent()
+        ->addColumn('location_link', function (Dish $model) {
+            return '<a href="https://www.google.com/maps/search/' . e($model->lat_long) . '">'. e($model->location_name) .'</a>'; 
+        });
 }
 ```
 
 The example above produces the HTML `<a href="https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542">Copacabana</a>` which would look like: [Copacabana](https://www.google.com/maps/search/-22.973587702676607,-43.18527287193542).
 
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
+::: warning
+When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
+:::
 
 <br/>
 
@@ -173,15 +180,14 @@ The following code demonstrates a new custom column `created_at_formatted`.
 
 In this column, date is parsed and displayed as `d/m/Y H:i` (20/01/2021 10:05).
 
-```php
+```php{6}
 //..
 public function addColumns(): PowerGridEloquent
 {
-
-  return PowerGrid::eloquent()
-    ->addColumn('created_at_formatted', function (Dish $model) {
-      return Carbon::parse($model->created_at)->format('d/m/Y H:i');
-    });
+    return PowerGrid::eloquent()
+        ->addColumn('created_at_formatted', function (Dish $model) {
+            return Carbon::parse($model->created_at)->format('d/m/Y H:i');
+        });
 }
 ```
 
@@ -199,7 +205,7 @@ public function addColumns(): PowerGridEloquent
 
   return PowerGrid::eloquent()
     ->addColumn('price_in_eur', function (Dish $model) {
-      return $fmt->formatCurrency($model->price, "EUR");
+       return $fmt->formatCurrency($model->price, "EUR");
     });
 }
 ```
@@ -230,21 +236,19 @@ Code:
 
 use Illuminate\Support\Str;
 
-//...
-
 public function addColumns(): PowerGridEloquent
 {
-
-  return PowerGrid::eloquent()
-    ->addColumn('description_excerpt', function (Dish $model) {
-        return Str::words(e($model->description), 8); //Gets the first 8 words
-    });
+    return PowerGrid::eloquent()
+       ->addColumn('description_excerpt', function (Dish $model) {
+           return Str::words(e($model->description), 8); //Gets the first 8 words
+       });
 }
 ```
 
-> **❗ Security:** 
-> 
-> When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
+
+::: warning
+When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
+:::
 
 ### Boolean
 
@@ -304,7 +308,3 @@ public function addColumns(): PowerGridEloquent
 }
 ```
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/include-columns">Include Columns →</a></span>
-</footer>

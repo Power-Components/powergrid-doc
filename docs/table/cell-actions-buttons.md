@@ -1,6 +1,6 @@
 # Cell Action Buttons
 
-Cell Action buttons can be configured in each column inside the [columns()](table/include-columns) method.
+Cell Action buttons can be configured in each column inside the [columns()](include-columns) method.
 
 This method is inside your PowerGrid file (e.g. `DishTable.php`).
 
@@ -10,14 +10,13 @@ You can add buttons to your each cell of a column by chaining [Cell Action metho
 
 The following example adds a `toggleable` button to each cell of "In Stock" column.
 
-```php
+```php{11}
 //...
 public function columns(): array
 {
-  $canEdit = true; //User has edit permission
+    $canEdit = true; // User has edit permission
 
     return [
-
         Column::add()
             ->title('In Stock')
             ->field('in_stock'),
@@ -31,23 +30,25 @@ public function columns(): array
 
 These methods will add action buttons to each cell of a specific column in your Table.
 
-### editOnClick(hasPermission: true, fallback: 'Type here', saveOnMouseOut: false)
+### editOnClick
 
-If `$hasPermission` is `true`, an "action link" will be displayed in the cell.
+* When the user clicks on this link, the cell is converted into an input text.
 
-If the value is null and `$fallback` is filled, the input value will receive this value.
-
-If `$saveOnMouseOut` is true, clicking anywhere outside will save the data
-
-When the user clicks on this link, the cell is converted into an input text.
+| Parameter              | Description                                                                              | Default |
+|------------------------|------------------------------------------------------------------------------------------|---------|
+| (bool) $hasPermission  | If is `true`, an "action link" will be displayed in the cell.                            | true    |
+| (?string) $fallback    | If the value is null and `$fallback` is filled, the input value will receive this value. | null    |
+| (bool) $saveOnMouseOut | If `$saveOnMouseOut` is true, clicking anywhere outside will save the data               | false   |
 
 The content can be edited and saved by pressing the `<enter>` key.
 
-When pressing esc the value entered will be canceled and returned to the normal state.
+::: tip
+If `$saveOnMouseOut` is '`true`', when pressing esc the value entered will be canceled and returned to the normal state.
+::: 
 
 Example:
 
-```php
+```php{7}
 //...
 $canEdit = auth()->can('user_edit'); // User has edit permission
 
@@ -57,25 +58,29 @@ Column::add()
     ->editOnClick($canEdit),
 ```
 
-> When pressing enter, powergrid will send the received value to a public property, which you can use however you want, 
+::: details
+When pressing enter, powergrid will send the received value to a public property, which you can use however you want, 
 but we recommend using the native powergrid method: `onUpdatedEditable`
+::: 
 
-```php
+```php{3-8}
 public ?string $name = null;
 
 public function onUpdatedEditable($id, $field, $value): void
 {   
     User::query()->find($id)->update([
-            $field => $value,
+        $field => $value,
     ]);
 }
 ```
 
 ### Validation
 
-> To do the validation, make sure you put **$rules** and the **validate()** method before saving
+::: warning
+To do the validation, make sure you put **$rules** and the **validate()** method before saving
+::: 
 
-```php
+```php{1,4,9}
 public ?string $name = null;
 
 protected array $rules = [
@@ -87,32 +92,42 @@ public function onUpdatedEditable($id, $field, $value): void
     $this->validate();
     
     User::query()->find($id)->update([
-            $field => $value,
+        $field => $value,
     );
 }
 ```
 
 Result:
 
-<img class="result-image" alt="editOnClick" src="../_media/examples/cell_buttons/editOnClick.png" width="300"/>
+![Output](/_media/examples/cell_buttons/editOnClick.png)
 
-!> **❗ Important:** editOnClick on click requires [Update Data](table/update-data?id=update-data) method to be configured.
-
-!> **❗ ️Important:** This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
+::: warning
+editOnClick on click requires [Update Data](update-data?id=update-data) method to be configured.
+::: 
+---
+::: warning
+This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
+:::
 
 --- 
 
-### toggleable(bool $isToggleable, string $trueLabel, string $falseLabel)
+### toggleable
 
-If `isToggleable` is `true`, the table cell will be converted into a `toggleable` button.
+* If `isToggleable` is `true`, the table cell will be converted into a `toggleable` button.
 
-When it is `false`, the table cell will contain the text passed in `$trueLabel`/`$falseLabel`, according to its `boolean` value.
+| Parameter            | Description                 | Default |
+|----------------------|-----------------------------|---------|
+| (bool) $isToggleable | enable/disable this feature | false   |
+| (string) $trueLabel  | **Value if is `true`        | null    |
+| (string) $falseLabel | **Value if is `true`        | false   |
+
+** When `$isToggleable` it is `false`, the table cell will contain the text passed in `$trueLabel`/`$falseLabel`, according to its `boolean` value.
 
 This is useful when the user do not have permission to edit data and must see a text instead of a button.
 
 Example:
 
-```php
+```php{8}
 //...
 $canEdit = true; //User has edit permission
 
@@ -123,7 +138,9 @@ Column::add()
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
-> To get the data from a toggleable, use the `onUpdatedToggleable` method
+::: tip
+To get the data from a toggleable, use the `onUpdatedToggleable` method
+:::
 
 ```php
 public function onUpdatedToggleable($id, $field, $value): void
@@ -135,25 +152,33 @@ public function onUpdatedToggleable($id, $field, $value): void
 ```
 Result:
 
-<img class="result-image" alt="toggleable" src="../_media/examples/cell_buttons/toggleable.png" width="100"/>
+![Output](/_media/examples/cell_buttons/toggleable.png)
 
-!> **❗ Important:** toggleable requires [Update Data](table/update-data?id=update-data) method to be configured.
-
-!> **❗ Important:** This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name').
+::: warning
+toggleable requires [Update Data](update-data?id=update-data) method to be configured.
+::: 
+---
+::: warning
+This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name').
+::: 
 
 ---
 
-### clickToCopy(bool $hasPermission, string $caption)
+### clickToCopy
 
 If `$hasPermission` is `true`, PowerGrid appends a `click to copy button` to your table cell.
 
-The argument `$caption` sets the button caption.
+| Parameter             | Description                                      | Default |
+|-----------------------|--------------------------------------------------|---------|
+| (bool) $hasPermission | enable/disable this feature                      | false   |
+| (string) $caption     | The argument `$caption` sets the button caption. | null    |
+
 
 Example:
 
-```php
+```php{7}
 //...
-$canCopy = true; //User has permission to copy
+$canCopy = true; // User has permission to copy
 
 Column::add()
     ->title('Name')
@@ -163,9 +188,4 @@ Column::add()
 
 Result:
 
-<img class="result-image" alt="clickToCopy" src="../_media/examples/cell_buttons/clickToCopy.png" width="200"/>
-
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/row-actions-buttons">Row Actions Buttons →</a></span>
-</footer>
+![Output](/_media/examples/cell_buttons/clickToCopy.png)
