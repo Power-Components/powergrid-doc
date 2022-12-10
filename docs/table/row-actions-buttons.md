@@ -33,69 +33,111 @@ The example above generates a gray button. When clicked, this button opens a new
 
 The methods below can be chained to the `PowerComponents\LivewirePowerGrid\Button` class.
 
-### add(string $action)
+### add
 
 Creates a new button.
 
+| Parameter        | Description                  | 
+|------------------|------------------------------|
+| (string) $action | internal name of this button |
+
+
 Example:
 
-`Button::add('create-dish')`
+```php{2}
+//..
+Button::add('create-dish')  
+```
 
 ---
 
-### caption(string $caption)
+### caption
 
 Sets the button label.
 
-Example:
-
-`->caption('Create a dish')`
-
----
-
-### class(string $class_attr)
-
-Sets the button CSS class attribute.
+| Parameter         | Description    | 
+|-------------------|----------------|
+| (string) $caption | button caption |
 
 Example:
 
-`->class('bg-indigo-500 text-white')`
+```php{3}
+//..
+Button::add('create-dish')  
+    ->caption('Create a dish')
+```
 
 ---
 
-### emit(string $event, array $params)
+### class
 
-Emit works with event listeners.
+* Sets the button CSS class attribute.
 
+| Parameter           | Description      | 
+|---------------------|------------------|
+| (string) $classAttr | HTML class value |
+
+Example:
+
+```php{4}
+//..
+Button::add('create-dish')  
+    ->caption('Create a dish')
+    ->class('bg-indigo-500 text-white')
+```
+
+---
+
+### emit
+
+* Emit works with event listeners.
+
+| Parameter       | Description   | 
+|-----------------|---------------|
+| (string) $event | Name of event |
+| (array) $params | Parameters    |
+
+::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+::: 
 
 The code below:
 
-```php
+```php{5}
 //...
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
+Button::add('create-dish')  
+    ->caption('Create a dish')
+    ->class('bg-indigo-500 text-white')
     ->emit('postAdded', ['key' => 'id']),
 ```
 
 is equivalent to:
 
-```html
-<button wire:click="$emit('postAdded', ['key' => 1])">
+```html{2}
+<div>
+    <button wire:click="$emit('postAdded', ['key' => 1])">
+</div>
 ```
 
 ---
 
-### emitTo(string $to, string $event, array $params)
+### emitTo
 
-Emit works with event listeners.
+* Emit works with event listeners.
 
+| Parameter       | Description    | 
+|-----------------|----------------|
+| (string) $to    | Component name |
+| (string) $event | Name of event  |
+| (array) $params | Parameters     |
+
+::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+::: 
 
 The code below:
 
-```php
+```php{5}
 //...
 Button::add('view')
     ->caption('View')
@@ -105,21 +147,30 @@ Button::add('view')
 
 is equivalent to:
 
-```html
-<button wire:click="$emitTo('admin-component', 'postAdded', ['key' => 1])">
+```html{2}
+<div>
+    <button wire:click="$emitTo('admin-component', 'postAdded', ['key' => 1])">
+</div>
 ```
 
 ---
 
-### dispatch(string $event, array $params)
+### dispatch
 
-Dispatch browser events.
+* Dispatch browser events.
 
+| Parameter       | Description    | 
+|-----------------|----------------|
+| (string) $event | Name of event  |
+| (array) $params | Parameters     |
+
+::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events#browser) in the Livewire documentation.
+:::
 
 The code below:
 
-```php
+```php{5}
 //...
 Button::add('view')
     ->caption('View')
@@ -130,71 +181,111 @@ Button::add('view')
 is equivalent to:
 
 ```html
-<button x-on:click="$dispatch('eventName', ['key' => 1])">
+<div>
+    <button x-on:click="$dispatch('eventName', ['key' => 1])">
+</div>
 ```
 
 ---
 
-### openModal(string $component, array $params)
+### openModal
 
-Opens a modal window.
+* Opens a modal window with wire-elements/modal packages
 
+| Parameter           | Description                                           | 
+|---------------------|-------------------------------------------------------|
+| (string) $component | You must pass the `View` of Livewire Modal component. |
+| (array) $params     | This is the component parameter.                      |
+
+::: warning
 You must install [Wire Elements Modal](https://github.com/wire-elements/modal) to use this functionality. More information is also available at its documentation.
-
-Parameters:
-
-- `$component`: You must pass the `View` of Livewire Modal component.
-- `$params`: This is the component parameter.
+::: 
 
 Example:
 
-`->openModal('view-dish', ['dish' => 'id'])`
+```php{5}
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->openModal('view-dish', ['dish' => 'id']),
+```
 
 ---
 
-### method(string $method)
+### method
 
-Sets the action's HTTP method.
+* Sets the action's HTTP method.
 
-Valid methods: `get`/`post`/`put`/`delete`
+| Parameter        | Description                                | 
+|------------------|--------------------------------------------|
+| (string) $method | Valid methods: `get`/`post`/`put`/`delete` |
 
 Example:
 
-`->method('delete')`
+```php{5}
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->method('delete'),
+```
 
 ---
 
-### route(string $route, array $params)
+### route
 
-Sets the action's route.
+* Sets the action's route.
+
+| Parameter        | Description         | 
+|------------------|---------------------|
+| (string) $route  | Valid Laravel route |
+| (string) $params | Route parameters    |
 
 Example:
 
-`->route('dish.edit', ['dish' => 'id'])`
+```php{5}
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->route('dish.edit', ['dish' => 'id']),
+```
 
 ---
 
-### target(string $target)
+### target
 
-Sets the target for the specified route.
+* Sets the target for the specified route.
 
-By default: `_blank`.
+| Parameter        | Default          | Default |
+|------------------|------------------|---------|
+| (string) $target | HTML href target | _blank  |
 
 Example:
 
-`->target('_self')`
+
+```php{5}
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->target('_self'),
+```
 
 ---
 
-### can(bool $can)
+### can
 
-Sets Action's permission.
+* Sets Action's permission.
 
-If `$can` is `false`, the button will not be rendered.
+| Parameter     | Default                                         | Default |
+|---------------|-------------------------------------------------|---------|
+| (string) $can | If is `false`, the button will not be rendered. | true    |
 
 Example:
 
-```php
+```php{1,6}
 $canClickButton = true; //User has permission to edit
 
 Button::add('edit-dish')
@@ -205,13 +296,17 @@ Button::add('edit-dish')
 
 ---
 
-### tooltip(string $tooltip)
+### tooltip
 
-Sets the button tooltip (title attribute).
+* Sets the button tooltip (title attribute).
+
+| Parameter         | 
+|-------------------|
+| (string) $tooltip | 
 
 Example:
 
-```php
+```php{4}
 Button::add('edit-dish')
     ->caption('Edit')
     ->route('dish.edit', ['dish' => 'id'])
@@ -220,25 +315,30 @@ Button::add('edit-dish')
 
 ---
 
-### toggleDetail()
+### toggleDetail
 
-Toggle the [detailRow](table/detail-row)
+* Toggle the [detailRow](detail-row)
 
 Example:
 
-```php
+```php{3}
 Button::add('toggle-detail')
     ->caption('Toggle Detail')
     ->toggleDetail(),
 ```
 
-### bladeComponent(string $component, array $params)
+### bladeComponent
 
-Allows you to add a custom component overriding all default behavior
+* Allows you to add a custom component overriding all default behavior
+
+| Parameter           | Default                     | 
+|---------------------|-----------------------------|
+| (string) $component | View component path (blade) |
+| (array) $params     | Blade parameters            |
 
 Example:
 
-```php
+```php{2}
 Button::add('my-custom-button')
     ->bladeComponent('my-custom-button', ['dishId' => 'id']),
 ```
@@ -263,9 +363,13 @@ Button::add('my-custom-button')
 
 ---
 
-### id(string $value)
+### id
 
-Add custom id attribute.
+* Add custom html id attribute.
+
+| Parameter       |
+|-----------------|
+| (string) $value | 
 
 The code below:
 
@@ -283,9 +387,3 @@ is equivalent to:
 <button id="view-1"> // 1 - is the value set in the current row using primaryKey = id.
 ```
 
----
-
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/bulk-actions">Bulk Actions →</a></span>
-</footer>

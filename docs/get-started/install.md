@@ -43,7 +43,4 @@ To publish Language files, run:
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-lang
 ```
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/configure">Configure →</a></span>
-</footer>
+

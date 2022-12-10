@@ -6,7 +6,9 @@ Queue export will divide your records into batches, increasing the export perfor
 
 For instance, if you have 1 million records, you may set up 10 queues. Each batch will contain a total of 100,000 records.
 
-!> **❗ Important:** Queues only take effect when exporting ALL records. If you have manually selected some records, they will be exported in a single batch.
+::: warning
+Queues only take effect when exporting ALL records. If you have manually selected some records, they will be exported in a single batch.
+::: 
 
 <br/>
 
@@ -85,7 +87,4 @@ public function onBatchExecuting(Batch $batch)
 
 > 💡 **TIP:**  Read more about Batches in Laravel [Documentation](https://laravel.com/docs/8.x/queues#inspecting-batches).
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/component-settings">Component Settings →</a></span>
-</footer>
+

@@ -2,8 +2,9 @@
 
 A Bulk Action is an efficient way to perform actions on one or more selected rows at the same time.
 
-**❗ Important:** Only available for Tailwind theme
-
+::: warning
+Only available for Tailwind theme
+::: 
 
 To illustrate, imagine you that you need to select several "dishes" and mark them as "Sold-out".
 
@@ -85,7 +86,3 @@ Finally, for this example to work, you must listen for the `showAlert` in the bl
 
 Now, you can select some rows and when you click on "Mark as Sold-out" button, an alert should appear with the IDs you have selected.
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/action-rules">Action Rules →</a></span>
-</footer>
