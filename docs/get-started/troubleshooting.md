@@ -12,7 +12,7 @@ Do this in the settings:
 > In this case, there is no support for **pt_BR**, so change locale pt_BR to **pt**
 
 `config/livewire-powergrid.php`
-```php
+```php{7}
      'plugins' => [
         // ...
         'flatpickr' => [

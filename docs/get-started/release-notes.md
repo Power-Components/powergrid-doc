@@ -1,10 +1,12 @@
 # Release Notes
 
+[[toc]]
+
 ### Dependencies
 
 Powergrid was born with the intention of always keeping as close as possible to the latest laravel update, so we updated the minimum versions of php, tailwind and livewire for greater support and durability.
 
-[Read more](get-started/upgrade-guide?id=dependency-upgrades)
+[Read more](upgrade-guide?id=dependency-upgrades)
 
 ---
 
@@ -12,7 +14,7 @@ Powergrid was born with the intention of always keeping as close as possible to 
 
 We changed the way we handle powergrid component initialization to make it easier to add new methods and improvements to isolated parts.
 
-[Read more](table/features-setup?id=features-setup)
+[Read more](../table/features-setup?id=features-setup)
 
 ---
 
@@ -42,9 +44,9 @@ From this version we can define the color itself in the export listing by passin
 
 Result:
 
-<img class="result-image" alt="validation" src="../_media/examples/features/striped.png" width="500"/>
+![Output](/_media/examples/features/striped.png)
 
-[Read more](table/features-setup?id=striped)
+[Read more](../table/features-setup?id=striped)
 
 ---
 
@@ -54,7 +56,7 @@ We made some layout improvements (tailwind only).
 
 Result:
 
-<img class="result-image" alt="validation" src="../_media/examples/features/new-layout.png" width="1200"/>
+![Output](/_media/examples/features/new-layout.png)
 
 ---
 
@@ -67,7 +69,7 @@ It will be activated when `$showErrorBag = true`;
 
 Here's an example:
 
-```php
+```php{1,4,13}
     public bool $showErrorBag = true;
 
     protected array $rules = [
@@ -96,7 +98,7 @@ Here's an example:
 
 Result:
 
-<img class="result-image" alt="validation" src="../_media/examples/features/validation.png" width="500"/>
+![Output](/_media/examples/features/validation.png)
 
 ---
 
@@ -105,7 +107,7 @@ Result:
 Now we can enter details for each row reusing the component details.
 
 Example:
-```php
+```php{6-9}
    use PowerComponents\LivewirePowerGrid\Detail;
 
    public function setUp(): array
@@ -128,17 +130,17 @@ Example:
 
 Result - Detail closed:
 
-<img class="result-image" alt="validation" src="../_media/examples/features/detail-row-close.png" width="500"/>
+![Output](/_media/examples/features/detail-row-close.png)
 
 Result - Detail open:
 
-<img class="result-image" alt="validation" src="../_media/examples/features/detail-row-open.png" width="500"/>
+![Output](/_media/examples/features/detail-row-open.png)
 
-We can also switch the view to a specific row using [Action Rules](table/action-rules?id=action-rules).
+We can also switch the view to a specific row using [Action Rules](../table/action-rules?id=action-rules).
 
 `toggleDetail()` method will toggle the detail.
 
-```php
+```php{6,16}
     public function actions(): array
     {
         return [
@@ -160,7 +162,7 @@ We can also switch the view to a specific row using [Action Rules](table/action-
 
 ```
 
-[Read more](get-started/release-notes?id=improved-setup-method)
+[Read more](release-notes.html#dependencies)
 
 ---
 
@@ -220,10 +222,4 @@ Now:
          ];
     }
 ```
----
-###
 
-<hr />
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/upgrade-guide">Upgrade Guide →</a></span>
-</footer>

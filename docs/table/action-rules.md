@@ -18,8 +18,7 @@ The modifiers will take effect when the condition is satisfied.
 
 The following code represents the "out-of-stock" use case described in this page introduction:
 
-```php
-//..
+```php{5,8,17,19}
 // Create an Action Button for ordering a dish.
 public function actions(): array
 {
@@ -30,6 +29,7 @@ public function actions(): array
             ->emit('order-dish', ['dishId' => 'id'])
     ];
 }
+
 // Rules
 public function actionRules(): array
 {
@@ -50,7 +50,7 @@ public function actionRules(): array
 
 Result:
 
-<img class="result-image" alt="disable" src="../_media/examples/action_rules/example.png" width="600"/>
+![Output](/_media/examples/action_rules/example.png)
 
 ### Combining modifiers
 
@@ -98,19 +98,19 @@ The `Modifiers` will take effect when the Rule condition is satisfied. You can u
 
 Available methods:
 
-- [Disable](table/action-rules?id=disable)
-- [Hide](table/action-rules?id=hide)
-- [Caption](table/action-rules?id=captionstring-caption)
-- [Emit](table/action-rules?id=emitstring-event-array-params-)
-- [EmitTo](table/action-rules?id=emittostring-to-string-event-array-params-) 
-- [setAttribute](table/action-rules?id=setattributestring-attribute-null-string-value-null)
-- [hideToggleable](table/action-rules?id=hidetoggleable)
-- [showtoggleable](table/action-rules?id=showtoggleable)
-- [Redirect](table/action-rules?id=redirectclosure-closure-string-target-_blank)
+- [Disable](#disable)
+- [Hide](#hide)
+- [Caption](#caption)
+- [Emit](#emit)
+- [EmitTo](#emitto) 
+- [setAttribute](#setattribute)
+- [hideToggleable](#hidetoggleable)
+- [showtoggleable](#showtoggleable)
+- [Redirect](#redirect)
 
-### disable()
+### disable
 
-Disables the target (available for Buttons and Checkboxes).
+* Disables the target (available for Buttons and Checkboxes).
 
 Example:
 
@@ -123,9 +123,9 @@ Rule::button('order-dish')
 
 ---
 
-### hide()
+### hide
 
-Hides the target (available for Buttons and Checkboxes).
+* Hides the target (available for Buttons and Checkboxes).
 
 Example:
 
@@ -138,13 +138,17 @@ Rule::checkbox()
 
 ---
 
-### caption(string $caption)
+### caption
 
-Sets the target caption value (available for Buttons).
+* Sets the target caption value (available for Buttons).
+
+| Parameter         | 
+|-------------------|
+| (string) $caption |
 
 Example:
 
-```php
+```php{4}
 // Changes the caption for dishes on sale
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->on_sale == true)
@@ -153,13 +157,22 @@ Rule::button('order-dish')
 
 ---
 
-### emit(string $event = '', array $params = [])
+### emit
 
-Sets the event emitted by the target (available for Buttons).
+* Sets the event emitted by the target (available for Buttons).
+
+| Parameter       | Description   | 
+|-----------------|---------------|
+| (string) $event | Name of event |
+| (array) $params | Parameters    |
+
+::: tip
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+:::
 
 Example:
 
-```php
+```php{4}
 // Emits an alert for spice dishes
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
@@ -168,13 +181,23 @@ Rule::button('order-dish')
 
 ---
 
-### emitTo(string $to = '', string $event = '', array $params = [])
+### emitTo
 
-Sets an event and a target to which the event will be emitted to (available for Buttons).
+* Sets an event and a target to which the event will be emitted to (available for Buttons).
+
+| Parameter       | Description    | 
+|-----------------|----------------|
+| (string) $to    | Component name |
+| (string) $event | Name of event  |
+| (array) $params | Parameters     |
+
+::: tip
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+:::
 
 Example:
 
-```php
+```php{5}
 // Emits the event showSpiceAlert to a third part alert-component on click
 
 Rule::button('order-dish')
@@ -186,32 +209,35 @@ Read more in [Livewire](https://laravel-livewire.com/docs/2.x/events#scope-by-na
 
 ---
 
-### setAttribute(string $attribute = null, string $value = null)
+### setAttribute
 
-Sets the specified target attribute to the given value.
+* Sets the specified target attribute to the given value.
 
-> Multiples are issued for the target **button** only
+| Parameter           | Description                               | 
+|---------------------|-------------------------------------------|
+| (string) $attribute | HTML attribute (class,id, x-on:click ...) |
+| (string) $value     | Attribute value                           |
+
+::: tip
+Multiples are issued for the target **button** only
+::: 
 
 Example:
 
 Change row background to red when dish is out of stock
 
 ```php
-
 Rule::rows()
     ->when(fn($dish) => $dish->in_stock == false)
     ->setAttribute('class', '!bg-red-200'),
-
 ```
 
 `Output:`
 
 ```html
-
 <button class="bg-indigo-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm !bg-red-200">
         Edit
 </button>
-
 ```
 
 Add wire:click attribute when dish is out of stock
@@ -239,15 +265,15 @@ Rule::button('edit')
 
 ---
 
-### hideToggleable()
+### hideToggleable
 
-Hides the [Toggleable](table/cell-actions-buttons?id=toggleablebool-istoggleable-string-truelabel-string-falselabel) switch for the row.
+* Hides the [Toggleable](cell-actions-buttons.html#toggleable) switch for the row.
 
 Toggleable must be configured in the column. This feature will only hide the Toggleable, not disable it.
 
 Example:
 
-```php
+```php{4}
 // Hide Toggleable for Soft deleted dishes
 Rule::button('read-more')
     ->when(fn ($dish) => $dish->trashed() == true)
@@ -256,9 +282,9 @@ Rule::button('read-more')
 
 ---
 
-### showToggleable()
+### showToggleable
 
-Shows the [Toggleable](table/cell-actions-buttons?id=toggleablebool-istoggleable-string-truelabel-string-falselabel) switch for the row.
+* Shows the [Toggleable](cell-actions-buttons.html#toggleable) switch for the row.
 
 Toggleable must be configured in the column. This feature will only show the Toggleable, not disable it.
 
@@ -273,13 +299,18 @@ Rule::button('read-more')
 
 ---
 
-### redirect(Closure $closure, string $target = '_blank')
+### redirect
 
-Sets target's redirect URL (available for Buttons).
+* Sets target's redirect URL (available for Buttons).
+
+| Parameter          | Description      | Default |
+|--------------------|------------------|---------|
+| (Closure) $closure | Closure          | _blank  |
+| (string) $target   | HTML href target |
 
 Example:
 
-```php
+```php{4}
 // Redirects to Google search for exotic dishes
 Rule::button('read-more')
     ->when(fn($dish) => $dish->is_exotic == true)
@@ -288,19 +319,20 @@ Rule::button('read-more')
 
 ---
 
-### bladeComponent(string $component, array $params)
+### bladeComponent
 
-Change blade component when dish is out of stock
+* Change blade component when dish is out of stock
+
+| Parameter           | Default                     | 
+|---------------------|-----------------------------|
+| (string) $component | View component path (blade) |
+| (array) $params     | Blade parameters            |
 
 Example:
 
-```php
+```php{3}
 Rule::button('read-more')
     ->when(fn($dish) => $dish->in_stock == false)
     ->bladeComponent('another-custom-button', ['dishId' => 'id']),
 ```
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/update-data">Update Data →</a></span>
-</footer>

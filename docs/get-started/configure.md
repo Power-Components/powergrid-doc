@@ -1,12 +1,14 @@
 # Configure
 
+[[toc]]
+
 ## 1. Include Scripts and Styles
 
 Include the following Scripts and Stylesheets in your page:
 
 Styles must be included before the `</head>` tag.
 
-```html
+```html{3}
     <!-- Styles -->
     @livewireStyles
     @powerGridStyles
@@ -16,7 +18,7 @@ Styles must be included before the `</head>` tag.
 
 Scripts must be included before the `</body>` tag.
 
-```html
+```html{3}
     <!-- Scripts -->
     @livewireScripts
     @powerGridScripts
@@ -24,7 +26,9 @@ Scripts must be included before the `</body>` tag.
 </body>
 ```
 
-> 💡 Read more about this requirement at the official [Livewire documentation](https://laravel-livewire.com/docs/2.x/quickstart)
+::: tip
+💡 Read more about this requirement at the official [Livewire documentation](https://laravel-livewire.com/docs/2.x/quickstart)
+::: 
 
 ## 2. Alpine JS
 
@@ -68,23 +72,25 @@ Your Theme can be set at `config/livewire-powergrid.php`.
 
 To change to Bootstrap 5, modify your `theme` option as follows:
 
-> 💡 Read more how to customize your [Theme](table/custom-theme).
-
+::: tip
+💡 Read more how to customize your [Theme](../table/custom-theme).
+::: 
 --- 
 
 ## 4. Bootstrap 5 settings
-```php
+```php{6}
     /*
     |--------------------------------------------------------------------------
     | Theme
     |--------------------------------------------------------------------------
     */
     'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
+    
 ```
 
 Some features are not available in the Bootstrap version:
-* [Filters outside](get-started/configure?id=_7-filters)
-* [Detail Row](table/detail-row)
+* [Filters outside](configure?id=_7-filters)
+* [Detail Row](../table/detail-row)
 
 Next, include jQuery and Bootstrap scripts in your page.
 
@@ -105,7 +111,7 @@ Next, include jQuery and Bootstrap scripts in your page.
 
 To enable Dark Mode, configure the `DarkMode` class in `tailwind.config.js` file as follows:
 
-```javascript
+```javascript{2}
 module.exports = {
     darkMode: 'class',
 }
@@ -115,7 +121,7 @@ module.exports = {
 
 If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tailwind.config.js` file:
 
-```javascript
+```javascript{4-6}
 module.exports = {
   content: [
       // ....
@@ -146,7 +152,7 @@ module.exports = {
 
 This approach will avoid layout conflicts such as:
 
-<img class="result-image" alt="Tailwind-Forms-Conflict" src="../_media/conflict_tailwindforms.png" width="500"/>
+![Output](/_media/conflict_tailwindforms.png)
 
 > 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
 
@@ -161,12 +167,12 @@ To disable cache, change `cached_data` to `false` in `config/livewire-powergrid.
 Example:
 
 ```php
-    /*
-    |--------------------------------------------------------------------------
-    | Cache
-    |--------------------------------------------------------------------------
-    */
-    'cached_data' => false,
+/*
+|--------------------------------------------------------------------------
+| Cache
+|--------------------------------------------------------------------------
+*/
+'cached_data' => false,
 ```
 
 ## 7. Filters
@@ -182,19 +188,19 @@ Inline is configured by default. To modify, change `filter` setting in `config/l
 Example:
 
 ```php
-    /*
-    |--------------------------------------------------------------------------
-    | Filters
-    |--------------------------------------------------------------------------
-    */
-    'filter' => 'outside',
+/*
+|--------------------------------------------------------------------------
+| Filters
+|--------------------------------------------------------------------------
+*/
+'filter' => 'outside',
 ```
 
 ## 8. New Release Notification
 
 PowerGrid can verify if a new release is available when you create a new PowerGrid Table.
 
-![Output](../_media/notify-update.png)
+![Output](/_media/notify_update.png)
 
 To enable this feature, follow the next steps:
 
@@ -207,14 +213,11 @@ To enable this feature, follow the next steps:
 **8.2. Change 'check_version' to `true` in `config/livewire-powergrid.php`.**
 
 ```php
-    /*
-    |--------------------------------------------------------------------------
-    | New Release Notification
-    |--------------------------------------------------------------------------
-    */
-    'check_version' => true
+/*
+|--------------------------------------------------------------------------
+| New Release Notification
+|--------------------------------------------------------------------------
+*/
+'check_version' => true
 ```
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/create-powergrid-table">Create a PowerGrid Table →</a></span>
-</footer>
+

@@ -30,7 +30,7 @@ Route::view('/powergrid', 'powergrid-demo');
 Everything is ready! Access `http://your-app.example/powergrid` (change *your-app.example* to your app domain) and click around!
 
 
-> 💡 **TIP:**  To have PowerGrid fully running, proceed to [Install](get-started/install?id=install) and [Configure](get-started/configure?id=configure).
+> 💡 **TIP:**  To have PowerGrid fully running, proceed to [Install](install?id=install) and [Configure](configure?id=configure).
 
 ----
 
@@ -56,7 +56,4 @@ Check out some PowerGrid reviews and usage videos on Youtube:
 
 All videos were recorded by community members. If you like them, don't forget to hit 👍 Like, share and subscribe to their channels. Your reaction contributes to the community!
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/install">Install →</a></span>
-</footer>
+

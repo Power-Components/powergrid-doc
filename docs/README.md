@@ -1,3 +1,4 @@
+
 <div align="center">
 	<p><img  src="https://raw.githubusercontent.com/Power-Components/livewire-powergrid/main/art/header.jpg" alt="PowerGrid Header"></p>
 </div>
@@ -28,5 +29,5 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev)
 
 <hr/>
 <footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/get-started/powergrid?id=powergrid-doc">Next →</a></span>
+    <span><a style="text-decoration: none;" href="get-started">Next →</a></span>
 </footer>

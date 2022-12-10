@@ -1,17 +1,17 @@
 # Update Data
 
-Some PowerGrid features like [Cell Action Buttons](table/cell-actions-buttons) and [Row Action Buttons](table/row-actions-buttons) allow the user to modify Table data and update the database.
+Some PowerGrid features like [Cell Action Buttons](cell-actions-buttons) and [Row Action Buttons](row-actions-buttons) allow the user to modify Table data and update the database.
 
 You will need to configure your PowerGrid Table file (e.g. `DishTable.php`) to save data.
 
 **Listeners:**
 
-* [editOnClick()](table/update-data?id=editonclick)
-* [toggleable()](table/update-data?id=toggleable)
+* [editOnClick()](update-data.html?id=editonclick#editonclick)
+* [toggleable()](update-data.html?id=editonclick#toggleable)
 
 ### editOnClick
 
-The column "Name" reads the field `name` and is configured to [editOnClick](table/cell-actions-buttons?id=editonclickbool-iseditable).
+The column "Name" reads the field `name` and is configured to [editOnClick](cell-actions-buttons.html#editonclick-haspermission-true-fallback-type-here-saveonmouseout-false).
 
 ```php
 Column::add()
@@ -31,7 +31,9 @@ public function onUpdatedEditable(string $id, string $field, string $value): voi
 }
 ```
 
-!> **❗ Important:** You must treat and validate all data before the update query takes place. Additionally, you can also verify if the user has permission to edit data.
+::: warning
+You must treat and validate all data before the update query takes place. Additionally, you can also verify if the user has permission to edit data.
+:::
 
 ---
 
@@ -63,7 +65,7 @@ public function onUpdatedToggleable(string $id, string $field, string $value): v
 
 ## Custom columns
 
-If your Table has [Custom Columns](table/add-columns?id=closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
+If your Table has [Custom Columns](add-columns?id=closure-examples), you must modify the `$data['field']` specifying the database field where the data will be saved.
 
 For instance, the custom column `name_uppercase` must update the database field `name`. See the example below:
 
@@ -136,7 +138,7 @@ public function onUpdatedEditable(string $id, string $field, string $value): voi
 
 To reload data after a successful update, add `$this->fillData()` inside the `update()` method.
 
-This might be useful when the data is changed with [Edit on click](table/cell-action-buttons?=editonclickbool-iseditable) and the table must be re-sorted.
+This might be useful when the data is changed with [editOnClick](cell-actions-buttons.html#editonclick-haspermission-true-fallback-type-here-saveonmouseout-false) and the table must be re-sorted.
 
 Example:
 
@@ -165,11 +167,3 @@ public function onUpdatedEditable(string $id, string $field, string $value): voi
 }
 ```
 
----
-
-## Validation
-
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/queue-export">Queue Export →</a></span>
-</footer>

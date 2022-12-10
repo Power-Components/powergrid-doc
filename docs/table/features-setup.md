@@ -6,7 +6,7 @@ You can find this method inside your PowerGrid file (e.g. `DishTable.php`).
 
 Example of usage:
 
-```php
+```php{7}
 //..
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\Footer;
@@ -37,7 +37,7 @@ If your database table has a custom id column, you must pass the column name in 
 
 Example:
 
-```php
+```php{3}
 public function setUp(): array
 {
     $this->showCheckBox();
@@ -47,8 +47,7 @@ public function setUp(): array
 ```
 
 Result:
-
-<img class="result-image" alt="showCheckBox" src="../_media/examples/features/showCheckBox.png" width="200"/>
+![Output](/_media/examples/features/showCheckBox.png)
 
 ---
 # Header
@@ -66,13 +65,24 @@ Here are some actions for the table header defined inside `setup`:
 
 Enables the search functionality and show the search input field at the page top.
 
-```php
-Header::showSearchInput()
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Header 
+
+public function setUp(): array
+{
+    $this->showCheckBox();
+
+     return [
+         Header::make()
+             ->showSearchInput(),
+
+         // ...
+     ];
+}
 ```
 
 Result:
-
-<img class="result-image" alt="showSearchInput" src="../_media/examples/features/showSearchInput.png"/>
+![Output](/_media/examples/features/showSearchInput.png)
 
 ---
 
@@ -83,13 +93,25 @@ Displays the button to hide/show (toggle) columns.
 > Works fine without inline filters
 Example:
 
-```php 
-Header::showToggleColumns()
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Header 
+
+public function setUp(): array
+{
+    $this->showCheckBox();
+
+     return [
+         Header::make()
+             ->showToggleColumns(),
+
+         // ...
+     ];
+}
 ```
 
 Result:
 
-<img class="result-image" alt="showToggleColumns" src="../_media/examples/features/showToggleColumns.png"/>
+![Output](/_media/examples/features/showToggleColumns.png)
 
 ---
 
@@ -97,8 +119,20 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php 
-Header::includeViewOnTop('components.datatable.header-top')
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Header 
+
+public function setUp(): array
+{
+    $this->showCheckBox();
+
+     return [
+         Header::make()
+             ->includeViewOnTop('components.datatable.header-top'),
+
+         // ...
+     ];
+}
 ```
 
 > Inside the view you can use the component's variables
@@ -112,7 +146,7 @@ Header::includeViewOnTop('components.datatable.header-top')
 
 Result:
 
-<img class="result-image" alt="includeViewOnTop" src="../_media/examples/features/header-includeViewOnTop.png"/>
+![Output](/_media/examples/features/header-includeViewOnTop.png)
 
 ---
 
@@ -120,8 +154,20 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php 
-Header::includeViewOnBottom('components.datatable.header-bottom')
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Header 
+
+public function setUp(): array
+{
+    $this->showCheckBox();
+
+     return [
+         Header::make()
+             ->includeViewOnBottom('components.datatable.header-bottom'),
+
+         // ...
+     ];
+}
 ```
 
 > Inside the view you can use the component's variables
@@ -135,7 +181,7 @@ Header::includeViewOnBottom('components.datatable.header-bottom')
 
 Result:
 
-<img class="result-image" alt="includeViewOnBottom" src="../_media/examples/features/header-includeViewOnBottom.png"/>
+![Output](/_media/examples/features/header-includeViewOnBottom.png)
 
 ---
 
@@ -153,7 +199,9 @@ By default, `$perPage` accepts the values: `10`, `25`, `50`, `100` and `0` (zero
 
 If you need a different set of values, you may override the `$perPageValues` array. See the following example:
 
-```php
+```php{6,9,14-15}
+use PowerComponents\LivewirePowerGrid\Footer 
+
 class DishesTable extends PowerGridComponent
 {
     //Custom per page
@@ -167,14 +215,15 @@ class DishesTable extends PowerGridComponent
         return [
             Footer::make()
                 ->showPerPage($this->perPage, $this->perPageValues)
+            //....    
         ]   
     }
-    //....
+}
 ```
 
 Result:
 
-<img class="result-image" alt="showPerPage" src="../_media/examples/features/showPerPage.png"/>
+![Output](/_media/examples/features/showPerPage.png)
 
 ---
 
@@ -190,13 +239,25 @@ Available modes:
 
 Example:
 
-```php
-Footer::showRecordCount(mode: 'full')
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Footer 
+
+class DishesTable extends PowerGridComponent
+{
+    public function setUp(): array
+    {
+        return [
+            Footer::make()
+                ->showRecordCount(mode: 'full')
+            //....    
+        ]   
+    }
+}
 ```
 
 Result:
 
-<img class="result-image" alt="showRecordCount" src="../_media/examples/features/showRecordCount.png" width="400"/>
+![Output](/_media/examples/features/showRecordCount.png)
 
 ---
 
@@ -204,13 +265,32 @@ Result:
 
 Sometimes we need to customize the pagination of the table, for that do:
 
-```php 
-Footer::pagination('components/pagination')
+```php{8-11}
+use PowerComponents\LivewirePowerGrid\Footer 
+
+class DishesTable extends PowerGridComponent
+{
+    public function setUp(): array
+    {
+        return [
+            Footer::make()
+                ->showPerPage(25)
+                ->showRecordCount()
+                ->pagination('components.pagination'),
+            //....    
+        ]   
+    }
+}
 ```
 
-> Inside the view you can use the paginator `variables, perPage and perPageValues` to build the footer
+::: tip
+Inside the view you can use the paginator `variables, perPage and perPageValues` to build the footer
+
+**NOTE:** need use methods `->showPerPage(25)->showRecordCount()` 
+::: 
 
 `views/components/pagination.blade.php`
+
 ```html 
 <div class="w-full">
     @if ($paginator->hasPages())
@@ -222,7 +302,7 @@ Footer::pagination('components/pagination')
 
 Result:
 
-<img class="result-image" alt="includeViewOnTop" src="../_media/examples/features/pagination.png"/>
+![Output](/_media/examples/features/pagination.png)
 
 ---
 
@@ -230,11 +310,25 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php 
-Footer::includeViewOnTop('components.datatable.footer-top')
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Footer 
+
+class DishesTable extends PowerGridComponent
+{
+    public function setUp(): array
+    {
+        return [
+            Footer::make()
+                ->includeViewOnTop('components.datatable.footer-top')
+            //....    
+        ]   
+    }
+}
 ```
 
+::: tip
 > Inside the view you can use the component's variables
+:::
 
 `views/components/datatable/footer-top.blade.php`
 ```html 
@@ -245,7 +339,7 @@ Footer::includeViewOnTop('components.datatable.footer-top')
 
 Result:
 
-<img class="result-image" alt="includeViewOnTop" src="../_media/examples/features/footer-includeViewOnTop.png"/>
+![Output](/_media/examples/features/footer-includeViewOnTop.png)
 
 ---
 
@@ -253,13 +347,28 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php 
-Header::includeViewOnBottom('components.datatable.footer-bottom')
+```php{8-9}
+use PowerComponents\LivewirePowerGrid\Footer 
+
+class DishesTable extends PowerGridComponent
+{
+    public function setUp(): array
+    {
+        return [
+            Footer::make()
+                ->includeViewOnBottom('components.datatable.footer-bottom')
+            //....    
+        ]   
+    }
+}
 ```
 
-> Inside the view you can use the component's variables
+::: tip
+Inside the view you can use the component's variables
+::: 
 
 `views/components/datatable/footer-bottom.blade.php`
+
 ```html 
 <div>
     Table: {{ $tableName}}
@@ -268,7 +377,7 @@ Header::includeViewOnBottom('components.datatable.footer-bottom')
 
 Result:
 
-<img class="result-image" alt="includeViewOnBottom" src="../_media/examples/features/footer-includeViewOnBottom.png"/>
+![Output](/_media/examples/features/footer-includeViewOnBottom.png)
 
 ---
 ## Exportable
@@ -277,11 +386,11 @@ Enable the `export to file` functionality and shows export button at the page to
 
 Set the filename inside the `make('')` method and proceed configuring your exporting settings:
 
-```php
+```php{7-9}
+use PowerComponents\LivewirePowerGrid\Exportable 
+
 class DishesTable extends PowerGridComponent
 {
-    //...
-
     public function setUp(): array
     {
         Exportable::make('my-export-file')
@@ -343,7 +452,7 @@ Example:
 
 Result:
 
-<img class="result-image" alt="showExportOption" src="../_media/examples/features/showExportOption.png"/>
+![Output](/_media/examples/features/showExportOption.png)
 
 --- 
 
@@ -362,7 +471,7 @@ Example:
 ]),
 ```
 
-> 💡 If you are working with lots of data, we recommend to use [Queue Export](table/queue-export).
+> 💡 If you are working with lots of data, we recommend to use [Queue Export](queue-export).
 
 ---
 
@@ -372,7 +481,7 @@ If you need the state of columns and filters to be saved in cookies, you can use
 
 Example:
 
-```php
+```php{5}
 class DishesTable extends PowerGridComponent
 {
     public function setUp(): array
@@ -388,9 +497,5 @@ class DishesTable extends PowerGridComponent
 
 Result:
 
-![Output](../_media/persist.gif)
+![Output](/_media/persist.gif)
 
-<hr/>
-<footer style="float: right; font-size: larger">
-    <span><a style="text-decoration: none;" href="#/table/datasource">Datasource →</a></span>
-</footer>
