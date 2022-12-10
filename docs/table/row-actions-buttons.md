@@ -111,6 +111,30 @@ is equivalent to:
 
 ---
 
+### dispatch(string $event, array $params)
+
+Dispatch browser events.
+
+Read more about [Events](https://laravel-livewire.com/docs/2.x/events#browser) in the Livewire documentation.
+
+The code below:
+
+```php
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->dispatch('eventName', ['key' => 'id']),
+```
+
+is equivalent to:
+
+```html
+<button x-on:click="$dispatch('eventName', ['key' => 1])">
+```
+
+---
+
 ### openModal(string $component, array $params)
 
 Opens a modal window.
@@ -236,6 +260,30 @@ Button::add('my-custom-button')
     My Custom Button #1
 </button>
 ```
+
+---
+
+### id(string $value)
+
+Add custom id attribute.
+
+The code below:
+
+```php
+//...
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->id('view'), 
+```
+
+is equivalent to:
+
+```html
+<button id="view-1"> // 1 - is the value set in the current row using primaryKey = id.
+```
+
+---
 
 <hr/>
 <footer style="float: right; font-size: larger">

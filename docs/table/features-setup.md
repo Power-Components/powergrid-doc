@@ -33,11 +33,16 @@ You can chain the methods to configure the following features:
 
 Enables and displays checkboxes on each table row.
 
+If your database table has a custom id column, you must pass the column name in the `$attribute` argument.
+
 Example:
+
 ```php
 public function setUp(): array
 {
     $this->showCheckBox();
+    //$this->showCheckBox('my_custom_table_id);
+
 }
 ```
 
@@ -270,31 +275,25 @@ Result:
 
 Enable the `export to file` functionality and shows export button at the page top.
 
+Set the filename inside the `make('')` method and proceed configuring your exporting settings:
+
 ```php
 class DishesTable extends PowerGridComponent
 {
-    //Custom per page values
-    public array $perPageValues = [0, 5, 10, 1000, 5000];
+    //...
 
     public function setUp(): array
     {
-        Exportable::make('export')
+        Exportable::make('my-export-file')
             ->striped('#A6ACCD')
             ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
     }
 }
 ```
 
-Set the filename inside `make('')`
+---
 
-Example:
-
-```php
-->make('my-export'),
-```
-
---- 
-### Types
+### File Types
 
 Available file types:
 
@@ -307,7 +306,30 @@ Example:
 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
 
---- 
+---
+
+### CSV Separator and Delimiter
+
+When exporting to CSV, you may configure the `field separator` and `field delimiter`:
+
+
+```php
+    Exportable::make('my-export-file')
+        ->csvSeparator('|')
+        ->csvDelimiter("'")
+        ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+```
+
+Resulting in :
+
+```plain
+ID|Dish
+1|'Pastel de Nata'
+2|'Peixada da chef Nábia'
+3|'Carne Louca'
+```
+
+---
 
 ### Striped 
 
