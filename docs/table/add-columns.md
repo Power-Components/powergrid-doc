@@ -35,7 +35,7 @@ public function addColumns(): PowerGridEloquent
 
 ::: warning
 After creating a column, you must include it in your Table using the [Column::add()](include-columns) method.
-::: 
+:::
 
 ### Sortable
 ::: warning
@@ -245,7 +245,6 @@ public function addColumns(): PowerGridEloquent
 }
 ```
 
-
 ::: warning
 When using closures to output user defined values directly to HTML, you should escape user defined values using Laravel's [`e`](https://laravel.com/docs/9.x/helpers#method-e) helper to prevent XSS attacks.
 :::
@@ -307,4 +306,3 @@ public function addColumns(): PowerGridEloquent
     });
 }
 ```
-
