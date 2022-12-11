@@ -133,7 +133,9 @@ module.exports = {
 }
 ```
 
-> 💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
+::: tip
+💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
+:::
 
 #### 5.3 Tailwind Forms
 
@@ -212,7 +214,7 @@ To enable this feature, follow the next steps:
 
 **8.2. Change 'check_version' to `true` in `config/livewire-powergrid.php`.**
 
-```php
+```php{6}
 /*
 |--------------------------------------------------------------------------
 | New Release Notification

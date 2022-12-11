@@ -9,6 +9,7 @@ export const sidebarEn: SidebarConfig = {
                 '/get-started/release-notes.md',
                 '/get-started/upgrade-guide.md',
                 '/get-started/troubleshooting.md',
+                '/get-started/support.md',
                 '/get-started/demo.md',
                 '/get-started/install.md',
                 '/get-started/configure.md',
