@@ -6,7 +6,6 @@ import {
     sidebarEn,
     head,
 } from './configs'
-import {searchPlugin} from "@vuepress/plugin-search";
 
 export default defineUserConfig({
     lang: 'en-US',
@@ -14,8 +13,9 @@ export default defineUserConfig({
     description: 'Description',
     head,
     theme: defaultTheme({
+        logo: '/_media/logomark@1x.png',
         repo: 'power-components/powergrid-doc',
-        docsDir: 'vuepress',
+        docsDir: 'main',
         locales: {
             '/': {
                 navbar: navbarEn,
