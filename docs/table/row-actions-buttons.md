@@ -387,3 +387,28 @@ is equivalent to:
 <button id="view-1"> // 1 - is the value set in the current row using primaryKey = id.
 ```
 
+## Advanced usage
+
+While `Button` class cannot be extended directly, it is possible to add methods using [macros](https://laravel.com/api/9.x/Illuminate/Support/Traits/Macroable.html). Also, this class has built-in `dynamicProperties` variable which can be used to store custom method parameters.
+
+The following code shows how a custom `icon` method can be added to `Button` class.
+
+```php
+Button::macro('icon', function (string $name) {
+    $this->dynamicProperties['icon'] = $name;
+
+    return $this;
+});
+```
+
+> :warning: Macros **should only be placed** in service providers.
+
+With mentioned additions `icon` can be accessed as regular method.
+
+```php
+Button::add('new-modal')
+    ->caption('New window')
+    ->class('bg-gray-300')
+    ->icon('fa-window')
+    ->openModal('new', []),
+```
