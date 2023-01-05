@@ -389,6 +389,10 @@ is equivalent to:
 
 ## Advanced usage
 
+While the standard [button methods](#button-methods) can handle most tasks, there may be times when you need to customize the `Button` class to add extra functionality. Below are some examples of how to do so without interiefing with package internals.
+
+### Extending Button class
+
 While `Button` class cannot be extended directly, it is possible to add methods using [macros](https://laravel.com/api/9.x/Illuminate/Support/Traits/Macroable.html). Also, this class has built-in `dynamicProperties` variable which can be used to store custom method parameters.
 
 The following code shows how a custom `icon` method can be added to `Button` class.
@@ -411,4 +415,19 @@ Button::add('new-modal')
     ->class('bg-gray-300')
     ->icon('fa-window')
     ->openModal('new', []),
+```
+
+### Accessing dynamic properties
+
+In the previous [section](#extending-button-class), we showed how to extend the `Button` class and store dynamic properties. Now, the remaining task is to utilize these dynamic properties by implementing them inside custom template.
+
+The following example shows modified code snippet from [actions.blade.php](https://github.com/Power-Components/livewire-powergrid/blob/main/resources/views/components/actions.blade.php), which allows to display custom icons inside row button:
+
+```php
+@if($actionClass->isButton)
+    <button {{ $actionClass->getAttributes() }}>
+        <i class="{{ $actionClass->getDynamicProperty('icon') }}"></i>
+        {!! $actionClass->caption() !!}
+    </button>
+@endif
 ```
