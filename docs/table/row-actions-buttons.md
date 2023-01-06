@@ -405,7 +405,9 @@ Button::macro('icon', function (string $name) {
 });
 ```
 
-> :warning: Macros **should only be placed** in service providers.
+::: warning
+Macros **should only be placed** in service providers.
+::: 
 
 With mentioned additions `icon` can be accessed as regular method.
 
