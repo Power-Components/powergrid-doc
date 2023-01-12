@@ -19,7 +19,7 @@ public function columns(): array
     return [
         Column::add()
             ->title('In Stock')
-            ->field('in_stock'),
+            ->field('in_stock')
             ->makeBooleanFilter('in_stock', 'yes', 'no')
             ->toggleable($canEdit, 'yes', 'no'),
     ];
