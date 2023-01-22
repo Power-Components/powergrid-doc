@@ -36,7 +36,7 @@ npm run dev
 * PHP 8.0
 * Laravel 8
 * Import @powerGridScripts and @powerGridStyle
-* Auto import Alpine via CDN in config.
+* [Include Scripts and Styles vie Blade directive](https://v3.livewire-powergrid.com/get-started/configure.html#_1-include-scripts-and-styles)
 * All makeFilters 
 * [Update Method](https://v2.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
 * [UpdateMessages Method](https://v2.livewire-powergrid.com/#/table/update-data?id=update-messages)
