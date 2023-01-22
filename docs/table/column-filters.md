@@ -1,40 +1,88 @@
 # Column Filters
 
-Filters can be configured under each column, inside the [columns()](include-columns?id=include-columns) method.
+Filters can be configured under each column.
 
 ## Usage
 
-You can add a filter to your column header by chaining a [Filter method](#filter-methods) to `Column::add()`.
+The filters must be declared inside the array returned in the 'filters' method.
 
-The following example adds a range filter (min/max) to the "Dish Quantity" column.
+To use, you must use the Facade `Filter`, passing the column you want to apply the filter
+and the `field` that will filter.
+
+Example:
 
 ```php
-public function columns(): array
+public function filters(): array
 {
-  return [
-    Column::make('Dish Quantity', 'quantity'),
-        ->makeInputRange(),
-  ];
+    return [
+       Filter::multiSelect('category_name', 'category_id')
+          ->dataSource(Category::all())
+          ->optionValue('id')
+          ->optionLabel('name'),
+    ];
 }
 ```
+
+Available filters:
+
+* [inputText](./column-filters.html#inputtext)
+* multiSelect
+* multiSelectAsync
+* select
+* enumSelect
+* dynamic
+* datepicker
+* boolean
+
+---
 
 ## Filter methods
 
 These methods enable input for filters at your column header.
 
-### makeInputText(string $dataField)
+### inputText
 
-Adds an input text filter on the column.
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
 
-Available filters are: `Is/Is not`, `Contains/Does not contain`, `Starts with/Ends with`,`Is null/Is not null`, `Is blank\Is not Blank`, `Is blank\Is not blank`,  `Is empty/Is not empty`. "Empty" covers "Blank + Null".
+#### Methods:
 
-Parameters:
+`->operators(array $operators)`
 
-- `$dataField`: field used by the filter.
+* Empty - All operators will be loaded
+* Only `contains` - Will hide the select and keep only the input text
+  * Ex: `->operators(['contains'])`
+* Some - You will be able to select some operators
+  * Ex: `->operators(['contains', 'is_not'])`
+
+| **Available Operators** |
+|-------------------------|
+| contains                |
+| contains_not            |
+| is                      |
+| is_not                  |
+| starts_with             |
+| ends_with               |
+| is_empty                |
+| is_not_empty            |
+| is_null                 |
+| is_not_null             |
+| is_blank                |
+| is_not_blank            |
 
 Example:
 
-`->makeInputText(dataField: 'name')`
+```php
+public function filters(): array
+{
+    return [
+       Filter::inputText('name', 'name')
+          ->operators(['contains', 'is', 'is_not']),
+    ];
+}
+```
 
 Result:
 
