@@ -25,8 +25,12 @@ export const navbarEn: NavbarConfig = [
         ],
     },
     {
-        text: `Version 3.x`,
+        text: `Version 4.x`,
         children: [
+            {
+                text: `Version 3.x`,
+                link: 'https://v3.livewire-powergrid.com',
+            },
             {
                 text: `Version 2.x`,
                 link: 'https://v2.livewire-powergrid.com',

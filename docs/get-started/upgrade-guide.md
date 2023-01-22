@@ -1,10 +1,10 @@
 # Upgrade Guide
 
-### Upgrade From V2
+### Upgrade From V3
 
-PowerGrid is now on version 3.x.
+PowerGrid is now on version 4.x.
 
-This page will give you important information to upgrade from v2.x.
+This page will give you important information to upgrade from v3.x.
 
 ::: warning
 Republish views if you have previously published
@@ -23,8 +23,8 @@ npm run dev
 
 ### Dependency Upgrades
 
-* PHP 8.0+
-* [Laravel Framework](https://laravel.com/) 8.75+ | 9.0+
+* PHP 8.1+
+* [Laravel Framework](https://laravel.com/) 9.0+
 * [Laravel Livewire](https://laravel-livewire.com/docs/2.x/quickstart) 2.10+
 * [Tailwind](https://tailwindcss.com/) v3+
 
@@ -33,9 +33,13 @@ npm run dev
 
 ### Deprecations
 
+* PHP 8.0
+* Laravel 8
+* Import @powerGridScripts and @powerGridStyle
+* Auto import Alpine via CDN in config.
+* All makeFilters 
 * [Update Method](https://v2.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
 * [UpdateMessages Method](https://v2.livewire-powergrid.com/#/table/update-data?id=update-messages)
-* Tailwind v2 support
 
 ---
 
