@@ -6,3 +6,4 @@ node_modules
 .cache
 .env
 docs/.vuepress/dist
+.idea
