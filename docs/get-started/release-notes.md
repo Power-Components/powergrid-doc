@@ -10,20 +10,145 @@ Powergrid was born with the intention of always keeping as close as possible to 
 
 ---
 
-### Improved setUp method
+### Multi Sorting
 
-We changed the way we handle powergrid component initialization to make it easier to add new methods and improvements to isolated parts.
+Now we can apply multiple column sorts, set `public bool $multiSort` to true
 
-[Read more](../table/features-setup?id=features-setup)
+* Basically we are chaining several `->orderBy(..)->orderBy(..)` in [Laravel Eloquent ORM](https://laravel.com/docs/9.x/eloquent) according to each click you perform on the column
+
+![Output](/_media/examples/multi-sort.png)
 
 ---
 
-### Export using openspout/openspout
+### Dynamic Filter
 
-We removed the previous package [box/spout](https://github.com/box/spout) by [openspout/openspout](https://github.com/openspout/openspout). 
-This will bring new opportunities and improvements in export and PHP 8 higher compatibility.
+PowerGrid Filters are internal components, if you want to use an external component you can use
+this functionality. A practical example is when you are using external components (such as [wireui](https://livewire-wireui.com/)) throughout your system and want to
+apply them in PowerGrid too.
 
-[Read more](https://github.com/openspout/openspout#copyright-and-license)
+Example:
+```php
+public function filters(): array
+{
+    return [
+        Filter::dynamic('in_stock', 'in_stock')
+            ->filterType(DynamicInput::FILTER_SELECT)
+            ->component('select') // <x-select ...attributes/>
+            ->attributes([
+                'class'        => 'min-w-[170px]',
+                'async-data'   => route('categories.index'),
+                'option-label' => 'name',
+                'multiselect'  => false,
+                'option-value' => 'id',
+                'placeholder'  => 'Test',
+            ]),
+    ];
+}
+```
+
+![Output](/_media/examples/dynamic-select.png)
+
+---
+
+### Independent Export Engine
+
+[openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
+is using in PowerGrid settings.
+
+[Read more](../get-started/upgrade-guide.html#independent-export-engine)
+
+---
+
+### Deprecated Batch Export properties
+
+For more comfort we moved the queues properties inside the Exportable Facade.
+
+[Read more](../get-started/upgrade-guide.html#deprecated-queue-properties)
+
+---
+
+### Row Index
+
+Sometimes we need to display the index instead of the id, for that you must call index() on the column you want.
+
+Example: 
+```php{5}
+public function columns(): array
+{
+    return [
+        Column::make('Index')
+           ->index(),
+}
+```
+
+![Output](/_media/examples/row-index.png)
+
+---
+
+### Tailwind Theme class
+
+PowerGrid uses the slate color by default, you might want to change that, just insert the PowerGrid preset in the `tailwind.config.js` file
+
+[Read more](../get-started/upgrade-guide.html#include-powergrid-presets-in-your-tailwind-config-js)
+
+---
+
+### Header::withoutLoading
+
+If you don't want to display PowerGrid's default **loading** icon when some request is made to the server, just
+call `withoutLoading()` on Header Facade. This is useful when you already have a layout to show the progress of internal calls. 
+
+![Output](/_media/examples/without-loading.png)
+
+---
+
+### Custom SearchBox Theme
+
+You can change the classes and styles of the input, icon search and icon close.
+
+---
+
+### Table::tdBodyEmpty
+
+You can use tdBodyEmpty to change the row style when the table is empty.
+
+[Read more](../get-started/upgrade-guide.html#table-tdbodyempty)
+
+---
+
+### Support TomSelect and SlimSelect
+
+Description
+
+---
+
+### Filter::multiSelectAsync
+
+Description
+
+---
+
+### deferLoading using wire:init
+
+Description
+
+---
+
+### Search with whereHasMorph
+
+Description
+
+---
+
+### BulkAction store
+
+Description
+
+---
+
+### dynamic inputText options
+
+Description
 
 ---
 
@@ -48,178 +173,4 @@ Result:
 
 [Read more](../table/features-setup?id=striped)
 
----
-
-### Design improvement
-
-We made some layout improvements (tailwind only).
-
-Result:
-
-![Output](/_media/examples/features/new-layout.png)
-
----
-
-### Show ErrorBag in editOnClick line
-
-Now we can show an error message directly on the editOnClick line after being checked
-via the `$this->validate()` method in the backend.
-
-It will be activated when `$showErrorBag = true`;
-
-Here's an example:
-
-```php{1,4,13}
-    public bool $showErrorBag = true;
-
-    protected array $rules = [
-        'name.*' => ['required', 'min:6'],
-    ];
-    
-    public function columns(): array
-    {
-         return [
-             Column::add()
-                ->title('Name')
-                ->field('name')
-                ->editOnClick(true)
-         ];
-    }
-
-    public function onUpdatedEditable($id, $field, $value): void
-    {
-        $this->validate();
-        User::query()->find($id)->update([
-            $field => $value,
-        ]);
-    }
-
-```
-
-Result:
-
-![Output](/_media/examples/features/validation.png)
-
----
-
-### Detail row (tailwind only)
-
-Now we can enter details for each row reusing the component details.
-
-Example:
-```php{6-9}
-   use PowerComponents\LivewirePowerGrid\Detail;
-
-   public function setUp(): array
-    {
-        return [
-            Detail::make()
-                ->view('components.detail') // views/components.detail.blade.php
-                ->options(['name' => 'Luan'])
-                ->showCollapseIcon(),
-        ];
-    }
-```
-`view/components.detail.blade.php`
-```html
-<div class="p-2 bg-white border border-slate-200">
-    <div>Id {{ $id }}</div>
-    <div>Options @json($options)</div>
-</div>
-```
-
-Result - Detail closed:
-
-![Output](/_media/examples/features/detail-row-close.png)
-
-Result - Detail open:
-
-![Output](/_media/examples/features/detail-row-open.png)
-
-We can also switch the view to a specific row using [Action Rules](../table/action-rules?id=action-rules).
-
-`toggleDetail()` method will toggle the detail.
-
-```php{6,16}
-    public function actions(): array
-    {
-        return [
-            Button::make('detail', 'Detail')
-                ->class('bg-indigo-500 rounded-md cursor-pointer text-white px-3 py-2 m-1 text-sm')
-                ->toggleDetail(),
-        ];
-    }
-
-    public function actionRules(): array
-    {
-        return [
-            Rule::rows()
-                ->when(fn (User $user) => $user->id == 1)
-                // view, array $options
-                ->detailView('components.detail-rules', ['test' => 1]),
-        ];
-    }
-
-```
-
-[Read more](release-notes.html#dependencies)
-
----
-
-### Column make
-
-New tables will be created with `Column::make` instead of `Column::add()->title ...`
-
-Previous example (not deprecated).
-```php
-    <!-- Before -->
-    public function columns(): array
-    {
-         return [
-             Column::add()
-                ->title('Name')
-                ->field('name')
-         ];
-    }
-```
-Now:
-```php
-    <!-- After -->
-    public function columns(): array
-    {
-         return [
-             // make(string $title, string $field, string $dataField = '')
-             Column::make('Name', 'name', 'dishes.name')
-         ];
-    }
-```
-
----
-
-### Button make
-
-Similar the column, the buttons will also come with `Button::make`
-
-Previous example (not deprecated).
-```php
-    <!-- Before -->
-    public function actions(): array
-    {
-         return [
-             Button::add('detail')
-                ->caption('Detail')
-         ];
-    }
-```
-Now:
-```php
-    <!-- After -->
-    public function actions(): array
-    {
-         return [
-             // make(string $action, string $caption)
-             Button::make('detail', 'Detail')
-         ];
-    }
-```
 

@@ -28,111 +28,196 @@ npm run dev
 * [Laravel Livewire](https://laravel-livewire.com/docs/2.x/quickstart) 2.10+
 * [Tailwind](https://tailwindcss.com/) v3+
 
-
 ---
 
 ### Deprecations
 
 * PHP 8.0
 * Laravel 8
-* Import @powerGridScripts and @powerGridStyle
 * [Include Scripts and Styles vie Blade directive](https://v3.livewire-powergrid.com/get-started/configure.html#_1-include-scripts-and-styles)
-* All makeFilters 
-* [Update Method](https://v2.livewire-powergrid.com/#/table/update-data?id=reload-data-after-update)
-* [UpdateMessages Method](https://v2.livewire-powergrid.com/#/table/update-data?id=update-messages)
-
+* [Import AlpineJS in config](https://livewire-powergrid.com/get-started/configure.html#_2-alpine-js)
+* [Column Filters](https://v3.livewire-powergrid.com/table/column-filters.html#column-filters) replace with [Filters Facade](https://github.com/Power-Components/livewire-powergrid/pull/785)
+* [bootstrap-select (Bootstrap 5)](https://github.com/Power-Components/livewire-powergrid/pull/775)
+* [required openspout/openspout](https://livewire-powergrid.com/get-started/release-notes.html#export-using-openspout-openspout)
 ---
 
-### Updating setUp Method
+### Include powergrid.css via module
 
-```php
-     <!-- 🚫 Before -->
-    public function setUp()
-    {
-       $this->showCheckBox()
-          ->showRecordCount('short')
-          ->showPerPage()
-          ->showSearchInput()
-          ->showExportOption('download', ['excel', 'csv']);
-    }
+Now, you must import `powergrid.css` in your `app.js`
+
+```js{2}
+import "./../../vendor/power-components/livewire-powergrid/dist/powergrid";
+import "./../../vendor/power-components/livewire-powergrid/dist/powergrid.css";
 ```
 
-Changed to:
+### Include PowerGrid Presets in your tailwind.config.js
 
-```php{6-20}
-    <!-- ✅ After -->
-    use PowerComponents\LivewirePowerGrid\Header;
-    use PowerComponents\LivewirePowerGrid\Footer;
-    use PowerComponents\LivewirePowerGrid\Exportable;
-    
-    public function setUp(): array
-    {
-        $this->showCheckBox();
+Reference: [Tailwind Doc](https://tailwindcss.com/docs/presets)
 
-        return [
-            Exportable::make('export')
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()
-                ->showToggleColumns()
-                ->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
-        ];
-    }
+PowerGrid uses the **slate** color by default, you might want to change that, just insert the powergrid preset in the `tailwind.config.js` file
+
+```js{7,14}
+const colors = require('tailwindcss/colors')
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    presets: [
+        require("./vendor/wireui/wireui/tailwind.config.js"),
+        require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
+    ],
+    // optional
+    theme: {
+        extend: {
+            colors: {
+                ...colors,
+                "pg-primary": colors.gray,
+            },
+        },
+    },
+}
+```
+
+### Update Config
+
+Some references in settings have been removed and added. Please adjust this before continuing.
+
+Removed:
+
+* [alpine_cdn](https://github.com/Power-Components/livewire-powergrid/blob/3.x/resources/config/livewire-powergrid.php#L86)
+* [plugins.bootstrap-select](https://github.com/Power-Components/livewire-powergrid/blob/3.x/resources/config/livewire-powergrid.php#L30)
+
+Added:
+
+* [plugins.multiselect](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L41)
+* [exportable](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L116)
+
+### Independent export engine
+
+Make sure you choose which version you will use for export in settings.
+
+```php
+'exportable'    => [
+    'default'      => 'openspout_v4', // or openspout_v3
+```
+
+#### 1 - Install openspout in the chosen version:
+
+::: warning
+Supported versions: [3](https://github.com/openspout/openspout/tree/3.x) and [4](https://github.com/openspout/openspout/tree/4.x)
+::: 
+
+If you chose **openspout_v4**, run:
+```bash
+composer require openspout/openspout ^4
+```
+
+If you chose **openspout_v3**, run:
+
+```bash
+composer require openspout/openspout ^3
+```
+
+#### 2 - Add WithExport Traits
+
+You should also import the export trait into your tables:
+
+```php{1,5}
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+
+final class YourPowerGridTable extends PowerGridComponent
+{
+    use WithExport;
+}
 ```
 
 Read more about [setUp](../table/features-setup?id=features-setup).
 
 ---
 
-### Remove (? nullable) from addColumns
+### Deprecated Queue Properties
+
+* As configurações de Queues para exportação deverá ser chamada usando a Facade Exportable 
+
 ```php
-     <!-- 🚫 Before -->
-    public function addColumns(): ?PowerGridEloquent
+    <!-- 🚫 Before -->
+    public int $queues = 6; // Use two queues
+    
+    public string $onQueue = 'my-dishes'; //queue name
+    
+    public string $onConnection = 'redis'; // default sync
 ```
 
 Change To:
-```php
-     <!-- ✅ After -->
-    public function addColumns(): PowerGridEloquent
+
+```php{8-10}
+    <!-- ✅ After -->
+    public function setUp()
+    {
+        return [
+            Exportable::make('export')
+               ->striped()
+               ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
+               ->queues(6)
+               ->onQueue('my-dishes')
+               ->onConnection('redis'),
+        ];
+    
+    }
 ```
 
 ---
 
-### Changing update method
+### Custom SearchBox Theme 
 
-* Now we have specific methods for each situation:
-  * **onUpdatedEditable**
-  * **onUpdatedToggleable**
-  
+Add this to your custom themes:
 
+Tailwind:
 ```php
-    <!-- 🚫 Before -->
-    public function update(array $data): bool
-    {
-      //...
-    }
+public function searchBox(): SearchBox
+{
+   return Theme::searchBox()
+      ->input('placeholder-pg-primary-400 pl-[36px] block w-full float-right bg-white text-pg-primary-700 border border-pg-primary-300 rounded-full py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-pg-primary-500 pl-10 dark:bg-pg-primary-600 dark:text-pg-primary-200 dark:placeholder-pg-primary-200 dark:border-pg-primary-500')
+      ->iconClose('text-pg-primary-300 dark:text-pg-primary-200')
+      ->iconSearch('text-pg-primary-300 mr-2 w-5 h-5 dark:text-pg-primary-200');
+}
 ```
 
-Change To:
-
+Bootstrap:
 ```php
-    <!-- ✅ After -->
-    // when update from editable 
-    public function onUpdatedEditable(string $id, string $field, string $value): void
-    {
-        // example
-        User::query()->find($id)->update([
-            $field => $value,
-        ]);
-    }
-    // when update from toggleable
-    public function onUpdatedToggleable(string $id, string $field, string $value): void
-    {
-    }
+ public function searchBox(): SearchBox
+ {
+    return Theme::searchBox()
+       ->input('col-12 col-sm-8 form-control')
+       ->iconSearch('bi bi-search')
+       ->iconClose('');
+ }
 ```
 
-### Change Custom Theme
+---
 
-If you used a custom theme outside of powergrid, you will need to update some things in it.
+### Table::tdBodyEmpty
+
+Add this to your custom themes:
+
+Tailwind:
+```php{8}
+public function table(): Table
+{
+    return Theme::table(...)
+        // ...
+        ->tdBodyEmpty('px-3 py-2 whitespace-nowrap dark:text-pg-primary-200');
+}
+```
+
+Bootstrap:
+```php{8}
+public function table(): Table
+{
+    return Theme::table(...)
+        // ...
+        ->tdBodyEmpty('', 'vertical-align: middle; line-height: normal;');
+}
+```
+
+
+---

@@ -13,6 +13,7 @@ export const navbarEn: NavbarConfig = [
             '/table/datasource.md',
             '/table/add-columns.md',
             '/table/include-columns.md',
+            '/table/column-filters.md',
             '/table/column-summary.md',
             '/table/cell-actions-buttons.md',
             '/table/row-actions-buttons.md',
