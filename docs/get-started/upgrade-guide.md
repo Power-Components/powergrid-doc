@@ -56,7 +56,7 @@ Reference: [Tailwind Doc](https://tailwindcss.com/docs/presets)
 
 PowerGrid uses the **slate** color by default, you might want to change that, just insert the powergrid preset in the `tailwind.config.js` file
 
-```js{7,14}
+```js{7,13}
 const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
@@ -69,7 +69,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                ...colors,
                 "pg-primary": colors.gray,
             },
         },

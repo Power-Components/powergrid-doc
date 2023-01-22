@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- PHP 8.0+
-- [Laravel 8.75+](https://laravel.com/docs/8.x/installation)
+- PHP 8.1+
+- [Laravel 9+](https://laravel.com/docs/9.x/installation)
 - [Livewire 2.10+](https://laravel-livewire.com)
 - [Tailwind v3](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Alpine 3x](https://alpinejs.dev/)
