@@ -1,28 +1,30 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
 
+const VERSION = '3.x'
+
 export const navbarEn: NavbarConfig = [
     {
         text: 'Get Started',
-        link: '/get-started/',
+        link:  '/' + VERSION + '/get-started/',
     },
     {
-        text: 'Powergrid Table',
+        text: 'PowerGrid Table',
         link: '/table/',
         children: [
-            '/table/features-setup.md',
-            '/table/datasource.md',
-            '/table/add-columns.md',
-            '/table/include-columns.md',
-            '/table/column-filters.md',
-            '/table/column-summary.md',
-            '/table/cell-actions-buttons.md',
-            '/table/row-actions-buttons.md',
-            '/table/bulk-actions.md',
-            '/table/action-rules.md',
-            '/table/update-data.md',
-            '/table/queue-export.md',
-            '/table/component-settings.md',
-            '/table/detail-row.md',
+            '/' + VERSION + '/table/features-setup.md',
+            '/' + VERSION + '/table/datasource.md',
+            '/' + VERSION + '/table/add-columns.md',
+            '/' + VERSION + '/table/include-columns.md',
+            '/' + VERSION + '/table/column-filters.md',
+            '/' + VERSION + '/table/column-summary.md',
+            '/' + VERSION + '/table/cell-actions-buttons.md',
+            '/' + VERSION + '/table/row-actions-buttons.md',
+            '/' + VERSION + '/table/bulk-actions.md',
+            '/' + VERSION + '/table/action-rules.md',
+            '/' + VERSION + '/table/update-data.md',
+            '/' + VERSION + '/table/queue-export.md',
+            '/' + VERSION + '/table/component-settings.md',
+            '/' + VERSION + '/table/detail-row.md',
         ],
     },
     {
