@@ -26,13 +26,14 @@ public function filters(): array
 Available filters:
 
 * [inputText](./column-filters.html#inputtext)
+* [select](./column-filters.html#select)
+* [boolean](./column-filters.html#boolean)
+* [datepicker](./column-filters.html#datepicker)
 * multiSelect
 * multiSelectAsync
-* select
 * enumSelect
 * dynamic
-* datepicker
-* boolean
+
 
 ---
 
@@ -90,19 +91,67 @@ Result:
 
 ---
 
-### makeBooleanFilter(string $dataField, string $trueLabel, string $falseLabel)
+### select
 
-Adds a filter for boolean values.
+Includes a specific field on the page to filter a hasOne relation in the column.
 
-Parameters:
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
 
-- `$dataField`: field used by the filter.
-- `$trueLabel`: select option displayed for `true` (E.g, 'Active')
-- `$falseLabel`: select option displayed for `false` (E.g, 'Inactive')
+#### Methods:
+
+* `->dataSource(Collection|array $collection)` : parameter must be a Datasource.
+* `->optionValue(string $value)` : datasource field name to be displayed in options.
+* `->optionLabel(string $value)` : field used by the filter.
 
 Example:
 
-`->makeBooleanFilter(dataField: 'in_stock', trueLabel: 'yes', falseLabel: 'no')`
+```php{4-7}
+public function filters(): array
+{
+    return [
+        Filter::select('serving_at', 'serving_at')
+            ->dataSource(Dish::servedAt())
+            ->optionValue('serving_at')
+            ->optionLabel('serving_at'),
+    ];
+}
+```
+
+Result:
+
+![Output](/_media/examples/filters/makeInputSelect.png)
+
+---
+
+### boolean
+
+Adds a filter for boolean values.
+
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
+
+#### Methods:
+
+* `->trueLabel(string $value)` : select option displayed for `true` (E.g, 'Active')
+* `->falseLabel(string $value)` : select option displayed for `false` (E.g, 'Inactive')
+
+Example:
+
+```php{4-7}
+public function filters(): array
+{
+    return [
+        Filter::boolean('in_stock')
+            ->trueLabel('yea')
+            ->falseLabel('no'),
+    ];
+}
+```
 
 Result:
 
@@ -110,11 +159,12 @@ Result:
 
 ---
 
-### makeInputDatePicker(string $dataField, array $settings = [], string $classAttr = '')
+### datePicker
 
 Includes a specific field on the page to filter between the specific date in the column.
 
-Configure a linguagem no arquivo `config/livewire-powergrid.php` como no exemplo de acordo com a sua `config/app` - locale.
+Set the language in the `config/livewire-powergrid.php` file as in the example according to your `config/app` - locale.
+
 ```php
  'plugins' => [
         // ..
@@ -138,48 +188,33 @@ Configure a linguagem no arquivo `config/livewire-powergrid.php` como no exemplo
     ],
 ```
 
-Parameters:
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
 
-- `$dataField`: field used by the filter.
-- `$settings`: Settings must be passed as "key => value". Availables keys are:
+#### Methods:
+
+* `->params(array $collection)` : Params must be passed as "key => value". Available keys are:
   - `'only_future' => true`: Will not allow to select dates in the past.
   - `'no_weekends' => true`: Will not allow to select weekends.
-- `$classAttr`: class to be applied.
 
 Example:
 
-`->makeInputDatePicker('created_at')`
-
+```php{4-7}
+public function filters(): array
+{
+    return [
+         Filter::datepicker('produced_at_formatted', 'produced_at'),
+    ];
+}
+```
 Result:
 
 ![Output](/_media/examples/filters/makeInputDatePicker.png)
 
 ---
 
-### makeInputSelect($dataSource, string $name, string $dataField, array $settings)
-
-Includes a specific field on the page to filter a hasOne relation in the column.
-
-Parameters:
-
-- `$dataSource`: parameter must be a [Datasource](datasource?id=datasource).
-- `$name`: datasource field name to be displayed in options.
-- `$dataField`: field used by the filter.
-
-Options:
-
-- `live-search =>  [true/false]` feature works only with Bootstrap.
-- `class => ''` adds a class to your select element.
-
-Example:
-
-`->makeInputSelect(Kitchen::all(), 'state', 'kitchen_id', ['live-search' => true])`
-
-Result:
-
-![Output](/_media/examples/filters/makeInputSelect.png)
-
----
 
 ### makeInputMultiSelect($dataSource, string $name, string $dataField)
 
