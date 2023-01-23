@@ -1,23 +1,22 @@
 import type { SidebarConfig } from '@vuepress/theme-default'
 import {table} from "../table";
-
-const VERSION = '3.x'
+import {LATEST} from "../version";
 
 export const sidebarEn: SidebarConfig = {
     '/3.x/get-started/': [
         {
             text: 'Get Started',
             children: [
-                '/' + VERSION + '/get-started/README.md',
-                '/' + VERSION + '/get-started/release-notes.md',
-                '/' + VERSION + '/get-started/upgrade-guide.md',
-                '/' + VERSION + '/get-started/troubleshooting.md',
-                '/' + VERSION + '/get-started/support.md',
-                '/' + VERSION + '/get-started/demo.md',
-                '/' + VERSION + '/get-started/install.md',
-                '/' + VERSION + '/get-started/configure.md',
-                '/' + VERSION + '/get-started/create-powergrid-table.md',
-                '/' + VERSION + '/get-started/use-your-powergrid-table.md',
+                '/' + LATEST + '/get-started/README.md',
+                '/' + LATEST + '/get-started/release-notes.md',
+                '/' + LATEST + '/get-started/upgrade-guide.md',
+                '/' + LATEST + '/get-started/troubleshooting.md',
+                '/' + LATEST + '/get-started/support.md',
+                '/' + LATEST + '/get-started/demo.md',
+                '/' + LATEST + '/get-started/install.md',
+                '/' + LATEST + '/get-started/configure.md',
+                '/' + LATEST + '/get-started/create-powergrid-table.md',
+                '/' + LATEST + '/get-started/use-your-powergrid-table.md',
             ],
         },
     ],

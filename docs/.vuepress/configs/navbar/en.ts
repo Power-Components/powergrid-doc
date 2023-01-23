@@ -1,37 +1,36 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
-
-const VERSION = '3.x'
+import {LATEST} from "../version";
 
 export const navbarEn: NavbarConfig = [
     {
         text: 'Get Started',
-        link:  '/' + VERSION + '/get-started/',
+        link:  '/' + LATEST + '/get-started/',
     },
     {
         text: 'PowerGrid Table',
         link: '/table/',
         children: [
-            '/' + VERSION + '/table/features-setup.md',
-            '/' + VERSION + '/table/datasource.md',
-            '/' + VERSION + '/table/add-columns.md',
-            '/' + VERSION + '/table/include-columns.md',
-            '/' + VERSION + '/table/column-filters.md',
-            '/' + VERSION + '/table/column-summary.md',
-            '/' + VERSION + '/table/cell-actions-buttons.md',
-            '/' + VERSION + '/table/row-actions-buttons.md',
-            '/' + VERSION + '/table/bulk-actions.md',
-            '/' + VERSION + '/table/action-rules.md',
-            '/' + VERSION + '/table/update-data.md',
-            '/' + VERSION + '/table/queue-export.md',
-            '/' + VERSION + '/table/component-settings.md',
-            '/' + VERSION + '/table/detail-row.md',
+            '/' + LATEST + '/table/features-setup.md',
+            '/' + LATEST + '/table/datasource.md',
+            '/' + LATEST + '/table/add-columns.md',
+            '/' + LATEST + '/table/include-columns.md',
+            '/' + LATEST + '/table/column-filters.md',
+            '/' + LATEST + '/table/column-summary.md',
+            '/' + LATEST + '/table/cell-actions-buttons.md',
+            '/' + LATEST + '/table/row-actions-buttons.md',
+            '/' + LATEST + '/table/bulk-actions.md',
+            '/' + LATEST + '/table/action-rules.md',
+            '/' + LATEST + '/table/update-data.md',
+            '/' + LATEST + '/table/queue-export.md',
+            '/' + LATEST + '/table/component-settings.md',
+            '/' + LATEST + '/table/detail-row.md',
         ],
     },
     {
-        text: `Version 3.x`,
+        text: `3.x`,
         children: [
             {
-                text: `Version 2.x`,
+                text: `2.x`,
                 link: 'https://v2.livewire-powergrid.com',
             },
         ],
