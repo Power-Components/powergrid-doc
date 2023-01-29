@@ -7,9 +7,14 @@
 
 # PowerGrid
 
-PowerGrid creates modern, powerful and easy to customize Datatables based on Laravel [Livewire](https://laravel-livewire.com) library.
+[PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy to customize Datatables based on Laravel [Livewire](https://laravel-livewire.com) library.
 
-Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid)
+## Quick Links
+
+- [Install](get-started/install.html#install)
+- [Configure](get-started/configure.html)
+- [Create a Table](get-started/create-powergrid-table.html)
+- [Table Features](table/features-setup.html)
 
 ## Support
 
@@ -23,9 +28,7 @@ Please look into our previous issues to verify if your bug/question or feature r
 Created by: [Luan Freitas](https://twitter.com/luanfreitasdev)
 
 - [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors)
-- Doc by [DanSysAnalyst](https://twitter.com/DanSysAnalyst)
 - Logo & artwork by [Caneco](https://github.com/caneco)
-
 
 <hr/>
 <footer style="float: right; font-size: larger">
