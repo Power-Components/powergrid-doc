@@ -25,7 +25,7 @@ Please look into our previous issues to verify if your bug/question or feature r
 📣 Submit a [new issue](https://github.com/Power-Components/livewire-powergrid/issues).
 
 ## Credits
-Created by: [Luan Freitas](https://twitter.com/luanfreitasdev)
+Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnalyst](https://github.com/dansysanalyst)
 
 - [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors)
 - Logo & artwork by [Caneco](https://github.com/caneco)
