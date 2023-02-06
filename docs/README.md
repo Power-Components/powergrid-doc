@@ -15,6 +15,7 @@
 - [Configure](get-started/configure.html)
 - [Create a Table](get-started/create-powergrid-table.html)
 - [Table Features](table/features-setup.html)
+- [Demo project](https://github.com/Power-Components/powergrid-demo)
 
 ## Support
 
@@ -29,6 +30,12 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnaly
 
 - [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors)
 - Logo & artwork by [Caneco](https://github.com/caneco)
+
+<br/>
+
+<sup><b>Notice of Non-Affiliation and Disclaimer:</b> Livewire PowerGrid is not affiliated, associated, endorsed by, or in any way officially connected with the Laravel Livewire - copyright by Caleb Porzio.</sup>
+
+<br/>
 
 <hr/>
 <footer style="float: right; font-size: larger">
