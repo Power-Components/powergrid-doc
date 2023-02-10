@@ -32,7 +32,10 @@ These methods will add action buttons to each cell of a specific column in your 
 
 ### editOnClick
 
-* When the user clicks on this link, the cell is converted into an input text.
+* When the user clicks on the link, the cell turns into an input text.
+
+This method is not avaialble for `Collection` PowerGrid tables.
+
 
 | Parameter              | Description                                                                              | Default |
 |------------------------|------------------------------------------------------------------------------------------|---------|
@@ -44,7 +47,7 @@ The content can be edited and saved by pressing the `<enter>` key.
 
 ::: tip
 If `$saveOnMouseOut` is '`true`', when pressing esc the value entered will be canceled and returned to the normal state.
-::: 
+:::
 
 Example:
 
@@ -114,6 +117,8 @@ This feature is not available when using table.column notation on $primaryKey (E
 ### toggleable
 
 * If `isToggleable` is `true`, the table cell will be converted into a `toggleable` button.
+
+This method is not avaialble for `Collection` PowerGrid tables.
 
 | Parameter            | Description                 | Default |
 |----------------------|-----------------------------|---------|
