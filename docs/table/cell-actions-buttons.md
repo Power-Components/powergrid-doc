@@ -34,7 +34,7 @@ These methods will add action buttons to each cell of a specific column in your 
 
 * When the user clicks on the link, the cell turns into an input text.
 
-This method is not avaialble for `Collection` PowerGrid tables.
+This method is not available for `Collection` PowerGrid tables.
 
 
 | Parameter              | Description                                                                              | Default |
