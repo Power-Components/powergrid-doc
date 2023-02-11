@@ -33,13 +33,8 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnaly
 - [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors)
 - Logo & artwork by [Caneco](https://github.com/caneco)
 
-<br/>
-
 <hr>
 
-<br/>
-
-<h2>Sponsors</h2>
 <p>Sponsored by:</p>
 <p>
   <!--DevSquad-->
@@ -54,11 +49,11 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnaly
 <p>
   <!-- PHPStorm -->
   <a href="https://www.jetbrains.com/phpstorm/" target="_blank">
-    <img src="https://livewire-powergrid.com/_media/logos/phpstorm.png" alt="PHPStorm" height="undefined">
+    <img src="https://livewire-powergrid.com/_media/logos/phpstorm.png" alt="PHPStorm" height="32">
   </a>
   <!-- Araxis Merge -->
   <a href="https://www.araxis.com/merge/" target="_blank">
-    <img src="https://livewire-powergrid.com/_media/logos/araxis.png" alt="Araxis Merge" height="undefined">
+    <img src="https://livewire-powergrid.com/_media/logos/araxis.png" alt="Araxis Merge" height="32">
   </a>
 </p>
 
