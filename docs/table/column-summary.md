@@ -136,3 +136,49 @@ Column::add()
 
 Result:
 ![Output](/_media/examples/cell_buttons/withMax.png)
+
+### Summarizing formatted data
+
+PowerGrid provides a convenient way to use [closures](add-columns.html?id=closure-examples#closure-examples) to display formatted data in your table.
+
+To summarize formatted data (e.g, currency), you must pass the `formatted column` and `original column` to the methdo `field()`:
+
+In the example next example, we have a column `price_BRL` formatting the amount in Brazilian Real currency format.
+
+```php
+  public function addColumns(): PowerGridEloquent
+    {
+        return PowerGrid::eloquent()
+            ->addColumn('id')
+            
+            //1000.00
+            ->addColumn('price')
+            
+            //R$ 1.000,00
+            ->addColumn('price_BRL', fn (Dish $dish) => 'R$ ' . number_format(e($dish->price), 2, ',', '.'));
+    }
+```
+
+Next, we must pass the two columns to the `field()` method, when [including](include-columns.html) the "formatted price" column in our table:
+
+-Column `price_BRL` containing the formatted value (R$ 1.000,00).
+
+-Column `price` containing the raw amount (1000.00);
+
+```php
+public function columns(): array
+    {
+        return [
+            Column::add()
+                ->title(__('ID'))
+                ->field('id', 'dishes.id')
+                ->searchable()
+                ->sortable(),
+
+            Column::add()
+                ->title(__('Price'))
+                ->field( 'price_BRL', 'price') //formatted field, original field
+                ->withSum('Total amount', true, true),
+        ];
+    }
+```
