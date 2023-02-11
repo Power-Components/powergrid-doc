@@ -159,7 +159,7 @@ In the example next example, we have a column `price_BRL` formatting the amount 
     }
 ```
 
-Next, we must pass the two columns to the `field()` method, when [including](../get-started/create-powergrid-table.html) the "formatted price" column in our table:
+Next, we must pass the two columns to the `field()` method, when [including](include-columns.html) the "formatted price" column in our table:
 
 -Column `price_BRL` containing the formatted value (R$ 1.000,00).
 
