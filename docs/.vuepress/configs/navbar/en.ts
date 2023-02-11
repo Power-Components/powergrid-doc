@@ -23,6 +23,7 @@ export const navbarEn: NavbarConfig = [
             '/table/queue-export.md',
             '/table/component-settings.md',
             '/table/detail-row.md',
+            '/table/custom-theme.md',
         ],
     },
     {

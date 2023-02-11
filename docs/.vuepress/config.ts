@@ -22,7 +22,8 @@ export default defineUserConfig({
                 sidebar: sidebarEn,
                 editLinkText: 'Edit this page on GitHub',
             },
-        }
+        },
+        sidebarDepth: 3
     }),
     plugins: [
         docsearchPlugin({

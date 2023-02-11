@@ -36,6 +36,7 @@ export const sidebarEn: SidebarConfig = {
                 '/table/queue-export.md',
                 '/table/component-settings.md',
                 '/table/detail-row.md',
+                '/table/custom-theme.md',
             ],
         },
     ],

@@ -10,6 +10,60 @@ Powergrid was born with the intention of always keeping as close as possible to 
 
 ---
 
+### Independent Export Engine
+
+[openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
+is using in PowerGrid settings.
+
+[Read more](../get-started/upgrade-guide.html#independent-export-engine)
+
+---
+
+### Deprecated Batch Export properties
+
+For more comfort we moved the queues properties inside the Exportable Facade.
+
+[Read more](../get-started/upgrade-guide.html#deprecated-queue-properties)
+
+---
+
+### Support TomSelect and SlimSelect
+
+Add support for [Slim Select](Add support for https://slimselectjs.com/ and [Tom Select](https://tom-select.js.org/) by default instead of using the multi select component that came by default in version 3. 
+) and Tom Select by default instead of using the multi select component that came by default in version 3. 
+This allows for further customization and greater support.
+
+[Read more](../table/column-filters.html#multiselect)
+
+---
+
+### Changed Columns::makeFilters to Filter Facade
+
+Instead of calling the method to create a custom filter inside a column, we should use the Filters Facade
+
+```php
+<!-- 🚫 Before -->
+Column::makeInputSelect() 
+Column::makeInputMultiSelect()
+Column::makeInputDatePicker()
+Column::makeInputEnumSelect()
+Column::makeInputRange()
+Column::makeInputText()
+Column::makeBooleanFilter()
+
+<!-- ✅ After -->
+Filter::multiSelect()
+Filter::datepicker()
+Filter::select()
+Filter::number()
+Filter::inputText()
+Filter::boolean()
+```
+
+[Read more](../table/column-filters.html)
+
+---
+
 ### Multi Sorting
 
 Now we can apply multiple column sorts, set `public bool $multiSort` to true
@@ -47,23 +101,6 @@ public function filters(): array
 ```
 
 ![Output](/_media/examples/dynamic-select.png)
-
----
-
-### Independent Export Engine
-
-[openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
-is using in PowerGrid settings.
-
-[Read more](../get-started/upgrade-guide.html#independent-export-engine)
-
----
-
-### Deprecated Batch Export properties
-
-For more comfort we moved the queues properties inside the Exportable Facade.
-
-[Read more](../get-started/upgrade-guide.html#deprecated-queue-properties)
 
 ---
 
@@ -116,12 +153,6 @@ You can use tdBodyEmpty to change the row style when the table is empty.
 
 ---
 
-### Support TomSelect and SlimSelect
-
-Description
-
----
-
 ### Filter::multiSelectAsync
 
 Description
@@ -136,7 +167,7 @@ Description
 
 ### Search with whereHasMorph
 
-Description
+Now you can search your table if your data source has morphic relationship [whereHasMorph](https://laravel.com/docs/9.x/eloquent-relationships#querying-morph-to-relationships)
 
 ---
 
@@ -151,26 +182,4 @@ Description
 Description
 
 ---
-
-### Ability to place stripes on export
-
-From this version we can define the color itself in the export listing by passing the `striped('color')` parameter (XLS only) .
-
-```php
-    public function setUp(): array
-    {       
-        return [
-            Exportable::make('export')
-                ->striped('f9a303') // Hex without '#'
-                ->type(Exportable::TYPE_XLS),
-        ];
-    }
-```
-
-Result:
-
-![Output](/_media/examples/features/striped.png)
-
-[Read more](../table/features-setup?id=striped)
-
 

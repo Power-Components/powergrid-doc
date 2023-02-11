@@ -242,6 +242,99 @@ The example above results in a much more user-friendly table:
 
 ---
 
+### enumSelect
+
+Includes a select filter based in a PHP Enum.
+
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
+
+#### Methods:
+
+* `->dataSource(Collection|array $enumCases)` : Diet::cases()
+* `->optionValue(string $value)` : datasource field name to be displayed in options.
+* `->optionLabel(string $value)` : field used by the filter.
+
+Example:
+
+```php{4-7}
+public function filters(): array
+{
+    return [
+        Filter::enumSelect('diet', 'dishes.diet')
+            ->dataSource(Dish::servedAt())
+            ->optionLabel('dishes.diet'),
+    ];
+}
+```
+
+Consider the following Enum with Dietary restrictions.
+
+The database field `diet` contains the `int` values (0, 1 or 2). In this Enum we added a method `label()` to display a human friendly value for each case.
+
+```php
+<?php
+
+enum Diet: int
+{
+    case ALL      = 0;
+    case VEGAN    = 1;
+    case CELIAC   = 2;
+
+    public function labels(): string
+    {
+        return match ($this) {
+            self::ALL         => "🍽️ All diets",
+            self::VEGAN       => "🌱 Suitable for Vegans",
+            self::CELIAC      => "🥜 Suitable for Celiacs",
+        };
+    }
+}
+```
+
+In PowerGrid you can make use of [closures](add-columns.html#enum) to display your Enum labels instead of the default database values.
+
+Including the column with filter:
+
+```php
+//...
+
+// Including column
+Column::add()
+    ->field('diet', 'dishes.diet')
+    ->title(__('Dieta')),
+```
+
+Result:
+
+![Output](/_media/examples/filters/makeInputEnumSelect.png)
+
+To display your `labels` instead of case values, you can inlcude the `labelPowergridFilter` method inside your enum.
+
+```php
+<?php
+
+enum Diet: int
+{
+    //...
+
+   /**
+     * Sends labels to PowerGrid Enum Input
+     *
+     */
+    public function labelPowergridFilter(): string
+    {
+        return $this->labels();
+    }
+}
+```
+
+![Output](/_media/examples/filters/makeInputEnumSelectLabel.png)
+
+---
+
 ### boolean
 
 Adds a filter for boolean values.
@@ -331,20 +424,142 @@ Result:
 
 ---
 
-
-### makeInputMultiSelect($dataSource, string $name, string $dataField)
+### multiSelect
 
 Includes a specific field on the page to filter a hasOne relation in the column.
 
-Parameters:
+To use the multiSelect filter you must choose which frontend framework will be responsible for rendering
+the selector between [TomSelect](https://tom-select.js.org/) or [SlimSelect](https://slimselectjs.com/).
 
-- `$dataSource`: parameter must be a [Datasource](datasource?id=datasource).
-- `$name`: datasource field name to be displayed in options.
-- `$dataField`: field used by the filter.
+#### 👉 Using SlimSelect
+
+* Install
+```bash
+npm i slim-select
+```
+
+* Configure
+
+Add in `app.js`
+
+```js
+import SlimSelect from 'slim-select'
+window.SlimSelect = SlimSelect
+```
+
+Add in `app.css`
+
+```css
+@import "~slim-select/dist/slimselect.css";
+```
+
+change in `config/livewire-powergrid.php`
+
+```php{2,20-23}
+'multiselect' => [
+     'default' => 'slim',
+
+     /*
+     * TomSelect Options
+      * https://tom-select.js.org
+      */
+       'tom' => [
+       'plugins' => [
+             'clear_button' => [
+                  'title' => 'Remove all selected options',
+             ],
+        ],
+      ],
+
+      /*
+     * Slim Select options
+      * https://slimselectjs.com/
+      */
+       'slim' => [
+       'settings' => [
+             'alwaysOpen' => false,
+       ],
+   ],
+ ],
+```
+
+#### 👉 Using TomSelect
+
+* Install
+```bash
+npm i tom-select
+```
+
+* Configure
+
+Add in `app.js`
+
+```js
+import TomSelect from "tom-select";
+window.TomSelect = TomSelect
+```
+
+Add in `app.css`
+
+```css
+@import "~tom-select/dist/scss/tom-select.bootstrap5";
+```
+
+change in `config/livewire-powergrid.php`
+
+```php{2,8-13}
+'multiselect' => [
+     'default' => 'tom',
+
+     /*
+     * TomSelect Options
+      * https://tom-select.js.org
+      */
+       'tom' => [
+       'plugins' => [
+             'clear_button' => [
+                  'title' => 'Remove all selected options',
+             ],
+        ],
+      ],
+
+      /*
+     * Slim Select options
+      * https://slimselectjs.com/
+      */
+       'slim' => [
+       'settings' => [
+             'alwaysOpen' => false,
+       ],
+   ],
+ ],
+```
+
+#### Using
+
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
+
+#### Methods:
+
+* `->dataSource(array|Collection $collection)` : parameter must be a [Datasource](datasource?id=datasource).
+* `->optionValue(string $value)` : datasource field name to be displayed in options.
+* `->optionId(string $value)` : field used by the filter.
 
 Example:
-
-`->makeInputMultiSelect(Kitchen::all(), 'state', 'kitchen_id')`
+```php
+public function filters(): array
+{
+    return [
+         Filter::multiSelect('category_name', 'category_id')
+                ->dataSource(Category::all())
+                ->optionValue('id')
+                ->optionLabel('name'),
+    ];
+}
+````
 
 Result:
 
@@ -364,73 +579,6 @@ Parameters:
 
 Usage:  `->makeInputEnumSelect(Diet::cases(), 'dishes.diet')`
 
-Example:
-
-Consider the following Enum with Dietary restrictions.
-
-The database field `diet` contains the `int` values (0, 1 or 2). In this Enum we added a method `label()` to display a human friendly value for each case.
-
-```php
-<?php
-
-enum Diet: int
-{
-    case ALL      = 0;
-    case VEGAN    = 1;
-    case CELIAC   = 2;
-
-    public function labels(): string
-    {
-        return match ($this) {
-            self::ALL         => "🍽️ All diets",
-            self::VEGAN       => "🌱 Suitable for Vegans",
-            self::CELIAC      => "🥜 Suitable for Celiacs",
-        };
-    }
-}
-```
-
-In PowerGrid you can make use of [closures](add-columns.html#enum) to display your Enum labels instead of the default database values.
-
-Including the column with filter:
-
-```php
-//...
-
-//Including column
-Column::add()
-    ->field('diet', 'dishes.diet')
-    ->makeInputEnumSelect(Diet::cases(), 'dishes.diet')
-    ->title(__('Dieta')),
-```
-
-Result:
-
-![Output](/_media/examples/filters/makeInputEnumSelect.png)
-
-To display your `labels` instead of case values, you can inlcude the `labelPowergridFilter` method inside your enum.
-
-```php
-<?php
-
-enum Diet: int
-{
-    //...
-
-   /**
-     * Sends labels to PowerGrid Enum Input
-     *
-     */
-    public function labelPowergridFilter(): string
-    {
-        return $this->labels();
-    }
-}
-```
-
-![Output](/_media/examples/filters/makeInputEnumSelectLabel.png)
-
----
 
 ### makeInputRange(string $dataField, string $thousands, string $decimal)
 
