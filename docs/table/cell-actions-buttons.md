@@ -118,7 +118,7 @@ This feature is not available when using table.column notation on $primaryKey (E
 
 * If `isToggleable` is `true`, the table cell will be converted into a `toggleable` button.
 
-This method is not avaialble for `Collection` PowerGrid tables.
+This method is not available for `Collection` PowerGrid tables.
 
 | Parameter            | Description                 | Default |
 |----------------------|-----------------------------|---------|
