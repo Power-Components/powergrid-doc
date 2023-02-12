@@ -176,7 +176,8 @@ Now you can search your table if your data source has morphic relationship [wher
 Using the Alpine store, we can track how many items have been selected.
 This is useful to count how many items we will export or carry out a mass action.
 
-[Read more](./table/bulk-actions.html#show-number-of-selected-items)
+[Read more](../table/bulk-actions.html#show-number-of-selected-items)
+
 ---
 
 ### Dynamic inputText
