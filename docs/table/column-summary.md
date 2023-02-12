@@ -40,11 +40,11 @@ Result:
 
 * Will display the count of all records in the field
 
-| Parameter      | Description                                                               | Default |
-|----------------|---------------------------------------------------------------------------|---------|
-| (string) $label  | The argument $label sets the button caption.                              | 'Count' |
-| (bool) $header | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| Parameter       | Description                                                               | Default |
+|-----------------|---------------------------------------------------------------------------|---------|
+| (string) $label | The argument $label sets the button caption.                              | 'Count' |
+| (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
+| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 
 Example:
@@ -136,17 +136,17 @@ To summarize formatted data (e.g, currency), you must pass the `formatted column
 In the example next example, we have a column `price_BRL` formatting the amount in Brazilian Real currency format.
 
 ```php
-public function addColumns(): PowerGridEloquent
-{
-    return PowerGrid::eloquent()
-        ->addColumn('id')
+  public function addColumns(): PowerGridEloquent
+    {
+        return PowerGrid::eloquent()
+            ->addColumn('id')
             
-        //1000.00
-        ->addColumn('price')
+            //1000.00
+            ->addColumn('price')
             
-        //R$ 1.000,00
-        ->addColumn('price_BRL', fn (Dish $dish) => 'R$ ' . number_format(e($dish->price), 2, ',', '.'));
-}
+            //R$ 1.000,00
+            ->addColumn('price_BRL', fn (Dish $dish) => 'R$ ' . number_format(e($dish->price), 2, ',', '.'));
+    }
 ```
 
 Next, we must pass the two columns to the `field()` method, when [including](include-columns.html) the "formatted price" column in our table:

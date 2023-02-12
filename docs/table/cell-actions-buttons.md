@@ -48,7 +48,7 @@ The content can be edited and saved by pressing the `<enter>` key.
 
 ::: tip
 If `$saveOnMouseOut` is '`true`', when pressing esc the value entered will be canceled and returned to the normal state.
-::: 
+:::
 
 Example:
 
