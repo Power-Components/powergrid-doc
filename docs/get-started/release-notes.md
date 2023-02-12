@@ -29,7 +29,7 @@ For more comfort we moved the queues properties inside the Exportable Facade.
 
 ### Support TomSelect and SlimSelect
 
-Add support for [Slim Select](Add support for https://slimselectjs.com/ and [Tom Select](https://tom-select.js.org/) by default instead of using the multi select component that came by default in version 3. 
+Add support for [Slim Select](https://slimselectjs.com/) and [Tom Select](https://tom-select.js.org/) by default instead of using the multi select component that came by default in version 3. 
 ) and Tom Select by default instead of using the multi select component that came by default in version 3. 
 This allows for further customization and greater support.
 
@@ -37,7 +37,7 @@ This allows for further customization and greater support.
 
 ---
 
-### Changed Columns::makeFilters to Filter Facade
+### Changed `Columns::makeFilters` to Filter Facade
 
 Instead of calling the method to create a custom filter inside a column, we should use the Filters Facade
 
@@ -60,7 +60,7 @@ Filter::inputText()
 Filter::boolean()
 ```
 
-[Read more](../table/column-filters.html)
+[Read more](../get-started/upgrade-guide.html#filters)
 
 ---
 
@@ -113,7 +113,7 @@ Example:
 public function columns(): array
 {
     return [
-        Column::make('Index')
+        Column::make('Index', '')
            ->index(),
 }
 ```
@@ -130,7 +130,7 @@ PowerGrid uses the slate color by default, you might want to change that, just i
 
 ---
 
-### Header::withoutLoading
+### Header Without Loading
 
 If you don't want to display PowerGrid's default **loading** icon when some request is made to the server, just
 call `withoutLoading()` on Header Facade. This is useful when you already have a layout to show the progress of internal calls. 
@@ -145,7 +145,7 @@ You can change the classes and styles of the input, icon search and icon close.
 
 ---
 
-### Table::tdBodyEmpty
+### Table tdBodyEmpty
 
 You can use tdBodyEmpty to change the row style when the table is empty.
 
@@ -153,13 +153,13 @@ You can use tdBodyEmpty to change the row style when the table is empty.
 
 ---
 
-### Filter::multiSelectAsync
+### Filter Multi Select Async
 
 Description
 
 ---
 
-### deferLoading using wire:init
+### Defer Loading using wire:init
 
 Description
 
@@ -173,11 +173,12 @@ Now you can search your table if your data source has morphic relationship [wher
 
 ### BulkAction store
 
-Description
+Using the Alpine store, we can track how many items have been selected.
+This is useful to count how many items we will export or carry out a mass action.
 
 ---
 
-### dynamic inputText options
+### Dynamic inputText
 
 Description
 

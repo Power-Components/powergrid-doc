@@ -9,9 +9,27 @@ The filters must be declared inside the array returned in the 'filters' method.
 To use, you must use the Facade `Filter`, passing the column you want to apply the filter
 and the `field` that will filter.
 
-Example:
+**Filter::multiSelect('category_name', 'category_id')**
 
-```php
+`category_name`: Column name defined in Column::field()
+
+`category_id`: Column name defined in Column::field() or Column dataField
+
+Example:
+```php{4,5,11,17-20}
+public function addColumns(): PowerGridEloquent
+{
+    return PowerGrid::eloquent()
+        ->addColumn('category_id', fn ($dish) => $dish->category_id)
+        ->addColumn('category_name', fn ($dish) => $dish->category->name);
+}
+
+public function columns(): array
+{
+    return [
+       Column::make('Category Name', 'category_name'),
+    ]
+}
 public function filters(): array
 {
     return [
@@ -23,30 +41,34 @@ public function filters(): array
 }
 ```
 
-Available filters:
+---
+Result:
 
-* [inputText](./column-filters.html#inputtext)
-* [select](./column-filters.html#select)
-* [boolean](./column-filters.html#boolean)
-* [datepicker](./column-filters.html#datepicker)
-* multiSelect
-* multiSelectAsync
-* enumSelect
-* dynamic
-
+![Output](/_media/examples/filters/makeInputMultiSelect.png)
 
 ---
+
+Available filters:
+
+* [Filter::inputText](./column-filters.html#filter-inputtext)
+* [Filter::select](./column-filters.html#filter-select)
+* [Filter::enumSelect](./column-filters.html#filter-enumselect)
+* [Filter::boolean](./column-filters.html#filter-boolean)
+* [Filter::datepicker](./column-filters.html#filter-datepicker)
+* [Filter::multiSelect](./column-filters.html#filter-multiselect)
+* [Filter::multiSelectAsync](./column-filters.html#filter-multiselectasync)
+* [Filter::dynamic](./column-filters.html#filter-dynamic)
 
 ## Filter methods
 
 These methods enable input for filters at your column header.
 
-### inputText
+### Filter::inputText
 
 | Parameter        |
 |------------------|
-| (string) $column |
-| (string) $field  |
+| (string) $column | 
+| (string) $field  | 
 
 #### Methods:
 
@@ -91,7 +113,7 @@ Result:
 
 ---
 
-### select
+### Filter::select
 
 Includes a specific field on the page to filter a hasOne relation in the column.
 
@@ -127,7 +149,7 @@ Result:
 
 ---
 
-### Select filter with labels
+#### Select filter with labels
 
 In some cases, you might want to change the displayed label for each option in your select filter.
 
@@ -150,9 +172,7 @@ To build a table with a filter based on Database values, you can use:
     {
         return [
             //...
-            Column::add()
-                ->title('code')
-                ->field('code', 'code'),
+            Column::make('Code', 'code'),
         ];
     }
 
@@ -202,7 +222,7 @@ Now, we can use this method in `DishTable` to access our collection of codes.
 
 ```php
 
- public function addColumns(): PowerGridEloquent
+    public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
             /*
@@ -242,7 +262,7 @@ The example above results in a much more user-friendly table:
 
 ---
 
-### enumSelect
+### Filter::enumSelect
 
 Includes a select filter based in a PHP Enum.
 
@@ -264,7 +284,7 @@ public function filters(): array
 {
     return [
         Filter::enumSelect('diet', 'dishes.diet')
-            ->dataSource(Dish::servedAt())
+            ->dataSource(\App\Enums\Diet::cases())
             ->optionLabel('dishes.diet'),
     ];
 }
@@ -302,9 +322,7 @@ Including the column with filter:
 //...
 
 // Including column
-Column::add()
-    ->field('diet', 'dishes.diet')
-    ->title(__('Dieta')),
+Column::make('Dieta', 'diet', 'dishes.diet'),
 ```
 
 Result:
@@ -335,7 +353,7 @@ enum Diet: int
 
 ---
 
-### boolean
+### Filter::boolean
 
 Adds a filter for boolean values.
 
@@ -368,7 +386,7 @@ Result:
 
 ---
 
-### datePicker
+### Filter::datePicker
 
 Includes a specific field on the page to filter between the specific date in the column.
 
@@ -424,7 +442,7 @@ Result:
 
 ---
 
-### multiSelect
+### Filter::multiSelect
 
 Includes a specific field on the page to filter a hasOne relation in the column.
 
@@ -565,53 +583,19 @@ Result:
 
 ![Output](/_media/examples/filters/makeInputMultiSelect.png)
 
-### makeInputEnumSelect(array $enumCases, string $dataField = null, array $settings = [])
+--- 
 
-Includes a select filter based in a PHP Enum.
+### Filter::multiSelectAsync
 
-Available only in `Php 8.1+`.
+TODO
 
-Parameters:
+---
 
-- `$enumCases`: parameter must be a `enum`.
-- `$dataField`: field used by the filter.
-- `$settings`: Settings
+### Filter::dynamic
 
-Usage:  `->makeInputEnumSelect(Diet::cases(), 'dishes.diet')`
+TODO
 
-
-### makeInputRange(string $dataField, string $thousands, string $decimal)
-
-Adds a range filter input (min and max values).
-
-The following example adds a range filter on "Dish Quality" column, filtering with `quantity` field.
-
-```php
-public function columns(): array
-{
-  return [
-      Column::make('Dish Quantity', 'quantity'),
-  ];
-}
-```
-
-The example below sets `$thousands` and `$decimal` separators. This is useful with currency values.
-
-PowerGrid parses the formatted `1.170,90` into a decimal number (`1170.90`) and filter data based on the `price` field.
-
-```php
-public function columns(): array
-{
-  return [
-      Column::make('Price', 'price_in_brl')
-          ->makeInputRange('price', '.', ','),
-  ];
-}
-```
-
-Result:
-
-![Output](/_media/examples/filters/makeInputRange.png)
+---
 
 ## Filter by Relationship
 

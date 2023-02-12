@@ -34,8 +34,8 @@ npm run dev
 
 * PHP 8.0
 * Laravel 8
-* [Include Scripts and Styles vie Blade directive](https://v3.livewire-powergrid.com/get-started/configure.html#_1-include-scripts-and-styles)
-* [Import AlpineJS in config](https://livewire-powergrid.com/get-started/configure.html#_2-alpine-js)
+* [Scripts and Styles vie Blade directive](https://v3.livewire-powergrid.com/get-started/configure.html#_1-include-scripts-and-styles)
+* [AlpineJS in config](https://livewire-powergrid.com/get-started/configure.html#_2-alpine-js)
 * [Column Filters](https://v3.livewire-powergrid.com/table/column-filters.html#column-filters) replace with [Filters Facade](https://github.com/Power-Components/livewire-powergrid/pull/785)
 * [bootstrap-select (Bootstrap 5)](https://github.com/Power-Components/livewire-powergrid/pull/775)
 * [required openspout/openspout](https://livewire-powergrid.com/get-started/release-notes.html#export-using-openspout-openspout)
@@ -218,5 +218,42 @@ public function table(): Table
 }
 ```
 
+### Filters
+
+The filter methods have been moved to the `filters` function. This allows the addition of other filters and reduces the complexity inside addColumns.
+
+Also added 2 new filters.
+
+Here is an example using [makeInputRange](https://v3.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal)
+
+```php
+<!-- 🚫 Before -->
+public function columns(): array
+{
+   return [
+       Column::make('Price', 'price_in_brl')
+          ->makeInputRange('price', '.', ','),
+   ];
+}
+
+<!-- ✅ After -->
+public function columns(): array
+{
+   return [
+       Column::make('Price', 'price', 'price_in_brl'),
+   ];
+}
+
+public function filters(): array
+{
+   return [
+       Filter::number('price', 'price_in_brl')
+           ->thousands('.')
+           ->decimal(','),
+   ];
+} 
+```
+
+[Read more](../table/column-filters.html)
 
 ---
