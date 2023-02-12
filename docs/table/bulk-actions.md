@@ -8,7 +8,7 @@ Only available for Tailwind theme
 
 To illustrate, imagine you that you need to select several "dishes" and mark them as "Sold-out".
 
-## Usage
+### Usage
 
 To implement Bulk Actions in PowerGrid, you must add an `Action Button` inside the `header()` method. When clicked, this button will emit an event which will be handled as needed, for example by another component. See the code below:
 
@@ -16,8 +16,7 @@ To implement Bulk Actions in PowerGrid, you must add an `Action Button` inside t
 <?php
 
 //...
-
-    public function header(): array
+   public function header(): array
     {
         return [
             Button::add('bulk-sold-out')
@@ -53,7 +52,6 @@ The example below will trigger a Browser alert:
 <?php
 
 //...
-
     public function bulkActionEvent(): void
     {
         if (count($this->checkboxValues) == 0) {
@@ -72,17 +70,59 @@ Finally, for this example to work, you must listen for the `showAlert` in the bl
 
 ```php
 //...
-        <!-- Scripts -->
-        @livewireScripts
-        @powerGridScripts
-        <script src="//unpkg.com/alpinejs" defer></script>
-        <script>
-            window.addEventListener('showAlert', event => {
-                alert(event.detail.message);
-            })
-        </script>
-
+     <!-- Scripts -->
+     @livewireScripts
+     <script src="//unpkg.com/alpinejs" defer></script>
+     <script>
+         window.addEventListener('showAlert', event => {
+            alert(event.detail.message);
+         })
+     </script>
 ```
 
 Now, you can select some rows and when you click on "Mark as Sold-out" button, an alert should appear with the IDs you have selected.
+
+### Show number of selected items
+
+We can access the selected values when we are using bulkActions with [showCheckbox()](./features-setup.html#showcheckbox).
+
+For that, you must access the global `pgBulkActions` javascript component:
+
+* To fetch the selected total via javascript:
+
+```javascript
+window.pgBulkActions.count('detail') // detail is the name of the table.
+```
+
+Example:
+
+```php{5}
+public function header(): array
+{
+     return [
+        Button::add('bulk-delete')
+            ->caption(__('Bulk delete (<span x-text="window.pgBulkActions.count(\'' . $this->tableName . '\')"></span>)'))
+            ->class('cursor-pointer block bg-white-200 text-gray-700 ')
+            ->emit('bulkDelete-' . $this->tableName, []),
+     ];
+ }
+```
+
+Result:
+
+![Output](/_media/examples/bulk-action-store.png)
+
+
+* To fetch the selected ids via javascript
+
+```javascript
+window.pgBulkActions.get('detail') // detail is the name of the table.
+```
+
+![Output](/_media/examples/bulk-action-store-get.png)
+
+
+::: tip
+When selecting an item, no request will be sent to the server.
+:::
 
