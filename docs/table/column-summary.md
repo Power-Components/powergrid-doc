@@ -27,9 +27,7 @@ Example:
 
 ```php{5}
 //...
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
+Column::make(__('Price'), 'price')
     ->withSum('Sum', true, false),
 ```
 
@@ -53,9 +51,7 @@ Example:
 
 ```php{5}
 //...
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
+Column::make(__('Price'), 'price')
     ->withCount('Count', true, false),
 ```
 
@@ -78,9 +74,7 @@ Example:
 
 ```php{5-7}
 //...
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
+Column::make(__('Price'), 'price')
     ->withAvg('Avg', true, false),
 ```
 
@@ -103,9 +97,7 @@ Example:
 
 ```php{5-9}
 //...
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
+Column::make(__('Price'), 'price')
     ->withMin('Min', true, false),
 ```
 
@@ -128,9 +120,7 @@ Example:
 
 ```php{5}
 //...
-Column::add()
-    ->title(__('Price'))
-    ->field('price')
+Column::make(__('Price'), 'price')
     ->withMax('Max', true, false),
 ```
 
@@ -169,15 +159,11 @@ Next, we must pass the two columns to the `field()` method, when [including](inc
 public function columns(): array
 {
     return [
-        Column::add()
-            ->title(__('ID'))
-            ->field('id', 'dishes.id')
+        Column::make(__('ID'), 'id', 'dishes.id')
             ->searchable()
             ->sortable(),
             
-        Column::add()
-            ->title(__('Price'))
-            ->field( 'price_BRL', 'price') //formatted field, original field
+        Column::make(__('Price'), 'price_BRL', 'price') //formatted field, original field
             ->withSum('Total amount', true, true),
     ];
 }
