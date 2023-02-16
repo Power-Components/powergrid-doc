@@ -9,14 +9,18 @@
 
 [PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy to customize Datatables based on Laravel [Livewire](https://laravel-livewire.com) library.
 
-## Quick Links
+<p align="center">
+    <a href="get-started/install.html#install">Install</a> |
+    <a href="get-started/configure.html">Configure</a> |
+    <a href="get-started/create-powergrid-table.html">Create a Table</a> |
+    <a href="table/features-setup.html">Table Features</a> |
+    <a href="https://github.com/Power-Components/powergrid-demo" target="_blank">Demo project</a> |
+    <a href="https://github.com/Power-Components/livewire-powergrid" target="_blank">Source code</a>
+</p>
 
-- [Install](get-started/install.html#install)
-- [Configure](get-started/configure.html)
-- [Create a Table](get-started/create-powergrid-table.html)
-- [Table Features](table/features-setup.html)
-- [Demo project](https://github.com/Power-Components/powergrid-demo)
-- [Source code](https://github.com/Power-Components/livewire-powergrid)
+<p>
+    <img src="https://livewire-powergrid.com/_media/screenshot.png" alt="PowerGrid Screenshot">
+</p>
 
 ## Support
 
