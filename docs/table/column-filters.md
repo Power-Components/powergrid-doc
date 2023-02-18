@@ -610,7 +610,7 @@ As Powergrid uses TomSelect, set it in settings (here).
 
 **Async methods**:
 
-* `->url(string $url)` : API URL used by the filter.
+* `->url(string $url)` : API URL used by the filter ([See example](./column-filters.html#api-example)).
 * `->method(string $method = 'get')` : API method (get,post ..) used by the filter.
 * `->parameters(string $parameters = [])` :  Other options to send in the Body of the request along with the text search
 
@@ -628,6 +628,42 @@ public function filters(): array
     ];
 }
 ````
+
+### API Example
+
+* Route:
+```php
+Route::post('category', Index::class)->name('category.index');
+```
+
+* API Controller
+```php
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+
+class Index extends Controller
+{
+    public function __invoke(Request $request): Collection
+    {
+        return Category::query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->when($request->search,
+                fn (Builder $query) => $query
+                    ->where('name', 'like', "%{$request->search}%")
+            )
+            ->get();
+    }
+}
+```
+
 
 Result:
 ![Output](/_media/examples/filters/makeInputMultiSelect.png)

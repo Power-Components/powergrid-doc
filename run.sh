@@ -1,14 +1,12 @@
 #!/bin/bash
                   #╔═════════════════════╗#
-                  #║   LaraDumps Doc     ║#
+                  #║   PowerGrid Doc     ║#
                   #╚═════════════════════╝#
 
 # ══════════════ STYLES ═════════
 
 NC='\033[0m'
-WHITE='\033[1;37m'
 GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
 LABEL_ERROR="\n\033[048;5;9m ERROR ${NC} "
 
 #Ascii Logo enconded in Base64
