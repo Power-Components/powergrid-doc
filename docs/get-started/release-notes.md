@@ -155,7 +155,10 @@ You can use tdBodyEmpty to change the row style when the table is empty.
 
 ### Filter Multi Select Async
 
-Description
+If you don't want to load the multiselect data immediately when starting the page, you can use this feature, it helps your datatable behave faster. 
+As Powergrid uses [TomSelect](../get-started/release-notes.html#support-tomselect-and-slimselect), set it in settings (here).
+
+[Read more](../table/column-filters.html#filter-multiselectasync)
 
 ---
 

@@ -449,7 +449,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 To use the multiSelect filter you must choose which frontend framework will be responsible for rendering
 the selector between [TomSelect](https://tom-select.js.org/) or [SlimSelect](https://slimselectjs.com/).
 
-#### 👉 Using SlimSelect
+#### Using SlimSelect
 
 * Install
 ```bash
@@ -501,7 +501,7 @@ change in `config/livewire-powergrid.php`
  ],
 ```
 
-#### 👉 Using TomSelect
+#### Using TomSelect
 
 * Install
 ```bash
@@ -587,7 +587,50 @@ Result:
 
 ### Filter::multiSelectAsync
 
-TODO
+If you don't want to load the multiselect data immediately when starting the page, you can use this feature, it helps your datatable behave faster. 
+As Powergrid uses TomSelect, set it in settings (here). 
+
+::: warning
+* Make sure you have [TomSelect](./column-filters.html#using-tomselect) set up beforehand.
+* You must use an external API or create your own endpoint: route, controllers.
+::: 
+
+#### Using
+
+| Parameter        |
+|------------------|
+| (string) $column |
+| (string) $field  |
+
+#### Methods:
+
+* `->dataSource(array|Collection $collection)` : parameter must be a [Datasource](datasource?id=datasource).
+* `->optionValue(string $value)` : datasource field name to be displayed in options.
+* `->optionId(string $value)` : field used by the filter.
+
+**Async methods**:
+
+* `->url(string $url)` : API URL used by the filter.
+* `->method(string $method = 'get')` : API method (get,post ..) used by the filter.
+* `->parameters(string $parameters = [])` :  Other options to send in the Body of the request along with the text search
+
+Example:
+```php
+public function filters(): array
+{
+    return [
+         Filter::multiSelectAsync('category_name', 'category_id')
+                ->url(route('category.index'))
+                ->method('POST')
+                ->parameters([0 => 'Luan'])
+                ->optionValue('id')
+                ->optionLabel('name'),
+    ];
+}
+````
+
+Result:
+![Output](/_media/examples/filters/makeInputMultiSelect.png)
 
 ---
 

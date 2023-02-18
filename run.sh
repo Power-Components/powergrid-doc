@@ -33,4 +33,4 @@ checkNpm
 
 npm install
 
-vuepress dev docs
+npm run docs:dev
