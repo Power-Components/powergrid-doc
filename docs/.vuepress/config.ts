@@ -28,7 +28,7 @@ export default defineUserConfig({
         docsearchPlugin({
             appId: '7M4C366U6U',
             apiKey: 'cd810107dfeb4a3dc190959e3855db56',
-            indexName: 'livewire-powergridLivewire Powergrid',
+            indexName: 'livewire-powergridPowergrid version3',
         }),
 
     ],
