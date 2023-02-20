@@ -183,6 +183,33 @@ Result:
 
 ![Output](/_media/examples/features/header-includeViewOnBottom.png)
 
+
+### withoutLoading
+
+If you don't want to display PowerGrid's default **loading** icon when some request is made to the server, just
+call `withoutLoading()` on Header Facade. 
+
+This is useful when you already have a layout to show the progress of internal calls, for example [Defer Loading](../table/component-settings.html#defer-loading).
+
+```php{7}
+use PowerComponents\LivewirePowerGrid\Header 
+
+public function setUp(): array
+{
+     return [
+         Header::make()
+             ->withoutLoading(),
+
+         // ...
+     ];
+}
+```
+
+Result:
+
+![Output](/_media/examples/without-loading.png)
+
+
 ---
 
 ## Footer
