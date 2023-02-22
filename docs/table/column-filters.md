@@ -474,7 +474,7 @@ Add in `app.css`
 change in `config/livewire-powergrid.php`
 
 ```php{2,20-23}
-'multiselect' => [
+'select' => [
      'default' => 'slim',
 
      /*
@@ -526,7 +526,7 @@ Add in `app.css`
 change in `config/livewire-powergrid.php`
 
 ```php{2,8-13}
-'multiselect' => [
+'select' => [
      'default' => 'tom',
 
      /*
