@@ -30,6 +30,7 @@ public function columns(): array
        Column::make('Category Name', 'category_name'),
     ]
 }
+
 public function filters(): array
 {
     return [
@@ -58,6 +59,39 @@ Available filters:
 * [Filter::multiSelect](./column-filters.html#filter-multiselect)
 * [Filter::multiSelectAsync](./column-filters.html#filter-multiselectasync)
 * [Filter::dynamic](./column-filters.html#filter-dynamic)
+
+### Customize query & collection return
+
+You can customize your results using constructors and collection methods by passing a closure function
+
+* Each filter contains two methods: query and collection.
+
+::: warning
+When you use the **query** or **collection** methods, you are taking control of the filter.
+:::
+
+* Query example:
+```php
+->query(function (Builder $query, mixed $value) {
+    return $query->where('qty', '>', 10);
+})
+```
+
+* Collection example:
+```php
+->collection(function (Collection $collection, mixed $value) {
+    return $collection->where($field, '!=', $value);
+})
+```
+
+* Complete example:
+```php
+Filter::boolean('in_stock')
+    ->label('yes', 'no')
+    ->query(function (Builder $query, string $value) {
+        return $query->where('in_stock', $value === 'true' ? 1 : 0);
+    }),
+```
 
 ## Filter methods
 
@@ -663,7 +697,6 @@ class Index extends Controller
     }
 }
 ```
-
 
 Result:
 ![Output](/_media/examples/filters/makeInputMultiSelect.png)
