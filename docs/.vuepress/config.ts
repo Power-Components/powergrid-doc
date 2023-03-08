@@ -31,6 +31,5 @@ export default defineUserConfig({
             apiKey: 'cd810107dfeb4a3dc190959e3855db56',
             indexName: 'livewire-powergridPowergrid v4',
         }),
-
     ],
 })
