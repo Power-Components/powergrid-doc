@@ -67,7 +67,7 @@ but we recommend using the native powergrid method: `onUpdatedEditable`
 ::: 
 
 ```php{3-8}
-public ?string $name = null;
+public array $name = [];
 
 public function onUpdatedEditable($id, $field, $value): void
 {   
@@ -84,7 +84,7 @@ To do the validation, make sure you put **$rules** and the **validate()** method
 ::: 
 
 ```php{1,4,9}
-public ?string $name = null;
+public array $name = [];
 
 protected array $rules = [
      'name.*' => ['required', 'min:6'],
