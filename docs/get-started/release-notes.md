@@ -86,21 +86,23 @@ public function filters(): array
 {
     return [
         Filter::dynamic('in_stock', 'in_stock')
-            ->filterType(DynamicInput::FILTER_SELECT)
             ->component('select') // <x-select ...attributes/>
             ->attributes([
-                'class'        => 'min-w-[170px]',
-                'async-data'   => route('categories.index'),
-                'option-label' => 'name',
-                'multiselect'  => false,
-                'option-value' => 'id',
-                'placeholder'  => 'Test',
+                'class'           => 'min-w-[170px]',
+                'async-data'      => route('categories.index'),
+                'option-label'    => 'name',
+                'multiselect'     => false,
+                'option-value'    => 'id',
+                'placeholder'     => 'Test',
+                'wire:model.lazy' => 'filters.select.in_stock'
             ]),
     ];
 }
 ```
 
 ![Output](/_media/examples/dynamic-select.png)
+
+[Read more](../table/column-filters.html#filter-dynamic)
 
 ---
 

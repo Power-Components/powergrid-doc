@@ -30,6 +30,7 @@ public function columns(): array
        Column::make('Category Name', 'category_name'),
     ]
 }
+
 public function filters(): array
 {
     return [
@@ -58,6 +59,71 @@ Available filters:
 * [Filter::multiSelect](./column-filters.html#filter-multiselect)
 * [Filter::multiSelectAsync](./column-filters.html#filter-multiselectasync)
 * [Filter::dynamic](./column-filters.html#filter-dynamic)
+
+### Customize query & collection return
+
+You can customize your results using constructors and collection methods by passing a closure function
+
+* Each filter contains two methods: query and collection.
+
+::: warning
+When you use the **query** or **collection** methods, you are taking control of the filter.
+:::
+
+* Query example:
+```php
+->query(function (Builder $query, mixed $value) {
+    return $query->where('qty', '>', 10);
+})
+```
+
+* Collection example:
+```php
+->collection(function (Collection $collection, mixed $value) {
+    return $collection->where($field, '!=', $value);
+})
+```
+
+* Complete example:
+```php
+Filter::boolean('in_stock')
+    ->label('yes', 'no')
+    ->query(function (Builder $query, string $value) {
+        return $query->where('in_stock', $value === 'true' ? 1 : 0);
+    }),
+```
+
+## Custom view components
+
+You can add your own view component using the component method.
+
+* This will render all attributes needed to generate a working custom filter in PowerGrid (such as [wireui](https://livewire-wireui.com/)),
+* Pass the extra attributes in the second parameter. (wire:model, class ...).
+
+```php{7}
+$attributes = [
+    'class' => 'p-2',
+    // ...
+];
+
+Filter::bollean('in_stock')
+    ->component('my-custom-select', $attributes)
+```
+
+::: tip
+To use the default PowerGrid attributes, check in `$attributes->getAttributes()`
+:::
+
+`views/components/my-custom-select.blade.php`
+```html{2,4}
+<div>
+    @json($attributes->getAttributes())
+
+    <input {{ $attributes->get('inputAttributes') }} />
+</div>
+```
+
+
 
 ## Filter methods
 
@@ -664,7 +730,6 @@ class Index extends Controller
 }
 ```
 
-
 Result:
 ![Output](/_media/examples/filters/makeInputMultiSelect.png)
 
@@ -672,7 +737,37 @@ Result:
 
 ### Filter::dynamic
 
-TODO
+PowerGrid Filters are internal components, if you want to use an external component you can use
+this functionality. A practical example is when you are using external components (such as [wireui](https://livewire-wireui.com/)) throughout your system and want to
+apply them in PowerGrid too.
+
+#### Methods:
+
+* `->component(string $component)` : name of component to be rendered: 'x-select' must be 'select'
+* `->attributes(array $attributes)` : extra attributes for the view
+
+Example:
+
+```php{4-14}
+public function filters(): array
+{
+    return [
+        Filter::dynamic('in_stock', 'in_stock')
+            ->component('select') // <x-select ...attributes/>
+            ->attributes([
+                'class'           => 'min-w-[170px]',
+                'async-data'      => route('categories.index'),
+                'option-label'    => 'name',
+                'multiselect'     => false,
+                'option-value'    => 'id',
+                'placeholder'     => 'Test',
+                'wire:model.lazy' => 'filters.select.in_stock'
+            ]),
+    ];
+}
+```
+
+![Output](/_media/examples/dynamic-select.png)
 
 ---
 
