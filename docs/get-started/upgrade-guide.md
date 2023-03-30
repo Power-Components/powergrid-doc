@@ -1,27 +1,14 @@
 # Upgrade Guide
 
-### Upgrade From V3
+## Upgrade From V3
 
 PowerGrid is now on version 4.x.
 
 This page will give you important information to upgrade from v3.x.
 
-::: warning
-Republish views if you have previously published
-:::
-
---- 
-
-```bash
-php artisan vendor:publish --tag=livewire-powergrid-views --force && php artisan view:clear
-```
-
-After making all the changes, be sure to run the command
-```bash
-npm run dev
-```
-
 ### Dependency Upgrades
+
+The following items have been updated in this release:
 
 * PHP 8.1+
 * [Laravel Framework](https://laravel.com/) 9.0+
@@ -32,6 +19,8 @@ npm run dev
 
 ### Deprecations
 
+The following items have been deprecated in this release:
+
 * PHP 8.0
 * Laravel 8
 * [Scripts and Styles vie Blade directive](https://v3.livewire-powergrid.com/get-started/configure.html#_1-include-scripts-and-styles)
@@ -39,6 +28,29 @@ npm run dev
 * [Column Filters](https://v3.livewire-powergrid.com/table/column-filters.html#column-filters) replace with [Filters Facade](https://github.com/Power-Components/livewire-powergrid/pull/785)
 * [bootstrap-select (Bootstrap 5)](https://github.com/Power-Components/livewire-powergrid/pull/775)
 * [required openspout/openspout](https://livewire-powergrid.com/get-started/release-notes.html#export-using-openspout-openspout)
+
+---
+
+### PowerGrid Directives
+
+You must remove the PowerGrid directive `@powerGridStyles` and `@powerGridScripts` from your views. These directives are deprecated.
+
+### Published Views
+
+You must republish views if you have previously published them.
+
+To republish the view, first run the command below.
+
+```bash
+php artisan vendor:publish --tag=livewire-powergrid-views --force && php artisan view:clear
+```
+
+Secondlyl, run the following command.
+
+```bash
+npm run dev
+```
+
 ---
 
 ### Include powergrid.css via module
@@ -54,7 +66,9 @@ import "./../../vendor/power-components/livewire-powergrid/dist/powergrid.css";
 
 Reference: [Tailwind Doc](https://tailwindcss.com/docs/presets)
 
-PowerGrid uses the **slate** color by default, you might want to change that, just insert the powergrid preset in the `tailwind.config.js` file
+PowerGrid uses the **slate** color by default.
+
+If you would like to change that, just insert the powergrid preset in the `tailwind.config.js` file as demonstrated below.
 
 ```js{7,13}
 const colors = require('tailwindcss/colors')
@@ -78,64 +92,71 @@ module.exports = {
 
 ### Update Config
 
-Some references in settings have been removed and added. Please adjust this before continuing.
+Some references in settings have been changed in this release.
 
-Removed:
+You must adjust the your `config/livewire-powergrid.php` file according to the on the diff comparison demonstrated in the links below.
+
+Remove these lines:
 
 * [alpine_cdn](https://github.com/Power-Components/livewire-powergrid/blob/3.x/resources/config/livewire-powergrid.php#L86)
-* [plugins.bootstrap-select](https://github.com/Power-Components/livewire-powergrid/blob/3.x/resources/config/livewire-powergrid.php#L30)
+* [plugins.bootstrap-select](https://github.com/Power-Components/livewire-powergrid/blob/3.x/resources/config/livewire-powergrid.phpL27#L33)
 
-Added:
+Add these lines:
 
-* [plugins.multiselect](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L41)
-* [exportable](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L116)
+* [plugins.multiselect](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L41#L54)
+* [exportable](https://github.com/Power-Components/livewire-powergrid/blob/4.x/resources/config/livewire-powergrid.php#L116#L126)
 
 ### Independent export engine
 
-Make sure you choose which version you will use for export in settings.
+Before proceeding with the Openspout installation, you must configue which Openspout version PowerGrid will use for exporting files.
+
+PowerGrid supports Openspout version [3](https://github.com/openspout/openspout/tree/3.x) and version [4](https://github.com/openspout/openspout/tree/4.x).
 
 ```php
+//File config/livewire-powergrid.php
+
 'exportable'    => [
     'default'      => 'openspout_v4', // or openspout_v3
 ```
 
-#### 1 - Install openspout in the chosen version:
+Now, proceed with the installation.
 
-::: warning
-Supported versions: [3](https://github.com/openspout/openspout/tree/3.x) and [4](https://github.com/openspout/openspout/tree/4.x)
-::: 
+#### 1 - Install Openspout
 
-If you chose **openspout_v4**, run:
-```bash
-composer require openspout/openspout ^4
-```
-
-If you chose **openspout_v3**, run:
+If you have chosen **openspout_v3**, run:
 
 ```bash
 composer require openspout/openspout ^3
 ```
 
+If you have chosen **openspout_v4**, run:
+
+```bash
+composer require openspout/openspout ^4
+```
+
 #### 2 - Add WithExport Traits
 
-You should also import the export trait into your tables:
+Now, you must  import the export trait into your tables:
 
 ```php{1,5}
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 
 final class YourPowerGridTable extends PowerGridComponent
 {
-    use WithExport;
+    use WithExport; // <====== Add this!
 }
 ```
 
-Read more about [setUp](../table/features-setup?id=features-setup).
+You can find more information at the [setUp](../table/features-setup?id=features-setup) page.
 
 ---
 
 ### Deprecated Queue Properties
 
-* As configurações de Queues para exportação deverá ser chamada usando a Facade Exportable 
+* Queue properties are depcrecated in this release and you must migrate your queue configuration to the `Exportable` Facade.
+
+Deprecated configuration:
 
 ```php
     <!-- 🚫 Before -->
@@ -166,11 +187,12 @@ Change To:
 
 ---
 
-### Custom SearchBox Theme 
+### Custom SearchBox Theme
 
-Add this to your custom themes:
+If you have a custom Theme, you must add the following CSS configuration to your custom theme search box configurations.
 
-Tailwind:
+Tailwind Custom Theme:
+
 ```php
 public function searchBox(): SearchBox
 {
@@ -181,7 +203,8 @@ public function searchBox(): SearchBox
 }
 ```
 
-Bootstrap:
+Bootstrap Custom Theme:
+
 ```php
  public function searchBox(): SearchBox
  {
@@ -194,11 +217,12 @@ Bootstrap:
 
 ---
 
-### Table::tdBodyEmpty
+### Custom Theme - Table::tdBodyEmpty
 
-Add this to your custom themes:
+You must chain the following method to your custom themes.
 
-Tailwind:
+Tailwind Custom Theme:
+
 ```php{8}
 public function table(): Table
 {
@@ -208,7 +232,8 @@ public function table(): Table
 }
 ```
 
-Bootstrap:
+Bootstrap Custom Theme:
+
 ```php{8}
 public function table(): Table
 {
@@ -220,11 +245,13 @@ public function table(): Table
 
 ### Filters
 
-The filter methods have been moved to the `filters` function. This allows the addition of other filters and reduces the complexity inside addColumns.
+The filter methods in columns are deprecated in this relase.
 
-Also added 2 new filters.
+All filters must be migrated to the `filters(s)` function. The new filter API allows the addition of other filters and reduces the complexity inside `addColumns()` method.
 
-Here is an example using [makeInputRange](https://v3.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal)
+Additionally, two new filters are available in this relase, Read more [Column Filters](../table/column-filters.html) page.
+
+Deprecated filter API:
 
 ```php
 <!-- 🚫 Before -->
@@ -235,6 +262,8 @@ public function columns(): array
           ->makeInputRange('price', '.', ','),
    ];
 }
+
+Must be changed to:
 
 <!-- ✅ After -->
 public function columns(): array
@@ -254,6 +283,8 @@ public function filters(): array
 } 
 ```
 
-[Read more](../table/column-filters.html)
+The example above create a filter of type numbber for column "price" in the field "price_in_brl".
+
+Here is an example using [makeInputRange](https://v3.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal).
 
 ---

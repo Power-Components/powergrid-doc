@@ -2,9 +2,11 @@
 
 [[toc]]
 
+## PowerGrid Version 4
+
 ### Dependencies
 
-Powergrid was born with the intention of always keeping as close as possible to the latest laravel update, so we updated the minimum versions of php, tailwind and livewire for greater support and durability.
+PowerGrid was born with the intention of always keeping as close as possible to the latest laravel update, so we updated the minimum versions of php, tailwind and livewire for greater support and durability.
 
 [Read more](upgrade-guide?id=dependency-upgrades)
 
@@ -12,7 +14,7 @@ Powergrid was born with the intention of always keeping as close as possible to 
 
 ### Independent Export Engine
 
-[openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
+[Openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
 is using in PowerGrid settings.
 
 [Read more](../get-started/upgrade-guide.html#independent-export-engine)
@@ -39,7 +41,7 @@ This allows for further customization and greater support.
 
 ### Changed `Columns::makeFilters` to Filter Facade
 
-Instead of calling the method to create a custom filter inside a column, we should use the Filters Facade
+Instead of calling the method to create a custom filter inside a column, we should use the Filters Facade.
 
 ```php
 <!-- 🚫 Before -->
@@ -66,21 +68,31 @@ Filter::boolean()
 
 ### Multi Sorting
 
-Now we can apply multiple column sorts, set `public bool $multiSort` to true
+PowerGrid v4 allows you to choose multiple columns to sort by.
 
-* Basically we are chaining several `->orderBy(..)->orderBy(..)` in [Laravel Eloquent ORM](https://laravel.com/docs/9.x/eloquent) according to each click you perform on the column
+To enable multi-sorting, you must set the property `$multiSort` to `true` in your PowerGrid table class.
 
-![Output](/_media/examples/multi-sort.png)
+```php
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+
+final class YourPowerGridTable extends PowerGridComponent
+{
+     public bool $multiSort = true;
+}
+```
+
+Multi-sorting behaves like chaining several `->orderBy(...)->orderBy(...)` [Laravel Eloquent](https://laravel.com/docs/9.x/eloquent) methods.
 
 ---
 
 ### Dynamic Filter
 
-PowerGrid Filters are internal components, if you want to use an external component you can use
+PowerGrid Filters are internal components, if you want to use an external component you can utilize Dynamic Filters.
 this functionality. A practical example is when you are using external components (such as [wireui](https://livewire-wireui.com/)) throughout your system and want to
 apply them in PowerGrid too.
 
 Example:
+
 ```php
 public function filters(): array
 {
@@ -108,9 +120,12 @@ public function filters(): array
 
 ### Row Index
 
-Sometimes we need to display the index instead of the id, for that you must call index() on the column you want.
+Sometimes we need to display the row index instead of the Model `id`.
 
-Example: 
+To activate this functionality, simply chain the `index()` method to your column.
+
+Example:
+
 ```php{5}
 public function columns(): array
 {
@@ -158,7 +173,7 @@ You can use tdBodyEmpty to change the row style when the table is empty.
 ### Filter Multi Select Async
 
 If you don't want to load the multiselect data immediately when starting the page, you can use this feature, it helps your datatable behave faster. 
-As Powergrid uses [TomSelect](../get-started/release-notes.html#support-tomselect-and-slimselect), set it in settings (here).
+As PowerGrid uses [TomSelect](../get-started/release-notes.html#support-tomselect-and-slimselect), set it in settings (here).
 
 [Read more](../table/column-filters.html#filter-multiselectasync)
 
@@ -166,7 +181,7 @@ As Powergrid uses [TomSelect](../get-started/release-notes.html#support-tomselec
 
 ### Defer Loading
 
-The table will be fully loaded after the data is completely ready. 
+The table will be fully loaded after the data is completely ready.
 Behind the scenes [wire:init](https://laravel-livewire.com/docs/2.x/defer-loading#introduction) is used
 
 ![Output](/_media/examples/defer-loading-example.png)
@@ -189,10 +204,3 @@ This is useful to count how many items we will export or carry out a mass action
 [Read more](../table/bulk-actions.html#show-number-of-selected-items)
 
 ---
-
-### Dynamic inputText
-
-Description
-
----
-
