@@ -14,8 +14,7 @@ PowerGrid was born with the intention of always keeping as close as possible to 
 
 ### Independent Export Engine
 
-[Openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you
-is using in PowerGrid settings.
+[Openspout](https://github.com/openspout/openspout) was previously installed as a dependency, now you must manually install it in `composer.json` and adjust which version you are using in PowerGrid settings.
 
 [Read more](../get-started/upgrade-guide.html#independent-export-engine)
 
@@ -23,7 +22,7 @@ is using in PowerGrid settings.
 
 ### Deprecated Batch Export properties
 
-For more comfort we moved the queues properties inside the Exportable Facade.
+For better organization, we have moved the queues properties inside the Exportable Facade.
 
 [Read more](../get-started/upgrade-guide.html#deprecated-queue-properties)
 
@@ -31,7 +30,7 @@ For more comfort we moved the queues properties inside the Exportable Facade.
 
 ### Support TomSelect and SlimSelect
 
-Add support for [Slim Select](https://slimselectjs.com/) and [Tom Select](https://tom-select.js.org/) by default instead of using the multi select component that came by default in version 3. 
+Add support for [Slim Select](https://slimselectjs.com/) and [Tom Select](https://tom-select.js.org/) by default, instead of using the multi select component that came by default in version 3. 
 ) and Tom Select by default instead of using the multi select component that came by default in version 3. 
 This allows for further customization and greater support.
 
@@ -88,8 +87,8 @@ Multi-sorting behaves like chaining several `->orderBy(...)->orderBy(...)` [Lara
 ### Dynamic Filter
 
 PowerGrid Filters are internal components, if you want to use an external component you can utilize Dynamic Filters.
-this functionality. A practical example is when you are using external components (such as [wireui](https://livewire-wireui.com/)) throughout your system and want to
-apply them in PowerGrid too.
+
+A practical example is when you are using external components (such as [wireui](https://livewire-wireui.com/)) throughout your system and want to apply them in PowerGrid too.
 
 Example:
 
@@ -172,8 +171,9 @@ You can use tdBodyEmpty to change the row style when the table is empty.
 
 ### Filter Multi Select Async
 
-If you don't want to load the multiselect data immediately when starting the page, you can use this feature, it helps your datatable behave faster. 
-As PowerGrid uses [TomSelect](../get-started/release-notes.html#support-tomselect-and-slimselect), set it in settings (here).
+If you don't want to load the multi-select data immediately when the table loads, you can use this feature to make your table appear faster.
+
+PowerGrid uses TomSelect, you can read more about it [here](../get-started/release-notes.html#support-tomselect-and-slimselect).
 
 [Read more](../table/column-filters.html#filter-multiselectasync)
 

@@ -183,7 +183,6 @@ Result:
 
 ![Output](/_media/examples/features/header-includeViewOnBottom.png)
 
-
 ### withoutLoading
 
 If you don't want to display PowerGrid's default **loading** icon when some request is made to the server, just
@@ -526,3 +525,23 @@ Result:
 
 ![Output](/_media/persist.gif)
 
+---
+
+### Multi Sorting
+
+PowerGrid v4 allows you to choose multiple columns to sort by.
+
+To enable multi sorting, you must set the property `$multiSort` to `true` in your PowerGrid table class.
+
+Additionally, even if disabled, multi sorting can be achieved by holding shift and clicking on different columns.
+
+```php
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+
+final class YourPowerGridTable extends PowerGridComponent
+{
+     public bool $multiSort = true;
+}
+```
+
+Multi-sorting behaves like chaining several `->orderBy(...)->orderBy(...)` [Laravel Eloquent](https://laravel.com/docs/9.x/eloquent) methods.

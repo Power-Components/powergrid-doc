@@ -16,6 +16,7 @@ and the `field` that will filter.
 `category_id`: Column name defined in Column::field() or Column dataField
 
 Example:
+
 ```php{4,5,11,17-20}
 public function addColumns(): PowerGridEloquent
 {
@@ -491,6 +492,7 @@ Set the language in the `config/livewire-powergrid.php` file as in the example a
 * `->params(array $collection)` : Params must be passed as "key => value". Available keys are:
   - `'only_future' => true`: Will not allow to select dates in the past.
   - `'no_weekends' => true`: Will not allow to select weekends.
+  -  `'timezone' => 'America/Sao_Paulo'`: Parse the searched date with the specified timezone.
 
 Example:
 

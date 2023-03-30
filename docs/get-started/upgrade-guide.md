@@ -4,7 +4,7 @@
 
 PowerGrid is now on version 4.x.
 
-This page will give you important information to upgrade from v3.x.
+This page will provide you with important information to upgrade from v3.x.
 
 ### Dependency Upgrades
 
@@ -45,7 +45,7 @@ To republish the view, first run the command below.
 php artisan vendor:publish --tag=livewire-powergrid-views --force && php artisan view:clear
 ```
 
-Secondlyl, run the following command.
+Secondly, run the following command.
 
 ```bash
 npm run dev
@@ -68,7 +68,7 @@ Reference: [Tailwind Doc](https://tailwindcss.com/docs/presets)
 
 PowerGrid uses the **slate** color by default.
 
-If you would like to change that, just insert the powergrid preset in the `tailwind.config.js` file as demonstrated below.
+If you would like to change that, just insert the PowerGrid preset in the `tailwind.config.js` file as demonstrated below.
 
 ```js{7,13}
 const colors = require('tailwindcss/colors')
@@ -94,7 +94,7 @@ module.exports = {
 
 Some references in settings have been changed in this release.
 
-You must adjust the your `config/livewire-powergrid.php` file according to the on the diff comparison demonstrated in the links below.
+You must adjust your `config/livewire-powergrid.php` file according to the on the diff comparison demonstrated in the links below.
 
 Remove these lines:
 
@@ -108,7 +108,7 @@ Add these lines:
 
 ### Independent export engine
 
-Before proceeding with the Openspout installation, you must configue which Openspout version PowerGrid will use for exporting files.
+Before proceeding with the Openspout installation, you must configure which Openspout version PowerGrid will use for exporting files.
 
 PowerGrid supports Openspout version [3](https://github.com/openspout/openspout/tree/3.x) and version [4](https://github.com/openspout/openspout/tree/4.x).
 
@@ -148,7 +148,7 @@ final class YourPowerGridTable extends PowerGridComponent
 }
 ```
 
-You can find more information at the [setUp](../table/features-setup?id=features-setup) page.
+You can find more information on the [setUp](../table/features-setup?id=features-setup) page.
 
 ---
 
@@ -245,11 +245,11 @@ public function table(): Table
 
 ### Filters
 
-The filter methods in columns are deprecated in this relase.
+The filter methods in columns are deprecated in this release.
 
 All filters must be migrated to the `filters(s)` function. The new filter API allows the addition of other filters and reduces the complexity inside `addColumns()` method.
 
-Additionally, two new filters are available in this relase, Read more [Column Filters](../table/column-filters.html) page.
+Additionally, two new filters are available in this release, Read more [Column Filters](../table/column-filters.html) page.
 
 Deprecated filter API:
 
@@ -283,7 +283,7 @@ public function filters(): array
 } 
 ```
 
-The example above create a filter of type numbber for column "price" in the field "price_in_brl".
+The example above creates a filter of type number for column "price" in the field "price_in_brl".
 
 Here is an example using [makeInputRange](https://v3.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal).
 
