@@ -14,12 +14,12 @@ Queues only take effect when exporting ALL records. If you have manually selecte
 
 ## Get started
 
-To enable Queue Export, you must configure the following properties in your PowerGrid Table file (e.g. `DishTable.php`):
+To enable queue export, you must configure the methods by calling the Facade Exportable within the setUp method.
 
-- `$queues`: Number of queues to be used.
-- `$onQueue`: Queue name. If blank, `default` will be used.
-- `$onConnection`: Connection. Read more in [Laravel Queue Documentation](https://laravel.com/docs/8.x/queues#introduction).
-- `$showExporting`: Show the export progress on the screen if `true` (default).
+- `->queues()`: Number of queues to be used.
+- `->onQueue()`: Queue name. If blank, `default` will be used.
+- `->onConnection()`: Connection. Read more in [Laravel Queue Documentation](https://laravel.com/docs/8.x/queues#introduction).
+- public property `$showExporting`: Show the export progress on the screen if `true` (default).
 
 Example:
 
@@ -27,13 +27,17 @@ Example:
 class DishesTable extends PowerGridComponent
 {
 
-  public int $queues = 2; // Use two queues
-
-  public string $onQueue = 'my-dishes'; //queue name
-
-  public string $onConnection = 'redis'; // default sync
-
-  public bool $showExporting = true; //Show progress on screen
+    public function setUp()
+    {
+        return [
+            Exportable::make('export')
+               ->striped()
+               ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
+               ->queues(6)
+               ->onQueue('my-dishes')
+               ->onConnection('redis'),
+        ];
+    }
 
   //...
 ```
@@ -45,21 +49,21 @@ class DishesTable extends PowerGridComponent
 You can manipulate the state of processing in the back-end:
 
 ```php
-public function onBatchThen(Batch $batch)
+public function onBatchThen(Batch $batch): void
 {
     // All jobs completed successfully...
     // TODO notify user!
 }
 
-public function onBatchCatch(Batch $batch, Throwable $e)
+public function onBatchCatch(Batch $batch, Throwable $e): void
 {
    // First batch job failure detected...
    // TODO add to failure log.
 }
 
-public function onBatchFinally(Batch $batch)
+public function onBatchFinally(Batch $batch): void
 {
-  // The batch has finished executing...  
+   // The batch has finished executing...  
    // TODO add to success log.
 }
 ```
@@ -71,15 +75,17 @@ public function onBatchFinally(Batch $batch)
 You can also receive You can manipulate the state of processing in the front end (Livewire):
 
 ```php
-public function onBatchExecuting(Batch $batch)
+public function onBatchExecuting(Batch $batch): void
 {
     // send alert
 
    if ($batch->finished()) {
        $this->dispatchBrowserEvent('batch-finished', $batch);
-   } else {
-      $this->dispatchBrowserEvent('batch-executing', $batch);
-   }   
+       
+       return;
+   } 
+   
+   $this->dispatchBrowserEvent('batch-executing', $batch);
 }
 ```
 

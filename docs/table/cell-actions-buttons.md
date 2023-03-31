@@ -106,11 +106,8 @@ Result:
 ![Output](/_media/examples/cell_buttons/editOnClick.png)
 
 ::: warning
-editOnClick on click requires [Update Data](update-data?id=update-data) method to be configured.
-::: 
----
-::: warning
-This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
+* editOnClick on click requires [Update Data](update-data?id=update-data) method to be configured.
+* This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name')
 :::
 
 --- 
@@ -142,7 +139,6 @@ $canEdit = true; //User has edit permission
 Column::add()
     ->title('In Stock')
     ->field('in_stock'),
-    ->makeBooleanFilter('in_stock', 'yes', 'no')
     ->toggleable($canEdit, 'yes', 'no'),
 ```
 
@@ -163,11 +159,8 @@ Result:
 ![Output](/_media/examples/cell_buttons/toggleable.png)
 
 ::: warning
-toggleable requires [Update Data](update-data?id=update-data) method to be configured.
-::: 
----
-::: warning
-This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name').
+* toggleable requires [Update Data](update-data?id=update-data) method to be configured.
+* This feature is not available when using table.column notation on $primaryKey (E.g., $primaryKey = 'dishes.name').
 ::: 
 
 ---

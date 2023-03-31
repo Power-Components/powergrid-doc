@@ -453,9 +453,9 @@ Result:
 
 ---
 
-### Filter::datePicker
+### Filter::datetimepicker
 
-Includes a specific field on the page to filter between the specific date in the column.
+Includes a specific field on the page to filter between the specific date in the column (datetime format).
 
 Set the language in the `config/livewire-powergrid.php` file as in the example according to your `config/app` - locale.
 
@@ -509,6 +509,10 @@ Result:
 ![Output](/_media/examples/filters/makeInputDatePicker.png)
 
 ---
+
+### Filter::datepicker
+
+Unlike datetimepicker, datetime to filter on column in '_date_' format. Inherits all attributes from _datetimepicker_
 
 ### Filter::multiSelect
 
