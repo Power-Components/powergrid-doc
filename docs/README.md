@@ -8,17 +8,15 @@
 # PowerGrid
 
 [PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy to customize Datatables based on Laravel [Livewire](https://laravel-livewire.com) library.
-
+<p>&nbsp;</p>
 <p align="center">
-    <a href="get-started/install.html#install">Install</a> |
-    <a href="get-started/configure.html">Configure</a> |
-    <a href="get-started/create-powergrid-table.html">Create a Table</a> |
-    <a href="table/features-setup.html">Table Features</a> |
-    <a href="get-started/release-notes.html">Release notes</a> |
-    <a href="https://github.com/Power-Components/powergrid-demo" target="_blank">Demo project</a> |
-    <a href="https://github.com/Power-Components/livewire-powergrid" target="_blank">Source code</a>
+    <a href="get-started/install.html#install">Install</a>&ensp; | &ensp;
+    <a href="get-started/configure.html">Configure</a>&ensp; | &ensp;
+    <a href="get-started/create-powergrid-table.html">Create a Table</a>&ensp; | &ensp;
+    <a href="table/features-setup.html">Table Features</a>&ensp; | &ensp;
+    <a href="https://github.com/Power-Components/powergrid-demo-misc" target="_blank">Online Demo</a>
 </p>
-
+<p>&nbsp</p>
 <p>
     <img src="https://livewire-powergrid.com/_media/screenshot.png" alt="PowerGrid Screenshot">
 </p>

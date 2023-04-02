@@ -27,10 +27,10 @@ export const navbarEn: NavbarConfig = [
         ],
     },
     {
-        text: `4.x (beta)`,
+        text: `4.x (latest)`,
         children: [
             {
-                text: `3.x (latest)`,
+                text: `3.x`,
                 link: 'https://v3.livewire-powergrid.com',
             },
             {
