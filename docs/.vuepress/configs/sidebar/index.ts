@@ -1,1 +1,5 @@
-export * from './en.js'
+import type { SidebarConfig } from '@vuepress/theme-default'
+
+export const sidebarEn: SidebarConfig = {
+    '/': []
+}

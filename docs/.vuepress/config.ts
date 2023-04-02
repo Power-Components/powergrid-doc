@@ -1,5 +1,4 @@
 import {defaultTheme, defineUserConfig} from 'vuepress'
-import {docsearchPlugin} from '@vuepress/plugin-docsearch'
 
 import {
     navbarEn,
@@ -9,13 +8,14 @@ import {
 
 export default defineUserConfig({
     lang: 'en-US',
-    title: 'Livewire Powergrid',
+    title: 'Livewire PowerGrid',
     description: 'Description',
     head,
     theme: defaultTheme({
         logo: '/_media/logomark@1x.png',
-        repo: 'power-components/powergrid-doc',
-        docsDir: 'main',
+        repo: 'Power-Components/powergrid-doc',
+        docsDir: 'docs',
+        docsBranch: 'main',
         locales: {
             '/': {
                 navbar: navbarEn,
@@ -25,11 +25,5 @@ export default defineUserConfig({
         }
     }),
     plugins: [
-        docsearchPlugin({
-            appId: '7M4C366U6U',
-            apiKey: 'cd810107dfeb4a3dc190959e3855db56',
-            indexName: 'livewire-powergridLivewire Powergrid',
-        }),
-
     ],
 })
