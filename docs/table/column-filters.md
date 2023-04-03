@@ -65,15 +65,15 @@ Available filters:
 
 You can customize your results using constructors and collection methods by passing a closure function
 
-* Each filter contains two methods: query and collection.
+* Each filter contains two methods: builder and collection.
 
 ::: warning
-When you use the **query** or **collection** methods, you are taking control of the filter.
+When you use the **builder** or **collection** methods, you are taking control of the filter.
 :::
 
-* Query example:
+* Builder example:
 ```php
-->query(function (Builder $query, mixed $value) {
+->builder(function (Builder $query, mixed $value) {
     return $query->where('qty', '>', 10);
 })
 ```
@@ -89,7 +89,7 @@ When you use the **query** or **collection** methods, you are taking control of 
 ```php
 Filter::boolean('in_stock')
     ->label('yes', 'no')
-    ->query(function (Builder $query, string $value) {
+    ->builder(function (Builder $query, string $value) {
         return $query->where('in_stock', $value === 'true' ? 1 : 0);
     }),
 ```
