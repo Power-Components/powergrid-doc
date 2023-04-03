@@ -15,7 +15,8 @@ export default defineUserConfig({
     theme: defaultTheme({
         logo: '/_media/logomark@1x.png',
         repo: 'power-components/powergrid-doc',
-        docsDir: 'main',
+        docsDir: 'docs',
+        docsBranch: '4x',
         locales: {
             '/': {
                 navbar: navbarEn,
