@@ -116,7 +116,7 @@ Button::add('create-dish')
     ->caption('Create a dish')
     ->class('bg-indigo-500 text-white')
     ->emit('postAdded', function(Dish $dish) {
-        return ['key' => $dish->id]
+        return ['key' => $dish->id];
     }),
 ```
 
@@ -159,7 +159,7 @@ Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->emitTo('admin-component','postAdded', function(Dish $dish) {
-        return ['key' => $dish->id]
+        return ['key' => $dish->id];
     }),    
 ```
 
@@ -201,7 +201,7 @@ Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->dispatch('eventName', function(Dish $dish) {
-        return ['key' => $dish->id]
+        return ['key' => $dish->id];
     }),    
 ```
 
@@ -243,7 +243,7 @@ Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->openModal('view-dish', function(Dish $dish) {
-        return ['key' => $dish->id]
+        return ['key' => $dish->id];
     }),
 ```
 
@@ -293,7 +293,7 @@ Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->route('dish.edit', function(Dish $dish) {
-        return ['dish' => $dish->id]
+        return ['dish' => $dish->id];
     }),    
 ```
 
@@ -391,7 +391,7 @@ Button::add('my-custom-button')
 
 Button::add('my-custom-button')
     ->bladeComponent('my-custom-button', function(Dish $dish) {
-        return ['dish' => $dish->id]
+        return ['dish' => $dish->id];
     }),       
 ```
 
