@@ -92,10 +92,10 @@ Button::add('create-dish')
 
 * Emit works with event listeners.
 
-| Parameter       | Description   | 
-|-----------------|---------------|
-| (string) $event | Name of event |
-| (array) $params | Parameters    |
+| Parameter                | Description   | 
+|--------------------------|---------------|
+| (string) $event          | Name of event |
+| (array, Closure) $params | Parameters    |
 
 ::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
@@ -103,19 +103,28 @@ Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Li
 
 The code below:
 
-```php{5}
+```php{5,12-14}
 //...
 Button::add('create-dish')  
     ->caption('Create a dish')
     ->class('bg-indigo-500 text-white')
     ->emit('postAdded', ['key' => 'id']),
+    
+// or using Closure    
+
+Button::add('create-dish')  
+    ->caption('Create a dish')
+    ->class('bg-indigo-500 text-white')
+    ->emit('postAdded', function(Dish $dish) {
+        return ['key' => $dish->id];
+    }),
 ```
 
 is equivalent to:
 
 ```html{2}
 <div>
-    <button wire:click="$emit('postAdded', ['key' => 1])">
+    <button wire:click="$emit('postAdded', {'key': 1})">
 </div>
 ```
 
@@ -125,11 +134,11 @@ is equivalent to:
 
 * Emit works with event listeners.
 
-| Parameter       | Description    | 
-|-----------------|----------------|
-| (string) $to    | Component name |
-| (string) $event | Name of event  |
-| (array) $params | Parameters     |
+| Parameter                | Description    | 
+|--------------------------|----------------|
+| (string) $to             | Component name |
+| (string) $event          | Name of event  |
+| (array, Closure) $params | Parameters     |
 
 ::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
@@ -137,19 +146,28 @@ Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Li
 
 The code below:
 
-```php{5}
+```php{5,12-14}
 //...
 Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
-    ->emitTo('admin-component','postAdded', ['key' => 'id']),
+    ->emitTo('admin-component','postAdded', ['key' => 1]),
+    
+// or using Closure
+
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->emitTo('admin-component','postAdded', function(Dish $dish) {
+        return ['key' => $dish->id];
+    }),    
 ```
 
 is equivalent to:
 
 ```html{2}
 <div>
-    <button wire:click="$emitTo('admin-component', 'postAdded', ['key' => 1])">
+    <button wire:click="$emitTo('admin-component', 'postAdded', {'key': 1})">
 </div>
 ```
 
@@ -159,10 +177,10 @@ is equivalent to:
 
 * Dispatch browser events.
 
-| Parameter       | Description    | 
-|-----------------|----------------|
-| (string) $event | Name of event  |
-| (array) $params | Parameters     |
+| Parameter                | Description   | 
+|--------------------------|---------------|
+| (string) $event          | Name of event |
+| (array, Closure) $params | Parameters    |
 
 ::: tip
 Read more about [Events](https://laravel-livewire.com/docs/2.x/events#browser) in the Livewire documentation.
@@ -170,19 +188,28 @@ Read more about [Events](https://laravel-livewire.com/docs/2.x/events#browser) i
 
 The code below:
 
-```php{5}
+```php{5,12-14}
 //...
 Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->dispatch('eventName', ['key' => 'id']),
+    
+// or using Closure
+
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->dispatch('eventName', function(Dish $dish) {
+        return ['key' => $dish->id];
+    }),    
 ```
 
 is equivalent to:
 
 ```html
 <div>
-    <button x-on:click="$dispatch('eventName', ['key' => 1])">
+    <button x-on:click="$dispatch('eventName', {'key': 1})">
 </div>
 ```
 
@@ -192,10 +219,10 @@ is equivalent to:
 
 * Opens a modal window with wire-elements/modal packages
 
-| Parameter           | Description                                           | 
-|---------------------|-------------------------------------------------------|
-| (string) $component | You must pass the `View` of Livewire Modal component. |
-| (array) $params     | This is the component parameter.                      |
+| Parameter                | Description                                           | 
+|--------------------------|-------------------------------------------------------|
+| (string) $component      | You must pass the `View` of Livewire Modal component. |
+| (array, Closure) $params | This is the component parameter.                      |
 
 ::: warning
 You must install [Wire Elements Modal](https://github.com/wire-elements/modal) to use this functionality. More information is also available at its documentation.
@@ -203,12 +230,21 @@ You must install [Wire Elements Modal](https://github.com/wire-elements/modal) t
 
 Example:
 
-```php{5}
+```php{5,12-14}
 //...
 Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->openModal('view-dish', ['dish' => 'id']),
+   
+// or using Closure
+
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->openModal('view-dish', function(Dish $dish) {
+        return ['key' => $dish->id];
+    }),
 ```
 
 ---
@@ -237,10 +273,10 @@ Button::add('view')
 
 * Sets the action's route.
 
-| Parameter        | Description         | 
-|------------------|---------------------|
-| (string) $route  | Valid Laravel route |
-| (string) $params | Route parameters    |
+| Parameter                 | Description         | 
+|---------------------------|---------------------|
+| (string) $route           | Valid Laravel route |
+| (string, Closure) $params | Route parameters    |
 
 Example:
 
@@ -250,6 +286,15 @@ Button::add('view')
     ->caption('View')
     ->class('btn btn-primary')
     ->route('dish.edit', ['dish' => 'id']),
+    
+// or using Closure
+
+Button::add('view')
+    ->caption('View')
+    ->class('btn btn-primary')
+    ->route('dish.edit', function(Dish $dish) {
+        return ['dish' => $dish->id];
+    }),    
 ```
 
 ---
@@ -331,16 +376,23 @@ Button::add('toggle-detail')
 
 * Allows you to add a custom component overriding all default behavior
 
-| Parameter           | Default                     | 
-|---------------------|-----------------------------|
-| (string) $component | View component path (blade) |
-| (array) $params     | Blade parameters            |
+| Parameter                | Default                     | 
+|--------------------------|-----------------------------|
+| (string) $component      | View component path (blade) |
+| (array, Closure) $params | Blade parameters            |
 
 Example:
 
 ```php{2}
 Button::add('my-custom-button')
     ->bladeComponent('my-custom-button', ['dishId' => 'id']),
+    
+// or using Closure
+
+Button::add('my-custom-button')
+    ->bladeComponent('my-custom-button', function(Dish $dish) {
+        return ['dish' => $dish->id];
+    }),       
 ```
 
 `view/components/my-custom-button.blade.php`
@@ -359,6 +411,27 @@ Button::add('my-custom-button')
         class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
     My Custom Button #1
 </button>
+```
+
+---
+
+### render
+
+* Allows you to render HTML
+
+| Parameter          | Default         | 
+|--------------------|-----------------|
+| (Closure) $closure | Closure (Model) |
+
+Example:
+
+```php{2-5}
+Button::add('custom')
+     ->render(function (Dish $dish) {
+        return Blade::render(<<<HTML
+<x-button.circle primary icon="pencil" wire:click="editStock('$dish->id')" />
+HTML);
+}),     
 ```
 
 ---
