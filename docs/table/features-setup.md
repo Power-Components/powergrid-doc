@@ -552,13 +552,13 @@ Multi-sorting behaves like chaining several `->orderBy(...)->orderBy(...)` [Lara
 
 Sometimes we want to retrieve the same data that was recently displayed in a previous query and we don't want this to consume a new query request in the database because sometimes this can be time consuming, for example when we have a large query or using joins of several tables.
 
-  For this, we can use the [Cache](https://laravel.com/docs/10.x/cache) technology already built into Laravel and implemented in Powergrid.
+For this, we can use the [Cache](https://laravel.com/docs/10.x/cache) technology already built into Laravel and implemented in Powergrid.
 
-  This allows recording the same data when filtering, searching for something in the global search, changing pages or even ordering the table without having to query the database again for the same information.
+This allows recording the same data when filtering, searching for something in the global search, changing pages or even ordering the table without having to query the database again for the same information.
 
 ### Cache Usage
 
-```php
+```php{8-10}
 use PowerComponents\LivewirePowerGrid\Cache;
 
 public function setUp(): array
@@ -585,16 +585,16 @@ public function setUp(): array
 
 ### Clear cache
 
-it is recommended to always clear the cache whenever the model or a table that was used in the JOIN is updated.
+it is recommended to always [clear the cache](https://laravel.com/docs/10.x/cache#removing-tagged-cache-items) whenever the model is updated.
 
 Ex:
 
-```php
+```php{14}
 namespace App\Models;
 
 class User 
 {
-	  protected static function booted(): void
+	protected static function booted(): void
     {
         static::created(fn (User $user) => self::clearCache());
         static::updated(fn (User $user) => self::clearCache());
