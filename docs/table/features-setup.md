@@ -527,7 +527,7 @@ Result:
 
 ---
 
-### Multi Sorting
+## Multi Sorting
 
 PowerGrid v4 allows you to choose multiple columns to sort by.
 
@@ -545,3 +545,65 @@ final class YourPowerGridTable extends PowerGridComponent
 ```
 
 Multi-sorting behaves like chaining several `->orderBy(...)->orderBy(...)` [Laravel Eloquent](https://laravel.com/docs/9.x/eloquent) methods.
+
+---
+
+## Cache
+
+Sometimes we want to retrieve the same data that was recently displayed in a previous query and we don't want this to consume a new query request in the database because sometimes this can be time consuming, for example when we have a large query or using joins of several tables.
+
+  For this, we can use the [Cache](https://laravel.com/docs/10.x/cache) technology already built into Laravel and implemented in Powergrid.
+
+  This allows recording the same data when filtering, searching for something in the global search, changing pages or even ordering the table without having to query the database again for the same information.
+
+### Cache Usage
+
+```php
+use PowerComponents\LivewirePowerGrid\Cache;
+
+public function setUp(): array
+{
+   $companyId = user()->company_id; // 233  
+   
+   return [
+       Cache::make()
+          ->forever(),
+          ->prefix($companyId. '_') // tag generate: 233_powergrid-users-validationTable
+         //->customTag('my-custom-tag')
+   ];
+}
+```
+### Methods
+
+| Method        |                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `forever()`   | Create a cache using the [rememberForever](https://laravel.com/docs/10.x/cache#retrieve-store) method                                           |
+| `ttl()`       | Time in seconds that the cache will be available                                                                                                |
+| `customTag()` | By default, PowerGrid will create a Tag for each table like this example: `powergrid-users-validationTable` : powergrid-{modelName}-{tableName} |
+| `prefix()`    | Prefix of the 'Key' that will be used in the Cache.                                                                                             |
+| `disabled()`  | disable the cache                                                                                                                               |
+
+### Clear cache
+
+it is recommended to always clear the cache whenever the model or a table that was used in the JOIN is updated.
+
+Ex:
+
+```php
+namespace App\Models;
+
+class User 
+{
+	  protected static function booted(): void
+    {
+        static::created(fn (User $user) => self::clearCache());
+        static::updated(fn (User $user) => self::clearCache());
+        static::deleted(fn (User $user) => self::clearCache());
+    }
+
+    private static function clearCache(): void
+    {
+        Cache::tags([user()->company_id.'-powergrid-users-validationTable'])->flush();
+    }
+}
+```
