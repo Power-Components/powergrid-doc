@@ -431,8 +431,7 @@ Adds a filter for boolean values.
 
 #### Methods:
 
-* `->trueLabel(string $value)` : select option displayed for `true` (E.g, 'Active')
-* `->falseLabel(string $value)` : select option displayed for `false` (E.g, 'Inactive')
+* `->label(string $trueLabel, string $falseLabel)`: set labels to be displayed for `true` and `false` (E.g, 'Active'/'Inactive')
 
 Example:
 
@@ -441,8 +440,7 @@ public function filters(): array
 {
     return [
         Filter::boolean('in_stock')
-            ->trueLabel('yea')
-            ->falseLabel('no'),
+            ->label('yes', 'no')
     ];
 }
 ```

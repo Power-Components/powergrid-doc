@@ -285,6 +285,6 @@ public function filters(): array
 
 The example above creates a filter of type number for column "price" in the field "price_in_brl".
 
-Here is an example using [makeInputRange](https://v3.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal).
+Here is an example using [makeInputRange](https://v4.livewire-powergrid.com/table/column-filters.html#makeinputrange-string-datafield-string-thousands-string-decimal).
 
 ---
