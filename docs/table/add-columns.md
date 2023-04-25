@@ -145,15 +145,12 @@ For example, we have a phone field without a mask in the database, but the user 
 With this PR you can process before removing the characters that do not need to be sent in the query
 
 ```php
-<!-- ✅ Right -->
 
 public function columns()
     {
         return [
             Column::make('Phone', 'phone_editable', 'phone')
-                  ->visibleInExport(false)
-                  ->headerAttribute('')
-                  ->bodyAttribute(''),
+                  ->searchable(),
         ];
     }
 
