@@ -453,6 +453,25 @@ Result:
 
 ### Filter::datetimepicker
 
+* Install
+```bash
+npm i flatpickr --save
+```
+
+* Configure
+
+Add in `app.js`
+
+```js
+import flatpickr from "flatpickr";
+```
+
+Add in `app.css`
+
+```css
+@import "flatpickr/dist/flatpickr.min.css";
+```
+
 Includes a specific field on the page to filter between the specific date in the column (datetime format).
 
 Set the language in the `config/livewire-powergrid.php` file as in the example according to your `config/app` - locale.
