@@ -64,7 +64,7 @@ Adds a new column to your PowerGrid Table.
 
 Example:
 
-```php
+```php{1}
 Column::add()
 ```
 
@@ -81,7 +81,7 @@ Column::add()
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->title('Price in EUR'),
 ```
@@ -103,7 +103,7 @@ You can translate your title using Laravel's [translation strings](https://larav
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->placeholder('Placeholder Description'),
 ```
@@ -121,14 +121,14 @@ Column::add()
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->field('price_formatted'),
 ```
 
 With dataField:
 
-```php
+```php{2}
 Column::add()
     ->field('category_name', 'categories.name'),
 ```
@@ -143,7 +143,7 @@ This method allows the column's content to be searched with this feature.
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->searchable(),
 ```
@@ -156,7 +156,7 @@ Column::add()
 Example:
 
 
-```php
+```php{2}
 Column::add()
     ->sortable(),
 ```
@@ -173,7 +173,7 @@ If your column fetches data via relationship, you must `join` the related table 
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->hidden(),
 ```
@@ -190,7 +190,7 @@ Column::add()
 
 Example:
 
-```php
+```php{5}
 Column::add()
     ->title('Postal envelope data')
     ->field('postal_data')
@@ -211,7 +211,7 @@ Adds the class or style to the column header.
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->headerAttribute('text-center', 'color:red')
 ```
@@ -229,7 +229,7 @@ Column::add()
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->bodyAttribute('text-center', 'color:red')
 ```
@@ -238,7 +238,7 @@ Column::add()
 
 ### contentClassField
 
-* Adds the contents of the specified database column to the Table Column content <span>.
+* Adds the contents of the specified database column to the Table Column content &lt;span> CSS class attribute.
 
 | Parameter           | Description      |
 |---------------------|------------------|
@@ -246,7 +246,7 @@ Column::add()
 
 Example:
 
-```php
+```php{2}
 Column::add()
     ->contentClassField('status_class')
 ```
@@ -255,7 +255,7 @@ Column::add()
      
 ### contentClasses
 
-* Adds the contents of the specified database column to the Table Column content <span>.
+* Adds the corresponding value of the key matching the column content in the provided array to the Table Column content &lt;span> CSS class attribute.
 
 | Parameter      | Description                              |
 |----------------|------------------------------------------|
@@ -263,7 +263,7 @@ Column::add()
 
 Example:
 
-```php
+```php{2-5}
 Column::add()
     ->contentClasses([
           'In Progress' => 'text-blue-600',
