@@ -64,7 +64,7 @@ Adds a new column to your PowerGrid Table.
 
 Example:
 
-```php{1}
+```php
 Column::add()
 ```
 
@@ -81,7 +81,7 @@ Column::add()
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->title('Price in EUR'),
 ```
@@ -103,7 +103,7 @@ You can translate your title using Laravel's [translation strings](https://larav
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->placeholder('Placeholder Description'),
 ```
@@ -121,14 +121,14 @@ Column::add()
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->field('price_formatted'),
 ```
 
 With dataField:
 
-```php{2}
+```php
 Column::add()
     ->field('category_name', 'categories.name'),
 ```
@@ -143,7 +143,7 @@ This method allows the column's content to be searched with this feature.
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->searchable(),
 ```
@@ -156,7 +156,7 @@ Column::add()
 Example:
 
 
-```php{2}
+```php
 Column::add()
     ->sortable(),
 ```
@@ -173,7 +173,7 @@ If your column fetches data via relationship, you must `join` the related table 
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->hidden(),
 ```
@@ -190,7 +190,7 @@ Column::add()
 
 Example:
 
-```php{5}
+```php
 Column::add()
     ->title('Postal envelope data')
     ->field('postal_data')
@@ -211,7 +211,7 @@ Adds the class or style to the column header.
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->headerAttribute('text-center', 'color:red')
 ```
@@ -229,10 +229,46 @@ Column::add()
 
 Example:
 
-```php{2}
+```php
 Column::add()
     ->bodyAttribute('text-center', 'color:red')
 ```
 
 ---
 
+### contentClassField
+
+* Adds the contents of the specified database column to the Table Column content <span>.
+
+| Parameter           | Description      |
+|---------------------|------------------|
+| (string) $dataField | Database Column  |
+
+Example:
+
+```php
+Column::add()
+    ->contentClassField('status_class')
+```
+
+---
+     
+### contentClasses
+
+* Adds the contents of the specified database column to the Table Column content <span>.
+
+| Parameter      | Description                              |
+|----------------|------------------------------------------|
+| (array) $array | Column content => CSS Class assignments  |
+
+Example:
+
+```php
+Column::add()
+    ->contentClasses([
+          'In Progress' => 'text-blue-600',
+          'Completed' => 'text-green-600'
+     ])
+```
+
+---
