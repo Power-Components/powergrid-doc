@@ -24,6 +24,14 @@ public function datasource(): ?Builder
 }
 ```
 
+::: tip
+datasource supports these types of returns:
+* **Eloquent Builder** - \Illuminate\Database\Eloquent\Builder::class
+* **Query Builder** - \Illuminate\Database\Query\Builder::class
+* **Collection** - \Illuminate\Support\Collection::class
+* **array** - native array
+:::
+
 ## Custom Primary Key
 
 By default, PowerGrid uses the field `id` as your Model's primary key.
