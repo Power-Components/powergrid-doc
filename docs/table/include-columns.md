@@ -236,3 +236,39 @@ Column::add()
 
 ---
 
+### contentClassField
+
+* Adds the contents of the specified database column to the Table Column content &lt;span> CSS class attribute.
+
+| Parameter           | Description      |
+|---------------------|------------------|
+| (string) $dataField | Database Column  |
+
+Example:
+
+```php{2}
+Column::add()
+    ->contentClassField('status_class')
+```
+
+---
+     
+### contentClasses
+
+* Adds the corresponding value of the key matching the column content in the provided array to the Table Column content &lt;span> CSS class attribute.
+
+| Parameter      | Description                              |
+|----------------|------------------------------------------|
+| (array) $array | Column content => CSS Class assignments  |
+
+Example:
+
+```php{2-5}
+Column::add()
+    ->contentClasses([
+          'In Progress' => 'text-blue-600',
+          'Completed' => 'text-green-600'
+     ])
+```
+
+---
