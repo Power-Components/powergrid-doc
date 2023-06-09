@@ -610,8 +610,8 @@ class User
 
 ## Responsive
 
-Sometimes when we have a table with many columns there will probably be scrolling and user usability will be bad. To fix this, use the Responsive feature. 
-This will create a new row with the columns that were hidden.
+Sometimes when we have a table with many columns, there will probably be scrolling, and user usability won’t be good. 
+To fix this, use the Responsive feature. It will create a new row with the columns that were hidden.
 
 ::: warning
 * Not available if used together with the Detail feature
