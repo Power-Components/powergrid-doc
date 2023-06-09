@@ -615,6 +615,7 @@ To fix this, use the Responsive feature. It will create a new row with the colum
 
 ::: warning
 * Not available if used together with the Detail feature
+* Not available when used in conjunction with inline filters
 ::: 
 
 ### Usage
