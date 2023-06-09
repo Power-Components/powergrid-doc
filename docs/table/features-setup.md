@@ -607,3 +607,64 @@ class User
     }
 }
 ```
+
+## Responsive
+
+Sometimes when we have a table with many columns, there will probably be scrolling, and user usability won’t be good. 
+To fix this, use the Responsive feature. It will create a new row with the columns that were hidden.
+
+::: warning
+* Not available if used together with the Detail feature
+* Not available when used in conjunction with inline filters
+::: 
+
+### Usage
+
+To enable this feature, we need to call the `PowerComponents\LivewirePowergrid\Responsive` on the `setUp` method (the same way as Exportable, Header, Footer, etc.).
+
+```php
+use PowerComponents\LivewirePowerGrid\Responsive;
+
+public function setUp(): array
+{
+    return [
+        Responsive::make();
+    ];   
+}
+```
+
+### Customize
+
+You can also customize the details display style using specific classes:
+
+```css
+.responsive-row-expand-container {
+    
+}
+.responsive-row-expand-item-container {
+    
+}
+.responsive-row-expand-item-name {
+    
+}
+.responsive-row-expand-item-value {
+    
+}
+```
+
+### Fixed Columns
+
+We also can define the fixed columns (these columns won't be hidden) using the `fixedColumns` method. 
+By default, we set the `id` and `actions` as fixed.
+
+```php
+use PowerComponents\LivewirePowerGrid\Responsive;
+
+public function setUp(): array
+{
+    return [
+        Responsive::make()
+            ->fixedColumns('id', 'chef_name', Responsive::ACTIONS_COLUMN_NAME);
+    ];
+}
+```
