@@ -802,6 +802,10 @@ The relationships must be added in the format:
 
 `'model_name' => ['search_column_A', 'search_column_B'...]`.
 
+Nested singular relationships where both the first relation table's foreign key and the nested relation's primary keys are the Eloquent default can be added in the format:
+
+`'model_name' => ['search_column_A', 'nested_model_table' => ['search_column_B', 'search_column_C']`. 
+
 Example:  
 
 ```php
@@ -810,6 +814,7 @@ public function relationSearch(): array
     return [
         'kitchen' => [ // relationship on dishes model
             'name', // column enabled to search
+	    'chef' => ['name'] // nested relation and column enabled to search
         ],
         //...
     ];
