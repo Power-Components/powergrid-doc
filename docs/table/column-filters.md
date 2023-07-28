@@ -107,7 +107,7 @@ $attributes = [
     // ...
 ];
 
-Filter::bollean('in_stock')
+Filter::boolean('in_stock')
     ->component('my-custom-select', $attributes)
 ```
 
