@@ -7,7 +7,7 @@ There are two ways to use a PowerGrid Table in your page:
 You can include it using a `<livewire>` tag:
 
 ```html
-<livewire:dish-table/>
+<livewire:dish-table />
 ```
 
 Or, using a Blade directive:
@@ -23,7 +23,7 @@ The preceding examples make use of the `DishTable` table. You must replace `dish
 If your PowerGrid Table is located in a sub-folder (e.g.: Restaurants/DishTable.php), use:
 
 ```html
-<livewire:restaurants.dish-table/>
+<livewire:restaurants.dish-table />
 ```
 
 ## Passing arguments
@@ -35,9 +35,9 @@ For example, include the argument "type" in your tag to load only "pasta" dishes
 You can also put the "tableName" argument as well - this will avoid some conflict sending events to the same livewire component
 
 ```html
-<livewire:dish-table type="pasta" tableName="table1"/>
+<livewire:dish-table type="pasta" tableName="table1" />
 
-<livewire:dish-table type="desserts" tableName="table2"/>
+<livewire:dish-table type="desserts" tableName="table2" />
 ```
 
 The argument should be declared as a `public property` inside your PowerGrid table (in this example: `DishTable.php`).
@@ -56,7 +56,7 @@ public function datasource(): ?Builder
 ```
 
 ::: tip
-💡 Read more about the [Datasource](table/datasource) method.
+💡 Read more about the [Datasource](../table/datasource.html) method.
 :::
 
 <hr/>
