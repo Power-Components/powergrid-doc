@@ -14,7 +14,7 @@
     <a href="get-started/configure.html">Configure</a>&ensp; | &ensp;
     <a href="get-started/create-powergrid-table.html">Create a Table</a>&ensp; | &ensp;
     <a href="table/features-setup.html">Table Features</a>&ensp; | &ensp;
-    <a href="https://github.com/Power-Components/powergrid-demo-misc" target="_blank">Demo project&ensp; | &ensp;</a>
+    <a href="https://github.com/Power-Components/powergrid-demo-misc" target="_blank">Demo project</a>&ensp; | &ensp;
     <a href="https://github.com/Power-Components/livewire-powergrid" target="_blank">Source repo</a>
 </p>
 <p>&nbsp</p>
