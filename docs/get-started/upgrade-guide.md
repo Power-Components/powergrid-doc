@@ -16,3 +16,20 @@ The following items have been updated in this release:
 * [Tailwind](https://tailwindcss.com/) v3+
 
 ---
+
+### Rename Filter, Rules imports
+
+
+---
+
+### Change Button caption to Button slot
+
+```php
+   Button::add('bulk-demo')
+       ->caption('Bulk Action')
+       ->class('...')
+
+    Button::add('bulk-demo')
+       ->slot('Bulk Action')
+       ->class('...')
+```

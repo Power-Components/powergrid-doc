@@ -14,6 +14,8 @@ The following items have been deprecated in this release:
 * ClickToCopy
 * ActionButton trait
 * PowerGrid::eloquent()
+* Powergrid demo (php artisan powergrid:demo)
+* Rule::caption changed to Rule::slot
 
 ---
 
