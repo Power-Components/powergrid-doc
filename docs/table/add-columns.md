@@ -21,15 +21,15 @@ The example above creates 4 columns:
 //..
 public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::columns()
-    ->addColumn('id')
-    ->addColumn('name')
-    ->addColumn('name_uppercase', function (Dish $model) {
-      return strtoupper($model->name);
-    })
-    ->addColumn('price_after_taxes', function (Dish $model) {
-      return taxCalculator::vat($model->price, 'PT');
-    });
+    return PowerGrid::columns()
+        ->addColumn('id')
+        ->addColumn('name')
+        ->addColumn('name_uppercase', function (Dish $model) {
+          return strtoupper($model->name);
+        })
+        ->addColumn('price_after_taxes', function (Dish $model) {
+          return taxCalculator::vat($model->price, 'PT');
+        });
 }
 ```
 

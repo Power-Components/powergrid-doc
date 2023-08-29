@@ -4,11 +4,6 @@
 
 ## 1. Import JS and CSS
 
-Install AlpineJS.
-```bash
-npm install alpinejs
-```
-
 `resources/js/app.js`
 
 ```javascript{5,6}
@@ -42,7 +37,6 @@ To change to Bootstrap 5, modify your `theme` option as follows:
 
 Some features are not available in the Bootstrap version:
 * [Filters outside](configure?id=_7-filters)
-* [Detail Row](../table/detail-row)
 
 ## 4. Tailwind settings
 

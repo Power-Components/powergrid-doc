@@ -14,7 +14,6 @@ The following items have been deprecated in this release:
 * ClickToCopy
 * ActionButton trait
 * PowerGrid::eloquent()
-* Add Closure to datasource to check filter dependencies (Filter::select)
 
 ---
 
@@ -25,3 +24,4 @@ The following items have been deprecated in this release:
 * All methods on Buttons are now Macros.
 * Performance improvement and it is now possible to customize `withSum, withCount, withMin, withMax, withAVG`
 * Added `filterRelation()` to `Filter::inputText()`
+* Add Closure to datasource to check filter dependencies (Filter::select)
