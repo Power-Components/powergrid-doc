@@ -2,7 +2,7 @@
 
 [[toc]]
 
-## PowerGrid Version 4
+## PowerGrid Version 5
 
 ### Deprecations
 
@@ -12,6 +12,10 @@ The following items have been deprecated in this release:
 * Livewire 2
 * Read a dynamic property within a parameter on buttons
 * ClickToCopy
+* ActionButton trait
+* PowerGrid::eloquent()
+* Add Closure to datasource to check filter dependencies (Filter::select)
+
 ---
 
 ### Improves & Features

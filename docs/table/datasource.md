@@ -96,9 +96,7 @@ If you need to sort by a column that is in another table, you can add the table 
 public function columns(): array
 {
       //...
-      Column::make(__('Category'), 'category_name', 'categories.name')
-          ->makeInputMultiSelect(Category::all(), 'name', 'category_id')
-          ->sortable(),
+      Column::make(__('Category'), 'category_name', 'categories.name'),
       //...
 }
 ```

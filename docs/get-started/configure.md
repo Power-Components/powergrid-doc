@@ -12,14 +12,8 @@ npm install alpinejs
 `resources/js/app.js`
 
 ```javascript{5,6}
-import Alpine from 'alpinejs'
-
-window.Alpine = Alpine
-
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css'
-
-Alpine.start()
 ```
 
 ## 2. Choose your Theme

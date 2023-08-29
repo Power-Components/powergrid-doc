@@ -17,10 +17,12 @@ and the `field` that will filter.
 
 Example:
 
-```php{4,5,11,17-20}
-public function addColumns(): PowerGridEloquent
+```php{6,7,13,20-23}
+use PowerComponents\LivewirePowerGrid\Facades\Filter;
+
+public function addColumns(): PowerGridColumns
 {
-    return PowerGrid::eloquent()
+    return PowerGrid::columns()
         ->addColumn('category_id', fn ($dish) => $dish->category_id)
         ->addColumn('category_name', fn ($dish) => $dish->category->name);
 }
@@ -87,6 +89,8 @@ When you use the **builder** or **collection** methods, you are taking control o
 
 * Complete example:
 ```php
+use PowerComponents\LivewirePowerGrid\Facades\Filter;
+
 Filter::boolean('in_stock')
     ->label('yes', 'no')
     ->builder(function (Builder $query, string $value) {
@@ -191,7 +195,7 @@ Includes a specific field on the page to filter a hasOne relation in the column.
 
 #### Methods:
 
-* `->dataSource(Collection|array $collection)` : parameter must be a Datasource.
+* `->dataSource(Collection|array|Closure $collection)` : parameter must be a Datasource.
 * `->optionValue(string $value)` : datasource field name to be displayed in options.
 * `->optionLabel(string $value)` : field used by the filter.
 
@@ -228,9 +232,9 @@ To build a table with a filter based on Database values, you can use:
 
 ```php
 
-    public function addColumns(): PowerGridEloquent
+    public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::eloquent()
+        return PowerGrid::columns()
             //...
             ->addColumn('code');
     }
@@ -289,9 +293,9 @@ Now, we can use this method in `DishTable` to access our collection of codes.
 
 ```php
 
-    public function addColumns(): PowerGridEloquent
+    public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::eloquent()
+        return PowerGrid::columns()
             /*
               Returns the 'label' key of the first collection item matching the database value in column "code"
             */
@@ -435,7 +439,7 @@ Adds a filter for boolean values.
 
 Example:
 
-```php{4-7}
+```php{4-5}
 public function filters(): array
 {
     return [

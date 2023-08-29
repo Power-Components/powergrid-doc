@@ -19,9 +19,9 @@ The example above creates 4 columns:
 
 ```php
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::eloquent()
+  return PowerGrid::columns()
     ->addColumn('id')
     ->addColumn('name')
     ->addColumn('name_uppercase', function (Dish $model) {
@@ -45,42 +45,46 @@ Whenever the column name is different from the one in the database, remember to 
 ```php
 //..
 <!-- 🚫 Wrong -->
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::eloquent()
-    ->addColumn('created_at', function (Dish $dish) {
-      return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
-    })
+    return PowerGrid::columns()
+         ->addColumn('created_at', function (Dish $dish) {
+            return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
+         })
 }
 
-public function columns(): PowerGridEloquent
+public function columns(): array
 {
-  Column::add()
-       ->title('Created At')
-       ->field('created_at') 🚫
-       ->searchable()
-       ->sortable(),
+   return [
+      Column::add()
+         ->title('Created At')
+         ->field('created_at') 🚫
+         ->searchable()
+         ->sortable()
+   ]   
 }
 ```
 
 ```php{17}
 //..
 <!-- ✅ Right -->
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::eloquent()
-    ->addColumn('created_at_formatted', function (Dish $dish) {
-      return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
-    })
+  return PowerGrid::columns()
+     ->addColumn('created_at_formatted', function (Dish $dish) {
+        return Carbon::parse($dish->created_at)->format('d/m/Y H:i');
+     })
 }
 
-public function columns(): PowerGridEloquent
+public function columns(): array
 {
-  Column::add()
-       ->title('CREATED AT')
-       ->field('created_at_formatted', 'created_at') ✅
-       ->searchable()
-       ->sortable(),
+    return [
+        Column::add()
+           ->title('CREATED AT')
+           ->field('created_at_formatted', 'created_at') ✅
+           ->searchable()
+           ->sortable(),
+    ]
 }
 ```
 
@@ -95,43 +99,47 @@ Always add the actual column name in the database if it is searchable.
 ```php
 //..
 <!-- 🚫 Wrong -->
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::eloquent()
-    ->addColumn('price_formatted', function (Dish $dish) {
-      return $fmt->formatCurrency($dish->price, "EUR");
-    })
+    return PowerGrid::columns()
+        ->addColumn('price_formatted', function (Dish $dish) {
+            return $fmt->formatCurrency($dish->price, "EUR");
+        })
 }
 
-public function columns(): PowerGridEloquent
+public function columns(): array
 {
-  Column::add()
-       ->title('Price')
-       ->field('price_formatted', 'price') 
-       ->searchable()
-       ->sortable(),
+    return [
+        Column::add()
+           ->title('Price')
+           ->field('price_formatted', 'price') 
+           ->searchable()
+           ->sortable(),
+    ];
 }
 ```
 
 ```php
 //..
 <!-- ✅ Right -->
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-  return PowerGrid::eloquent()
-    ->addColumn('price')
-    ->addColumn('price_formatted', function (Dish $dish) {
-      return $fmt->formatCurrency($dish->price, "EUR");
-    })
+  return PowerGrid::columns()
+        ->addColumn('price')
+        ->addColumn('price_formatted', function (Dish $dish) {
+            return $fmt->formatCurrency($dish->price, "EUR");
+        })
 }
 
-public function columns(): PowerGridEloquent
+public function columns(): array
 {
-  Column::add()
-       ->title('Price')
-       ->field('price_formatted', 'price') ✅
-       ->searchable()
-       ->sortable(),
+    return [
+        Column::add()
+           ->title('Price')
+           ->field('price_formatted', 'price') ✅
+           ->searchable()
+           ->sortable(),
+    ];
 }
 
 ```
@@ -147,26 +155,26 @@ With this PR you can process before removing the characters that do not need to 
 ```php
 
 public function columns()
-    {
-        return [
-            Column::make('Phone', 'phone_editable', 'phone')
-                  ->searchable(),
-        ];
+{
+    return [
+        Column::make('Phone', 'phone_editable', 'phone')
+            ->searchable(),
+    ];
+}
+
+public function beforeSearchPhone($search): string
+{
+    return str($search)->replaceMatches('/[^0-9]+/', '')->toString();
+}
+
+public function beforeSearch(string $field = null, string $search = null)
+{
+    if ($field === 'phone') {
+         return str($search)->replaceMatches('/[^0-9]+/', '')->toString();
     }
 
-    public function beforeSearchPhone($search): string
-    {
-        return str($search)->replaceMatches('/[^0-9]+/', '')->toString();
-    }
-
-    public function beforeSearch(string $field = null, string $search = null)
-    {
-        if ($field === 'phone') {
-            return str($search)->replaceMatches('/[^0-9]+/', '')->toString();
-        }
-
-        return $search;
-    }
+    return $search;
+}
 
 ```
 ## Closure Examples
@@ -189,9 +197,9 @@ The example below creates a new column called `location_link` containing a link 
 
 ```php
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-    return PowerGrid::eloquent()
+    return PowerGrid::columns()
         ->addColumn('location_link', function (Dish $model) {
             return '<a href="https://www.google.com/maps/search/' . e($model->lat_long) . '">'. e($model->location_name) .'</a>'; 
         });
@@ -216,9 +224,9 @@ In this column, date is parsed and displayed as `d/m/Y H:i` (20/01/2021 10:05).
 
 ```php{6}
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-    return PowerGrid::eloquent()
+    return PowerGrid::columns()
         ->addColumn('created_at_formatted', function (Dish $model) {
             return Carbon::parse($model->created_at)->format('d/m/Y H:i');
         });
@@ -233,14 +241,14 @@ This custom column displays the `price` amount (`170.90`) formatted as Portugues
 
 ```php
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
   $fmt = new NumberFormatter('pt_PT', NumberFormatter::CURRENCY);
 
-  return PowerGrid::eloquent()
-    ->addColumn('price_in_eur', function (Dish $model) {
-       return $fmt->formatCurrency($model->price, "EUR");
-    });
+  return PowerGrid::columns()
+        ->addColumn('price_in_eur', function (Dish $model) {
+            return $fmt->formatCurrency($model->price, "EUR");
+        });
 }
 ```
 
@@ -270,9 +278,9 @@ Code:
 
 use Illuminate\Support\Str;
 
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-    return PowerGrid::eloquent()
+    return PowerGrid::columns()
        ->addColumn('description_excerpt', function (Dish $model) {
            return Str::words(e($model->description), 8); //Gets the first 8 words
        });
@@ -291,13 +299,13 @@ In this example, we have a new custom column `available` which displays "yes"/"n
 
 ```php
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
 
-  return PowerGrid::eloquent()
-    ->addColumn('available', function (Dish $model) {
-      return ($model->in_stock ? 'yes' : 'no');
-    });
+  return PowerGrid::columns()
+        ->addColumn('available', function (Dish $model) {
+            return ($model->in_stock ? 'yes' : 'no');
+        });
 }
 ```
 
@@ -331,12 +339,12 @@ The following example makes your table rows show `🍽️ All diets` instead of 
 
 ```php
 //..
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
 
-  return PowerGrid::eloquent()
-    ->addColumn('diet', function (Dish $dish) {
-        return Diet::from($dish->diet)->labels();
-    });
+  return PowerGrid::columns()
+        ->addColumn('diet', function (Dish $dish) {
+            return Diet::from($dish->diet)->labels();
+        });
 }
 ```

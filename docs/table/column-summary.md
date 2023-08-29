@@ -136,9 +136,9 @@ To summarize formatted data (e.g, currency), you must pass the `formatted column
 In the example next example, we have a column `price_BRL` formatting the amount in Brazilian Real currency format.
 
 ```php
-  public function addColumns(): PowerGridEloquent
+  public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::eloquent()
+        return PowerGrid::columns()
             ->addColumn('id')
             
             //1000.00
