@@ -18,7 +18,7 @@ public function header(): array
 {
     return [
         Button::add('new-modal')
-            ->caption('New window')
+            ->slot('New window')
             ->class('bg-gray-300')
             ->openModal('new', []),
             
@@ -51,20 +51,20 @@ Button::add('create-dish')
 
 ---
 
-### caption
+### slot
 
-Sets the button label.
+Render the html.
 
-| Parameter         | Description    | 
-|-------------------|----------------|
-| (string) $caption | button caption |
+| Parameter         | Description | 
+|-------------------|-------------|
+| (string) $slot | render html |
 
 Example:
 
 ```php{3}
 //..
 Button::add('create-dish')  
-    ->caption('Create a dish')
+    ->slot('Create a dish')
 ```
 
 ---
@@ -82,15 +82,13 @@ Example:
 ```php{4}
 //..
 Button::add('create-dish')  
-    ->caption('Create a dish')
+    ->slot('Create a dish')
     ->class('bg-indigo-500 text-white')
 ```
 
 ---
 
-### emit
-
-* Emit works with event listeners.
+### dispatch
 
 | Parameter                | Description   | 
 |--------------------------|---------------|
@@ -98,7 +96,7 @@ Button::add('create-dish')
 | (array, Closure) $params | Parameters    |
 
 ::: tip
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+Read more about [Events](https://livewire.laravel.com/docs/events#dispatching-events) in the Livewire documentation.
 ::: 
 
 The code below:
@@ -106,33 +104,22 @@ The code below:
 ```php{5,12-14}
 //...
 Button::add('create-dish')  
-    ->caption('Create a dish')
+    ->slot('Create a dish')
     ->class('bg-indigo-500 text-white')
-    ->emit('postAdded', ['key' => 'id']),
-    
-// or using Closure    
-
-Button::add('create-dish')  
-    ->caption('Create a dish')
-    ->class('bg-indigo-500 text-white')
-    ->emit('postAdded', function(Dish $dish) {
-        return ['key' => $dish->id];
-    }),
+    ->dispatch('postAdded', ['key' => $row->id']),
 ```
 
 is equivalent to:
 
 ```html{2}
 <div>
-    <button wire:click="$emit('postAdded', {'key': 1})">
+    <button wire:click="$dispatch('postAdded', { key: 1})">
 </div>
 ```
 
 ---
 
-### emitTo
-
-* Emit works with event listeners.
+### dispatchTo
 
 | Parameter                | Description    | 
 |--------------------------|----------------|
@@ -141,7 +128,7 @@ is equivalent to:
 | (array, Closure) $params | Parameters     |
 
 ::: tip
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+Read more about [Events](https://livewire.laravel.com/docs/events#dispatching-events) in the Livewire documentation.
 ::: 
 
 The code below:
@@ -149,70 +136,18 @@ The code below:
 ```php{5,12-14}
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
-    ->emitTo('admin-component','postAdded', ['key' => 1]),
-    
-// or using Closure
-
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
-    ->emitTo('admin-component','postAdded', function(Dish $dish) {
-        return ['key' => $dish->id];
-    }),    
+    ->dispatchTo('admin-component', 'postAdded', ['key' => $row->id]),
 ```
 
 is equivalent to:
 
 ```html{2}
 <div>
-    <button wire:click="$emitTo('admin-component', 'postAdded', {'key': 1})">
+    <button wire:click="$dispatchTo('admin-component', 'postAdded', { key: 1})">
 </div>
 ```
-
----
-
-### dispatch
-
-* Dispatch browser events.
-
-| Parameter                | Description   | 
-|--------------------------|---------------|
-| (string) $event          | Name of event |
-| (array, Closure) $params | Parameters    |
-
-::: tip
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events#browser) in the Livewire documentation.
-:::
-
-The code below:
-
-```php{5,12-14}
-//...
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
-    ->dispatch('eventName', ['key' => 'id']),
-    
-// or using Closure
-
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
-    ->dispatch('eventName', function(Dish $dish) {
-        return ['key' => $dish->id];
-    }),    
-```
-
-is equivalent to:
-
-```html
-<div>
-    <button x-on:click="$dispatch('eventName', {'key': 1})">
-</div>
-```
-
 ---
 
 ### openModal
@@ -233,18 +168,9 @@ Example:
 ```php{5,12-14}
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
     ->openModal('view-dish', ['dish' => 'id']),
-   
-// or using Closure
-
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
-    ->openModal('view-dish', function(Dish $dish) {
-        return ['key' => $dish->id];
-    }),
 ```
 
 ---
@@ -262,7 +188,7 @@ Example:
 ```php{5}
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
     ->method('delete'),
 ```
@@ -273,28 +199,19 @@ Button::add('view')
 
 * Sets the action's route.
 
-| Parameter                 | Description         | 
-|---------------------------|---------------------|
-| (string) $route           | Valid Laravel route |
-| (string, Closure) $params | Route parameters    |
+| Parameter       | Description         | 
+|-----------------|---------------------|
+| (string) $route | Valid Laravel route |
+| (array) $params | Route parameters    |
 
 Example:
 
 ```php{5}
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
-    ->route('dish.edit', ['dish' => 'id']),
-    
-// or using Closure
-
-Button::add('view')
-    ->caption('View')
-    ->class('btn btn-primary')
-    ->route('dish.edit', function(Dish $dish) {
-        return ['dish' => $dish->id];
-    }),    
+    ->route('dish.edit', ['dish' => $row->id]),
 ```
 
 ---
@@ -313,7 +230,7 @@ Example:
 ```php{5}
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
     ->target('_self'),
 ```
@@ -331,11 +248,11 @@ Button::add('view')
 Example:
 
 ```php{1,6}
-$canClickButton = true; //User has permission to edit
+$canClickButton = true; // User has permission to edit
 
 Button::add('edit-dish')
-    ->caption('Edit')
-    ->route('dish.edit', ['dish' => 'id'])
+    ->slot('Edit')
+    ->route('dish.edit', ['dish' => $row->id])
     ->can($canClickButton),
 ```
 
@@ -353,8 +270,8 @@ Example:
 
 ```php{4}
 Button::add('edit-dish')
-    ->caption('Edit')
-    ->route('dish.edit', ['dish' => 'id'])
+    ->slot('Edit')
+    ->route('dish.edit', ['dish' => $row->id])
     ->tooltip('Edit Record'),
 ```
 
@@ -368,7 +285,7 @@ Example:
 
 ```php{3}
 Button::add('toggle-detail')
-    ->caption('Toggle Detail')
+    ->slot('Toggle Detail')
     ->toggleDetail(),
 ```
 
@@ -376,23 +293,16 @@ Button::add('toggle-detail')
 
 * Allows you to add a custom component overriding all default behavior
 
-| Parameter                | Default                     | 
-|--------------------------|-----------------------------|
-| (string) $component      | View component path (blade) |
-| (array, Closure) $params | Blade parameters            |
+| Parameter           | Default                     | 
+|---------------------|-----------------------------|
+| (string) $component | View component path (blade) |
+| (array) $params     | Blade parameters            |
 
 Example:
 
 ```php{2}
 Button::add('my-custom-button')
-    ->bladeComponent('my-custom-button', ['dishId' => 'id']),
-    
-// or using Closure
-
-Button::add('my-custom-button')
-    ->bladeComponent('my-custom-button', function(Dish $dish) {
-        return ['dish' => $dish->id];
-    }),       
+    ->bladeComponent('my-custom-button', ['dishId' => $row->id]),
 ```
 
 `view/components/my-custom-button.blade.php`
@@ -449,7 +359,7 @@ The code below:
 ```php
 //...
 Button::add('view')
-    ->caption('View')
+    ->slot('View')
     ->class('btn btn-primary')
     ->id('view'), 
 ```
@@ -486,23 +396,8 @@ With mentioned additions `icon` can be accessed as regular method.
 
 ```php
 Button::add('new-modal')
-    ->caption('New window')
+    ->slot('New window')
     ->class('bg-gray-300')
     ->icon('fa-window')
     ->openModal('new', []),
-```
-
-### Accessing dynamic properties
-
-In the previous [section](#extending-button-class), we showed how to extend the `Button` class and store dynamic properties. Now, the remaining task is to utilize these dynamic properties by implementing them inside custom template.
-
-The following example shows modified code snippet from [actions.blade.php](https://github.com/Power-Components/livewire-powergrid/blob/main/resources/views/components/actions.blade.php), which allows to display custom icons inside row button:
-
-```php
-@if($actionClass->isButton)
-    <button {{ $actionClass->getAttributes() }}>
-        <i class="{{ $actionClass->getDynamicProperty('icon') }}"></i>
-        {!! $actionClass->caption() !!}
-    </button>
-@endif
 ```
