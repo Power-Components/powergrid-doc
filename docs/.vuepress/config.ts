@@ -29,7 +29,7 @@ export default defineUserConfig({
     plugins: [
         docsearchPlugin({
             appId: '7M4C366U6U',
-            apiKey: '0a0022f159f38849b0dbd2199c12f081',
+            apiKey: 'cd810107dfeb4a3dc190959e3855db56',
             indexName: 'livewire-powergridPowergrid v5',
         }),
     ],
