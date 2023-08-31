@@ -10,7 +10,7 @@ You can add buttons to your each cell of a column by chaining [Cell Action metho
 
 The following example adds a `toggleable` button to each cell of "In Stock" column.
 
-```php{11}
+```php{7}
 //...
 public function columns(): array
 {
@@ -163,29 +163,3 @@ Result:
 ::: 
 
 ---
-
-### clickToCopy
-
-If `$hasPermission` is `true`, PowerGrid appends a `click to copy button` to your table cell.
-
-| Parameter             | Description                                      | Default |
-|-----------------------|--------------------------------------------------|---------|
-| (bool) $hasPermission | enable/disable this feature                      | false   |
-| (string) $caption     | The argument `$caption` sets the button caption. | null    |
-
-
-Example:
-
-```php{7}
-//...
-$canCopy = true; // User has permission to copy
-
-Column::add()
-    ->title('Name')
-    ->field('name'),
-    ->clickToCopy($canCopy, 'Copy name to clipboard'),
-```
-
-Result:
-
-![Output](/_media/examples/cell_buttons/clickToCopy.png)

@@ -72,7 +72,8 @@ The following items have been deprecated in this release:
           ];
       }
     ```
-  
+
+![Output](/_media/examples/summarize_format.png)
 
 ---
   

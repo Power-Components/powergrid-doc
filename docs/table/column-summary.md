@@ -129,42 +129,25 @@ Result:
 
 ### Summarizing formatted data
 
-PowerGrid provides a convenient way to use [closures](add-columns.html?id=closure-examples#closure-examples) to display formatted data in your table.
+PowerGrid provides a convenient way to use `summarizeFormat()` method to display formatted data in your table.
 
-To summarize formatted data (e.g, currency), you must pass the `formatted column` and `original column` to the methdo `field()`:
+To summarize formatted data (e.g. currency), you must add the passing summaryFormat method that returns an array of key and value (field, Closure).
 
-In the example next example, we have a column `price_BRL` formatting the amount in Brazilian Real currency format.
-
+Ex: 
 ```php
-  public function addColumns(): PowerGridColumns
-    {
-        return PowerGrid::columns()
-            ->addColumn('id')
-            
-            //1000.00
-            ->addColumn('price')
-            
-            //R$ 1.000,00
-            ->addColumn('price_BRL', fn (Dish $dish) => 'R$ ' . number_format(e($dish->price), 2, ',', '.'));
-    }
+  public function summarizeFormat(): array
+  {
+        return [
+            'price.{sum,avg}' => function ($value) {
+               return (new \NumberFormatter('en_US', \NumberFormatter::CURRENCY))
+                    ->formatCurrency($value, 'USD');
+             },
+             'price.{count,min,max}' => fn ($value) => $value,
+        ];
+  }
 ```
 
-Next, we must pass the two columns to the `field()` method, when [including](include-columns.html) the "formatted price" column in our table:
+![Output](/_media/examples/summarize_format.png)
 
--Column `price_BRL` containing the formatted value (R$ 1.000,00).
+---
 
--Column `price` containing the raw amount (1000.00);
-
-```php
-public function columns(): array
-{
-    return [
-        Column::make(__('ID'), 'id', 'dishes.id')
-            ->searchable()
-            ->sortable(),
-            
-        Column::make(__('Price'), 'price_BRL', 'price') //formatted field, original field
-            ->withSum('Total amount', true, true),
-    ];
-}
-```

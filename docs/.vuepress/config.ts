@@ -9,7 +9,7 @@ import {
 
 export default defineUserConfig({
     lang: 'en-US',
-    title: 'Livewire Powergrid',
+    title: 'Livewire PowerGrid',
     description: 'Description',
     head,
     theme: defaultTheme({
