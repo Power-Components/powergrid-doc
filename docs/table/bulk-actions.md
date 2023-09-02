@@ -20,9 +20,9 @@ To implement Bulk Actions in PowerGrid, you must add an `Action Button` inside t
     {
         return [
             Button::add('bulk-sold-out')
-                ->caption(__('Mark as Sold-out'))
+                ->slot(__('Mark as Sold-out'))
                 ->class('cursor-pointer block bg-indigo-500 text-white')
-                ->emit('bulkSoldOutEvent', [])
+                ->dispatch('bulkSoldOutEvent', [])
         ];
     }
 ```
@@ -101,9 +101,9 @@ public function header(): array
 {
      return [
         Button::add('bulk-delete')
-            ->caption(__('Bulk delete (<span x-text="window.pgBulkActions.count(\'' . $this->tableName . '\')"></span>)'))
+            ->slot(__('Bulk delete (<span x-text="window.pgBulkActions.count(\'' . $this->tableName . '\')"></span>)'))
             ->class('cursor-pointer block bg-white-200 text-gray-700 ')
-            ->emit('bulkDelete-' . $this->tableName, []),
+            ->dispatch('bulkDelete-' . $this->tableName, []),
      ];
  }
 ```

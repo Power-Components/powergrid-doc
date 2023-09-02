@@ -24,9 +24,9 @@ public function actions(): array
 {
     return [
         Button::add('order-dish')
-            ->caption('Order')
+            ->slot('Order')
             ->class('bg-blue-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-            ->emit('order-dish', ['dishId' => 'id'])
+            ->dispatch('order-dish', ['dishId' => 'id'])
     ];
 }
 
@@ -38,6 +38,7 @@ public function actionRules(): array
         Rule::button('order-dish')
             ->when(fn($dish) => $dish->in_stock == false)
             ->hide(),
+            
         // Set red background on rows for dishes which are not free and are out-of-stock 
         Rule::rows()
             ->when(function ($dish) { 
@@ -60,7 +61,7 @@ Modifiers can be combined under the same rule. For example:
 // Sets the button class to spicy and caption with emoji
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
-    ->caption('Order 🔥 🔥 🔥')
+    ->slot('Order 🔥 🔥 🔥')
     ->setAttribute('class', 'bg-orange-400'),
 ```
 
@@ -74,10 +75,12 @@ You must create a new `Rule` to match a different condition on the `Target`. For
 //Captions per country on 'Order button'
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->country === 'Brazil')
-    ->caption('Order 🇧🇷')
+    ->slot('Order 🇧🇷')
+    
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->country === 'Portugal')
-    ->caption('Order 🇵🇹')
+    ->slot('Order 🇵🇹')
+    
 //Disable order for dishes without country
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->country === '')
@@ -100,12 +103,12 @@ Available methods:
 
 - [Disable](#disable)
 - [Hide](#hide)
-- [Caption](#caption)
-- [Emit](#emit)
-- [EmitTo](#emitto) 
+- [Slot](#slot)
+- [Dispatch](#dispatch)
+- [DispatchTo](#dispatchTo) 
 - [setAttribute](#setattribute)
 - [hideToggleable](#hidetoggleable)
-- [showtoggleable](#showtoggleable)
+- [showToggleable](#showtoggleable)
 - [Redirect](#redirect)
 
 ### disable
@@ -138,13 +141,13 @@ Rule::checkbox()
 
 ---
 
-### caption
+### slot
 
-* Sets the target caption value (available for Buttons).
+* Sets the target slot value (available for Buttons).
 
-| Parameter         | 
-|-------------------|
-| (string) $caption |
+| Parameter      | 
+|----------------|
+| (string) $slot |
 
 Example:
 
@@ -152,12 +155,12 @@ Example:
 // Changes the caption for dishes on sale
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->on_sale == true)
-    ->caption('Order 💰 ON SALE 💰'),
+    ->slot('Order 💰 ON SALE 💰'),
 ```
 
 ---
 
-### emit
+### dispatch
 
 * Sets the event emitted by the target (available for Buttons).
 
@@ -167,7 +170,7 @@ Rule::button('order-dish')
 | (array) $params | Parameters    |
 
 ::: tip
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+Read more about [Dispatch](https://livewire.laravel.com/docs/events#dispatching-events) in the Livewire documentation.
 :::
 
 Example:
@@ -176,12 +179,12 @@ Example:
 // Emits an alert for spice dishes
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
-    ->emit('showSpiceAlert', ['id' => 'id']),
+    ->dispatch('showSpiceAlert', ['id' => 'id']),
 ```
 
 ---
 
-### emitTo
+### dispatchTo
 
 * Sets an event and a target to which the event will be emitted to (available for Buttons).
 
@@ -192,7 +195,7 @@ Rule::button('order-dish')
 | (array) $params | Parameters     |
 
 ::: tip
-Read more about [Events](https://laravel-livewire.com/docs/2.x/events) in the Livewire documentation.
+Read more about [Dispatch](https://livewire.laravel.com/docs/events#dispatching-events) in the Livewire documentation.
 :::
 
 Example:
@@ -202,7 +205,7 @@ Example:
 
 Rule::button('order-dish')
     ->when(fn($dish) => $dish->is_spicy == true)
-    ->emitTo('alert-component', 'showSpiceAlert', ['id' => 'id']),
+    ->dispatchTo('alert-component', 'showSpiceAlert', ['id' => 'id']),
 ```
 
 Read more in [Livewire](https://laravel-livewire.com/docs/2.x/events#scope-by-name) documentation.

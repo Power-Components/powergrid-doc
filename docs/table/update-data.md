@@ -23,7 +23,7 @@ Column::add()
 When the user edits a dish name, the `onUpdatedEditable()` method will "catch" all data sent for the that row ID and perform a database update on `name` for this row.
 
 ```php
-public function onUpdatedEditable(string $id, string $field, string $value): void
+public function onUpdatedEditable(string|int $id, string $field, string $value): void
 {
     Dish::query()->find($id)->update([
         $field => $value,
@@ -79,7 +79,7 @@ public function addColumns(): PowerGridColumns
             });
 }
 
-public function onUpdatedEditable(string $id, string $field, string $value): void
+public function onUpdatedEditable(string|int $id, string $field, string $value): void
 {
     //Read from column name_uppercase
     if ($field == 'name_uppercase') {
@@ -103,7 +103,7 @@ A similar situation happens when editing dates: the date is sent as `dd/mm/yyyy`
 PowerGrid will NOT perform this conversion automatically. You must treat this data in your code, parsing and converting the value and saving on the correct database field.
 
 ```php
-public function onUpdatedEditable(string $id, string $field, string $value): void
+public function onUpdatedEditable(string|int $id, string $field, string $value): void
 {
     // Gets price_formatted (4.947,70 €) and convert to price (44947.70).
     
@@ -143,7 +143,7 @@ This might be useful when the data is changed with [editOnClick](cell-actions-bu
 Example:
 
 ```php
-public function onUpdatedEditable(string $id, string $field, string $value): void
+public function onUpdatedEditable(string|int $id, string $field, string $value): void
 {
   //...
 
