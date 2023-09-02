@@ -17,9 +17,10 @@ The following items have been updated in this release:
 
 ---
 
-### Solve the necessary imports
+## Solve the necessary imports
 
-* Rename Filter class
+#### Rename Filter class
+
 ```php{4}
 // Change:
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
@@ -27,7 +28,10 @@ use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
 ```
 
-* Rename Filter class
+---
+
+#### Rename Filter class
+
 ```php{4}
 // Change:
 use PowerComponents\LivewirePowerGrid\Rules\Rule;
@@ -35,7 +39,29 @@ use PowerComponents\LivewirePowerGrid\Rules\Rule;
 use PowerComponents\LivewirePowerGrid\Facades\Rule;
 ```
 
-* Remove ActionButton Trait
+#### Change `PowerGrid::eloquent` to `PowerGrid::columns`
+
+```php{10,14}
+// Change:
+use PowerComponents\LivewirePowerGrid\PowerGridEloquent;
+
+public function addColumns(): PowerGridEloquent
+{
+    return PowerGrid::eloquent()
+    // 
+}
+// To:
+use PowerComponents\LivewirePowerGrid\PowerGridColumns;
+
+public function addColumns(): PowerGridEloquent
+{
+    return PowerGrid::eloquent()
+    // 
+}
+```
+
+#### Remove ActionButton Trait
+
 ```php
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
@@ -48,7 +74,7 @@ final class PowerGridTable extends PowerGridComponent
 
 ---
 
-### Change Button caption to Button slot
+#### Change Button caption to Button slot
 
 ```php{8}
 // PowerGrid 4
@@ -64,7 +90,7 @@ final class PowerGridTable extends PowerGridComponent
 
 ---
 
-### Change Button emit, emitTo, emitSelf
+#### Change Button emit, emitTo, emitSelf
 
 * Button::emit
 ```php{8}
