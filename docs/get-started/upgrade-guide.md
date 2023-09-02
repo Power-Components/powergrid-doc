@@ -53,9 +53,9 @@ public function addColumns(): PowerGridEloquent
 // To:
 use PowerComponents\LivewirePowerGrid\PowerGridColumns;
 
-public function addColumns(): PowerGridEloquent
+public function addColumns(): PowerGridColumns
 {
-    return PowerGrid::eloquent()
+    return PowerGrid::columns()
     // 
 }
 ```
