@@ -30,7 +30,7 @@ use PowerComponents\LivewirePowerGrid\Facades\Filter;
 
 ---
 
-#### Rename Filter class
+#### Rename Rule class
 
 ```php{4}
 // Change:
@@ -62,13 +62,25 @@ public function addColumns(): PowerGridColumns
 
 #### Remove ActionButton Trait
 
-```php
+```php{1,5}
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
 final class PowerGridTable extends PowerGridComponent
 {
    use ActionButton;
    // ---
+}
+```
+
+#### If you previously use row action button add Column::action()
+
+```php{5}
+public function columns(): array
+{
+    return [
+        ...
+        Column::action('Action'),
+    ];
 }
 ```
 
