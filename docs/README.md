@@ -10,10 +10,10 @@
 [PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy to customize Datatables based on Laravel [Livewire](https://laravel-livewire.com) library.
 <p>&nbsp;</p>
 <p align="center">
-    <a href="https://v4.livewire-powergrid.com/get-started/install.html#install">Install</a>&ensp; | &ensp;
-    <a href="https://v4.livewire-powergrid.com/get-started/configure.html">Configure</a>&ensp; | &ensp;
-    <a href="https://v4.livewire-powergrid.com/get-started/create-powergrid-table.html">Create a Table</a>&ensp; | &ensp;
-    <a href="https://v4.livewire-powergrid.com/table/features-setup.html">Table Features</a>&ensp; | &ensp;
+    <a href="https://v5.livewire-powergrid.com/get-started/install.html#install">Install</a>&ensp; | &ensp;
+    <a href="https://v5.livewire-powergrid.com/get-started/configure.html">Configure</a>&ensp; | &ensp;
+    <a href="https://v5.livewire-powergrid.com/get-started/create-powergrid-table.html">Create a Table</a>&ensp; | &ensp;
+    <a href="https://v5.livewire-powergrid.com/table/features-setup.html">Table Features</a>&ensp; | &ensp;
     <a href="https://github.com/Power-Components/livewire-powergrid" target="_blank">Source code</a>&ensp; | &ensp;
     <a href="https://demo.livewire-powergrid.com" target="_blank">Online Demo</a>
 </p>
