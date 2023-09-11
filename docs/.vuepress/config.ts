@@ -16,7 +16,7 @@ export default defineUserConfig({
         logo: '/_media/logomark@1x.png',
         repo: 'power-components/powergrid-doc',
         docsDir: 'docs',
-        docsBranch: '4x',
+        docsBranch: '5x',
         locales: {
             '/': {
                 navbar: navbarEn,
