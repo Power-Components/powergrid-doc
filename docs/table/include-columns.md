@@ -257,9 +257,9 @@ Column::add()
 
 * Adds the corresponding value of the key matching the column content in the provided array to the Table Column content &lt;span> CSS class attribute.
 
-| Parameter      | Description                              |
-|----------------|------------------------------------------|
-| (array) $array | Column content => CSS Class assignments  |
+| Parameter                      | Description                             |
+|--------------------------------|-----------------------------------------|
+| (array,string) $contentClasses | Column content => CSS Class assignments |
 
 Example:
 
@@ -269,6 +269,13 @@ Column::add()
           'In Progress' => 'text-blue-600',
           'Completed' => 'text-green-600'
      ])
+```
+
+You can add CSS classes to the span attribute.
+
+```php{2-5}
+Column::add()
+    ->contentClasses('text-blue-600')
 ```
 
 ---
