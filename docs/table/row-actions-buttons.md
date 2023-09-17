@@ -4,7 +4,11 @@ Row Action buttons can be configured inside `actions()` method, for each row or 
 
 ## Usage
 
-To add a button, include a new `Button::add(string $action)` in the `actions()` or `header()` method.
+To add a button, include a new `Button::add(string $action)` in the `actions(array|Model $row)` or `header()` method.
+
+::: tip
+The $row parameter in actions indicates each item in your data source. It can be an array or a model.
+:::
 
 Next, place your `Button::add(string $action)` code inside the method's `return []` statement.
 
@@ -22,6 +26,18 @@ public function header(): array
             ->class('bg-gray-300')
             ->openModal('new', []),
             
+        //...
+    ];
+}
+
+//..
+public function actions(Dish $row): array
+{
+    return [
+        Button::add('create-dish')  
+            ->slot('Create a dish')
+            ->class('bg-indigo-500 text-white')
+            ->dispatch('postAdded', ['key' => $row->id']),
         //...
     ];
 }
