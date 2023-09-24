@@ -82,14 +82,14 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/Power-Components/powergrid-doc' },
       { icon: 'twitter', link: 'https://twitter.com/luanfreitasdev' },
     ],
     footer: {
       message: 'Created By Luan Freitas and DanSysAnalyst',
     },
     editLink: {
-      pattern: 'https://github.com/power-components/livewire-powergrid/edit/v5/docs/:path',
+      pattern: 'https://github.com/power-components/livewire-powergrid/edit/5x/docs/:path',
       text: 'Edit this page on GitHub'
     },
     search: {
