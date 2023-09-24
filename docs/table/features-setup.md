@@ -6,7 +6,7 @@ You can find this method inside your PowerGrid file (e.g. `DishTable.php`).
 
 Example of usage:
 
-```php{7}
+```php
 //..
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\Footer;
@@ -33,7 +33,9 @@ You can chain the methods to configure the following features:
 
 Enables and displays checkboxes on each table row.
 
+::: info
 If your database table has a custom id column, you must pass the column name in the `$attribute` argument.
+:::
 
 Example:
 
@@ -55,7 +57,7 @@ Result:
 Here are some actions for the table header defined inside `setup`:
 
 * showSearchInput
-* showToggleColumns 
+* showToggleColumns
 * includeViewOnTop
 * includeViewOnBottom
 
@@ -74,7 +76,7 @@ public function setUp(): array
 
      return [
          Header::make()
-             ->showSearchInput(),
+             ->showSearchInput(), // [!code focus]
 
          // ...
      ];
@@ -93,7 +95,7 @@ Displays the button to hide/show (toggle) columns.
 > Works fine without inline filters
 Example:
 
-```php{8-9}
+```php{9}
 use PowerComponents\LivewirePowerGrid\Header 
 
 public function setUp(): array
@@ -102,7 +104,7 @@ public function setUp(): array
 
      return [
          Header::make()
-             ->showToggleColumns(),
+             ->showToggleColumns(), // [!code focus:1]
 
          // ...
      ];
@@ -119,7 +121,7 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php{8-9}
+```php{9}
 use PowerComponents\LivewirePowerGrid\Header 
 
 public function setUp(): array
@@ -128,7 +130,7 @@ public function setUp(): array
 
      return [
          Header::make()
-             ->includeViewOnTop('components.datatable.header-top'),
+             ->includeViewOnTop('components.datatable.header-top'), // [!code focus:1]
 
          // ...
      ];
@@ -154,7 +156,7 @@ Result:
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.
 
-```php{8-9}
+```php{9}
 use PowerComponents\LivewirePowerGrid\Header 
 
 public function setUp(): array
@@ -163,7 +165,7 @@ public function setUp(): array
 
      return [
          Header::make()
-             ->includeViewOnBottom('components.datatable.header-bottom'),
+             ->includeViewOnBottom('components.datatable.header-bottom'),// [!code focus:1]
 
          // ...
      ];
@@ -186,7 +188,7 @@ Result:
 ### withoutLoading
 
 If you don't want to display PowerGrid's default **loading** icon when some request is made to the server, just
-call `withoutLoading()` on Header Facade. 
+call `withoutLoading()` on Header Facade.
 
 This is useful when you already have a layout to show the progress of internal calls, for example [Defer Loading](../table/component-settings.html#defer-loading).
 
@@ -197,8 +199,7 @@ public function setUp(): array
 {
      return [
          Header::make()
-             ->withoutLoading(),
-
+             ->withoutLoading(),// [!code focus:1]
          // ...
      ];
 }
@@ -214,7 +215,7 @@ Result:
 ## Footer
 
 Here are some actions for the table footer defined inside `setup`:
-* > showPerPage, showRecordCount, pagination,  includeViewOnTop and includeViewOnBottom 
+> showPerPage, showRecordCount, pagination,  includeViewOnTop and includeViewOnBottom
 
 
 ### showPerPage
@@ -231,16 +232,16 @@ use PowerComponents\LivewirePowerGrid\Footer
 class DishesTable extends PowerGridComponent
 {
     //Custom per page
-    public int $perPage = 5;
+    public int $perPage = 5;// [!code focus:1]
     
     //Custom per page values
-    public array $perPageValues = [0, 5, 10, 20, 50];
+    public array $perPageValues = [0, 5, 10, 20, 50];// [!code focus:1]
 
-    public function setUp(): array
+    public function setUp(): array // [!code focus:1]
     {
         return [
             Footer::make()
-                ->showPerPage($this->perPage, $this->perPageValues)
+                ->showPerPage($this->perPage, $this->perPageValues) // [!code focus:1]
             //....    
         ]   
     }
@@ -274,7 +275,7 @@ class DishesTable extends PowerGridComponent
     {
         return [
             Footer::make()
-                ->showRecordCount(mode: 'full')
+                ->showRecordCount(mode: 'full') // [!code focus:1]
             //....    
         ]   
     }
@@ -302,7 +303,7 @@ class DishesTable extends PowerGridComponent
             Footer::make()
                 ->showPerPage(25)
                 ->showRecordCount()
-                ->pagination('components.pagination'),
+                ->pagination('components.pagination'), // [!code focus:1]
             //....    
         ]   
     }
@@ -312,8 +313,8 @@ class DishesTable extends PowerGridComponent
 ::: tip
 Inside the view you can use the paginator `variables, perPage and perPageValues` to build the footer
 
-**NOTE:** need use methods `->showPerPage(25)->showRecordCount()` 
-::: 
+**NOTE:** need use methods `->showPerPage(25)->showRecordCount()`
+:::
 
 `views/components/pagination.blade.php`
 
@@ -321,7 +322,7 @@ Inside the view you can use the paginator `variables, perPage and perPageValues`
 <div class="w-full">
     @if ($paginator->hasPages())
     // ..
-    
+
     @endif
 </div>
 ```
@@ -345,7 +346,7 @@ class DishesTable extends PowerGridComponent
     {
         return [
             Footer::make()
-                ->includeViewOnTop('components.datatable.footer-top')
+                ->includeViewOnTop('components.datatable.footer-top') // [!code focus:1]
             //....    
         ]   
     }
@@ -382,7 +383,7 @@ class DishesTable extends PowerGridComponent
     {
         return [
             Footer::make()
-                ->includeViewOnBottom('components.datatable.footer-bottom')
+                ->includeViewOnBottom('components.datatable.footer-bottom') // [!code focus:1]
             //....    
         ]   
     }
@@ -391,7 +392,7 @@ class DishesTable extends PowerGridComponent
 
 ::: tip
 Inside the view you can use the component's variables
-::: 
+:::
 
 `views/components/datatable/footer-bottom.blade.php`
 
@@ -419,7 +420,7 @@ class DishesTable extends PowerGridComponent
 {
     public function setUp(): array
     {
-        Exportable::make('my-export-file')
+        Exportable::make('my-export-file') // [!code focus:3]
             ->striped('#A6ACCD')
             ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
     }
@@ -432,7 +433,7 @@ class DishesTable extends PowerGridComponent
 
 Available file types:
 
-- *excel - Exportable::TYPE_XLS* 
+- *excel - Exportable::TYPE_XLS*
 - *csv - Exportable::TYPE_CSV*
 
 Example:
@@ -450,7 +451,7 @@ When exporting to CSV, you may configure the `field separator` and `field delimi
 
 ```php
     Exportable::make('my-export-file')
-        ->csvSeparator('|')
+        ->csvSeparator('|') // [!code focus:2]
         ->csvDelimiter("'")
         ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
@@ -466,7 +467,7 @@ ID|Dish
 
 ---
 
-### Striped 
+### Striped
 
 You can also pass the `striped` parameter with the name of the color to be generated with striped lines.
 
@@ -512,7 +513,7 @@ class DishesTable extends PowerGridComponent
 {
     public function setUp(): array
     {
-        $this->persist(['columns', 'filters']);
+        $this->persist(['columns', 'filters']); // [!code focus:1]
         
         return [
             // ..
@@ -540,7 +541,7 @@ use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 
 final class YourPowerGridTable extends PowerGridComponent
 {
-     public bool $multiSort = true;
+     public bool $multiSort = true; // [!code focus:1]
 }
 ```
 
@@ -566,7 +567,7 @@ public function setUp(): array
    $companyId = user()->company_id; // 233  
    
    return [
-       Cache::make()
+       Cache::make() // [!code focus:4]
           ->forever(),
           ->prefix($companyId. '_') // tag generate: 233_powergrid-users-validationTable
          //->customTag('my-custom-tag')
@@ -610,13 +611,13 @@ class User
 
 ## Responsive
 
-Sometimes when we have a table with many columns, there will probably be scrolling, and user usability won’t be good. 
+Sometimes when we have a table with many columns, there will probably be scrolling, and user usability won’t be good.
 To fix this, use the Responsive feature. It will create a new row with the columns that were hidden.
 
 ::: warning
 * Not available if used together with the Detail feature
 * Not available when used in conjunction with inline filters
-::: 
+  :::
 
 ### Usage
 
@@ -628,7 +629,7 @@ use PowerComponents\LivewirePowerGrid\Responsive;
 public function setUp(): array
 {
     return [
-        Responsive::make();
+        Responsive::make(); // [!code focus:1]
     ];   
 }
 ```
@@ -639,22 +640,22 @@ You can also customize the details display style using specific classes:
 
 ```css
 .responsive-row-expand-container {
-    
+
 }
 .responsive-row-expand-item-container {
-    
+
 }
 .responsive-row-expand-item-name {
-    
+
 }
 .responsive-row-expand-item-value {
-    
+
 }
 ```
 
 ### Fixed Columns
 
-We also can define the fixed columns (these columns won't be hidden) using the `fixedColumns` method. 
+We also can define the fixed columns (these columns won't be hidden) using the `fixedColumns` method.
 By default, we set the `id` and `actions` as fixed.
 
 ```php
@@ -664,7 +665,112 @@ public function setUp(): array
 {
     return [
         Responsive::make()
-            ->fixedColumns('id', 'chef_name', Responsive::ACTIONS_COLUMN_NAME);
+            ->fixedColumns('id', 'chef_name', Responsive::ACTIONS_COLUMN_NAME); // [!code focus:1]
     ];
 }
 ```
+
+
+## Detail Row
+
+In some cases we need to show more information in the table, for example:
+_when selecting a product I would like to see which ingredients this product has or other information such as stock, billing, etc_.
+
+::: info
+> Note: The backend will only be queried when toggled.
+::: 
+
+### Usage
+
+To use the **Detail Row** you will need:
+
+* Tailwind theme active
+* Use the Detail class inside `setUp`.
+* Have a blade view to show the details.
+
+This is an example:
+
+```php
+    use PowerComponents\LivewirePowerGrid\Detail;
+
+    public function setUp(): array
+    {
+        return [
+            // ..
+            Detail::make() // [!code focus:4]
+                ->view('components.detail')
+                ->options(['name' => 'Luan'])
+                ->showCollapseIcon(),
+        ];
+    }
+```
+
+You can access your model data in the view file using the variable `$row`.
+
+```html
+<!-- File: resources/views/components/detail.blade.php -->
+
+<div class="p-2 bg-white border border-slate-200">
+    <div>Id {{ $id }}</div>
+    <div>Options @json($options)</div>
+
+    @if ($row->calories < 100)
+        <div>Diet dish!</div>
+    @endif
+
+</div>
+```
+
+Result:
+
+![Output](/_media/examples/features/detail-row-open.png)
+
+--- 
+
+### View
+
+There are two ways you can specify the blade view with details:
+
+* Passing the parameter `->view('components.detail')`
+* Model data is available with the variable `$row`.
+* Changing behavior in [Action Rules]()
+---
+
+### Parameters
+
+In Detail, you can access any variable of the livewire powergrid component and pass other parameters together, for that do:
+
+```php
+->options(['name' => 'Luan'])
+```
+
+In the view, you can access the method like this (Example):
+
+```php
+
+<div class="p-2 bg-white border border-slate-200">
+    <div>Table: {{ $tableName }} </div>
+    <div>Id: {{ $id }}</div>
+    <div>Name: {{ $row->name }}</div>
+    <div>Options: @json($options)</div>
+
+    <div class="flex justify-end">
+        <button wire:click.prevent="toggleDetail('{{ $id }}')" class="p-1 text-xs bg-red-600 text-white rounded-lg">Close</button>
+    </div>
+</div>
+```
+
+### Collapse Others
+
+* By default, powergrid will keep the open state of other details when you toggle a row using `toggleDetail`. To close the last open use:
+
+```php
+->collapseOthers()
+```
+
+---
+
+### Toggle
+
+You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](row-actions-buttons?id=toggledetail) or simply by calling the method
+`$this->toggleDetail(string $id)` passing the Id as a parameter.

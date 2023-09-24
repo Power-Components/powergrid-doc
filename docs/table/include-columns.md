@@ -64,7 +64,7 @@ Adds a new column to your PowerGrid Table.
 
 Example:
 
-```php{1}
+```php
 Column::add()
 ```
 

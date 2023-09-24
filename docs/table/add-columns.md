@@ -65,7 +65,7 @@ public function columns(): array
 }
 ```
 
-```php{17}
+```php{16}
 //..
 <!-- ✅ Right -->
 public function addColumns(): PowerGridColumns
