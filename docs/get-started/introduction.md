@@ -82,8 +82,8 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnaly
 
 <p>
   <!--DevSquad-->
-  <a href="http://devsquad.com" target="_blank">
-    <img src="https://livewire-powergrid.com/_media/logos/devsquad.png" alt="DevSquad" height="undefined">
+  <a href="https://devsquad.com" target="_blank">
+    <img src="/_media/logos/devsquad.png" alt="DevSquad" height="undefined">
   </a>
 
 </p>
@@ -93,13 +93,13 @@ Created by: [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnaly
 <p>
   <!-- PHPStorm -->
   <a href="https://www.jetbrains.com/phpstorm/" target="_blank">
-    <img src="https://livewire-powergrid.com/_media/logos/phpstorm.png" alt="PHPStorm" width="32" height="32">
+    <img src="/_media/logos/phpstorm.png" alt="PHPStorm" width="32" height="32">
   </a>
 </p>
 <p>
   <!-- Araxis Merge -->
   <a href="https://www.araxis.com/merge/" target="_blank">
-    <img src="https://livewire-powergrid.com/_media/logos/araxis.png" alt="Araxis Merge" width="32" height="32">
+    <img src="/_media/logos/araxis.png" alt="Araxis Merge" width="32" height="32">
   </a>
 </p>
 
