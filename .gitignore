@@ -5,6 +5,7 @@ node_modules
 .temp
 .cache
 .env
-old_docs/.vuepress/dist
+docs/.vitepress/dist
+docs/.vitepress/cache
 .idea
 .DS_Store
