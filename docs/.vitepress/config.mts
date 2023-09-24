@@ -89,7 +89,7 @@ export default defineConfig({
       message: 'Created By Luan Freitas and DanSysAnalyst',
     },
     editLink: {
-      pattern: 'https://github.com/power-components/livewire-powergrid/edit/5x/docs/:path',
+      pattern: 'https://github.com/power-components/powergrid-doc/edit/5x/docs/:path',
       text: 'Edit this page on GitHub'
     },
     search: {

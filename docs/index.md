@@ -10,6 +10,9 @@ hero:
       text: Get started
       link: /get-started/introduction.md
     - theme: alt
+      text: Source code
+      link: https://demo.livewire-powergrid.com
+    - theme: alt
       text: Online Demo
       link: https://demo.livewire-powergrid.com
 
