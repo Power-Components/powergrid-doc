@@ -29,7 +29,9 @@ The configuration file will be available at: `config/livewire-powergrid.php`.
 
 ### 3. Publish files (OPTIONAL)
 
+::: warning
 Skip this step if you don't need to customize views (not recommended) or language files.
+::: 
 
 To publish Views, run:
 

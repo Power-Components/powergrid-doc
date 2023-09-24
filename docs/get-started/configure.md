@@ -1,8 +1,6 @@
 # Configure
 
-[[toc]]
-
-## 1. Import JS and CSS
+## Import JS and CSS
 
 `resources/js/app.js`
 
@@ -11,7 +9,7 @@ import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css'
 ```
 
-## 2. Choose your Theme
+## Choose your Theme
 
 PowerGrid supports Tailwind and Bootstrap 5 as Themes. Tailwind is selected by default.
 
@@ -24,23 +22,23 @@ To change to Bootstrap 5, modify your `theme` option as follows:
 ::: 
 --- 
 
-## 3. Bootstrap 5 settings
+## Bootstrap 5 settings
 ```php{6}
     /*
     |--------------------------------------------------------------------------
     | Theme
     |--------------------------------------------------------------------------
     */
-    'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
+    'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class, // [!code focus:1]
     
 ```
 
 Some features are not available in the Bootstrap version:
 * [Filters outside](configure?id=_7-filters)
 
-## 4. Tailwind settings
+## Tailwind settings
 
-#### 4.1 Dark Mode
+#### Dark Mode
 
 To enable Dark Mode, configure the `DarkMode` class in `tailwind.config.js` file as follows:
 
@@ -50,7 +48,7 @@ module.exports = {
 }
 ```
 
-#### 4.2 JIT Production
+#### JIT Production
 
 If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tailwind.config.js` file:
 
@@ -58,7 +56,7 @@ If you use Tailwind JIT you must add PowerGrid files in `purge` inside the `tail
 module.exports = {
   content: [
       // ....
-      './app/Http/Livewire/**/*Table.php',
+      './app/Http/Livewire/**/*Table.php', // [!code focus:3]
       './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
       './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
   ]
@@ -70,24 +68,24 @@ module.exports = {
 💡 Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
 :::
 
-#### 4.3 Presets
+#### Presets
 
 PowerGrid uses the **slate** color by default, you might want to change that, just insert the PowerGrid preset in the `tailwind.config.js` file
 
 ```js{7,13}
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors') // [!code focus:1]
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     presets: [
         require("./vendor/wireui/wireui/tailwind.config.js"),
-        require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
+        require("./vendor/power-components/livewire-powergrid/tailwind.config.js"), // [!code focus:1]
     ],
     // optional
     theme: {
         extend: {
             colors: {
-                "pg-primary": colors.gray,
+                "pg-primary": colors.gray, // [!code focus:1]
             },
         },
     },
@@ -98,9 +96,11 @@ module.exports = {
 💡 Read more about [Tailwind Presets](https://tailwindcss.com/docs/presets).
 :::
 
-#### 4.4 Tailwind Forms
+#### Tailwind Forms
 
+::: warning
 If you use Tailwind forms, please consider modifying your `tailwind.config.js` to use the strategy `class` as follows:
+:::
 
 ```javascript
 module.exports = {
@@ -119,26 +119,7 @@ This approach will avoid layout conflicts such as:
 
 > 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
 
-## 5. Cache
-
-Cache is enabled by default. When using collections, it improves search performance.
-
-When enabled, data is reloaded whenever the page is refreshed or a field is updated.
-
-To disable cache, change `cached_data` to `false` in `config/livewire-powergrid.php`.
-
-Example:
-
-```php
-/*
-|--------------------------------------------------------------------------
-| Cache
-|--------------------------------------------------------------------------
-*/
-'cached_data' => false,
-```
-
-## 6. Filters
+## Filters
 
 PowerGrid offers inline and outside filters.
 
@@ -159,7 +140,7 @@ Example:
 'filter' => 'outside',
 ```
 
-## 7. New Release Notification
+## New Release Notification
 
 PowerGrid can verify if a new release is available when you create a new PowerGrid Table.
 
@@ -167,13 +148,13 @@ PowerGrid can verify if a new release is available when you create a new PowerGr
 
 To enable this feature, follow the next steps:
 
-**7.1. Require composer as a developer dependency, running:**
+* Require composer as a developer dependency, running:
 
  ```bash
  composer require composer/composer --dev
  ```
 
-**7.2. Change 'check_version' to `true` in `config/livewire-powergrid.php`.**
+* Change `check_version` to `true` in `config/livewire-powergrid.php`.**
 
 ```php{6}
 /*
