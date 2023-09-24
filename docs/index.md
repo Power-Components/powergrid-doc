@@ -11,7 +11,7 @@ hero:
       link: /get-started/introduction.md
     - theme: alt
       text: Source code
-      link: https://demo.livewire-powergrid.com
+      link: https://github.com/Power-Components/livewire-powergrid
     - theme: alt
       text: Online Demo
       link: https://demo.livewire-powergrid.com
