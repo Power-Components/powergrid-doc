@@ -2,8 +2,6 @@
 
 [[toc]]
 
-## PowerGrid Version 5
-
 ### Deprecations
 
 The following items have been deprecated in this release:
@@ -29,26 +27,57 @@ The following items have been deprecated in this release:
     // 
   }
   
-  public function actions($row) // Model|array $row,
-  {
+  public function actions($row) // Model|array $row, // [!code focus:6]
+  { 
     // 
   }
   ```
 * Column "`Column::action()`" is required
 * All methods on buttons are now [macros](https://laravel.com/api/10.x/Illuminate/Support/Traits/Macroable.html). See this example:
-  * [Livewire Dispatching events from Blade templates](https://livewire.laravel.com/docs/events#dispatching-events-from-blade-templates)
-    ```php
-      \PowerComponents\LivewirePowerGrid\Button::macro('dispatch', function (string $event, array $params) {
-          $this->dynamicProperties['dispatch'] = [
-               "component" => "button",
-               "attribute" => "wire:click",
-               "value"     => "\$dispatch('{$event}', " . Js::from($params) . ")",
-          ];
 
-          return $this;
-      });
-    ```
----
+::: code-group
+
+```php{7-20} [AppServiceProvider.php]
+use PowerComponents\LivewirePowerGrid\Button;
+  
+class AppServiceProvider extends ServiceProvider
+{
+      public function boot(): void
+      {
+          Button::macro('icon', function (string $icon, array $attributes = []) {
+              $this->dynamicProperties['icon'] = [
+                  'component' => 'a',
+              ];
+  
+              $attributes = new ComponentAttributeBag($attributes);
+              $attributes = $attributes->merge(['class' => 'w-5 h-5'])->toHtml();
+  
+              $this->slot = Blade::render(<<<HTML
+  <x-icon name="$icon" $attributes />
+  HTML, ['attributes' => $attributes]);
+  
+              return $this;
+          });
+      }
+}
+```
+
+```php [MyTable.php]
+class MyTable extends PowerGridComponent
+{
+     // ---
+     public function actions(Dish $dish): array
+     {
+         return [
+            Button::add('edit')
+                ->icon(icon: 'pencil', attributes: ['w-5 h-5']) // [!code focus]
+                 ->route('advices.edit', ['advice' => $dish->id]),
+         ];
+     }
+}
+```
+
+:::
 
 | key       | value                     |
 |-----------|---------------------------|
@@ -59,8 +88,12 @@ The following items have been deprecated in this release:
 --- 
 
 * Performance improvement and it is now possible to customize `withSum, withCount, withMin, withMax, withAVG`
-  * A new syntax has been added to allow for summary formation
-  ```php
+
+::: info
+A new syntax has been added to allow for summary formation
+:::
+
+```php
       public function summarizeFormat(): array
       {
           return [
@@ -71,14 +104,14 @@ The following items have been deprecated in this release:
               'price.{count,min,max}' => fn ($value) => $value,
           ];
       }
-    ```
+```
 
 ![Output](/_media/examples/summarize_format.png)
 
 ---
   
-* Added `filterRelation()` to `Filter::inputText()`
-  ```php
+* Added `filterRelation()` method to `Filter::inputText()`
+  ```php{5}
   public function filters(): array
   {
      return [
@@ -91,7 +124,10 @@ The following items have been deprecated in this release:
 ---
 
 * Added closure (`\Closure`) to datasource and `depends` method to check filter dependencies (`Filter::select`)
-  * In this case below, when filtering a category, the value will automatically be sent to the chef filter.
+
+::: info 
+In this case below, when filtering a category, the value will automatically be sent to the chef filter.
+::: 
 
   ```php{10,11-18} 
   public function filters()

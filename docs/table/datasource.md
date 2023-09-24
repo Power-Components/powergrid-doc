@@ -10,7 +10,7 @@ Example of usage with an Eloquent Model:
 //..
 public function datasource(): ?Builder
 {
-  return Dish::query();
+  return Dish::query(); // [!code focus:1]
 }
 ```
 
@@ -20,7 +20,7 @@ You can also load Relationships. See the following example:
 //..
 public function datasource(): ?Builder
 {
-  return Dish::query()->with('kitchen');
+  return Dish::query()->with('kitchen'); // [!code focus:1]
 }
 ```
 
@@ -40,14 +40,13 @@ If your model uses a custom primary key, you must configure the property `$prima
 
 The next example uses the column `custom_id` as primary key.
 
-```php{5,7}
+```php
 final class RestaurantsTable extends PowerGridComponent
 {
     use ActionButton;
 
-    public string $primaryKey = 'restaurants.custom_id';
-
-    public string $sortField = 'restaurants.custom_id';
+    public string $primaryKey = 'restaurants.custom_id'; // [!code focus:1]
+    public string $sortField = 'restaurants.custom_id'; // [!code focus:1]
 
      //...
 ```
@@ -63,7 +62,7 @@ The following example shows how to `join` the `categories` relationship:
 public function datasource(): ?Builder
 {
   return Dish::query()
-            ->join('categories', function ($categories) {
+            ->join('categories', function ($categories) { // [!code focus:3]
                 $categories->on('dishes.category_id', '=', 'categories.id');
             })
             ->select([
@@ -80,10 +79,9 @@ You might encounter a conflict between primary keys using the same field name (E
 
 To fix this problem, declare your `$primaryKey` and `$sortField` properties as the example shows:
 
-```php{2,4}
+```php
 //...
 public string $primaryKey = 'dishes.id';
-
 public string $sortField = 'dishes.id';
 ```
 
@@ -96,7 +94,7 @@ If you need to sort by a column that is in another table, you can add the table 
 public function columns(): array
 {
       //...
-      Column::make(__('Category'), 'category_name', 'categories.name'),
+      Column::make(__('Category'), 'category_name', 'categories.name'),// [!code focus:1]
       //...
 }
 ```
