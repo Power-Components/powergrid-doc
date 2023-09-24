@@ -97,7 +97,7 @@ export default defineConfig({
       options: {
         appId: '7M4C366U6U',
         apiKey: '0a0022f159f38849b0dbd2199c12f081',
-        indexName: 'livewire-powergridPowergrid v5',
+        indexName: 'livewire-powergridLivewire Powergrid',
       }
     }
   }
