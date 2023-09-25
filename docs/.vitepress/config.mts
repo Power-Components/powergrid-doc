@@ -100,5 +100,8 @@ export default defineConfig({
         indexName: 'livewire-powergridLivewire Powergrid',
       }
     }
+  },
+  sitemap: {
+    hostname: 'https://livewire-powergrid.com'
   }
 })
