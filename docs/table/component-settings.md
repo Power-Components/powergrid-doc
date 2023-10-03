@@ -15,8 +15,6 @@ The following example loads your Table sorted by `name` in `descending` order:
 ```php
 class DishesTable extends PowerGridComponent
 {
-    use ActionButton;
-
     public string $sortField = 'name';
     
     public string $sortDirection = 'desc';
@@ -113,8 +111,6 @@ Set up:
 ```php
 class DishesTable extends PowerGridComponent
 {
-    use ActionButton;
-
     public bool $withSortStringNumber = true;
 
     //...
