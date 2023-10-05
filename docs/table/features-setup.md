@@ -629,7 +629,7 @@ use PowerComponents\LivewirePowerGrid\Responsive;
 public function setUp(): array
 {
     return [
-        Responsive::make(); // [!code focus:1]
+        Responsive::make(), // [!code focus:1]
     ];   
 }
 ```
