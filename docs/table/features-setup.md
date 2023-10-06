@@ -413,6 +413,21 @@ Enable the `export to file` functionality and shows export button at the page to
 
 Set the filename inside the `make('')` method and proceed configuring your exporting settings:
 
+
+#### Import WithExport Trait
+
+
+```php{7-9}
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;  // [!code ++]
+
+final class ExportTable extends PowerGridComponent
+{
+    use WithExport; // [!code ++]
+    //...
+    
+```
+
+#### Usage
 ```php{7-9}
 use PowerComponents\LivewirePowerGrid\Exportable 
 
@@ -441,6 +456,10 @@ Example:
 ```php
 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
+
+Result:
+
+![Output](/_media/examples/features/showExportOption.png)
 
 ---
 
@@ -477,10 +496,6 @@ Example:
 ->stripe('A6ACCD'),
 ```
 
-Result:
-
-![Output](/_media/examples/features/showExportOption.png)
-
 --- 
 
 ### Column width
@@ -498,9 +513,9 @@ Example:
 ]),
 ```
 
-> 💡 If you are working with lots of data, we recommend to use [Queue Export](queue-export).
-
----
+::: tip
+💡 If you are working with lots of data, we recommend to use [Queue Export](queue-export).
+::: 
 
 ## Persist
 
@@ -525,8 +540,6 @@ class DishesTable extends PowerGridComponent
 Result:
 
 ![Output](/_media/persist.gif)
-
----
 
 ## Multi Sorting
 
