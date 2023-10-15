@@ -16,7 +16,7 @@ Summaries are chained to the `Column::add()` method.
 |-----------------|---------------------------------------------------------------------------|---------|
 | (string) $label | The argument $label sets the button caption.                              | 'Sum'   |
 | (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| (bool) $footer  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 
 ::: warning
@@ -44,7 +44,7 @@ Result:
 |-----------------|---------------------------------------------------------------------------|---------|
 | (string) $label | The argument $label sets the button caption.                              | 'Count' |
 | (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| (bool) $footer  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 
 Example:
@@ -68,7 +68,7 @@ Result:
 |-----------------|---------------------------------------------------------------------------|---------|
 | (string) $label | The argument $label sets the button caption.                              | 'Avg'   |
 | (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| (bool) $footer  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 Example:
 
@@ -91,7 +91,7 @@ Result:
 |-----------------|---------------------------------------------------------------------------|---------|
 | (string) $label | The argument $label sets the button caption.                              | 'Min'   |
 | (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| (bool) $footer  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 Example:
 
@@ -114,7 +114,7 @@ Result:
 |-----------------|---------------------------------------------------------------------------|---------|
 | (string) $label | The argument $label sets the button caption.                              | 'Max'   |
 | (bool) $header  | If is `true`, Powergrid will create a row in the table below the filters. | false   |
-| (bool) $string  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
+| (bool) $footer  | If is `true`, Powergrid will create a row in the footer of the table.     | false   |
 
 Example:
 
