@@ -96,7 +96,7 @@ public function onUpdatedEditable($id, $field, $value): void
     
     User::query()->find($id)->update([
         $field => $value,
-    );
+    ]);
 }
 ```
 
