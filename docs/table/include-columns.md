@@ -177,6 +177,17 @@ Example:
 Column::add()
     ->hidden(),
 ```
+The method accepts two boolean arguments: `isHidden` and `isForceHidden`. Both default to true.
+
+`isHidden: true` allows you to hide a column in the grid. The column will not be rendered in the grid's table, but it will still be present in the underlying data. This means that the column's data will still be available for other purposes, such as sorting or filtering.
+Using `isForceHidden: true` the column be visually hidden in the grid, but it will also be excluded from the underlying data.
+
+Example of hiding only in the grid:
+
+```php{2}
+Column::add()
+    ->hidden( isHidden:true, isForceHidden:false ),
+```
 
 ---
 
