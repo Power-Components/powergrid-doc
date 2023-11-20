@@ -70,6 +70,7 @@ export default defineConfig({
           { text: 'Datasource', link: '/table/datasource' },
           { text: 'Add Columns', link: '/table/add-columns' },
           { text: 'Include Columns', link: '/table/include-columns' },
+          { text: 'Column Filters', link: '/table/column-filters' },
           { text: 'Column Summary', link: '/table/column-summary' },
           { text: 'Cell Action Buttons', link: '/table/cell-actions-buttons' },
           { text: 'Row Action buttons', link: '/table/row-actions-buttons' },
