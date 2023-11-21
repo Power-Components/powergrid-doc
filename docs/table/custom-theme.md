@@ -2,7 +2,7 @@
 
 PowerGrid ships with Tailwind and Bootstrap 5 [Themes](../get-started/configure.html#_3-choose-your-theme).
 
-You can start customized the default themes to create your own variation in a few steps.
+You can start customizing the default themes to create your own variation in a few steps.
 
 ## Creating your Custom Theme
 
