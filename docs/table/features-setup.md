@@ -787,3 +787,47 @@ In the view, you can access the method like this (Example):
 
 You can toggle the detail via the `toggleDetail` method in [Button::toggleDetail()](row-actions-buttons?id=toggledetail) or simply by calling the method
 `$this->toggleDetail(string $id)` passing the Id as a parameter.
+
+---
+
+## Lazy
+
+Lazy loading is a technique used in web development to optimize content loading, especially in situations where a large amount of data needs to be displayed on a page.
+
+The goal is to initially load only essential data and fetch additional content as needed, typically triggered by user actions such as scrolling. This approach helps improve performance and reduces the initial load sent to the server.
+
+The code snippet provided demonstrates the implementation of lazy loading. Let's explore the details of this implementation.
+
+
+```php
+public function setUp(): array
+{
+    return [
+       // ... other configurations
+      Footer::make()
+                ->showPerPage(100)
+                ->showRecordCount(),
+                
+       Lazy::make()
+          ->dispatchAfterToggleDetail('toggleDetailFromChild')
+          ->rowsPerChildren(25),
+    ];
+}
+```
+
+### Lazy Loading Configuration
+
+`Lazy::make()`: This initiates creation of a lazy loading configuration.
+
+`dispatchAfterToggleDetail('toggleDetailFromChild')`: Specify the event or action that triggers the additional content. In this case, when calling `toggleDetail` on the child component, `toggleDetailFromChild` will be sent to the parent containing two parameters: `id` and `state`.
+
+```php
+#[On('toggleDetailFromChild')]
+public function toggleDetailFromChild(string $id, string $state): void
+{
+    // $id: $row->id
+    // $state: 'false' or 'true'
+}
+```
+
+`rowsPerChildren(int $qty):` Sets the initial number of items to load. In this example, only 25 lines will be loaded initially. Additional items will be loaded automatically as the user scrolls.
