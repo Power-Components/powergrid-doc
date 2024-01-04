@@ -831,3 +831,7 @@ public function toggleDetailFromChild(string $id, string $state): void
 ```
 
 `rowsPerChildren(int $qty):` Sets the initial number of items to load. In this example, only 25 lines will be loaded initially. Additional items will be loaded automatically as the user scrolls.
+
+::: warning
+This feature does not support using Livewire components inside (Ex: addColumns, actions ...)
+:::
