@@ -101,29 +101,6 @@ module.exports = {
 💡 Read more about [Tailwind Presets](https://tailwindcss.com/docs/presets).
 :::
 
-#### Tailwind Forms
-
-::: warning
-If you use Tailwind forms, please consider modifying your `tailwind.config.js` to use the strategy `class` as follows:
-:::
-
-```javascript
-module.exports = {
-   //...
-  plugins: [
-    require("@tailwindcss/forms")({
-      strategy: 'class',
-    }),
-  ]
-}
-```
-
-This approach will avoid layout conflicts such as:
-
-![Output](/_media/conflict_tailwindforms.png)
-
-> 💡 Read more about [Using classes instead of element selectors](https://github.com/tailwindlabs/tailwindcss-forms#using-classes-instead-of-element-selectors).
-
 ## Filters
 
 PowerGrid offers inline and outside filters.
