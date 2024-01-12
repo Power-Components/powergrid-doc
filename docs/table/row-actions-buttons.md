@@ -37,7 +37,7 @@ public function actions(Dish $row): array
         Button::add('create-dish')  
             ->slot('Create a dish')
             ->class('bg-indigo-500 text-white')
-            ->dispatch('postAdded', ['key' => $row->id']),
+            ->dispatch('postAdded', ['key' => $row->id]),
         //...
     ];
 }
@@ -122,7 +122,7 @@ The code below:
 Button::add('create-dish')  
     ->slot('Create a dish')
     ->class('bg-indigo-500 text-white')
-    ->dispatch('postAdded', ['key' => $row->id']),
+    ->dispatch('postAdded', ['key' => $row->id]),
 ```
 
 is equivalent to:
