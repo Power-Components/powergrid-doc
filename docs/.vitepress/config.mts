@@ -74,6 +74,7 @@ export default defineConfig({
           { text: 'Column Summary', link: '/table/column-summary' },
           { text: 'Cell Action Buttons', link: '/table/cell-actions-buttons' },
           { text: 'Row Action buttons', link: '/table/row-actions-buttons' },
+          { text: 'Row Actions From View', link: '/table/row-actions-from-view' },
           { text: 'Action Rules', link: '/table/action-rules' },
           { text: 'Component Settings', link: '/table/component-settings' },
           { text: 'Custom Theme', link: '/table/custom-theme' },
