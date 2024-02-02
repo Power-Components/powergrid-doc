@@ -1,5 +1,23 @@
 # Troubleshooting
 
+## Theme, layout and view errors
+
+If you are receiving errors or exceptions relative to your PowerGrid Theme, Layout, or Views, most likely you have published the PowerGrid views, and they have become outdated. This can happen after updating PowerGrid while using customized views.
+
+To solve this problem, first back up your PowerGrid resource: Copy the `resources/views/vendor/livewire-powergrid` directory to `resources/views/vendor/livewire-powergrid-BACKUP`.
+
+Then, proceed to republish your views. Run the command below.
+
+```shell
+php artisan vendor:publish --tag=livewire-powergrid-views
+```
+
+Next, clear Laravel caches. Run the command below.
+
+```shell
+php artisan optimze:clear
+```
+
 ## Flatpickr Locale Support.
 
 ::: warning
