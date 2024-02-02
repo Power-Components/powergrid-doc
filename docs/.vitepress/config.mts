@@ -68,7 +68,7 @@ export default defineConfig({
         items: [
           { text: 'Features Setup', link: '/table/features-setup' },
           { text: 'Datasource', link: '/table/datasource' },
-          { text: 'Add Columns', link: '/table/add-columns' },
+          { text: 'Add Columns/Fields', link: '/table/add-columns' },
           { text: 'Include Columns', link: '/table/include-columns' },
           { text: 'Column Filters', link: '/table/column-filters' },
           { text: 'Column Summary', link: '/table/column-summary' },
@@ -79,7 +79,7 @@ export default defineConfig({
           { text: 'Component Settings', link: '/table/component-settings' },
           { text: 'Custom Theme', link: '/table/custom-theme' },
         ],
-        collapsed: true
+        collapsed: false
       },
     ],
 

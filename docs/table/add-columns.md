@@ -1,16 +1,16 @@
-# Add Columns
+# Add Columns / Fields
 
 Before adding columns to your table, you must make [Datasource](datasource) fields available as columns.
 
-To make a new column, use the `addColumns()` method. This method is inside your PowerGrid file (e.g. `DishTable.php`).
+## Adding Fields
 
-## Usage
+To include fields from your datasource, you should start inside the `fields()` method inside your component.
 
-The `addColumns()` method requires the datasource `$field` name as the first parameter.
+First, call the `PowerGrid::fields()` and chain as many datasource fields as you need.
 
-Optionally, you can pass a `closure` as  a second parameter to process the data coming from your field.
+If you need to format your data, you may pass a `Closure` as the second parameter to interact with data coming from the data source.
 
-The example above creates 4 columns:
+The next example creates 4 columns:
 
 - *id*:  based on the `id` field.
 - *name*: based on the `name` field.
@@ -18,7 +18,36 @@ The example above creates 4 columns:
 - *price_after_taxes*: returns the `price` value with taxes. This example uses a fictitious tax calculator class.
 
 ```php
-//..
+
+use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\PowerGridFields;
+
+public function fields(): PowerGridFields
+{
+    return PowerGrid::fields()
+    ->add('id')
+    ->add('name')
+    ->add('name_uppercase', function (Dish $model) {
+        return strtoupper($model->name);
+    })
+    ->add('price_after_taxes', function (Dish $model) {
+        return taxCalculator::vat($model->price, 'PT');
+    });
+}
+
+    //...
+```
+
+## addColumns (Deprecated)
+
+The `addColumns()` is deprecated and will be removed in PowerGrid 6.0.
+
+It works similarly to the `PowerGrid::fields()` as demonstrated by the example below.
+
+```php
+use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\PowerGridColumns;
+
 public function addColumns(): PowerGridColumns
 {
     return PowerGrid::columns()
@@ -33,11 +62,8 @@ public function addColumns(): PowerGridColumns
 }
 ```
 
-::: warning
-After creating a column, you must include it in your Table using the [Column::add()](include-columns) method.
-:::
-
 ### Sortable
+
 ::: warning
 Whenever the column name is different from the one in the database, remember to reference it in dataField in the [Column::field()](include-columns?id=fieldstring-field-string-datafield) method otherwise sortable will not work.
 :::
