@@ -122,6 +122,19 @@ Example:
 'filter' => 'outside',
 ```
 
+To keep the Filters Outside toggle always open, just set the property `$showFilters` to `true` in your component.
+
+```php
+// app/Livewire/DishesTable.php
+
+final class DishesTable extends PowerGridComponent
+{
+     public bool $showFilters = true;
+
+    //...
+}
+```
+
 ## New Release Notification
 
 PowerGrid can verify if a new release is available when you create a new PowerGrid Table.

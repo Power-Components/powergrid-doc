@@ -333,6 +333,66 @@ Result:
 
 ---
 
+### Custom PageName in URL
+
+Sometimes you might need to change the default pageName (`?page=`) in the URL. This is useful when working with two Livewire components on the same page, avoiding collisions between the two paginators.
+
+The example below shows how to use a different pageName for each component.
+
+The component "Customer Page", configured to use `?customerPage=`:
+
+```php
+<?php
+
+// /app/Livewire/CustomersTable.php
+
+Footer::make()
+      ->pageName('customerPage')
+```
+
+The component "User Page", configured to use `?usersPage=`:
+
+```php
+<?php
+// /app/Livewire/UsersTable.php
+
+Footer::make()
+       ->pageName('usersPage')
+```
+
+The blade view will look similar to this:
+
+```php
+<div>
+    <livewire:customers-table />
+    <livewire:users-table />
+</div>
+```
+
+And the browser url will have both page names: `http://myapp.local/?customerPage=2&usersPage=5`
+
+### Query String
+
+Sometimes you might need to exclude data from your components query string.
+
+You can read more about [excluding query string](https://livewire.laravel.com/docs/url#excluding-certain-values) values in the Livewire documentation.
+
+The example below will generate a url similar to `http://myapp.local/?name=Ark&category=1&price_start=8&price_end=10&diet=1?page=2`
+
+```php
+<?php
+// /app/Livewire/MyTable.php
+
+protected function queryString(): array
+{
+    return [
+         'search' => ['except' => ''],
+         'page' => ['except' => 1],
+         ...$this->powerGridQueryString(),
+    ];
+}
+```
+
 ### includeViewOnTop
 
 Sometimes we need to reuse the current scope of the table using @include instead of using events.

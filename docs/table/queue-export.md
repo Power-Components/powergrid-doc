@@ -93,4 +93,17 @@ public function onBatchExecuting(Batch $batch): void
 
 > 💡 **TIP:**  Read more about Batches in Laravel [Documentation](https://laravel.com/docs/8.x/queues#inspecting-batches).
 
+## Batch Export with Attributes
 
+When performing a Batch Export, you might need to pass some attributes to the `datasource()` method.
+
+PowerGrid automatically injects all `public attributes` of your component inside the variable `$parameters` in the `dataset()` method, as demonstrated in the next example.
+
+```php
+public $categoryId;
+
+public function datasource(array $parameters): Builder
+{
+        return Dish::with('category')->where('category_id', $parameters['categoryId'] ?? $this->category->id);
+}
+```
