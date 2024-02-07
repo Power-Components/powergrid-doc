@@ -93,7 +93,7 @@ You can translate your title using Laravel's [translation strings](https://larav
 ::: tip
 The column title also accepts HTML input. 
 
-For example- if using fontawesome you can use this to insert icons instead of text.
+For example- if using a font icon package you can use this to insert icons instead of text.
 ```php{2}
     Column::add()
         ->title('<i class="fas fa-low-vision" title="Visibility"></i>')
