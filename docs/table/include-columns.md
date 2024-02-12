@@ -100,7 +100,7 @@ For example- if using a font icon package you can use this to insert icons inste
 ```
 
 **Warning:**
-Since column titles are unescaped HTML, you should not directly insert any inputs by users as it may be susceptible to XSS attacks. If you must put user input please escape user defined values using Laravel's [`e`](https://laravel.com/docs/10.x/helpers#method-e) helper
+Since column titles are unescaped HTML, you should not directly insert any inputs by users as it may be susceptible to XSS attacks. If you must put user input please escape user defined values using Laravel's [`e`](https://laravel.com/docs/strings#method-e) helper
 :::
 
 
