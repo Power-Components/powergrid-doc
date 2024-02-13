@@ -90,6 +90,21 @@ Column::add()
 You can translate your title using Laravel's [translation strings](https://laravel.com/docs/8.x/localization#retrieving-translation-strings) feature.
 :::
 
+::: tip
+The column title also accepts HTML input. 
+
+For example- if using a font icon package you can use this to insert icons instead of text.
+```php{2}
+    Column::add()
+        ->title('<i class="fas fa-low-vision" title="Visibility"></i>')
+```
+
+**Warning:**
+Since column titles are unescaped HTML, you should not directly insert any inputs by users as it may be susceptible to XSS attacks. If you must put user input please escape user defined values using Laravel's [`e`](https://laravel.com/docs/strings#method-e) helper
+:::
+
+
+
 ---
 
 ### placeholder
