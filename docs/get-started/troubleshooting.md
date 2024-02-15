@@ -15,7 +15,7 @@ php artisan vendor:publish --tag=livewire-powergrid-views
 Next, clear Laravel caches. Run the command below.
 
 ```shell
-php artisan optimze:clear
+php artisan optimize:clear
 ```
 
 ## Flatpickr Locale Support.
