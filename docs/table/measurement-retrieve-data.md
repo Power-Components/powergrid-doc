@@ -58,8 +58,8 @@ From the Laravel Pulse dashboard:
     <livewire:powergrid-measurement-card />
 </x-pulse>
 
+```
+
 You now have a card similar to this:
 
 ![Output](/_media/examples/measure-retrieve-data-pulse.png)
-
-```
