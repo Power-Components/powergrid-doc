@@ -78,6 +78,7 @@ export default defineConfig({
           { text: 'Action Rules', link: '/table/action-rules' },
           { text: 'Component Settings', link: '/table/component-settings' },
           { text: 'Custom Theme', link: '/table/custom-theme' },
+          { text: 'Measurement Retrieve Data', link: '/table/measurement-retrieve-data' },
         ],
         collapsed: false
       },
