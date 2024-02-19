@@ -77,8 +77,8 @@ export default defineConfig({
           { text: 'Row Actions From View', link: '/table/row-actions-from-view' },
           { text: 'Action Rules', link: '/table/action-rules' },
           { text: 'Component Settings', link: '/table/component-settings' },
+          { text: 'Component Perfomance', link: '/table/component-performance' },
           { text: 'Custom Theme', link: '/table/custom-theme' },
-          { text: 'Measurement Retrieve Data', link: '/table/measurement-retrieve-data' },
         ],
         collapsed: false
       },
