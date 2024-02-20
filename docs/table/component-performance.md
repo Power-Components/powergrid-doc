@@ -12,15 +12,15 @@ These metrics can be very helpful to identify common problems, such as "N+1 Quer
 
 ## Retrieve Performance Results
 
-PowerGrid Measurement results can be accessed via Laravel Events and Laravel Pulse card.
+You can access the results of PowerGrid Performance Measurement using Laravel Events or via a dedicated Laravel Pulse card.
 
 ### Laravel Events
 
-You can retrieve the measurement results by listening for the PowerGrid `PowerGridPerformanceData` events in your application service Provider.
+To retrieve the PowerGrid Performance Measurement via event, you must add an event listener to `PowerGridPerformanceData::class` in your Application Service Provider.
 
-You can use different approaches to retrieve the data sent with the event. There are several tools available, from [Laravel Logs](https://laravel.com/docs/logging) to third-party applications.
+You can use several options to access the data sent with the event. The most straightforward approach is using [Laravel Logs](https://laravel.com/docs/logging).
 
-The next example uses [LaraDumps](https://laradumps.dev) to capture the event data. LaraDumps is a free open-source debug tool to help you assess your component performance in a convenient way.
+The example below uses [LaraDumps](https://laradumps.dev) to capture and display the event data. LaraDumps is a free, open-source debug tool that helps you assess your component performance in a convenient way.
 
 ```php{3,4,8-11}
 // app/Providers/AppServiceProvider.php
@@ -32,7 +32,7 @@ public function register()
 {
     Event::listen(PowerGridPerformanceData::class, function (PowerGridPerformanceData $data) {
         ds($data); //send data to LaraDumps application
-        //logger($data); //using Laravel Logs
+        //logger($data); //log data into laravel.log
     });
 }
 ```
