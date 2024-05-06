@@ -20,7 +20,7 @@ The following items have been deprecated in this release:
 ### Improves & Features
 
 * The "_actions_" and "_actionRules_" methods will be row-scoped (Model, array).
-  * Ex:
+  * E.g.,
   ```php
   public function actions()
   {
@@ -32,6 +32,7 @@ The following items have been deprecated in this release:
     // 
   }
   ```
+  
 * Column "`Column::action()`" is required
 * All methods on buttons are now [macros](https://laravel.com/api/10.x/Illuminate/Support/Traits/Macroable.html). See this example:
 
@@ -66,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
 class MyTable extends PowerGridComponent
 {
      // ---
-     public function actions(Dish $dish): array
+     public function actions($dish): array
      {
          return [
             Button::add('edit')
@@ -105,8 +106,6 @@ A new syntax has been added to allow for summary formation
           ];
       }
 ```
-
-![Output](/_media/examples/summarize_format.png)
 
 ---
   

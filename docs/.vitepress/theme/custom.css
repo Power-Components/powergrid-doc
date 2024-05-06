@@ -8,3 +8,9 @@
 .dark {
     --vp-button-brand-bg: #be7b08;;
 }
+
+.vp-doc p,
+.vp-doc summary {
+  text-align: justify;
+  text-justify: inter-word;
+}

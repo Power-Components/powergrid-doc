@@ -1,12 +1,20 @@
 # Custom Theme
 
-PowerGrid ships with Tailwind and Bootstrap 5 [Themes](../get-started/configure.html#_3-choose-your-theme).
+This section covers PowerGrid Custom Themes.
 
-You can start customizing the default themes to create your own variation in a few steps.
+Here you will find:
+
+[[toc]]
+
+## Introduction
+
+You can start customizing the [default themes](/get-started/powergrid-configuration.html#_2-choose-a-css-theme) to create your own variation in a few steps.
+
+You may also have a look at the [Personalizing Header and Footer](/table-features/header-and-footer.html#personalizing-header-footer) subsection before creating a new theme.
 
 ## Creating your Custom Theme
 
-To create your Custom Theme you must have PowerGrid installed.
+To create your Custom Theme, first [install](/get-started/install) PowerGrid and then, follow the steps below.
 
 1. Open the directory `vendor/power-components/livewire-powergrid/src/Themes/`
 
@@ -137,30 +145,32 @@ class BigFonts extends Tailwind
 }
 ```
 
-4. Finally, you can [configure](../get-started/configure.html#_3-choose-your-theme) PowerGrid to use your new theme:
+4. Finally, you can [configure](/get-started/powergrid-configuration.html#_2-choose-a-css-theme) PowerGrid to use your new theme:
 
-```php
-  /*
-    |--------------------------------------------------------------------------
-    | Theme
-    |--------------------------------------------------------------------------
-    |
-    */
-    'theme' =>  \App\PowerGridThemes\BigFonts::class,
+```php{10}
+// config/livewire-powergrid.php
+
+/*
+|--------------------------------------------------------------------------
+| Theme
+|--------------------------------------------------------------------------
+*/
+
+'theme' => \PowerComponents\LivewirePowerGrid\Themes\Tailwind::class, // [!code --]
+'theme' => \App\PowerGridThemes\BigFonts::class, // [!code ++]
 ```
 
-Alternatively, you can apply your custom theme only in specific PowerGrid tables:
+
+
+
+Alternatively, you can apply your custom theme only in specific PowerGrid Tables:
 
 Just modify the `template()` to return your new theme class.
 
 ```php
-final class DishesTable extends PowerGridComponent
+class DishTable extends PowerGridComponent
 {
-
-    //...
     public function template(): ?string
     {
         return \App\PowerGridThemes\BigFonts::class;
-    }
-    //...
-```
+    }```

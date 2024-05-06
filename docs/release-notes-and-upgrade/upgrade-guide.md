@@ -56,7 +56,7 @@ public function addColumns(): PowerGridColumns // [!code ++]
 ```php{1,5}
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton; // [!code --]
 
-final class PowerGridTable extends PowerGridComponent 
+class PowerGridTable extends PowerGridComponent 
 {
    use ActionButton; // [!code --]
    // ...

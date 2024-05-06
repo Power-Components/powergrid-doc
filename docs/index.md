@@ -3,27 +3,30 @@
 layout: home
 
 hero:
-  name: "Livewire PowerGrid⚡"
+  name: "Livewire PowerGrid"
   tagline: PowerGrid creates modern, powerful and easy to customize Datatables based on Laravel Livewire library.
+  image:
+    src: /logomark3x.png
+    alt: PowerGrid
   actions:
     - theme: brand
-      text: Get started
+      text: 📚 Get started
       link: /get-started/introduction.md
     - theme: alt
-      text: Source code
+      text: ⌨️ Source Code
       link: https://github.com/Power-Components/livewire-powergrid
     - theme: alt
-      text: Online Demo
-      link: https://demo.livewire-powergrid.com
+      text: ⭐ Interactive Online Demo
+      link: https://demo.livewire-powergrid.com/examples/demo-dish
 
 features:
-  - title: Zero Configuration
-    icon: 🛠️
-    details: Tables have basic features activated by default.
+  - title: Minimal Configuration
+    icon: 🚀
+    details: Tables have basic features activated by default. Ready to go!
   - title: It fits your needs
-    icon: 🔥
-    details: Extend and customize your table including components (checkbox, action buttons, editable fields), global search feature, column data filters and data export tool.
-  - title: Full Stubs
-    icon: 🫶
+    icon: 👍
+    details: Extend and customize your Table including components (checkbox, action buttons, editable fields), global search feature, column data filters and data export tool.
+  - title: Easy to Use
+    icon: 🛠️
     details: Table components include feature examples. Just uncomment some code, enter your data, and it works!
 ---

@@ -6,7 +6,7 @@
 
 # PowerGrid Doc
 
-Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid)
+Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid).
 
 ## Support
 

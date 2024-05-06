@@ -1,17 +1,23 @@
 # Install
 
+This section covers PowerGrid Laravel Package installation.
+
+Here you will find:
+
+[[toc]]
+
 ## Requirements
 
 - PHP 8.1+
-- [Laravel 10+](https://laravel.com/docs/9.x/installation)
+- [Laravel 10+](https://laravel.com/docs/installation)
 - [Livewire 3.0+](https://livewire.laravel.com)
 - [Tailwind v3](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
 ## Installation
 
-### 1. Via Composer
+### 1. Install the package
 
-Require PowerGrid via [Composer](https://getcomposer.org/), run:
+First, require PowerGrid via [Composer](https://getcomposer.org/). Run the following command in your Laravel project.
 
 ```bash
 composer require power-components/livewire-powergrid
@@ -19,29 +25,38 @@ composer require power-components/livewire-powergrid
 
 ### 2. Publish Config files
 
-Publish PowerGrid configuration file. Run the following command:
+Next, publish PowerGrid's config file. This file is used to configure PowerGrid, it will be available at: `config/livewire-powergrid.php`.
+
+Run the following command:
 
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-config
 ```
 
-The configuration file will be available at: `config/livewire-powergrid.php`.
+### 3. Configure PowerGrid
 
-### 3. Publish files (OPTIONAL)
+::: info 🎉 All done!
+Let's go on and [configure](/get-started/powergrid-configuration.html#initial-configuration) PowerGrid!
+:::
 
-::: warning
-Skip this step if you don't need to customize views (not recommended) or language files.
-::: 
+## Optional Steps
 
-To publish Views, run:
+This subsection covers optional installations steps.
+
+These steps are only necessary if you wish to customize PowerGrid resources.
+
+### Publish Views
+
+To publish Views, run the following command:
 
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-views
 ```
 
-To publish Language files, run:
+### Publish Translations
+
+To publish PowerGrid translation (language) files, run the following command:
 
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-lang
 ```
-
