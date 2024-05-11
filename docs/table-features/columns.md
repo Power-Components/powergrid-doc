@@ -59,7 +59,7 @@ Clicking on the cell will convert it into a `text input`. The user can type a ne
 
 If the record has a `null` value, a fallback can be displayed instead.
 
-To enable this feature, just chain the `->editOnClick()` method to a `LivewirePowerGrid\Column` class.
+To enable this feature, just chain the `->editOnClick()` method to a `LivewirePowerGrid\Column` class. Inline editing is not available when using `Collection` Data Source.
 
 Example:
 
@@ -94,8 +94,8 @@ The `editOnClick()` method accepts the following parameters:
 | (?string) $fallback    | Fallback text for `null` values.                              | `null`  |
 | (bool) $saveOnMouseOut | If `true`, submit changes when clicking outside the text input. | `false`   |
 
-::: info 📝 NOTE
-Edit On Click is not available when using `Collection` Data Source.
+::: tip 💡 TIP
+Learn more about how to update data from [Edit On Click](/table-features/updating-data.html#edit-on-click).
 :::
 
 ## Toggleable
@@ -104,7 +104,7 @@ Toggle buttons provide a convenient way to display the `boolean` state of a reco
 
 When using this feature, the cell will be converted into a toggleable button. If the user does not have permission to edit data, a fallback label will be displayed instead.
 
-To enable this feature, just chain the `->toggleable()` method to a `LivewirePowerGrid\Column` class.
+To enable this feature, just chain the `->toggleable()` method to a `LivewirePowerGrid\Column` class. Toggle switch is not available when using `Collection` Data Source.
 
 Example:
 
@@ -140,8 +140,8 @@ The `toggleable()` method accepts the following parameters:
 | (string) $trueLabel    | Label when record is `true` | Yes     |
 | (string) $falseLabel   | Label when record is `false`| No      |
 
-::: info 📝 NOTE
-Toggleable is not available when using `Collection` Data Source.
+::: tip 💡 TIP
+Learn more about how to update data from [Toggle Switches](/table-features/updating-data.html#toggleable-switch).
 :::
 
 ## Column Summary
