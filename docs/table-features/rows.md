@@ -143,7 +143,7 @@ See an interactive example of [Action From View](https://demo.livewire-powergrid
 
 ## Image in Cell
 
-See Formatting Data [Image Field](/table-component/data-source-fields.html#image).
+See Formatting Data [Image](/table-component/data-source-fields.html#image).
 
 ## Cell Data Formatting
 
