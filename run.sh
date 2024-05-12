@@ -31,4 +31,9 @@ checkNpm
 
 npm install
 
+if [ $1 == 'build' ]; then
+  npm run docs:build
+  exit 1
+fi
+
 npm run docs:dev

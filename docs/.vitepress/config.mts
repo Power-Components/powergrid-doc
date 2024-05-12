@@ -1,31 +1,36 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   ignoreDeadLinks: true,
   title: "Livewire PowerGrid",
-  description: "A PowerGrid Docs",
+  description: "PowerGrid Docs",
   head: [
-    [
-      'link',
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: `/_media/logomark@2x.png`,
-      },
-    ],
-    ['meta', { name: 'og:title', content: 'Livewire PowerGrid'}],
+    ['link', { rel: 'icon', type: 'image/png', href: 'logomark2x.png' }],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "favicon.ico"}],
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "favicon-32x32.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "favicon-16x16.png"}],
+    ['link', { rel: "manifest", href: "site.webmanifest"}],
+    ['meta', { name: 'og:title', content: 'Livewire PowerGrid - Version 5'}],
     ['meta', { name: 'og:description', content: 'Livewire PowerGrid is a component for generating dynamic tables with your Laravel Models and Collections.'}],
     ['meta', { name: 'application-name', content: 'Livewire PowerGrid' }],
     ['meta', { name: 'apple-mobile-web-app-title', content: 'Livewire PowerGrid' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'author', content: '@luanfreitasdev and @dansysanalyst' }],
+    ['meta', { name: 'keywords', content: 'laravel, livewire, datatable,  data table, grid, php, alpine, tall stack, tailwind, bootstrap, table example, laravel package, sorting tables, table ui, table html' }],
   ],
+  markdown: {
+    toc: {
+        level: [2],
+      },
+        anchor: { level: [1, 2, 3, 4] },
+  },
   appearance: 'dark',
   lang: 'en-US',
   themeConfig: {
-    logo: '/_media/logomark@1x.png',
+    outline: [2, 3],
+    logo: '/logomark1x.png',
     siteTitle: 'Livewire PowerGrid',
     nav: [
       { text: 'Home', link: '/' },
@@ -50,46 +55,80 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Get Started',
+        text: '📄 Release Notes & Upgrade Guide',
         items: [
-          { text: 'Introduction', link: '/get-started/introduction' },
-          { text: 'Release Notes', link: '/get-started/release-notes' },
-          { text: 'Upgrade Guide', link: '/get-started/upgrade-guide' },
-          { text: 'Troubleshooting', link: '/get-started/troubleshooting' },
-          { text: 'Support', link: '/get-started/support' },
-          { text: 'Install', link: '/get-started/install' },
-          { text: 'Configure', link: '/get-started/configure' },
-          { text: 'Create a PowerGrid Table', link: '/get-started/create-powergrid-table' },
+          { text: 'Release Notes', link: '/release-notes-and-upgrade/release-notes' },
+          { text: 'Upgrade Guide', link: '/release-notes-and-upgrade/upgrade-guide' },
         ],
         collapsed: true
       },
       {
-        text: 'PowerGrid Table',
+        text: '🛟 Community & Support',
         items: [
-          { text: 'Features Setup', link: '/table/features-setup' },
-          { text: 'Datasource', link: '/table/datasource' },
-          { text: 'Add Columns/Fields', link: '/table/add-columns' },
-          { text: 'Include Columns', link: '/table/include-columns' },
-          { text: 'Column Filters', link: '/table/column-filters' },
-          { text: 'Column Summary', link: '/table/column-summary' },
-          { text: 'Cell Action Buttons', link: '/table/cell-actions-buttons' },
-          { text: 'Row Action buttons', link: '/table/row-actions-buttons' },
-          { text: 'Row Actions From View', link: '/table/row-actions-from-view' },
-          { text: 'Action Rules', link: '/table/action-rules' },
-          { text: 'Component Settings', link: '/table/component-settings' },
-          { text: 'Component Perfomance', link: '/table/component-performance' },
-          { text: 'Custom Theme', link: '/table/custom-theme' },
+          { text: 'PowerGrid Community', link: '/community-and-support/community' },
+          { text: 'Support', link: '/community-and-support/support' },
+          { text: 'Contribute', link: '/community-and-support/contribute' },
+        ],
+        collapsed: true
+      },
+      {
+        text: '🚀 Get Started',
+        items: [
+          { text: 'Introduction', link: '/get-started/introduction' },
+          { text: 'Code Examples', link: '/get-started/code-examples' },
+          { text: 'Troubleshooting', link: '/get-started/troubleshooting' },
+          { text: '1. Install', link: '/get-started/install' },
+          { text: '2. PowerGrid Configuration', link: '/get-started/powergrid-configuration' },
+          { text: '3. Create a PowerGrid Table', link: '/get-started/create-powergrid-table' },
+          { text: '4. Rendering a PowerGrid Table', link: '/get-started/rendering-a-powergrid-table' },
+        ],
+        collapsed: false
+      },
+      {
+        text: '⚡ Table Component',
+        items: [
+          { text: 'Data Source', link: '/table-component/data-source' },
+          { text: 'Data Source Fields', link: '/table-component/data-source-fields' },
+          { text: 'Component Columns', link: '/table-component/component-columns' },
+          { text: 'Component Configuration', link: '/table-component/component-configuration' },
+        ],
+        collapsed: false,
+        collapsible: false,
+      },
+      {
+        text: '🧰 Table Features',
+        items: [
+              { text: 'Header & Footer', link: '/table-features/header-and-footer' },
+              { text: 'Columns', link: '/table-features/columns' },
+              { text: 'Rows', link: '/table-features/rows' },
+              { text: 'Pagination', link: '/table-features/pagination' },
+              { text: 'Buttons', link: '/table-features/button-class' },
+              { text: 'Bulk Actions', link: '/table-features/bulk-actions' },
+              { text: 'Conditional Rules', link: '/table-features/conditional-rules' },
+              { text: 'Filters', link: '/table-features/filters' },
+              { text: 'Searching Data', link: '/table-features/searching-data' },
+              { text: 'Sorting Data', link: '/table-features/sorting-data' },
+              { text: 'Updating Data', link: '/table-features/updating-data' },
+              { text: 'Exporting Data', link: '/table-features/exporting-data' },
+        ],
+        collapsed: false,
+        collapsible: false,
+      },
+      {
+        text: '🛠️ Expanding PowerGrid',
+        items: [
+          { text: 'Perfomance Monitoring', link: '/expanding-powergrid/performance-monitoring' },
+          { text: 'Custom Theme', link: '/expanding-powergrid/custom-theme' },
         ],
         collapsed: false
       },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Power-Components/powergrid-doc' },
-      { icon: 'twitter', link: 'https://twitter.com/luanfreitasdev' },
+      { icon: 'github', link: 'https://github.com/Power-Components/livewire-powergrid' },
     ],
     footer: {
-      message: 'Created By Luan Freitas and DanSysAnalyst',
+      message: 'Created By Luan Freitas and @DanSysAnalyst',
     },
     editLink: {
       pattern: 'https://github.com/power-components/powergrid-doc/edit/5x/docs/:path',

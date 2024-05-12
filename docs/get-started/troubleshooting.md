@@ -1,8 +1,22 @@
 # Troubleshooting
 
-## Theme, layout and view errors
+This section covers the most frequent issues that users may encounter while using PowerGrid.
 
-If you are receiving errors or exceptions relative to your PowerGrid Theme, Layout, or Views, most likely you have published the PowerGrid views, and they have become outdated. This can happen after updating PowerGrid while using customized views.
+## Undefined variable $foobar
+
+refer to [Theme, layout, view and "variable undefined" errors](/get-started/troubleshooting.html#theme-layout-view-and-variable-undefined-errors).
+
+
+## Call to undefined method fooBar()
+
+Please check the [Upgrade Guide](/release-notes-and-upgrade/upgrade-guide.html).
+
+Additionally, refer to [Theme, layout, view and "variable undefined" errors](/get-started/troubleshooting.html#theme-layout-view-and-variable-undefined-errors).
+
+
+## Theme, layout, view and "variable undefined" errors
+
+Most likely you have published the PowerGrid views, and they have become outdated. This can happen after updating PowerGrid while using customized views.
 
 To solve this problem, first back up your PowerGrid resource: Copy the `resources/views/vendor/livewire-powergrid` directory to `resources/views/vendor/livewire-powergrid-BACKUP`.
 
@@ -18,22 +32,17 @@ Next, clear Laravel caches. Run the command below.
 php artisan optimize:clear
 ```
 
-## Flatpickr Locale Support.
+## Flatpickr Locale Support
 
-::: warning
-Depending on your location, flatpickr will not have the expected support, to solve this kind of problem you can add it in the settings.
-:::
+Sometimes Flatpick will not support your location's locale setting.
 
-See an example:
-config/app.php is `'locale' => 'pt_BR'`,
+For example, consider that your application is configured for `pt_BR` in `config/app.php` with `'locale' => 'pt_BR'`,
 
-Do this in the settings:
+In the file `config/livewire-powergrid.php`, you might have tried to add the same locale `pt_BR`.
+ the same string for locale.  
 
-::: info
-In this case, there is no support for **pt_BR**, so change locale pt_BR to **pt**
-:::
+However, Flatpick doesn't accept `pt_BR`. Instead, change it to `pt`.
 
-`config/livewire-powergrid.php`
 ```php{7}
      'plugins' => [
         // ...
@@ -41,7 +50,8 @@ In this case, there is no support for **pt_BR**, so change locale pt_BR to **pt*
             // ...
             'locales'   => [
                 'pt_BR' => [
-                    'locale'     => 'pt',
+                    'locale'     => 'pt_BR', // [!code --]
+                    'locale'     => 'pt', // [!code ++]
                     'dateFormat' => 'd/m/Y H:i',
                     'enableTime' => true,
                     'time_24hr'  => true,
@@ -50,3 +60,5 @@ In this case, there is no support for **pt_BR**, so change locale pt_BR to **pt*
         ],
     ],
 ```
+
+---
