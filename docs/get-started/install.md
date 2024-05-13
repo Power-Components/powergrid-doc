@@ -1,6 +1,6 @@
 # Install
 
-This section covers PowerGrid Laravel Package installation.
+This section covers how to install PowerGrid Laravel in your Laravel Application.
 
 Here you will find:
 

@@ -2,9 +2,9 @@
 
 ## PowerGrid
 
-[Livewire PowerGrid](https://laravel-livewire.com) creates modern, powerful and easy-to-customize data tables based on Laravel Livewire library.
+[Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy-to-customize data tables using  [Laravel Livewire](https://laravel-livewire.com).
 
-With PowerGrid, you can effortlessly create advanced data tables one in a matter of minutes.
+With PowerGrid, you can effortlessly create advanced data tables in a matter of minutes. To get started,  just head over to the [installation page](/get-started/install.html).
 
 ![Output](/screenshot.png)
 
