@@ -592,45 +592,47 @@ Many web applications require establishing hierarchical relationships between fi
 
 To create a dependent filter in PowerGrid, you must chain the method `depends()` passing which fields this filter depends on. Next, you need to pass a closure containing the filter logic to the `datasource()` method.
 
-In the example below, choosing a category will affect the chef filter, displaying only chefs in the selected category.
+In the example below, the City filter is set to filter by `cities.id` by default. However, if `state_id` is already selected, the condition in the `City::query()->when()` method is met, causing the City filter to search for the relationship `state`, with the selected State ID.
 
 ```php
-// app/Livewire/DishTable.php
+//app/View/Components/PowerGridTable.php
 
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
-use App\Models\Chef;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 
-class DishTable extends PowerGridComponent
+final class PowerGridTable extends PowerGridComponent
 {
     public function filters(): array
     {
         return [
-            Filter::select('category_name', 'category_id')
-                    ->dataSource(Category::all())
-                    ->optionLabel('name')
-                    ->optionValue('id'),
+            Filter::select('state_name', 'states.id')
+                ->dataSource(State::all())
+                ->optionLabel('name')
+                ->optionValue('id'),
 
-                Filter::select('chef_name', 'chef_id')
-                    ->depends(['category_id'])
-                    ->dataSource(fn ($depends) => Chef::query()
-                        ->when(isset($depends['category_id']),
-                            fn (Builder $query) => $query->whereRelation('categories',
-                                fn (Builder $builder) => $builder->where('id', $depends['category_id'])
+            Filter::select('city_name', 'cities.id')
+                ->depends(['state_id'])// [!code highlight:12]
+                ->dataSource(
+                    fn ($depends) => City::query()
+                        ->when(
+                            isset($depends['state_id']),
+                            fn (Builder $query) => $query->whereRelation(
+                                'state',
+                                fn (Builder $builder) => $builder->where('id', $depends['state_id'])
                             )
                         )
                         ->get()
-                    )
-                    ->optionLabel('name')
-                    ->optionValue('id'), 
+                )
+                ->optionLabel('name')
+                ->optionValue('id'),
         ];
     }
 }
 ```
 
 :::info 🌎 Online Demo
-See an interactive example of using [Dependent Filter](https://demo.livewire-powergrid.com/examples/filters-inline).
+See an interactive example of [Filter Depends](https://demo.livewire-powergrid.com/examples/filter-depends) on a Table.
 :::
 
 ## Filter Builder
