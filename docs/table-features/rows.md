@@ -10,6 +10,8 @@ Here you will find:
 
 To enable checkboxes on Table rows, call the `showCheckBox()` in your Component's `setUp()` method.
 
+By default, `showCheckBox()` reference the field `id`. If you need to reference another field, simply pass the field name to the parameter `$attribute`.
+
 Example:
 
 ```php
@@ -33,6 +35,8 @@ See an interactive example of [Checkboxes](https://demo.livewire-powergrid.com/e
 ## Radio Buttons
 
 To enable radio buttons on Table rows, call the `showRadioButton()` in your Component's `setUp()` method.
+
+By default, `showRadioButton()` reference the field `id`. If you need to reference another field, simply pass the field name to the parameter `$attribute`.
 
 Example:
 

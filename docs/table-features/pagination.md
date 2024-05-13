@@ -109,9 +109,11 @@ Sometimes, you may need to change the default URL page parameter (`?page=`). Thi
 
 The example below shows how to use a different pageName for each component.
 
-The component "Customer Page", configured to use ?customerPage=:
+The `DishTable` component is set to utilize the `dishPage` parameter, while the `UserTable` component is set to utilize the userPage parameter from the URL: `http://myapp.test/?dishPage=2&usersPage=5`.
 
-```php
+::: code-group
+
+```php [DishTable.php]
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
@@ -129,7 +131,7 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-```php
+```php [UserTable.php]
 // app/Livewire/UserTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
@@ -147,18 +149,16 @@ class UserTable extends PowerGridComponent
 }
 ```
 
-The blade view will look similar to this:
-
-```php
+```php [my-view.blade.php]
 // resources/views/my-view.blade.php
 
 <div>
-    <livewire:customers-table />
+    <livewire:customers-table />// [!code ++:2]
     <livewire:users-table />
 </div>
 ```
 
-Consequently, the page url will have both page names:  `http://myapp.test/?dishPage=2&usersPage=5`
+:::
 
 ## Custom Pagination Component
 
