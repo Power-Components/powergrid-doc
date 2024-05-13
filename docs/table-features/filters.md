@@ -548,21 +548,29 @@ Dynamic Filter lets you use an external component as a PowerGrid Filter. This is
 The example below renders the `<x-select>` component in the chosen column header.
 
 ```php
+// app/Livewire/DishTable.php
+
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
 
-public function filters(): array
+class DishTable extends PowerGridComponent
 {
-    Filter::dynamic('in_stock', 'in_stock')
-        ->component('select')
-        ->attributes([
-            'class'           => 'min-w-[170px]',
-            'async-data'      => route('categories.index'),
-            'option-label'    => 'name',
-            'multiselect'     => false,
-            'option-value'    => 'id',
-            'placeholder'     => 'Test',
-            'wire:model.lazy' => 'filters.select.in_stock'
-        ]),
+    public function filters(): array
+    {
+        return [
+            Filter::dynamic('in_stock', 'in_stock')
+                ->component('select')
+                ->attributes([
+                    'class'           => 'min-w-[170px]',
+                    'async-data'      => route('categories.index'),
+                    'option-label'    => 'name',
+                    'multiselect'     => false,
+                    'option-value'    => 'id',
+                    'placeholder'     => 'Test',
+                    'wire:model.lazy' => 'filters.select.in_stock'
+                ]),    
+        ];
+    }
 }
 ```
 
@@ -587,29 +595,38 @@ To create a dependent filter in PowerGrid, you must chain the method `depends()`
 In the example below, choosing a category will affect the chef filter, displaying only chefs in the selected category.
 
 ```php
-use PowerComponents\LivewirePowerGrid\Facades\Filter;
+// app/Livewire/DishTable.php
+
 use Illuminate\Database\Eloquent\Builder;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use App\Models\Chef;
 
-       return [
+class DishTable extends PowerGridComponent
+{
+    public function filters(): array
+    {
+        return [
             Filter::select('category_name', 'category_id')
-                ->dataSource(Category::all())
-                ->optionLabel('name')
-                ->optionValue('id'),
+                    ->dataSource(Category::all())
+                    ->optionLabel('name')
+                    ->optionValue('id'),
 
-            Filter::select('chef_name', 'chef_id')
-                ->depends(['category_id'])
-                ->dataSource(fn ($depends) => Chef::query()
-                    ->when(isset($depends['category_id']),
-                        fn (Builder $query) => $query->whereRelation('categories',
-                            fn (Builder $builder) => $builder->where('id', $depends['category_id'])
+                Filter::select('chef_name', 'chef_id')
+                    ->depends(['category_id'])
+                    ->dataSource(fn ($depends) => Chef::query()
+                        ->when(isset($depends['category_id']),
+                            fn (Builder $query) => $query->whereRelation('categories',
+                                fn (Builder $builder) => $builder->where('id', $depends['category_id'])
+                            )
                         )
+                        ->get()
                     )
-                    ->get()
-                )
-                ->optionLabel('name')
-                ->optionValue('id'),
-      ];
+                    ->optionLabel('name')
+                    ->optionValue('id'), 
+        ];
+    }
+}
 ```
 
 :::info 🌎 Online Demo
