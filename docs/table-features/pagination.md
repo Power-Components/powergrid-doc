@@ -109,7 +109,7 @@ Sometimes, you may need to change the default URL page parameter (`?page=`). Thi
 
 The example below shows how to use a different pageName for each component.
 
-The `DishTable` component is set to utilize the `dishPage` parameter, while the `UserTable` component is set to utilize the userPage parameter from the URL: `http://myapp.test/?dishPage=2&usersPage=5`.
+The `DishTable` component uses the `dishPage` parameter from the URL, while the `UserTable` component uses the `userPage` parameter. Here is an example of how the URL will look like: `http://myapp.test/?dishPage=2&userPage=5`.
 
 ::: code-group
 
@@ -143,7 +143,7 @@ class UserTable extends PowerGridComponent
     {
         return [
             Footer::make()// [!code ++:2]
-                ->pageName('usersPage'),
+                ->pageName('userPage'),
         ];
     }
 }
@@ -153,8 +153,8 @@ class UserTable extends PowerGridComponent
 // resources/views/my-view.blade.php
 
 <div>
-    <livewire:customers-table />// [!code ++:2]
-    <livewire:users-table />
+    <livewire:dish-table />// [!code ++:2]
+    <livewire:user-table />
 </div>
 ```
 
