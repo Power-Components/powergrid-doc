@@ -50,7 +50,7 @@ See an interactive example of using [Filters](https://demo.livewire-powergrid.co
 
 ## Filter Position
 
-To configure PowerGrid's Filter display position, visit [Filter Configuration](/get-started/powergrid-configuration.html#filter-configuration) section.
+To configure PowerGrid's Filter display position, visit [Filter Configuration](/get-started/powergrid-configuration.html#filter-position-configuration) section.
 
 If you want to configure it individually per component, use Laravel's [`config()`](https://laravel.com/docs/helpers#method-config) helper in your  component's `boot()` method.
 

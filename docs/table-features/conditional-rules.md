@@ -8,11 +8,11 @@ Here you will find:
 
 ## Introduction
 
-Many web applications require control over what data and actions are available and how they are displayed to the end user.
+Many web applications require the ability to control how data is displayed and what actions are available to the user based on certain conditions.
 
-For example, you may want to remove a button if the user doesn't have the right permissions or to show a red background if a product is sold out.
+For example, you may want to remove a button if the user lacks the necessary permissions for that particular action, or display a red background to indicate that a product is no longer available.
 
-PowerGrid provides a comprehensive set of `Action Rules` that can be used to manage the style, visibility, and behavior of Table rows, checkboxes, and buttons. These rules can be combined to meet specific conditions and requirements.
+PowerGrid provides a set of `Action Rules` that you can use to control the style, visibility, and behavior of Table rows, checkboxes, and buttons. These rules can be combined to meet specific conditions and requirements.
 
 ## Usage
 

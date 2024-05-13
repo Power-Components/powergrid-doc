@@ -12,7 +12,7 @@ Here you will find:
 
 To display your PowerGrid Table, you can use the `<livewire>` tag as demonstrated below.
 
-Following our example of `DishTable` (`app/Livewire/DishTable.php`), we will use:
+Following our example of `DishTable` (`app/Livewire/DishTable.php`), we will use the tag:
 
 ```php
 // resources/views/my-view.blade.php
@@ -30,11 +30,15 @@ Alternatively, you can use the Livewire Blade directive.
 @livewire('dish-table') // [!code ++]
 ```
 
+::: info 🎉 Another step done!
+Now, let's move forward to configure the [Datasource](/table-component/data-source.html).
+:::
+
 ### Component in sub-folder
 
-If your PowerGrid Table lives in a sub-folder, just indicate its path using dot notation.
+If the PowerGrid Table is located in a sub-folder, you can easily specify its path using dot notation.
 
-The next example uses the class `app/Livewire/Tables/DishTable.php` as reference:
+For reference, the following example utilizes the class `app/Livewire/Tables/DishTable.php`:
 
 ```php
 // resources/views/my-view.blade.php
@@ -46,21 +50,23 @@ The next example uses the class `app/Livewire/Tables/DishTable.php` as reference
 
 ### Passing Attributes
 
-You can pass data to your PowerGrid Table using the `<livewire>` tag and HTML attributes.
+To pass data to your PowerGrid Table, you can add attributes to the `<livewire>` HTML tag.
 
-In the next example, we are passing the `tableName` attribute to avoid conflict between two PowerGrid Components.
+In the next example, we are passing the [`tableName`](/table-component/component-configuration.html#table-name) via an attribute.
 
 ```php
 // resources/views/my-view.blade.php
 
-<livewire:dish-table tableName="table1" /> // [!code ++:3]
+<livewire:dish-table tableName="DishTable" /> // [!code ++:3]
 
-<livewire:dish-table tableName="table2" />
+<livewire:dish-table tableName="UserTable" />
 ```
 
 ### Passing Custom Attributes
 
-To pass a custom attribute, you must declare it as a `public` property in your PowerGrid Table Component.
+To pass a custom attribute, you must to declare it as a `public` property within the PowerGrid Table Component.
+
+Example:
 
 ```php
 // app/Livewire/DishTable.php
@@ -72,7 +78,7 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-Then, you can just include it in your HTML tag, as demonstrated below.
+Then, you can simply add this attribute in the `<livewire>` tag, as demonstrated below.
 
 ```php
 // resources/views/my-view.blade.php

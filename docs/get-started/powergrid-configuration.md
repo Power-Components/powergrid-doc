@@ -1,6 +1,6 @@
 # PowerGrid Configuration
 
-This section covers the PowerGrid configuration file and assets configuration.
+This section covers the PowerGrid config file, along with the configurations for assets and plugins.
 
 Here you will find:
 
@@ -8,7 +8,7 @@ Here you will find:
 
 ## Introduction
 
-After a successful [installation](/get-started/install.html), you must complete the following steps to start using PowerGrid in your Laravel application.
+Once the [installation](/get-started/install.html) is complete, you must perform these [Essential Configuration](/get-started/powergrid-configuration.html#essential-configuration) steps to start using PowerGrid in your Laravel application.
 
 ## Essential Configuration
 
@@ -26,11 +26,9 @@ import './../../vendor/power-components/livewire-powergrid/dist/powergrid' // [!
 
 ### 2. Choose a CSS theme
 
-PowerGrid provides Tailwind and Bootstrap 5 themes.
+PowerGrid provides Tailwind 3 and Bootstrap 5 themes. Tailwind is selected by default.
 
-Tailwind is selected by default.
-
-If you prefer to use Bootstrap 5, change the `theme` key inside the `config/livewire-powergrid.php` file, as demonstrated below.
+To use Bootstrap 5, simply change the `theme` key in the `config/livewire-powergrid.php` file. Here's an example:
 
 ```php{10}
 // config/livewire-powergrid.php
@@ -183,7 +181,7 @@ Example:
     'persist_driver' => 'session',// [!code ++]
 ```
 
-### Filter Configuration
+### Filter Position Configuration
 
 To configure how filters are displayed, change the value in the key `filter` in `config/livewire-powergrid.php`.
 

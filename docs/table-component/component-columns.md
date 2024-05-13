@@ -100,6 +100,10 @@ class DishTable extends PowerGridComponent
 }
 ```
 
+::: info 🎉 Ok! Ok!
+Let's explore the various [Configuration Options](/table-component/component-configuration.html) available in our Component.
+:::
+
 ## Column Data Field
 
 When using Data source [Custom Fields](/table-component/data-source-fields.html#custom-fields) or [Table joins](/table-component/data-source.html#join-tables), you must pass the `$dataField` parameter, indicating where the "original" data can be found in the database. This allows data search, filtering and column sorting.

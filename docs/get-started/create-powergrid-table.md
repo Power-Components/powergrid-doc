@@ -1,6 +1,6 @@
 # Create a PowerGrid Table
 
-This section covers the creation of a PowerGrid Component.
+This section covers the the process of creating a PowerGrid Component.
 
 Here you will find:
 
@@ -8,7 +8,7 @@ Here you will find:
 
 ## Introduction
 
-After [installing](/get-started/install.html#installation) PowerGrid, and completing its [Initial Configuration](/get-started/powergrid-configuration.html#initial-configuration), now it's time to create your first Table Component!
+Now that you've finished the PowerGrid [Essential Configuration](get-started/powergrid-configuration.html#essential-configuration), it's time create your very first Table Component!
 
 ## Create a Table
 
