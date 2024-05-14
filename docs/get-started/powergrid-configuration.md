@@ -46,6 +46,7 @@ To use Bootstrap 5, simply change the `theme` key in the `config/livewire-powerg
 ::: info 📝 NOTE
 Currently, the following features are exclusive to the Tailwind theme.
 
+* [Responsive Table](/table-features/filters.html#filter-position)
 * [Filters outside](/table-features/filters.html#filter-position)
 :::
 
