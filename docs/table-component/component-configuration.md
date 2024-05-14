@@ -203,6 +203,8 @@ See an interactive example of using [Auto Refresh](https://demo.livewire-powergr
 
 To improve usability in large Tables, you may use the Responsive Table feature.
 
+Responsive Table is currently limited to the Tailwind theme and is not compatible with the [Detail Row](/table-component/component-configuration.html#detail-row) or [Inline Filters](/table-features/filters.html) features.
+
 To enable this feature, add a call to the `PowerComponents\LivewirePowergrid\Responsive` class in your Component's `setUp()` method.
 
 Example:
@@ -226,10 +228,6 @@ class DishTable extends PowerGridComponent
 
 :::info 🌎 Online Demo
 See an interactive example of a PowerGrid [Responsive Table](https://demo.livewire-powergrid.com/examples/responsive).
-:::
-
-::: info 📝 NOTE
-Responsive Table is not available when using the [Detail Row](/table-component/component-configuration.html#detail-row) or [Inline Filters](/table-features/filters.html) features.
 :::
 
 ### Fixed Columns
