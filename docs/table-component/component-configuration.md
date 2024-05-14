@@ -248,7 +248,7 @@ class DishTable extends PowerGridComponent
     {
         return [
             Responsive::make()// [!code ++:2]
-                ->fixedColumns('id', 'name', Responsive::ACTIONS_COLUMN_NAME);
+                ->fixedColumns('id', 'name', Responsive::ACTIONS_COLUMN_NAME),
         ];
     }
 }
