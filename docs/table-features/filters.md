@@ -574,6 +574,10 @@ class DishTable extends PowerGridComponent
 }
 ```
 
+:::info 🌎 Online Demo
+See an interactive example of using [Dynamic Filter](https://demo.livewire-powergrid.com/examples/filter-dynamic).
+:::
+
 ---
 
 **component(string $component)**
