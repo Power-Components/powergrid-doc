@@ -224,6 +224,10 @@ class DishTable extends PowerGridComponent
 }
 ```
 
+:::info 🌎 Online Demo
+See an interactive example of a PowerGrid [Responsive Table](https://demo.livewire-powergrid.com/examples/responsive).
+:::
+
 ::: info 📝 NOTE
 Responsive Table is not available when using the [Detail Row](/table-component/component-configuration.html#detail-row) or [Inline Filters](/table-features/filters.html) features.
 :::
