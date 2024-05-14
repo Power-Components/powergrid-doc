@@ -338,12 +338,22 @@ Add the following code to your project's `resources/js/app.js` file.
 import flatpickr from "flatpickr"; // [!code ++]
 ```
 
-Next, add the following code to your project's `resources/js/app.css` file.
+Next, we need to load Flatpickr CSS.
+
+Add the following code to your project's `resources/js/app.css` file.
 
 ```css
 /* resources/js/app.css */
 
 @import "flatpickr/dist/flatpickr.min.css"; // [!code ++]
+```
+
+Alternatively, you may import the CSS from the `resources/js/app.js` file.
+
+```javascript
+// resources/js/app.js
+
+import 'flatpickr/dist/flatpickr.min.css';// [!code ++]
 ```
 
 Finally, adjust the language configuration to match your app's locale within the `config/livewire-powergrid.php` file, specifically in the `plugins` > `flatpickr` section.
