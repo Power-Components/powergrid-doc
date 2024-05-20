@@ -35,6 +35,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 Super!</p>
+  <p>Now, let's check out how to <a href="/table-component/component-columns.html">Add Columns</a>.</p>
+</div>
+
 ## Custom Fields
 
 Sometimes, we need to modify data from the database before showing it on the Table Component.
@@ -214,9 +219,10 @@ public function fields(): PowerGridFields
 It's highly recommended to use Laravel's [`e() helper`](https://laravel.com/docs/strings#method-e) to escape data return in Custom Fields.
 :::
 
-:::info 🌎 Online Demo
-See an interactive example of creating an [HTML Link](https://demo.livewire-powergrid.com/examples/custom-field-html-link).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example generating an <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-html-link">HTML Link</a>.</p>
+</div>
 
 ---
 
@@ -303,9 +309,11 @@ class SelectCategory extends Component
 
 ::: code-group
 
-:::info 🌎 Online Demo
-See an interactive example of [Dropdown Menu](https://demo.livewire-powergrid.com/examples/input-select) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-select">Dropdown Menu</a> on a Table.</p>
+
+</div>
 
 ---
 
@@ -329,9 +337,11 @@ public function fields(): PowerGridFields
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of showing [Images](https://demo.livewire-powergrid.com/examples/custom-field-image) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-image">Images</a> on a Table.</p>
+
+</div>
 
 ---
 
@@ -356,9 +366,11 @@ public function fields(): PowerGridFields
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using a [Custom Field Blade Component](https://demo.livewire-powergrid.com/examples/custom-field-blade-component).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-blade-component">Custom Field Blade Component</a>.</p>
+
+</div>
 
 ---
 
@@ -405,9 +417,11 @@ public function fields(): PowerGridFields
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Enums](https://demo.livewire-powergrid.com/examples/enum).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/enum">Enums</a>.</p>
+
+</div>
 
 ## Exporting Data
 

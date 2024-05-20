@@ -62,9 +62,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Conditional Rules](https://demo.livewire-powergrid.com/examples/conditional-rules) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/conditional-rules">Conditional Rules</a> on a Table.</p>
+
+</div>
 
 ## Performance
 

@@ -35,9 +35,10 @@ php artisan vendor:publish --tag=livewire-powergrid-config
 
 ### 3. Configure PowerGrid
 
-::: info 🎉 All done!
-Let's go on and [configure](/get-started/powergrid-configuration.html#initial-configuration) PowerGrid!
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 All done!</p>
+  <p>Let's go on and <a href="/get-started/powergrid-configuration.html#initial-configuration">configure</a> PowerGrid!</p>
+</div>
 
 ## Optional Steps
 

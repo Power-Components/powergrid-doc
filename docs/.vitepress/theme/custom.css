@@ -1,7 +1,6 @@
 :root {
     --vp-c-brand-1: #f69e08;
     --vp-c-brand-2: #c78108;
-
     --vp-button-brand-bg: #ee9908;
 }
 
@@ -9,8 +8,81 @@
     --vp-button-brand-bg: #be7b08;;
 }
 
+/*
+.vp-doc :not(pre) > code
+{
+  background-color: #fef0d7 !important;
+}
+*/
+
+.vp-doc a {
+ color: #ca8207;
+}
+
+.pre, code, kbd, samp {
+ color: #ca8207 !important;
+}
+
 .vp-doc p,
 .vp-doc summary {
   text-align: justify;
   text-justify: inter-word;
+}
+
+.success {
+  padding-top: 8px;
+  background-color: #EDF9D2;
+  outline: #638613 solid 1px;
+  color: #638613;
+}
+
+:root.dark .success {
+  background-color: #064E37;
+  outline:#5aa358 solid 1.5px;
+  color: #bfc8aa;
+}
+
+.success a {
+    color: #638613 !important;
+}
+
+:root.dark .success a {
+    color: #c8e18e !important;
+}
+
+.onlinedemo {
+  padding-top: 8px;
+  background-color: #F8D2F9;
+  outline: #841285 solid 1px;
+  color: #841285;
+}
+
+:root.dark .onlinedemo {
+  background-color: #7b487c;
+  color: #F3D7F4;
+  outline: #BA80F4 solid 1.5px;
+}
+
+:root.dark .onlinedemo a {
+    color: #ffdeff !important;
+}
+
+.onlinedemo a {
+    color: #841285 !important;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.25s;
+}
+
+.danger {
+  outline: var(--vp-c-danger-1) solid 1px;
+}
+
+.tip {
+  outline: #b8bbff solid 1px;
+}
+
+.info {
+  outline: #c6c9d4 solid 1px;
 }

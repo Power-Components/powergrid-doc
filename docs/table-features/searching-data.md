@@ -55,9 +55,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of the [Before Search Hook](https://demo.livewire-powergrid.com/examples/beforesearch-hook) method.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/beforesearch-hook">Before Search Hook</a>.</p>
+
+</div>
 
 ## Searching Custom Fields
 
@@ -155,9 +157,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of a [relationSearch()](https://demo.livewire-powergrid.com/examples/search-with-relationship).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/search-with-relationship">Relation Search</a>.</p>
+
+</div>
 
 ## Query String
 

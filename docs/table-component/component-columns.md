@@ -100,9 +100,10 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-::: info 🎉 Ok! Ok!
-Let's explore the various [Configuration Options](/table-component/component-configuration.html) available in our Component.
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 Ok, all done!</p>
+  <p>Let's explore the various <a href="/table-component/component-configuration.html">Configuration Options</a> available in our Component.</p>
+</div>
 
 ## Column Data Field
 
@@ -269,9 +270,11 @@ The next example illustrates a case where allowing to filter by date as "d/m/Y".
         ->searchableRaw('DATE_FORMAT(dishes.produced_at, "%d/%m/%Y")'), // [!code highlight:1]
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [searchableRaw()](https://demo.livewire-powergrid.com/examples/searchableraw).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/searchableraw">searchableRaw()</a>.</p>
+
+</div>
 
 ### sortable()
 
@@ -354,9 +357,11 @@ Column::make('Dish name', 'name')
     ->hidden(isHidden: true, isForceHidden: true),
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [hidden()](https://demo.livewire-powergrid.com/examples/export).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/export">hidden()</a>.</p>
+
+</div>
 
 ---
 
@@ -378,9 +383,11 @@ Column::make('Dish price', 'price')
     ->visibleInExport(false), // will not include in exported file
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [visibleInExport()](https://demo.livewire-powergrid.com/examples/export).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/export">visibleInExport()</a>.</p>
+
+</div>
 
 ---
 

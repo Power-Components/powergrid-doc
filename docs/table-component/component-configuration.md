@@ -55,9 +55,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of a [No Records Found](https://demo.livewire-powergrid.com/examples/no-results-found) Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of customizing <a target="_blank" href="https://demo.livewire-powergrid.com/examples/no-results-found">No Records Found</a>.</p>
+
+</div>
 
 ## Defer Loading
 
@@ -97,9 +99,11 @@ class DishTable extends PowerGridComponent
 
 In addition, it might be useful for you to disable the [Loading Icon](/table-features/header-and-footer.html#loading-icon)  when using with Defer Loading.
 
-:::info 🌎 Online Demo
-See an interactive example of a [Defer Loading](https://demo.livewire-powergrid.com/examples/defer-loading) Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/defer-loading">Defer Loading</a> Table.</p>
+
+</div>
 
 ## Actions Method
 
@@ -195,9 +199,11 @@ class TableRefresher extends Component
 
 :::
 
-:::info 🌎 Online Demo
-See an interactive example of using [Auto Refresh](https://demo.livewire-powergrid.com/examples/auto-refresh) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/auto-refresh">Auto Refresh</a> on a Table.</p>
+
+</div>
 
 ## Responsive Table
 
@@ -226,9 +232,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of a PowerGrid [Responsive Table](https://demo.livewire-powergrid.com/examples/responsive).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of a PowerGrid <a target="_blank" href="https://demo.livewire-powergrid.com/examples/responsive">Responsive Table</a>.</p>
+
+</div>
 
 ### Fixed Columns
 
@@ -308,9 +316,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Detail Row](https://demo.livewire-powergrid.com/examples/detail) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/detail">Detail Row</a> on a Table.</p>
+
+</div>
 
 ### Collapse Others
 
@@ -373,9 +383,11 @@ class DishTable extends PowerGridComponent
 This feature does not support including other Livewire components (e.g. Actions)
 :::
 
-:::info 🌎 Online Demo
-See an interactive example of a [Lazy Loading](https://demo.livewire-powergrid.com/examples/lazy-load) Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/lazy-load">Lazy Loading</a> Table.</p>
+
+</div>
 
 ### Load Content
 
@@ -437,9 +449,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of a [Persist](https://demo.livewire-powergrid.com/examples/persist) Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/persist">Persist</a> Table.</p>
+
+</div>
 
 The state data can be stored  in either cookies or session, depending on the [Persist Drive](/get-started/powergrid-configuration.html#persist-driver) configuration. However, you may customize the Persistent Drive settings for each component using Laravel's [`config()`](https://laravel.com/docs/helpers#method-config) helper within the Component's `boot()` method.
 

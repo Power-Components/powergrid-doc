@@ -39,9 +39,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Bulk Actions](https://demo.livewire-powergrid.com/examples/bulk-actions) in PowerGrid.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/bulk-actions">Bulk Actions</a> in PowerGrid.</p>
+
+</div>
 
 ## Handling the Bulk Event
 

@@ -41,9 +41,10 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-::: info 🎉 Job done!
-Let's jump to the [Data Source Fields](/table-component/data-source-fields) section and configure the fields from your Data Source.
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 Job done!</p>
+  <p>Let's jump to the <a href="/table-component/data-source-fields">Data Source Fields</a> section and configure the fields from your Data Source.</p>
+</div>
 
 ## Relationships
 
@@ -84,9 +85,11 @@ class Dish extends Model
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Relationships](https://demo.livewire-powergrid.com/examples/datasource-relationship).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/datasource-relationship">Relationships</a> in Data Source.</p>
+
+</div>
 
 ## Join Tables
 
@@ -119,9 +122,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Join](https://demo.livewire-powergrid.com/examples/datasource-join).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/datasource-join">Join</a> in Data Source.</p>
+
+</div>
 
 ## Custom Primary Key
 

@@ -150,9 +150,10 @@ Currently, there are no specific Bootstrap theme configuration instructions.
 
 ### 6. Next step
 
-::: info 🎉 Everything ready!
-Now, we can go to the next step and [create a PowerGrid Table](/get-started/create-powergrid-table.html).
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 Everything ready!</p>
+  <p>Now, we can go to the next step and <a href="/get-started/create-powergrid-table.html">create a PowerGrid Table</a>.</p>
+</div>
 
 ## General Configuration
 

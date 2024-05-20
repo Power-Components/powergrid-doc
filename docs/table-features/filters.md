@@ -44,9 +44,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Filters](https://demo.livewire-powergrid.com/examples/filters-inline).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Filters</a>.</p>
+
+</div>
 
 ## Filter Position
 
@@ -448,9 +450,11 @@ enum Diet: int
 
 :::
 
-:::info 🌎 Online Demo
-See an interactive example of [Enum Filter](https://demo.livewire-powergrid.com/examples/filters-inline).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Enum Filter</a>.</p>
+
+</div>
 
 ---
 
@@ -574,9 +578,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Dynamic Filter](https://demo.livewire-powergrid.com/examples/filter-dynamic).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filter-dynamic">Dynamic Filter</a>.</p>
+
+</div>
 
 ---
 
@@ -635,9 +641,11 @@ final class PowerGridTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Filter Depends](https://demo.livewire-powergrid.com/examples/filter-depends) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filter-depends">Filter Depends</a> on a Table.</p>
+
+</div>
 
 ## Filter Builder
 
@@ -683,9 +691,11 @@ use Illuminate\Support\Collection;
 })
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of using [Filter Builder](https://demo.livewire-powergrid.com/examples/filters-inline).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Filter Builder</a>.</p>
+
+</div>
 
 ## Filter by Relationship
 
