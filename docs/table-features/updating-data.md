@@ -36,9 +36,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Saving Toggleable Data](https://demo.livewire-powergrid.com/examples/validation).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of <a target="_blank" href="https://demo.livewire-powergrid.com/examples/validation">Saving Toggleable Data</a>.</p>
+
+</div>
 
 ## Edit On Click
 
@@ -73,9 +75,11 @@ For security reasons, data input must be escaped and validated before it is stor
 It's highly recommended to use Laravel's [`e() helper`](https://laravel.com/docs/strings#method-e) and [Livewire Validation](https://livewire.laravel.com/docs/validation#real-time-validation) when dealing with user input.
 :::
 
-:::info 🌎 Online Demo
-See an interactive example of [Saving Edit On Click Data](https://demo.livewire-powergrid.com/examples/validation).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example of <a target="_blank" href="https://demo.livewire-powergrid.com/examples/validation">Saving Edit On Click Data</a>.</p>
+
+</div>
 
 ## Updating Custom Fields
 
@@ -232,9 +236,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Data Validation](https://demo.livewire-powergrid.com/examples/validation) in PowerGrid.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/validation">Data Validation</a> in PowerGrid.</p>
+
+</div>
 
 ## Custom Field Validation
 

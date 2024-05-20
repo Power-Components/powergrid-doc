@@ -122,9 +122,10 @@ In the feedback message, you will find:
 
 <br/>
 
-::: info 🎉 That's it!
-Now we can proceed to the [Show a PowerGrid Table](/get-started/rendering-a-powergrid-table) section.
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 That's it!</p>
+  <p>Now we can proceed to the <a href="/get-started/rendering-a-powergrid-table">Show a PowerGrid Table</a> section.</p>
+</div>
 
 ## Customize the Component Creation
 

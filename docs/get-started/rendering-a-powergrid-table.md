@@ -30,9 +30,10 @@ Alternatively, you can use the Livewire Blade directive.
 @livewire('dish-table') // [!code ++]
 ```
 
-::: info 🎉 Another step done!
-Now, let's move forward to configure the [Datasource](/table-component/data-source.html).
-:::
+<div class="success custom-block">
+  <p class="custom-block-title">🎉 Great, we have a table!</p>
+  <p>Now, let's move forward to configure the <a href="/table-component/data-source.html">Datasource</a>.</p>
+</div>
 
 ### Component in sub-folder
 

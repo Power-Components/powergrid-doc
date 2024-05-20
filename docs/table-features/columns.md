@@ -182,9 +182,11 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-:::info 🌎 Online Demo
-See an interactive example of [Sum](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Sum</a>.</p>
+
+</div>
 
 ---
 
@@ -218,9 +220,11 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-:::info 🌎 Online Demo
-See an interactive example of [Count](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Count</a>.</p>
+
+</div>
 
 ---
 
@@ -254,9 +258,11 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-:::info 🌎 Online Demo
-See an interactive example of [Average](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Average</a>.</p>
+
+</div>
 
 ---
 
@@ -292,9 +298,11 @@ class DishTable extends PowerGridComponent
 
 ---
 
-:::info 🌎 Online Demo
-See an interactive example of [Min](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Min</a>.</p>
+
+</div>
 
 ---
 
@@ -328,9 +336,11 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-:::info 🌎 Online Demo
-See an interactive example of [Max](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Max</a>.</p>
+
+</div>
 
 ## Formatting Summarized Data
 
@@ -359,6 +369,8 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Formatting Summarized Data](https://demo.livewire-powergrid.com/examples/summarize).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Formatting Summarized Data</a>.</p>
+
+</div>

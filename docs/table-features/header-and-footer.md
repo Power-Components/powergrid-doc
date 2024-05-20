@@ -132,9 +132,11 @@ class DishTable extends PowerGridComponent
 
 By default, a message will be displayed to inform what records are being displayed. You can disable this message passing the parameter `$showMessage = false`.
 
-:::info 🌎 Online Demo
-See an interactive example of showing [Soft Deletes](https://demo.livewire-powergrid.com/examples/show-soft-delete).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/show-soft-delete">Soft Deletes</a>.</p>
+
+</div>
 
 ## Footer
 
@@ -182,9 +184,11 @@ You may use your Component's property in your custom view as the demonstrated be
 </div>
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Include View on Top](https://demo.livewire-powergrid.com/examples/custom-theme).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-theme">Include View on Top</a>.</p>
+
+</div>
 
 ---
 
@@ -226,6 +230,8 @@ You may use your Component's property in your custom view as the demonstrated be
 
 If you need to customize the pagination, visit the section to learn more about [Custom Pagination Component](/table-features/pagination.html#custom-pagination-component).
 
-:::info 🌎 Online Demo
-See an interactive example of [Include View on Bottom](https://demo.livewire-powergrid.com/examples/custom-theme).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-theme">Include View on Bottom</a>.</p>
+
+</div>

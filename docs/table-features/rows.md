@@ -28,9 +28,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Checkboxes](https://demo.livewire-powergrid.com/examples/input-checkbox) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-checkbox">Checkboxes</a> on a Table.</p>
+
+</div>
 
 ## Radio Buttons
 
@@ -54,9 +56,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Radio Buttons](https://demo.livewire-powergrid.com/examples/input-checkbox) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-checkbox">Radio Buttons</a> on a Table.</p>
+
+</div>
 
 ## Dropdown Menu
 
@@ -102,9 +106,11 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Buttons](https://demo.livewire-powergrid.com/examples/input-button) on a Table.
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-button">Buttons</a> on a Table.</p>
+
+</div>
 
 ## Actions From Blade View
 
@@ -141,9 +147,11 @@ Your view may look something like the example below.
 </div>
 ```
 
-:::info 🌎 Online Demo
-See an interactive example of [Action From View](https://demo.livewire-powergrid.com/examples/actions-from-view).
-:::
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/actions-from-view">Action From View</a>.</p>
+
+</div>
 
 ## Image in Cell
 
