@@ -49,9 +49,9 @@ For reference, the following example utilizes the class `app/Livewire/Tables/Dis
 
 ## Multiple Components Per Page
 
-To display more than one PowerGrid component you must first set a unique `TableName` to each component. Read more about [configuring table name](/table-component/component-configuration.html#table-name).
+To render more than one PowerGrid component on the same page, you must first assign a unique `TableName` to each component. Read more about [configuring table name](/table-component/component-configuration.html#table-name).
 
-In order to have pagination on each component, you may also need to configure an unique "page=" parameter for each component. Read more about [configuring Page Parameter](/pagination.html#url-page-parameter).
+Furthermore, if you have pagination enabled, you might have to configure de "?page=" parameter for each component. Learn more about the [URL Page Parameter](/table-features/pagination.html#url-page-parameter).
 
 Then, you can just include two `<livewire>` tags as demonstrated below.
 
