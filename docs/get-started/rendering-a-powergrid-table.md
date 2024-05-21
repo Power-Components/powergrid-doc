@@ -47,6 +47,22 @@ For reference, the following example utilizes the class `app/Livewire/Tables/Dis
 <livewire:tables.dish-table /> // [!code ++]
 ```
 
+## Multiple Components Per Page
+
+To display more than one PowerGrid component you must first set a unique `TableName` to each component. Read more about [configuring table name](/table-component/component-configuration.html#table-name).
+
+In order to have pagination on each component, you may also need to configure an unique "page=" parameter for each component. Read more about [configuring Page Parameter](/pagination.html#url-page-parameter).
+
+Then, you can just include two `<livewire>` tags as demonstrated below.
+
+```php
+// resources/views/my-view.blade.php
+
+<livewire:dish-table/> // [!code ++:3]
+
+<livewire:user-table>
+```
+
 ## Component Attributes
 
 ### Passing Attributes
@@ -60,7 +76,7 @@ In the next example, we are passing the [`tableName`](/table-component/component
 
 <livewire:dish-table tableName="DishTable" /> // [!code ++:3]
 
-<livewire:dish-table tableName="UserTable" />
+<livewire:tuser-table tableName="UserTable" />
 ```
 
 ### Passing Custom Attributes
