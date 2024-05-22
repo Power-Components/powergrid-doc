@@ -76,7 +76,7 @@ In the next example, we are passing the [`tableName`](/table-component/component
 
 <livewire:dish-table tableName="DishTable" /> // [!code ++:3]
 
-<livewire:tuser-table tableName="UserTable" />
+<livewire:user-table tableName="UserTable" />
 ```
 
 ### Passing Custom Attributes
