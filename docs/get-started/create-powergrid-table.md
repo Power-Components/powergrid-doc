@@ -146,3 +146,12 @@ You may use the flag `--template` passing the full location of your stub when cr
 ```bash
 php artisan powergrid:create --template=stubs/custom-component.stub
 ```
+
+### Custom Namespace
+
+See [Custom Namespace](/get-started/powergrid-configuration.html#custom-namespace).
+
+### Custom Model Location
+
+See [Auto-Discover Models](/get-started/powergrid-configuration.html#auto-discover-models).
+
