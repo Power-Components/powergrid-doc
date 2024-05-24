@@ -118,6 +118,7 @@ export default defineConfig({
         text: '🛠️ Expanding PowerGrid',
         items: [
           { text: 'Perfomance Monitoring', link: '/expanding-powergrid/performance-monitoring' },
+          { text: 'Publish Views', link: '/expanding-powergrid/publish-views' },
           { text: 'Custom Theme', link: '/expanding-powergrid/custom-theme' },
         ],
         collapsed: false
