@@ -44,16 +44,6 @@ php artisan vendor:publish --tag=livewire-powergrid-config
 
 This subsection covers optional installations steps.
 
-These steps are only necessary if you wish to customize PowerGrid resources.
-
-### Publish Views
-
-To publish Views, run the following command:
-
-```bash
-php artisan vendor:publish --tag=livewire-powergrid-views
-```
-
 ### Publish Translations
 
 To publish PowerGrid translation (language) files, run the following command:
