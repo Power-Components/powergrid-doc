@@ -80,7 +80,7 @@ Buttons are registered inside the method [`actions()`](/table-component/componen
 
 Inside this method, you have access to the (`Model`|`array`) `$row` variable containing the rendered row's data.
 
-To add buttons to each row, you must add a call to [Buttons::class](/table-features/buttons.html), and proceed chaining as many [Button methods](/table-features/buttons.html#button-methods) as you need.
+To add buttons to each row, you must add a call to [Buttons::class](/table-features/button-class.html), and proceed chaining as many [Button methods](/table-features/button-class.html#button-methods) as you need.
 
 In addition, make sure you have added an [Action Column](/table-features/columns.html#action-column) to your Component.
 
