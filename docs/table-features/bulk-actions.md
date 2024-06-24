@@ -69,6 +69,10 @@ class DishTable extends PowerGridComponent
     public function bulkDelete(): void
     {
         $this->js('alert(window.pgBulkActions.get(\'' . $this->tableName . '\'))');
+        if($this->checkboxValues){
+            YouModel::destroy($this->checkboxValues);
+            $this->js('window.pgBulkActions.clearAll()'); // clear the count on the interface.
+        }
     }
 }
 ```
