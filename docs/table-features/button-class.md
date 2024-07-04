@@ -356,6 +356,77 @@ is equivalent to:
 <button id="view-1"> // 1 - is the value set in the current row using primaryKey = id.
 ```
 
+---
+
+### confirm()
+
+Displays a confirmation dialog before executing the event.
+
+| Parameter                | Description   |
+|--------------------------|---------------|
+| (string) $message        | message       |
+
+Example:
+
+```php
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('edit')  
+    ->confirm('Are you sure you want to edit?'),
+```
+is equivalent to:
+
+```html
+<div>
+    <button wire:confirm="Are you sure you want to edit?">
+</div>
+```
+
+::: tip 💡 TIP
+Read more about [Livewire Confirm](https://livewire.laravel.com/docs/wire-confirm) in the Livewire documentation.
+:::
+
+
+
+---
+
+### confirmPrompt()
+
+Displays a confirmation prompt before executing the event, allowing the user to enter an additional confirmation value.
+
+| Parameter                | Description   |
+|--------------------------|---------------|
+| (string) $message        | message       |
+| (string) $confirmValue   | confirmation value |
+
+Example:
+
+```php
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('edit')
+    ->confirmPrompt('Are you sure you want to edit?', 'EDIT'),
+
+```
+is equivalent to:
+
+```html
+<div>
+    <button wire:confirm.prompt="Are you sure you want to edit? |EDIT">
+</div>
+```
+
+---
+::: warning ⚠️ WARNING
+
+**It does not work alone.**
+
+Livewire makes this easy to do by adding wire:confirm in addition to any action (wire:click, wire:submit, etc.).
+Read more about [Livewire Confirm](https://livewire.laravel.com/docs/wire-confirm) in the Livewire documentation.
+:::
+
+
+
 ## Conditional Formatting
 
 See [Conditional Rules](/table-features/conditional-rules.html).
