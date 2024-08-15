@@ -109,8 +109,9 @@ module.exports = {
 ```
 
 ::: tip 💡 TIP
- Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).
+ Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).  
  If you are already using Tailwind version 3 or greater JIT is enabled by default. So you need to add these files to your `tailwind.config.js` because otherwise the styles won't apply correctly.
+ [Read more here](https://tailwindcss.com/docs/upgrade-guide#migrating-to-the-jit-engine)
 :::
 
 #### Presets
