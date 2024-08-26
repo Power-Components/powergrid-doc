@@ -79,6 +79,8 @@ Button::add('delete-dish')
     ->class('bg-red-500 text-white'),
 ```
 
+#### Custom attributes
+
 * You can also set attributes for that icon. By default, `w-5 text-red-600` will be added to all icons.
 
 `config/livewire-powergrid.php`
@@ -98,7 +100,7 @@ Button::add('delete-dish')
     ->class('bg-red-500 text-white'),
 ```
 
- * allowed
+#### allowed icons
 
 * You may want to define some icons that will be allowed (this may help to consume less memory)
 
