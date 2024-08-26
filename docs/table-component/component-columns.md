@@ -31,7 +31,7 @@ Example:
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Column;// [!code ++]
 
@@ -75,7 +75,7 @@ Example:
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Column;// [!code ++]
 

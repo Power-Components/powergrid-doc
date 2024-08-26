@@ -13,7 +13,7 @@ The following items have been deprecated in this release:
 * Remove `Button::make()->method()` method.
 * Remove `Button::make()->target()` method (now in route method).
 * Remove `Button::make()->bladeComponent()` available only for `actionRules()`.
-* remove `Button::make()->render` You can work around this by using `bladeComponent` in `actionRules()` method.
+* Remove `Button::make()->render()` You can work around this by using `bladeComponent` in `actionRules()` method.
 
 ---
 
@@ -31,15 +31,15 @@ The following items have been deprecated in this release:
 
 **Removed**
 
-* `cache_data`
+* `cache_data` - Cache forever for collections.
+* `check_version` - Enable release notification in powergrid:create command.
 
 ---
 
 ### Changes
 
-Button::route
-Button macros
-Button::toggleDetail() button needs row id
+`Button::route` needs 3rd parameters called target (_self, _blank)
+`Button::toggleDetail()` button needs row id
 
 ### Improves & Features
 

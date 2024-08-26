@@ -249,7 +249,7 @@ If you are rendering a Blade component via a [Custom Fields](/table-component/da
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use Illuminate\Support\Facades\Blade;

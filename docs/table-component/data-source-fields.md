@@ -20,7 +20,7 @@ The next example adds the fields `id`, `name`, and `price`, bringing data direct
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\PowerGrid;// [!code ++:2]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;// [!code ++:2]
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 class DishTable extends PowerGridComponent
@@ -57,7 +57,7 @@ In the next example, in addition to the database `name` and `price` fields, the 
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;// [!code ++:2]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;// [!code ++:2]
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 public function fields(): PowerGridFields
@@ -92,7 +92,7 @@ This example adds a new column `created_at_formatted` to display the formatted `
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use Illuminate\Support\Carbon;// [!code ++]
 
@@ -117,7 +117,7 @@ This example adds a new column `price_in_eur` to display the formatted `price`.
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use Illuminate\Support\Number;// [!code ++]
 
@@ -142,7 +142,7 @@ This example adds a new column `in_stock_label` to return yes/no instead of true
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 public function fields(): PowerGridFields
@@ -166,7 +166,7 @@ This example adds a `description_excerpt` with only the first 8 words of the `de
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 public function fields(): PowerGridFields
@@ -196,7 +196,7 @@ This example adds a `search_dish_name` column with a link to search for a dish n
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 public function fields(): PowerGridFields
@@ -237,7 +237,7 @@ In the example below, we have created a [Blade component](https://laravel.com/do
 ```php [DishTable.php]
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
  public function fields(): PowerGridFields
@@ -324,7 +324,7 @@ This example demonstrates how to display images within a cell.
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 
 public function fields(): PowerGridFields
@@ -354,7 +354,7 @@ You can return a Blade Component as demonstrated below:
 ```php
 // app/Livewire/DishTable.php
 
-use PowerComponents\LivewirePowerGrid\PowerGrid;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use Illuminate\Support\Facades\Blade; // [!code ++]
 
