@@ -59,14 +59,61 @@ Button::add('create-dish')
 
 ### icon()
 
-todo
+For the icons to be rendered, you need to define in which location (path) PowerGrid should look for them.
+Define in `paths` between key and value, where the key should be used in the Button class, followed by the name of the blade file:
 
-| Parameter               | Description |
-|-------------------------|-------------|
-| (string) $icon          | ...         |
-| (array) $iconAttributes | ...         |
+`config/livewire-powergrid.php`
+```php{3,4}
+    'icon_resources' => [
+        'paths' => [
+            'default' => 'resources/views/components/icons',
+          //'solid'   => 'vendor/wireui/heroicons/src/views/components/solid',
+```
 
----
+```php{4}
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('delete-dish')  
+    ->icon('default-trash') // 'default' => 'resources/views/components/icons/trash.blade.php',
+  //->icon('solid-trash') // 'solid' => 'resources/views/components/icons/solid/trash.blade.php',
+    ->class('bg-red-500 text-white'),
+```
+
+* You can also set attributes for that icon. By default, `w-5 text-red-600` will be added to all icons.
+
+`config/livewire-powergrid.php`
+```php{3}
+    'icon_resources' => [
+        // ...
+        'attributes' => ['class' => 'w-5 text-red-600'],
+```
+
+* To add other attributes to the icons, you should do this:
+
+```php{4}
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('delete-dish')  
+    ->icon('default-trash', ['id' => 'my-custom-icon-id', 'class' => 'font-bold'])
+    ->class('bg-red-500 text-white'),
+```
+
+ * allowed
+
+* You may want to define some icons that will be allowed (this may help to consume less memory)
+
+`config/livewire-powergrid.php`
+```php
+    'icon_resources' => [
+        // ...
+        'allowed' => ['pencil', 'eye'],
+```
+
+
+| Parameter               | Description                                      |
+|-------------------------|--------------------------------------------------|
+| (string) $icon          | Name of the icon that will be loaded from memory |
+| (array) $iconAttributes | Icon HTML attributes                             |
 
 ---
 
@@ -88,6 +135,34 @@ Button::add('create-dish')
     ->class('bg-indigo-500 text-white'),
 ```
 
+---
+
+### attributes()
+
+* Define the HTML attributes that should be loaded in the action
+
+::: info
+💡Under the hood, PowerGrid renders using Javascript instead of PHP
+:::
+
+```php
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('create-dish')  
+    ->slot('Create a dish')
+    ->attributes([
+        'id' => 'my-custom-id',
+        'class' => 'another-class'
+    ]),
+```
+
+The code above is equivalent to:
+
+```html{2}
+<div>
+    <button id="my-custom-id" class="another-class">Create a dish</button>
+</div>
+```
 ---
 
 ### dispatch()
@@ -387,7 +462,6 @@ use PowerComponents\LivewirePowerGrid\Button;
 
 Button::add('new-modal')
     ->slot('New window')
-    ->
     ->class('bg-gray-300')
     ->navigate(),
 ```
