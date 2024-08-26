@@ -428,28 +428,3 @@ public function fields(): PowerGridFields
 Sometimes, it may be necessary to omit certain formatted Columns when exporting data but still show them in the grid. This might be the case with images or HTML links.
 
 To remove these Columns, see [Exclude Columns From Exporting](/table-features/exporting-data.html#exclude-columns-from-exporting).
-
-## addColumns() (Deprecated)
-
-The method `PowerGridFields::addColumns()` is deprecated, and it will be removed in PowerGrid 6.0.
-
-Use the [PowerGridFields::fields()](/table-component/data-source-fields.html#adding-fields) method instead.
-
-```php
-use PowerComponents\LivewirePowerGrid\PowerGrid;
-use PowerComponents\LivewirePowerGrid\PowerGridColumns;
-
-//deprecated
-public function addColumns(): PowerGridColumns
-{
-    return PowerGrid::columns()
-        ->addColumn('id')
-        ->addColumn('name')
-        ->addColumn('name_uppercase', function ($model) {
-            return e(strtoupper($model->name));
-        })
-        ->addColumn('price_with_discount', function ($dish) {
-            return floatval($dish->price - ($dish->price * 0.1));
-        });
-}
-```

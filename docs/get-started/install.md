@@ -8,9 +8,9 @@ Here you will find:
 
 ## Requirements
 
-- PHP 8.1+
+- PHP 8.2+
 - [Laravel 10+](https://laravel.com/docs/installation)
-- [Livewire 3.0+](https://livewire.laravel.com)
+- [Livewire 3.5.4+](https://livewire.laravel.com)
 - [Tailwind v3](https://tailwindcss.com/docs/guides/laravel) or [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
 ## Installation

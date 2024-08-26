@@ -35,8 +35,12 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       {
-        text: '5.x',
+        text: '6.x',
         items: [
+          {
+            text: '5.x',
+            link: 'https://github.com/Power-Components/powergrid-doc/tree/5x/docs'
+          },
           {
             text: '4.x',
             link: 'https://github.com/Power-Components/powergrid-doc/tree/4x/docs'

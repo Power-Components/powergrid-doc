@@ -208,30 +208,19 @@ Example:
 
 ### New Release Notification
 
-When you create a new Table, PowerGrid can let you know when a new release is available.
+PowerGrid can let you know when a new release is available.
 
-To enable this feature, follow the steps below.
-
-5.1 Require composer as a developer dependency, running:
+Require composer as a developer dependency, running:
 
  ```bash
  composer require composer/composer --dev
  ```
 
-5.2 Change `check_version` key to `true` inside the file `config/livewire-powergrid.php`.
+Run `powergrid:update`
 
-```php{9}
-// config/livewire-powergrid.php
-
-/*
-|--------------------------------------------------------------------------
-| New Release Notification
-|--------------------------------------------------------------------------
-*/
-
-'check_version' => false,// [!code --]
-'check_version' => true,// [!code ++]
-```
+ ```bash
+ php artisan powergrid:update
+ ```
 
 ## Advanced Configuration
 

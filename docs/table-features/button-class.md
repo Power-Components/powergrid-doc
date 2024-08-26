@@ -57,6 +57,19 @@ Button::add('create-dish')
 
 ---
 
+### icon()
+
+todo
+
+| Parameter               | Description |
+|-------------------------|-------------|
+| (string) $icon          | ...         |
+| (array) $iconAttributes | ...         |
+
+---
+
+---
+
 ### class()
 
 Sets the button's CSS class attribute.
@@ -168,35 +181,15 @@ Button::add('view')
 
 ---
 
-### method()
-
-Sets the Action HTTP method.
-
-| Parameter        | Description                                |
-|------------------|--------------------------------------------|
-| (string) $method | Valid methods: `get`/`post`/`put`/`delete` |
-
-Example:
-
-```php
-use PowerComponents\LivewirePowerGrid\Button;
-
-Button::add('view')
-    ->slot('View')
-    ->class('btn btn-primary')
-    ->method('delete'),
-```
-
----
-
 ### route()
 
 Sets the Action route.
 
-| Parameter       | Description         |
-|-----------------|---------------------|
-| (string) $route | Valid Laravel route |
-| (array) $params | Route parameters    |
+| Parameter        | Description         |
+|------------------|---------------------|
+| (string) $route  | Valid Laravel route |
+| (array) $params  | Route parameters    |
+| (string) $target | HTML href target    |
 
 Example:
 
@@ -206,31 +199,11 @@ use PowerComponents\LivewirePowerGrid\Button;
 Button::add('view')
     ->slot('View')
     ->class('btn btn-primary')
-    ->route('dish.edit', ['dish' => $row->id]),
+    ->route('dish.edit', ['dish' => $row->id], '_blank'),
 ```
 
 ---
 
-### target()
-
-Sets the target for the specified route.
-
-| Parameter        | Default          | Default |
-|------------------|------------------|---------|
-| (string) $target | HTML href target | _blank  |
-
-Example:
-
-```php
-use PowerComponents\LivewirePowerGrid\Button;
-
-Button::add('view')
-    ->slot('View')
-    ->class('btn btn-primary')
-    ->target('_self'),
-```
-
----
 
 ### can()
 
@@ -285,48 +258,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 
 Button::add('toggle-detail')
     ->slot('Toggle Detail')
-    ->toggleDetail(),
-```
-
-### bladeComponent()
-
-Allows you to add a custom component overriding all default behavior
-
-| Parameter           | Default                     |
-|---------------------|-----------------------------|
-| (string) $component | View component path (blade) |
-| (array) $params     | Blade parameters            |
-
-Example:
-
-```php
-use PowerComponents\LivewirePowerGrid\Button;
-
-Button::add('my-custom-button')
-    ->bladeComponent('my-custom-button', ['dishId' => $row->id]),
-```
-
----
-
-### render()
-
-Renders HTML.
-
-| Parameter          | Default         |
-|--------------------|-----------------|
-| (Closure) $closure | Closure (Model) |
-
-Example:
-
-```php
-use PowerComponents\LivewirePowerGrid\Button;
-
-Button::add('custom')
-     ->render(function ($dish) {
-        return Blade::render(<<<HTML
-<x-button.circle primary icon="pencil" wire:click="editStock('$dish->id')" />
-HTML);
-}),     
+    ->toggleDetail($row->id),
 ```
 
 ---
@@ -387,7 +319,6 @@ Read more about [Livewire Confirm](https://livewire.laravel.com/docs/wire-confir
 :::
 
 
-
 ---
 
 ### confirmPrompt()
@@ -425,8 +356,6 @@ Livewire makes this easy to do by adding wire:confirm in addition to any action 
 Read more about [Livewire Confirm](https://livewire.laravel.com/docs/wire-confirm) in the Livewire documentation.
 :::
 
-
-
 ## Conditional Formatting
 
 See [Conditional Rules](/table-features/conditional-rules.html).
@@ -435,15 +364,17 @@ See [Conditional Rules](/table-features/conditional-rules.html).
 
 You can extend the `Button::class` via Laravel's [Macroable](https://laravel.com/api/11.x/Illuminate/Support/Traits/Macroable.html) feature.
 
-The class a has built-in `dynamicProperties` variable which can be used to store custom method parameters.
+The class a has built-in `attributes` variable which can be used to store custom method parameters.
 
-The following code adds a custom `icon()` method to the `Button` class.
+The following code adds a custom `navigate()` method to the `Button` class.
 
 ```php
 use PowerComponents\LivewirePowerGrid\Button;
 
-Button::macro('icon', function (string $name) {
-    $this->dynamicProperties['icon'] = $name;
+Button::macro('navigate', function () {
+    $this->attributes([
+        'wire:navigate' => true
+    ]);
 
     return $this;
 });
@@ -456,7 +387,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 
 Button::add('new-modal')
     ->slot('New window')
+    ->
     ->class('bg-gray-300')
-    ->icon('fa-window')
-    ->openModal('new', []),
+    ->navigate(),
 ```

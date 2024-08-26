@@ -53,8 +53,8 @@ class DishTable extends PowerGridComponent
                 ->field('price'),
 
             Column::add()
-            ->title('Discount Price')
-            ->field('price_with_discount', 'price'),
+                ->title('Discount Price')
+                ->field('price_with_discount', 'price'),
         ];
     }
 }
@@ -153,6 +153,10 @@ public function columns(): array
 ## Column Configuration Methods
 
 The methods below can be chained to the `PowerComponents\LivewirePowerGrid\Column` class.
+
+::: tip
+You can also create custom methods using macro.
+:::
 
 ### title()
 
@@ -267,7 +271,7 @@ The next example illustrates a case where allowing to filter by date as "d/m/Y".
 
 ```php
     Column::make('Production date', 'produced_at_formatted', 'produced_at')
-        ->searchableRaw('DATE_FORMAT(dishes.produced_at, "%d/%m/%Y")'), // [!code highlight:1]
+        ->searchableRaw('DATE_FORMAT(dishes.produced_at, "%d/%m/%Y") like ?'), // [!code highlight:1]
 ```
 
 <div class="onlinedemo custom-block">
@@ -474,3 +478,37 @@ Column::make('Dish Availability', 'availability')
 ```
 
 ---
+
+## Custom Macros
+
+* If you need to add different query logic when searching for example, you can create a new macro (let's assume `searchableDateFormat`):
+
+`AppServiceProvider`, boot method.
+```php
+Column::macro('searchableDateFormat', function () {
+      $this->rawQueries[] = [
+          'method'   => 'orWhereRaw',
+          'sql'      => 'DATE_FORMAT('.$this->dataField.', "%d/%m/%Y") like ?',
+          'bindings' => ['%{search}%'],
+          'enabled'  => function (PowerGridComponent $component) {
+              return filled($component->search);
+          },
+      ];
+
+      return $this;
+});
+```
+
+Now, in any PowerGrid table component:
+```php
+ Column::make('Created At', 'created_at')
+     ->searchableDateFormat(),
+```
+
+| Key       | Description                                                                                                                                                                      |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `method`  | The method used to add a raw query to the query builder, in this case, `orWhereRaw`.                                                                                              |
+| `sql`     | The SQL query that will be executed. It performs a case-insensitive search on the specified column of the table.                                                                  |
+| `bindings`| An array containing a closure that processes the search term by converting it to lowercase and wrapping it with wildcard characters (`%`). The processed search term is bound to the query. |
+| `enabled` | A closure that determines whether the search should be applied, based on whether the search term is filled (`filled`).    
+

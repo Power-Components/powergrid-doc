@@ -6,165 +6,100 @@
 
 The following items have been deprecated in this release:
 
-* Laravel 9
-* Livewire 2
-* Read a dynamic property within a parameter on buttons
-* Column::clickToCopy
-* ActionButton trait
-* `PowerGrid::eloquent()` changed to `PowerGrid::columns()`
-* PowerGrid demo command (`php artisan powergrid:demo`)
-* Rule::caption changed to Rule::slot
+* Using `dynamicProperties` in Button macros.
+* Remove support for `openspout/openspout` v3.
+* Remove `Cache::make()->forever()` method.
+* Cache `rememberForever` via config `cache_data` key.
+* Remove `Button::make()->method()` method.
+* Remove `Button::make()->target()` method (now in route method).
+* Remove `Button::make()->bladeComponent()` available only for `actionRules()`.
+* remove `Button::make()->render` You can work around this by using `bladeComponent` in `actionRules()` method.
 
 ---
+
+### New Properties
+
+* `$supportModel` (default: true) to control model support. By default, forceFill on the model loads all model attributes.
+* `$withoutResourcesActions`: Disable process of icons in javascript memory
+
+### Config Keys
+
+**Added**:
+
+- `cache_ttl`: (default: ) Value in seconds to keep some PowerGrid actions in the cache, such as actions and rules.
+- `icon_resources`: Specifies resources settings for load SVG icons in the Javascript window.
+
+**Removed**
+
+* `cache_data`
+
+---
+
+### Changes
+
+Button::route
+Button macros
+Button::toggleDetail() button needs row id
 
 ### Improves & Features
 
-* The "_actions_" and "_actionRules_" methods will be row-scoped (Model, array).
-  * E.g.,
-  ```php
-  public function actions()
-  {
-    // 
-  }
-  
-  public function actions($row) // Model|array $row, // [!code focus:6]
-  { 
-    // 
-  }
-  ```
-  
-* Column "`Column::action()`" is required
-* All methods on buttons are now [macros](https://laravel.com/api/10.x/Illuminate/Support/Traits/Macroable.html). See this example:
-
-::: code-group
-
-```php{7-20} [AppServiceProvider.php]
-use PowerComponents\LivewirePowerGrid\Button;
-  
-class AppServiceProvider extends ServiceProvider
-{
-      public function boot(): void
-      {
-          Button::macro('icon', function (string $icon, array $attributes = []) {
-              $this->dynamicProperties['icon'] = [
-                  'component' => 'a',
-              ];
-  
-              $attributes = new ComponentAttributeBag($attributes);
-              $attributes = $attributes->merge(['class' => 'w-5 h-5'])->toHtml();
-  
-              $this->slot = Blade::render(<<<HTML
-  <x-icon name="$icon" $attributes />
-  HTML, ['attributes' => $attributes]);
-  
-              return $this;
-          });
-      }
-}
-```
-
-```php [MyTable.php]
-class MyTable extends PowerGridComponent
-{
-     // ---
-     public function actions($dish): array
-     {
-         return [
-            Button::add('edit')
-                ->icon(icon: 'pencil', attributes: ['w-5 h-5']) // [!code focus]
-                 ->route('advices.edit', ['advice' => $dish->id]),
-         ];
-     }
-}
-```
-
-:::
-
-| key       | value                     |
-|-----------|---------------------------|
-| component | a, span, button, div, etc |
-| attribute | html attribute            |
-| value     | html attribute value      |
-
---- 
-
-* Performance improvement and it is now possible to customize `withSum, withCount, withMin, withMax, withAVG`
+**Refactored Actions Rendering**
 
 ::: info
-A new syntax has been added to allow for summary formation
+* Action rendering has been refactored for better performance and flexibility. 
+* Support for browser-based rendering has also been added to avoid re-rendering. 
+* The cache is cleared on page refresh.
 :::
 
-```php
-      public function summarizeFormat(): array
-      {
-          return [
-              'price.{sum,avg}' => function ($value) {
-                  return (new \NumberFormatter('en_US', \NumberFormatter::CURRENCY))
-                      ->formatCurrency($value, 'USD');
-              },
-              'price.{count,min,max}' => fn ($value) => $value,
-          ];
-      }
+**💡How it works**:
+
+PowerGrid will load SVG icons (using Blade) at the beginning of the request and store them in JavaScript memory (window). This is configured via the config file (`icon_resources`). JavaScript-based action processing
+
+Actions will be processed using JavaScript instead of PHP, reducing PHP memory usage and minimizing Livewire's payload. Reduced PHP memory usage
+
+By processing actions with JavaScript, unnecessary PHP memory usage is eliminated, resulting in more efficient performance.
+
+---
+
+**Example**:
+
+When adding the icon paths, PowerGrid will keep them saved in javascript to be used in the actions.
+Suppose we are using icons provided by [wireui](https://wireui.dev/), and we want to use our actions, like this:
+
+```php [MyTable.php]
+Button::make('edit')
+    ->icon('solid-pencil', [
+       'x-tooltip' => __('Edit'),
+    ])
+    ->class('btn-icon-secondary')
+    ->dispatch('save', [
+         'payload' => ['key' => $row->id],
+    ]),
 ```
 
----
-  
-* Added `filterRelation()` method to `Filter::inputText()`
-  ```php{5}
-  public function filters(): array
-  {
-     return [
-         Filter::inputText('category_name')
-            ->filterRelation('category', 'name')
-    ];
-  }
-  ```
-  
----
+So, our setup will look like this:
 
-* Added closure (`\Closure`) to datasource and `depends` method to check filter dependencies (`Filter::select`)
+`config/livewire-powergrid.php`
+```php
+    'icon_resources' => [
+        'paths' => [
+            'outline' => 'vendor/wireui/wireui/resources/views/components/icons/outline',
+            'solid'   => 'vendor/wireui/wireui/resources/views/components/icons/solid',
+        ],
 
-::: info 
-In this case below, when filtering a category, the value will automatically be sent to the chef filter.
-::: 
+        'allowed' => [
+            'cog',
+            'pencil',
+            'arrow-right',
+        ],
 
-  ```php{10,11-18} 
-  public function filters()
-  {
-       return [
-            Filter::select('category_name', 'category_id')
-                ->dataSource(Category::all())
-                ->optionLabel('name')
-                ->optionValue('id'),
+        'attributes' => ['class' => 'size-5'],
+    ],
+```
 
-            Filter::select('chef_name', 'chef_id')
-                ->depends(['category_id'])
-                ->dataSource(fn ($depends) => Chef::query()
-                    ->when(isset($depends['category_id']),
-                        fn (Builder $query) => $query->whereRelation('categories',
-                            fn (Builder $builder) => $builder->where('id', $depends['category_id'])
-                        )
-                    )
-                    ->get()
-                )
-                ->optionLabel('name')
-                ->optionValue('id'),
-      ];
-  }
-  ```
-  
----
+| icon_resources | list of icons (SVG) that will be loaded into javascript memory              |
+|----------------|-----------------------------------------------------------------------------|
+| paths          | path containing the icons                                                   |
+| allowed        | Only the icons defined here will be processed. If empty, all will be loaded |
+| attributes     | attributes that will be added by default to the SVG                         |
 
-* Added `Rule::loop` method to interact with `$loop` blade variable
-  ```php{5-7}
-  public function actionRules($row): array
-  {
-       return [
-           Rule::rows()
-               ->loop(function ($loop) {
-                   return $loop->index % 2;
-               })
-               ->setAttribute('class', '!bg-gunmetal-100'),
-       ];
-  }
-  ```
