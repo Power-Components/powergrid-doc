@@ -477,7 +477,77 @@ Column::make('Dish Availability', 'availability')
      ]);
 ```
 
----
+### template
+
+If you want to customize a record in the table without using Blade's processing, you can use the rowTemplate() method. This approach prevents the unnecessary creation of Blade components for the same field across different rows by leveraging JavaScript instead.
+
+**Consider the following example:**
+
+::: info
+For each rendered row in the 'name' field, a view will be created in PHP during the rendering process:
+:::
+
+```php
+public function fields(): PowerGridFields
+{
+    return PowerGrid::fields()
+        ->add('id')
+        ->add('name', function ($row) {
+            return \Blade::render(<<<blade
+                <div id="custom-\$id" class="bg-red-100 py-1 rounded px-3">\$name</div>
+            blade, [
+                'id'   => $row->id,
+                'name' => $row->name,
+            ]);
+        })
+}
+```
+
+We can simplify this by using JavaScript to handle the rendering, as shown below:
+
+```php
+ public function fields(): PowerGridFields
+{
+    return PowerGrid::fields()
+        ->add('id')
+        ->add('name', function ($row) {
+            return [ 
+                'template-name' => [ // [!code ++]
+                    'id'   => $row->id, // [!code ++]
+                    'name' => $row->name, // [!code ++]
+                ], // [!code ++]
+            ];
+        });
+}
+
+public function columns(): array
+{
+    return [
+        Column::make('ID', 'id')
+            ->searchable()
+            ->sortable(),
+
+        Column::make('Name', 'name')
+            ->template() // [!code ++]
+            ->searchable()
+            ->sortable(),
+    ];
+}
+    
+public function rowTemplates(): array // [!code ++]
+{ // [!code ++]
+    return [ // [!code ++]
+        'template-name' => '<div id="custom-{{ id }}" class="bg-red-100 py-1 rounded px-3">{{ name }}</div>', // [!code ++]
+    ]; // [!code ++]
+} // [!code ++]
+```
+
+In this setup, we instruct PowerGrid to look for 'template-name' and replace the HTML with the corresponding template during rendering.
+By doing so, the layout and styling are managed by JavaScript, which dynamically populates the fields with the appropriate data for each row.
+
+This approach reduces the overhead associated with generating Blade views for each row, leading to improved performance and easier maintenance, especially when dealing with large datasets.
+Instead of repeatedly rendering Blade components, the JavaScript-based solution efficiently handles the customization directly in the browser, making your application more responsive and streamlined.
+
 
 ## Custom Macros
 
@@ -510,5 +580,4 @@ Now, in any PowerGrid table component:
 | `method`  | The method used to add a raw query to the query builder, in this case, `orWhereRaw`.                                                                                              |
 | `sql`     | The SQL query that will be executed. It performs a case-insensitive search on the specified column of the table.                                                                  |
 | `bindings`| An array containing a closure that processes the search term by converting it to lowercase and wrapping it with wildcard characters (`%`). The processed search term is bound to the query. |
-| `enabled` | A closure that determines whether the search should be applied, based on whether the search term is filled (`filled`).    
-
+| `enabled` | A closure that determines whether the search should be applied, based on whether the search term is filled (`filled`).
