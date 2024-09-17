@@ -35,7 +35,7 @@ class DishTable extends PowerGridComponent
         return [
             Filter::inputText('name')->placeholder('Dish Name'),
 
-            Filter::boolean('in_stock')->label('In Stock', 'Out of Stock')
+            Filter::boolean('in_stock')->label('In Stock', 'Out of Stock'),
 
             Filter::number('price_BRL', 'price')->thousands('.')
             ->decimal(','),
