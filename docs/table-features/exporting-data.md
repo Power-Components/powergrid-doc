@@ -38,6 +38,7 @@ To configure the feature, proceed to chain to `make()` as many [Data Export Conf
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use PowerComponents\LivewirePowerGrid\Exportable; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
 {
@@ -45,7 +46,7 @@ class DishTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        Exportable::make(fileName: 'my-export-file') // [!code ++]
+        PowerGrid::exportable(fileName: 'my-export-file') // [!code ++]
             ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV), // [!code ++]
     }
 }
@@ -114,6 +115,7 @@ Example:
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
 {
@@ -121,7 +123,7 @@ class DishTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        Exportable::make(fileName: 'my-export-file') // [!code ++:5]
+        PowerGRid::exportable(fileName: 'my-export-file') // [!code ++:5]
             ->columnWidth([
                         2 => 30,
                         4 => 20,
@@ -146,6 +148,7 @@ Example:
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
 {
@@ -153,7 +156,7 @@ class DishTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        Exportable::make(fileName: 'my-export-file') // [!code ++:2]
+        PowerGrid::exportable(fileName: 'my-export-file') // [!code ++:2]
             ->stripe('A6ACCD'),
     }
 }
@@ -203,13 +206,14 @@ Example:
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
 {
     public function setUp()
     {
         return [
-            Exportable::make('export')// [!code ++:6]
+            PowerGrid::exportable('export')// [!code ++:6]
                ->striped()
                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
                ->queues(6)
@@ -300,14 +304,14 @@ class DishTable extends PowerGridComponent
 
 ### make()
 
-Make new `PowerGrid\Exportable` class.
+Make new `\PowerComponents\LivewirePowerGrid\Facades\PowerGrid;` facade.
 
 | Parameters            | Description                                       |
 |-----------------------|---------------------------------------------------|
 | (string) $fileName    | Name of the file that will contain exported data  |
 
 ```php
-Exportable::make(fileName: 'my-export-file'),
+PowerGrid::exportable(fileName: 'my-export-file'),
 ```
 
 ---
@@ -323,7 +327,7 @@ Set the file types available for data exporting.
 Example:
 
 ```php
-Exportable::make('my-export-file')
+PowerGrid::exportable('my-export-file')
     ->type(types: Exportable::TYPE_XLS, Exportable::TYPE_CSV),
 ```
 
@@ -339,7 +343,7 @@ When exporting to CSV, you may configure the `field separator` and `field delimi
 | (string) $delimiter   | CSV Delimiter |
 
 ```php
-Exportable::make('my-export-file')
+PowerGrid::exportable('my-export-file')
     ->type(Exportable::TYPE_CSV)
     ->csvSeparator(separator: '|')
     ->csvDelimiter(delimiter: "'"),

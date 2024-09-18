@@ -22,9 +22,7 @@ use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;// [!code ++]
 ```js
 import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css' // [!code --]
 
-import './../../vendor/power-components/livewire-powergrid/dist/bootstrap5.css' // [!code ++]
-// or 
-import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css' // [!code ++]
+import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css' // [!code ++] // bootstrap5.css
 
 ```
 

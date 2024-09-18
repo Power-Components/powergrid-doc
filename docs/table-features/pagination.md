@@ -18,7 +18,7 @@ On this page, you can find information on customizing pagination settings. You m
 
 PowerGrid includes an easy-to-configure built-in Pagination system.
 
-To enable pagination, you must add a call to the `Footer::make()` class in your Component's `setUp()` method. Then, proceed to chain the `showPerPage()` method to the `Footer` class.
+To enable pagination, you must add a call to the `PowerGrid::footer()` class in your Component's `setUp()` method. Then, proceed to chain the `showPerPage()` method to the `Footer` class.
 
 Example:
 
@@ -26,14 +26,14 @@ Example:
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++]
+            PowerGrid::footer()// [!code ++]
                  ->showPerPage(perPage: 10, perPageValues: [0, 50, 100, 500]), // [!code ++]
         ];
     }
@@ -54,14 +54,14 @@ Example:
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer;   
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++]
+            PowerGrid::footer()// [!code ++]
                  ->showPerPage() // [!code --]
                  ->showRecordCount(mode: 'full'), // [!code ++]
         ];
@@ -89,14 +89,14 @@ Example:
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++]
+            PowerGrid::footer()// [!code ++]
                  ->showRecordCount(mode: 'full'), // [!code ++]
         ];
     }
@@ -117,14 +117,14 @@ The `DishTable` component uses the `dishPage` parameter from the URL, while the 
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++:2]
+            PowerGrid::footer()// [!code ++:2]
                 ->pageName('dishPage'),
         ];
     }
@@ -135,14 +135,14 @@ class DishTable extends PowerGridComponent
 // app/Livewire/UserTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class UserTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++:2]
+            PowerGrid::footer()// [!code ++:2]
                 ->pageName('userPage'),
         ];
     }
@@ -172,14 +172,14 @@ Your custom component will have access to the `$perPage` and `$perPageValues` pr
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Footer; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Footer::make()// [!code ++]
+            PowerGrid::footer()// [!code ++]
                 ->showPerPage(25)// [!code ++]
                 ->showRecordCount()// [!code ++]
                 ->pagination(viewPath: 'components.pagination'),// [!code ++]

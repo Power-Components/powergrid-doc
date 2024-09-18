@@ -250,14 +250,14 @@ Example:
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Responsive;// [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Responsive::make()// [!code ++:2]
+            PowerGrid::responsive()// [!code ++:2]
                 ->fixedColumns('id', 'name', Responsive::ACTIONS_COLUMN_NAME),
         ];
     }
@@ -300,14 +300,14 @@ Example:
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Detail; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-           Detail::make()// [!code ++:4]
+           PowerGrid::detail()// [!code ++:4]
                 ->view('components.detail')
                 ->showCollapseIcon()
                 ->params(['name' => 'Luan', 'custom_data' => 'foobar']),
@@ -330,14 +330,14 @@ By default, PowerGrid will keep the open state of other details when you toggle 
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Detail; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-           Detail::make()// [!code ++:5]
+           PowerGrid::detail()// [!code ++:5]
                 ->view('components.detail')
                 ->params(['name' => 'Luan', 'custom_parameter' => 'foobar'])
                 ->showCollapseIcon()
@@ -365,14 +365,14 @@ In the next example, only 25 lines will be loaded initially. Additional items wi
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Lazy;// [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {
         return [
-            Lazy::make()// [!code ++:2]
+            PowerGrid::lazy()// [!code ++:2]
                 ->rowsPerChildren(25),
         ];
     }
@@ -399,7 +399,7 @@ When calling `toggleDetail` on the child component, `toggleDetailFromChild` will
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Lazy;// [!code ++]
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 use Livewire\Attributes\On;// [!code ++]
 
 class DishTable extends PowerGridComponent
@@ -407,7 +407,7 @@ class DishTable extends PowerGridComponent
         public function setUp(): array
     {
         return [
-            Lazy::make()// [!code ++:3]
+            PowerGrid::lazy()// [!code ++:3]
                 ->rowsPerChildren(25)
                 ->dispatchAfterToggleDetail('toggleDetailFromChild'),
         ];
@@ -491,15 +491,16 @@ The next example demonstrates how to use Cache in your Component, prefixing the 
 // app/Livewire/DishTable.php
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
-use PowerComponents\LivewirePowerGrid\Cache;
+use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
     {        
-        Cache::make()// [!code ++:3]
-          ->forever()
-          ->prefix(auth()->id . '_'),  //result: 1_powergrid-dish-DishTable
+        return [
+           PowerGrid::cache()// [!code ++:3]
+              ->prefix(auth()->id . '_'),  //result: 1_powergrid-dish-DishTable
+        ]
     }
 }
 ```
@@ -511,9 +512,10 @@ use PowerComponents\LivewirePowerGrid\Cache;
 
 public function setUp(): array
 {        
-    Cache::make()// [!code ++:3]
-        ->forever(),
-        ->customTag('my-custom-tag'),
+    return [
+        PowerGrid::cache()// [!code ++:3]
+           ->customTag('my-custom-tag'),
+    ]
 }
 ```
 
@@ -556,7 +558,6 @@ Here you can find all the methods available in the `LivewirePowerGrid\Cache` cla
 
 | Method | Description |
 |-------|--------------|
-| `forever()`   | Creates a cache using the [rememberForever](https://laravel.com/docs/cache#retrieve-store) method. |
 | `ttl()`       | Maximum time in seconds for which the data can be cached. |
 | `customTag()` | Allows you to set a custom cache tag. |
 | `prefix()`    | Sets a prefix for the cache tag. |
