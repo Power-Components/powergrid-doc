@@ -17,6 +17,20 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;// [!code --]
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;// [!code ++]
 ```
 
+## `$tableName` must be unique/required
+
+Sets the `$tableName` as unique and required for all existing tables.
+
+::: info
+New tables will have a pre-configured name via the `powergrid:create` command.
+:::
+
+```php
+public string $tableName = 'default';// [!code --]
+public string $tableName = 'users-table'; // [!code ++]
+// Ex: admin-users-table, dishes, category-table 
+```
+
 ## JS Imports
 
 ```js
