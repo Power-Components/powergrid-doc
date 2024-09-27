@@ -75,7 +75,7 @@ PowerGrid::detail(); // [!code ++]
 
 ```php
 public function template(); // [!code --]
-public function customTemplateClass(); // [!code ++]
+public function customThemeClass(); // [!code ++]
 
 ```
 

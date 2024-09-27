@@ -22,6 +22,12 @@ You can access the results of PowerGrid Performance Measurement using Laravel Ev
 
 To retrieve the PowerGrid Performance Measurement via event, you must add an event listener to `PowerGridPerformanceData::class` in your Application Service Provider.
 
+#### First, add the PowerGrid table component you want to listen to:
+
+```php
+public bool $measurePerformance = true;
+```
+
 You can use several options to access the data sent with the event. The most straightforward approach is using [Laravel Logs](https://laravel.com/docs/logging).
 
 The example below uses [LaraDumps](https://laradumps.dev) to capture and display the event data. LaraDumps is a free, open-source debug tool that helps you assess your Component performance in a convenient way.
