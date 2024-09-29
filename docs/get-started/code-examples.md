@@ -1,6 +1,6 @@
 # Code Examples
 
-The PowerGrid team has prepared various examples demonstrating PowerGrid v5 features in a Livewire 11 application with Livewire v3.
+The PowerGrid team has prepared various examples demonstrating PowerGrid v5 features in a Laravel 11 application with Livewire v3.
 
 These resources are aimed at helping the user get up and running as fast as possible, and also allow everyone to stay up-to-date with the latest PowerGrid features.
 
