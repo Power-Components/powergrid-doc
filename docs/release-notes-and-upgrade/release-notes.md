@@ -46,9 +46,7 @@ The following items have been deprecated in this release:
 ### ✨ Javascript Actions Rendering
 
 ::: info
-* Action rendering has been refactored for better performance and flexibility. 
-* Support for browser-based rendering has also been added to avoid re-rendering. 
-* The cache is cleared on page refresh.
+* Action rendering has been refactored for better performance and flexibility.
 :::
 
 **💡How it works**:
