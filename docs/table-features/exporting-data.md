@@ -37,7 +37,7 @@ To configure the feature, proceed to chain to `make()` as many [Data Export Conf
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
-use PowerComponents\LivewirePowerGrid\Exportable; // [!code ++]
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable; // [!code ++]
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
@@ -114,7 +114,7 @@ Example:
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
-use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
@@ -147,7 +147,7 @@ Example:
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
-use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
@@ -205,7 +205,7 @@ Example:
 
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
-use PowerComponents\LivewirePowerGrid\Exportable;
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 
 class DishTable extends PowerGridComponent
