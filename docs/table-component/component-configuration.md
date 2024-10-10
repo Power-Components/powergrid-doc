@@ -498,7 +498,8 @@ class DishTable extends PowerGridComponent
     public function setUp(): array
     {        
         return [
-           PowerGrid::cache()// [!code ++:3]
+           PowerGrid::cache() // [!code ++:3]
+              ->ttl(60) // [!code ++:3]
               ->prefix(auth()->id . '_'),  //result: 1_powergrid-dish-DishTable
         ]
     }
@@ -514,6 +515,7 @@ public function setUp(): array
 {        
     return [
         PowerGrid::cache()// [!code ++:3]
+           ->ttl(60) // [!code ++:3]
            ->customTag('my-custom-tag'),
     ]
 }
@@ -556,12 +558,12 @@ class Dish extends Model
 
 Here you can find all the methods available in the `LivewirePowerGrid\Cache` class.
 
-| Method | Description |
-|-------|--------------|
-| `ttl()`       | Maximum time in seconds for which the data can be cached. |
-| `customTag()` | Allows you to set a custom cache tag. |
-| `prefix()`    | Sets a prefix for the cache tag. |
-| `disabled()`  | Disables cache. |
+| Method                   | Description                                               |
+|--------------------------|-----------------------------------------------------------|
+| `ttl()`  (required)      | Maximum time in seconds for which the data can be cached. |
+| `customTag()` (optional) | Allows you to set a custom cache tag.                     |
+| `prefix()` (optional)    | Sets a prefix for the cache tag.                          |
+| `disabled()`(optional)   | Disables cache.                                           |
 
 ## Events
 
