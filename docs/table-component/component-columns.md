@@ -93,7 +93,7 @@ class DishTable extends PowerGridComponent
             Column::make(
                     title: 'Discount Price', 
                     field: 'price_with_discount', 
-                    dateField: 'price'
+                    dataField: 'price'
             )
         ];
     }
