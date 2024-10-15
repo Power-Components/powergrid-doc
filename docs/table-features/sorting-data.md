@@ -32,7 +32,7 @@ Occasionally, you may need to sort alphanumeric strings in natural order, just l
 ```plain
 Standard sorting: img1.png, img10.png, img12.png, img2.png
 
-Natural sorting:  img1.png, img2.png, img10.png, img2.png
+Natural sorting:  img1.png, img2.png, img10.png, img12.png
 ```
 
 To enable this feature, you must declare the property `$withSortStringNumber` as `true` in your Components class.
