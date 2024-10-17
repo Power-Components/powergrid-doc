@@ -87,14 +87,14 @@ public function columns(): array
  
             //Displayed in the grid, but not in the exported file // [!code highlight:1]
             Column::make('Name', 'name_html_link', 'name')// [!code ++:3]
-                ->visibleInExport(visible: true)
+                ->visibleInExport(false)
                 ->sortable(),
  
             //Hidden in the grid, but included in the exported file // [!code highlight:1] 
             Column::make('Name', 'name')// [!code ++:4]
                 ->searchable()
                 ->hidden()// [!code ++]
-                ->visibleInExport(visible: true),
+                ->visibleInExport(true),
         ];
     }
 }
