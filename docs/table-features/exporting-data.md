@@ -140,6 +140,8 @@ This feature is only available for XLS files.
 
 You can add stripped row style to your outputted file style using the `striped()` and passing the `$color` with a color hex code.
 
+If used without passing a color, `d0d3d8` is used by default.
+
 Example:
 
 ```php
@@ -157,7 +159,7 @@ class DishTable extends PowerGridComponent
     public function setUp(): array
     {
         PowerGrid::exportable(fileName: 'my-export-file') // [!code ++:2]
-            ->stripe('A6ACCD'),
+            ->striped('A6ACCD'),
     }
 }
 ```
