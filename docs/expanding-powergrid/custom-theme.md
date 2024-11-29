@@ -211,3 +211,24 @@ class DishTable extends PowerGridComponent
         return \App\PowerGridThemes\BigFonts::class;
     }
 ```
+
+## Note for Tailwind CSS
+
+When using Tailwind CSS you may need to add your custom theme file to your Tailwind configuration as a content in order to scan your file for classes during the build process. The following shows an example of how to do so when using the above `app\PowerGridThemes\BigFonts.php` file as an example.
+
+1. Add the following file to your `tailwind.config.js` in the `content` key:
+
+```js
+module.exports = {
+    ...
+
+    content: [
+        '...',
+        './app/PowerGridThemes/BigFonts.php', // replace with path to your custom theme [!code ++]
+    ],
+
+    ...
+}
+```
+
+2. Rebuild your assets using `npm run build` or `npm run dev`.
