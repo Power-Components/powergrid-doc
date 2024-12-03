@@ -15,9 +15,6 @@ hero:
     - theme: alt
       text: ⌨️ Source Code
       link: https://github.com/Power-Components/livewire-powergrid
-    - theme: alt
-      text: ⭐ Interactive Online Demo
-      link: https://demo.livewire-powergrid.com/examples/demo-dish
 
 features:
   - title: Minimal Configuration
