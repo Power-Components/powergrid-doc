@@ -307,7 +307,7 @@ class SelectCategory extends Component
 </div>
 ```
 
-::: code-group
+:::
 
 <div class="onlinedemo custom-block">
   <p class="custom-block-title">🚀 See it in action</p>
