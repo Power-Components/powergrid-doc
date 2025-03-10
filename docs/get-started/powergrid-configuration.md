@@ -50,33 +50,63 @@ Currently, the following features are exclusive to the Tailwind theme.
 * [Filters outside](/table-features/filters.html#filter-position)
 :::
 
-### 3. Import theme Assets
+### 3. Theme
 
 Next, you must import the theme assets in the file `resources/js/app.js`.
 
-### Tailwind
+::: code-group
 
-If your project is configured for Tailwind, add the following code.
 
-```javascript{3}
-// resources/js/app.js
+```css [Tailwind v4]
+/*resources/css/app.css*/
 
-import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css'// [!code ++]
+@import "tailwindcss";
+@import '../../vendor/power-components/livewire-powergrid/resources/css/tailwind4.css';
+
+/** enable dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../app/Livewire/*Table.php';
+@source '../../app/Livewire/**/*Table.php';
+@source '../../vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php';
+@source '../../vendor/power-components/livewire-powergrid/resources/views/**/*.php';
+
+/* Custom theme */
+@theme {
+ --color-pg-primary-50: oklch(0.985 0 0);
+ --color-pg-primary-100: oklch(0.97 0 0);
+ --color-pg-primary-200: oklch(0.922 0 0);
+ --color-pg-primary-300: oklch(0.87 0 0);
+ --color-pg-primary-400: oklch(0.708 0 0);
+ --color-pg-primary-500: oklch(0.556 0 0);
+ --color-pg-primary-600: oklch(0.439 0 0);
+ --color-pg-primary-700: oklch(0.371 0 0);
+ --color-pg-primary-800: oklch(0.269 0 0);
+ --color-pg-primary-900: oklch(0.205 0 0);
+ --color-pg-primary-950: oklch(0.145 0 0);
+}
 ```
 
-### Bootstrap 5
+```css [Tailwind v3]
+/*resources/css/app.css*/
 
-If your project is configured for Bootstrap 5, add the following code.
-
-```javascript{3}
-// resources/js/app.js
-
-import './../../vendor/power-components/livewire-powergrid/dist/bootstrap5.css'// [!code ++]
+@import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css'
 ```
 
-### 4. Tailwind Configuration
+```css [Bootstrap 5+]
+/*resources/css/app.css*/
 
-If you are using Tailwind, you may configure the options below.
+@import './../../vendor/power-components/livewire-powergrid/dist/bootstrap5.css'
+```
+
+:::
+
+
+#### 4. Tailwind v3 Configuration
+
+::: tip
+If you are using Tailwind v3, you may configure the options below. 
+:::
 
 #### Dark Mode
 
