@@ -39,8 +39,10 @@ To use Bootstrap 5, simply change the `theme` key in the `config/livewire-powerg
 |--------------------------------------------------------------------------
 */
 
-'theme' => \PowerComponents\LivewirePowerGrid\Themes\Tailwind::class, // [!code --]
-'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class, // [!code ++]
+'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class, 
+'theme' => \PowerComponents\LivewirePowerGrid\Themes\Tailwind::class, 
+
+'theme' => \PowerComponents\LivewirePowerGrid\Themes\DaisyUI::class, // [!code ++]
 ```
 
 ::: info 📝 NOTE
@@ -48,7 +50,7 @@ Currently, the following features are exclusive to the Tailwind theme.
 
 * [Responsive Table](/table-features/filters.html#filter-position)
 * [Filters outside](/table-features/filters.html#filter-position)
-:::
+  :::
 
 ### 3. Theme
 
@@ -93,19 +95,30 @@ Next, you must import the theme assets in the file `resources/js/app.js`.
 @import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css'
 ```
 
-```css [Bootstrap 5+]
+```css [DaisyUI 5]
 /*resources/css/app.css*/
 
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+
+@source '../../app/Livewire/*Table.php';
+@source '../../app/Livewire/**/*Table.php';
+@source '../../vendor/power-components/livewire-powergrid/src/Themes/DaisyUI.php';
+@source '../../vendor/power-components/livewire-powergrid/resources/views/**/*.php';
+```
+
+```css [Bootstrap 5+]
+/*resources/css/app.css*/
 @import './../../vendor/power-components/livewire-powergrid/dist/bootstrap5.css'
 ```
 
 :::
 
-
 #### 4. Tailwind v3 Configuration
 
 ::: tip
-If you are using Tailwind v3, you may configure the options below. 
+If you are using Tailwind v3, you may configure the options below.
 :::
 
 #### Dark Mode
@@ -139,9 +152,9 @@ module.exports = {
 ```
 
 ::: tip 💡 TIP
- Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).  
- If you are already using Tailwind version 3 or greater JIT is enabled by default. So you need to add these files to your `tailwind.config.js` because otherwise the styles won't apply correctly.
- [Read more here](https://tailwindcss.com/docs/upgrade-guide#migrating-to-the-jit-engine)
+Read more about [Tailwind just-in-time](https://tailwindcss.com/docs/just-in-time-mode).  
+If you are already using Tailwind version 3 or greater JIT is enabled by default. So you need to add these files to your `tailwind.config.js` because otherwise the styles won't apply correctly.
+[Read more here](https://tailwindcss.com/docs/upgrade-guide#migrating-to-the-jit-engine)
 :::
 
 #### Presets
@@ -173,7 +186,7 @@ module.exports = {
 ```
 
 ::: tip 💡 TIP
- Read more about [Tailwind Presets](https://tailwindcss.com/docs/presets).
+Read more about [Tailwind Presets](https://tailwindcss.com/docs/presets).
 :::
 
 ### 5. Bootstrap Configuration
