@@ -303,6 +303,29 @@ Button::add('edit-dish')
 
 ---
 
+### tag()
+
+Change the button tag to a designated HTML element.
+
+| Parameter     | Default                                         | Default |
+|---------------|-------------------------------------------------|---------|
+| (?string) $tag | If `null`, the button tag will default to `button`. | `null`    |
+
+Example:
+
+```php
+use PowerComponents\LivewirePowerGrid\Button;
+
+Button::add('download-recipe')
+    ->slot('Download Recipe')
+    ->tag('a')
+    ->attributes([
+        'href' => url('/destination-to-file.pdf'),
+    ]),
+```
+
+---
+
 ### tooltip()
 
 Sets the button's tooltip (title attribute).
