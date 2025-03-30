@@ -6,6 +6,15 @@ Here you will find:
 
 [[toc]]
 
+## Install OpenSpout
+
+In order to use the export function, you must install the [OpenSpout package](https://github.com/openspout/openspout) v4.x. To do this run the following command in your terminal:
+
+
+```bash
+composer require openspout/openspout:^4.0
+```
+
 ## Enable Data Export
 
 To enable Data Exporting, follow the steps described below.
