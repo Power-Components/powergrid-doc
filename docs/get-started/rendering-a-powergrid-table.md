@@ -47,6 +47,16 @@ For reference, the following example utilizes the class `app/Livewire/Tables/Dis
 <livewire:tables.dish-table /> // [!code ++]
 ```
 
+## From route
+
+If you do not need a Blade view, you can render your Table directly from route :
+
+```php
+// routes/web.php
+
+Route::get('/dish', DishTable::class)->name('dish-table'); // [!code ++]
+```
+
 ## Multiple Components Per Page
 
 To render more than one PowerGrid component on the same page, you must first assign a unique `TableName` to each component. Read more about [configuring table name](/table-component/component-configuration.html#table-name).
