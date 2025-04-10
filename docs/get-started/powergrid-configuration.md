@@ -115,7 +115,7 @@ Next, you must import the theme assets in the file `resources/js/app.js`.
 
 :::
 
-#### 4. Tailwind v3 Configuration
+### 4. Tailwind v3 Configuration
 
 ::: tip
 If you are using Tailwind v3, you may configure the options below.
