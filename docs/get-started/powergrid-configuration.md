@@ -54,7 +54,7 @@ Currently, the following features are exclusive to the Tailwind theme.
 
 ### 3. Theme
 
-Next, you must import the theme assets in the file `resources/js/app.js`.
+Next, you must import the theme assets in the file `resources/css/app.css`.
 
 ::: code-group
 
