@@ -14,7 +14,7 @@ PowerGrid offers a range of features that are readily available:
 
 | Feature                                                            | PowerGrid                               |
 | :--------------------------------------------------------------------- | :-------------------------------------- |
-| Bootstrap 5 or Tailwind CSS 3x                                         | ✅                                      |
+| Bootstrap 5 or Tailwind CSS 3x/4x                                      | ✅                                      |
 | Pagination                                                             | ✅                                      |
 | Column Sorting                                                         | ✅                                      |
 | Filters & Global Search                                                | ✅                                      |
