@@ -44,6 +44,10 @@ Additionally, you may also configure the default items per page by passing the p
 
 To configure the dropdown menu options, pass an array with values as the `$perPageValues` parameter. The value `0` represents the "show all" option.
 
+::: tip 💡 TIP
+If you use a `$perPage` value which is not present in `$perPageValues` array, it will be added automatically.
+:::
+
 ## Disable Pagination
 
 To disable pagination, you can simply remove the method `showPerPage()` from the `Footer::class`.
