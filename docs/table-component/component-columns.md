@@ -477,9 +477,9 @@ Column::make('Dish Availability', 'availability')
      ]);
 ```
 
-### template
+### rowTemplate()
 
-If you want to customize a record in the table without using Blade's processing, you can use the rowTemplate() method. This approach prevents the unnecessary creation of Blade components for the same field across different rows by leveraging JavaScript instead.
+If you want to customize a record in the table without using Blade's processing, you can use the `rowTemplate()` method. This approach prevents the unnecessary creation of Blade components for the same field across different rows by leveraging JavaScript instead.
 
 **Consider the following example:**
 
@@ -548,6 +548,11 @@ By doing so, the layout and styling are managed by JavaScript, which dynamically
 This approach reduces the overhead associated with generating Blade views for each row, leading to improved performance and easier maintenance, especially when dealing with large datasets.
 Instead of repeatedly rendering Blade components, the JavaScript-based solution efficiently handles the customization directly in the browser, making your application more responsive and streamlined.
 
+<div class="onlinedemo custom-block">
+  <p class="custom-block-title">🚀 See it in action</p>
+  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/row-templates">rowTemplate()</a>.</p>
+
+</div>
 
 ## Custom Macros
 
