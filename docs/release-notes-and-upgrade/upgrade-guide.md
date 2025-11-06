@@ -27,8 +27,8 @@ New tables will have a pre-configured name via the `powergrid:create` command.
 
 ```php
 public string $tableName = 'default';// [!code --]
-public string $tableName = 'users-table'; // [!code ++]
-// Ex: admin-users-table, dishes, category-table 
+public string $tableName = 'usersTable'; // [!code ++]
+// Ex: adminUsersTable, dishesTable, categoryTable 
 ```
 
 ## JS Imports

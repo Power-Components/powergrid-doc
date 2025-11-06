@@ -25,7 +25,7 @@ use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 
 class DishTable extends PowerGridComponent
 {
-    public string $tableName = 'DishTable';// [!code ++]
+    public string $tableName = 'dishTable';// [!code ++]
 }
 ````
 
