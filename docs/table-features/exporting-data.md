@@ -8,12 +8,14 @@ Here you will find:
 
 ## Install OpenSpout
 
-In order to use the export function, you must install the [OpenSpout package](https://github.com/openspout/openspout) v4.x. To do this run the following command in your terminal:
+In order to use the export function, you must install the [OpenSpout package](https://github.com/openspout/openspout). PowerGrid supports OpenSpout v4 and v5, depending on your requirements. To do this run the following command in your terminal:
 
 
 ```bash
-composer require openspout/openspout:^4.0
+composer require openspout/openspout:^4.0 # or ^5.0
 ```
+
+In order to use OpenSpout v5, you need to update [Powergrid configuration](/get-started/powergrid-configuration.html#openspout-version).
 
 ## Enable Data Export
 

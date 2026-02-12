@@ -267,6 +267,26 @@ Run `powergrid:update`
  php artisan powergrid:update
  ```
 
+### OpenSpout version
+
+Powergrid uses OpenSpout v4 by default, but v5 supports is available since 6.8. In order to configure the package to use this version, you need to update the published configuration file.
+
+```php
+// config/livewire-powergrid.php
+
+/*
+|--------------------------------------------------------------------------
+| Exportable class
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+'exportable' => [
+    'default' => 'openspout_v4',// [!code --]
+    'default' => 'openspout_v5',// [!code ++]
+```
+
 ## Advanced Configuration
 
 ### Custom Namespace
