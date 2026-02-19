@@ -722,11 +722,138 @@ class DishTable extends PowerGridComponent
 }
 ```
 
+## Default Filter Values
+
+PowerGrid allows you to set default values for filters. These values will be applied automatically when the table loads, filtering the data before displaying it to the user.
+
+### Usage
+
+Use the `default()` method to set a default value for any filter.
+
+```php
+use PowerComponents\LivewirePowerGrid\Facades\Filter;
+
+public function filters(): array
+{
+    return [
+        Filter::select('category_name', 'category_id')
+            ->dataSource(Category::all())
+            ->optionLabel('name')
+            ->optionValue('id')
+            ->default(1), // [!code ++]
+
+        Filter::boolean('in_stock')
+            ->label('In Stock', 'Out of Stock')
+            ->default(true), // [!code ++]
+    ];
+}
+```
+
+---
+
+### Supported Filter Types
+
+The following filter types support default values:
+
+#### Select Filter
+
+```php
+Filter::select('category_name', 'category_id')
+    ->dataSource(Category::all())
+    ->optionLabel('name')
+    ->optionValue('id')
+    ->default(1), // Single value matching the optionValue
+```
+
+#### Multi-Select Filter
+
+```php
+Filter::multiSelect('category_name', 'category_id')
+    ->dataSource(Category::all())
+    ->optionLabel('name')
+    ->optionValue('id')
+    ->default([1, 2, 3]), // Array of values
+```
+
+#### Boolean Filter
+
+```php
+Filter::boolean('in_stock')
+    ->label('In Stock', 'Out of Stock')
+    ->default(true), // true or false
+```
+
+#### Text Filter
+
+```php
+// Simple text value
+Filter::inputText('name')
+    ->default('Pizza'),
+
+// With operator
+Filter::inputText('name')
+    ->default([
+        'value' => 'Pizza',
+        'operator' => 'contains',
+    ]),
+```
+
+#### Number Filter
+
+```php
+// Single value (start)
+Filter::number('price', 'price')
+    ->default(100),
+
+// Range (start and end)
+Filter::number('price', 'price')
+    ->default([
+        'start' => 100,
+        'end' => 500,
+    ]),
+```
+
+#### Datepicker / Datetime Picker Filter
+
+```php
+Filter::datetimepicker('created_at_formatted', 'created_at')
+    ->default([
+        'start' => '2024-01-01 00:00:00',
+        'end' => '2024-12-31 23:59:59',
+    ]),
+
+Filter::datepicker('production_date', 'production_date')
+    ->default([
+        'start' => '2024-01-01',
+        'end' => '2024-12-31',
+    ]),
+```
+
+---
+
+### Default Filter Methods
+
+**default(mixed $value)**
+
+Set the default value for a filter. The value format depends on the filter type:
+
+| Filter Type      | Default Value Format                             |
+|------------------|--------------------------------------------------|
+| `select`         | Single value (matching optionValue)              |
+| `multiSelect`    | Array of values                                  |
+| `boolean`        | `true` or `false`                                |
+| `inputText`      | String or array with `value` and `operator` keys |
+| `number`         | Number or array with `start` and `end` keys      |
+| `datepicker`     | Array with `start` and `end` keys                |
+| `datetimepicker` | Array with `start` and `end` keys                |
+
+---
+
 ## Custom Components
 
 If you need to further customize your filters, you may render Blade Components with the Filter. This is useful when working with external packages like [WireUI](https://livewire-wireui.com/).
 
-To render a component, chain the `component()` method to your Filter passing the Blade View and the attributes you may want to use in your component(E.g, wire:model or classes).
+To render a component, chain the `component()` method to your Filter passing the Blade View and the attributes you may want to use in your component (E.g., wire:model or classes).
 
 To use default PowerGrid attributes, just call `$attributes->getAttributes()` within your component.
 
