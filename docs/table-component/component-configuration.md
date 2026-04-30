@@ -48,7 +48,7 @@ use Illuminate\View\View; // [!code ++]
 class DishTable extends PowerGridComponent
 {
     public function noDataLabel(): string|View // [!code ++:5]
-    { 
+    {
         //return 'We could not find any dish matching your search.';
         return view('dishes.no-data');
     }
@@ -92,7 +92,7 @@ use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 class DishTable extends PowerGridComponent
 {
     public bool $deferLoading = true;// [!code ++:3]
-    
+
     public string $loadingComponent = 'components.my-custom-loading';
 }
 ```
@@ -442,7 +442,7 @@ class DishTable extends PowerGridComponent
     public function setUp(): array
     {
         $this->persist(// [!code ++:4]
-                tableItems: ['columns', 'filters', 'sort'], 
+                tableItems: ['columns', 'filters', 'sort'],
                 prefix: auth()->id
         );
     }
@@ -496,7 +496,7 @@ use PowerComponents\LivewirePowerGrid\Facades\PowerGrid; // [!code ++]
 class DishTable extends PowerGridComponent
 {
     public function setUp(): array
-    {        
+    {
         return [
            PowerGrid::cache() // [!code ++:3]
               ->ttl(60) // [!code ++:3]
@@ -512,7 +512,7 @@ You may also use your own custom tag, as demonstrated below.
 use PowerComponents\LivewirePowerGrid\Cache;
 
 public function setUp(): array
-{        
+{
     return [
         PowerGrid::cache()// [!code ++:3]
            ->ttl(60) // [!code ++:3]
@@ -603,3 +603,106 @@ If you need to add a custom event to your PowerGrid Table, just override the met
         ];
     }
 ```
+
+## Lifecycle Hooks
+
+PowerGrid provides three lifecycle hooks that allow you to modify data at key stages of the rendering pipeline. All hooks are defined with no-op defaults, so they are fully opt-in.
+
+These hooks are intended for advanced use cases where you need to adjust the query, rows, or resolved actions after PowerGrid has applied filters, search, and sorting, but before rendering or dispatching data to the frontend.
+
+### Hook Overview
+
+- `transformQuery(mixed $query): mixed`
+  - Modify the query after filters, search, and sorting are applied, but before pagination executes it. Useful for eager loading, subqueries, withCount(), or any query-level adjustments that depend on the current filter state.
+
+- `transformRows(Collection $rows): Collection`
+  - Modify the paginated rows after the query has executed and data has been transformed, but before it is passed to the view. Runs on the current page's rows only. Ideal for enriching rows with data from external APIs or computed values not available at query time.
+
+- `transformActions(array $actionsByRow, Collection $rows): array`
+  - Modify the resolved actions array before it is dispatched to the frontend via JavaScript. Receives both the `$actionsByRow` dictionary (keyed by primary key) and the current `$rows` collection. Useful for dynamically changing button labels, visibility, or attributes based on data not available during `actions()` resolution.
+
+### Examples
+
+#### transformQuery — add counts and a subselect
+
+```php
+public function transformQuery(mixed $query): mixed
+{
+    return $query
+        ->withCount('comments')
+        ->addSelect(DB::raw('(SELECT COUNT(*) FROM reviews WHERE reviews.dish_id = dishes.id) as review_count'));
+}
+```
+
+#### transformRows — enrich rows with external API data
+
+```php
+use Illuminate\Support\Collection;
+
+public function transformRows(Collection $rows): Collection
+{
+    $ids = $rows->pluck('id')->toArray();
+    $apiData = ExternalApi::getByIds($ids);
+
+    return $rows->map(function ($row) use ($apiData) {
+        $row->external_score = $apiData[$row->id] ?? null;
+
+        return $row;
+    });
+}
+```
+
+#### transformActions — modify action slots per row
+
+```php
+public function transformActions(array $actionsByRow, Collection $rows): array
+{
+    $ids = $rows->pluck('id')->toArray();
+    $counts = NotificationService::getCounts($ids);
+
+    foreach ($actionsByRow as $rowId => &$actions) {
+        foreach ($actions as &$action) {
+            if ($action['action'] === 'notifications') {
+                $count = $counts[$rowId] ?? 0;
+                $action['slot'] = "Notifications <span class=\"badge\">{$count}</span>";
+            }
+        }
+    }
+
+    return $actionsByRow;
+}
+```
+
+### Pipeline Position
+
+```
+datasource()
+    │
+    ▼
+Filters / Search / Sorting
+    │
+    ▼
+★ transformQuery()          ← modify the builder before it hits the DB
+    │
+    ▼
+Pagination
+    │
+    ▼
+Data Transformation
+    │
+    ▼
+★ transformActions()        ← modify resolved actions before JS dispatch
+    │
+    ▼
+★ transformRows()           ← enrich/modify rows before the view
+    │
+    ▼
+Render
+```
+
+### Notes and Best Practices
+
+- Use `transformQuery` for query-level modifications only. Avoid executing heavy per-row logic inside this hook — use `transformRows` for per-row enrichment.
+- `transformRows` runs only on the current page's rows (after pagination). If you need to enrich all rows regardless of pagination, run a separate process or fetch the required data aggregated by IDs.
+- `transformActions` receives the already-resolved actions array. Modify keys such as `slot`, `can`, `attributes`, `icon`, `iconAttributes`, etc., but avoid mutating the structure unexpectedly.
+- Because hooks run on the server side, keep I/O and long-running operations under control; consider caching results when calling external services.
