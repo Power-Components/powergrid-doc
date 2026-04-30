@@ -163,9 +163,82 @@ class DishTable extends PowerGridComponent
 
 </div>
 
+## Custom Search Handler
+
+The global search logic is resolved via the Laravel container, allowing you to replace the default implementation with your own handler.
+
+### SearchHandlerContract
+
+Your custom handler must implement the `SearchHandlerContract` interface:
+
+```php
+namespace PowerComponents\LivewirePowerGrid\DataSource\Processors\Database\Handlers;
+
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
+
+interface SearchHandlerContract
+{
+    public function apply(EloquentBuilder|QueryBuilder $query): EloquentBuilder|QueryBuilder;
+}
+```
+
+### Binding Your Handler
+
+Register your custom handler in a Service Provider (e.g., `AppServiceProvider::register()`):
+
+```php
+use PowerComponents\LivewirePowerGrid\DataSource\Processors\Database\Handlers\SearchHandlerContract;
+use App\Support\Powergrid\Handlers\SearchHandler;
+
+public function register(): void
+{
+    $this->app->bind(SearchHandlerContract::class, function ($app, array $params) {
+        return new SearchHandler($params['component']);
+    });
+}
+```
+
+### Example: Custom Handler
+
+```php
+// app/Support/PowerGrid/Handlers/SearchHandler.php
+
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
+use PowerComponents\LivewirePowerGrid\DataSource\Processors\Database\Handlers\SearchHandlerContract;
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+
+class SearchHandler implements SearchHandlerContract
+{
+    public function __construct(
+        protected readonly PowerGridComponent $component
+    ) {}
+
+    public function apply(EloquentBuilder|QueryBuilder $query): EloquentBuilder|QueryBuilder
+    {
+        $search = $this->component->search;
+
+        if (empty($search)) {
+            return $query;
+        }
+
+        return $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%");
+        });
+    }
+}
+```
+
+::: tip
+The default `SearchHandler` uses `protected` methods, so you can also **extend** it instead of replacing it entirely.
+:::
+
+
 ## Query String
 
-To enable the Query functionality, you must declare a method `queryString()` inside your Table Component class. 
+To enable the Query functionality, you must declare a method `queryString()` inside your Table Component class.
 
 ```php
 // app/Livewire/DishTable.php
