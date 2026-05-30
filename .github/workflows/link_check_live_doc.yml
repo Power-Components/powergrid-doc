@@ -1,0 +1,30 @@
+name: Live broken link check
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * 0'
+
+permissions:
+  contents: read
+
+jobs:
+  crawl_for_broken_links:
+    runs-on: ubuntu-latest
+    name: Broken-Links-Crawler
+    
+    permissions:
+      contents: read
+
+    steps:
+    - name: Checking links
+      uses: ScholliYT/Broken-Links-Crawler-Action@v3
+      with:
+        website_url: 'https://livewire-powergrid.com'
+        exclude_url_prefix: 'mailto:,data:,https://twitter.com,https://x.com'
+        verbose: 'true'
+        max_retry_time: 30
+        max_retries: 5
+        max_depth: -1
+        resolve_before_filtering: 'true'
+        exclude_url_suffix: 'apple-touch-icon.png,logomark2x.png,favicon.ico,favicon-32x32.png,favicon-16x16.png,site.webmanifest'
