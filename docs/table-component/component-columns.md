@@ -371,7 +371,7 @@ Column::make('Dish name', 'name')
 
 ### visibleInExport()
 
-Sometimes, you may want to hide and exclude a specific column when [Exporting Data](/table-component/table-data-export.html). This method gives you control whether the column will be included or not in the file containing the exported data.
+Sometimes, you may want to hide and exclude a specific column when [Exporting Data](/table-features/exporting-data.html). This method gives you control whether the column will be included or not in the file containing the exported data.
 
 | Parameter       | Description                                                                        |
 |-----------------|------------------------------------------------------------------------------------|

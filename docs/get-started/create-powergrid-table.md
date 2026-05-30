@@ -8,7 +8,7 @@ Here you will find:
 
 ## Introduction
 
-Now that you've finished the PowerGrid [Essential Configuration](get-started/powergrid-configuration.html#essential-configuration), it's time create your very first Table Component!
+Now that you've finished the PowerGrid [Essential Configuration](/get-started/powergrid-configuration.html#essential-configuration), it's time create your very first Table Component!
 
 ## Create a Table
 
