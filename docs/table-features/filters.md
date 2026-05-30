@@ -96,7 +96,7 @@ Here you can find PowerGrid Standard Filters.
 * [Text Filter](/table-features/filters.html#text-filter)
 * [Boolean Filter](/table-features/filters.html#boolean-filter)
 * [Select Filter](/table-features/filters.html#select-filter)
-* [Multi-Select Filter](//table-features/filters.html#multi-select-filter)
+* [Multi-Select Filter](/table-features/filters.html#multi-select-filter)
 * [Multi-Select Filter Async](/table-features/filters.html#multi-select-async-filter)
 * [Enum Select Filter](/table-features/filters.html#enum-select-filter)
 * [Datetime Picker Filter](/table-features/filters.html#datetime-picker-filter)
