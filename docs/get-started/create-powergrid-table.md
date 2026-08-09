@@ -91,8 +91,6 @@ You can customize the [Auto-Discover Models](/get-started/powergrid-configuratio
 
 PowerGrid can automatically generate Table Fields, Columns and Filters from your data source.
 
-Answer "yes" to continue with this example.
-
 ```shell
  ┌ Auto-import Data Source fields from [Dish] Model? ───────────┐
  │ ● Yes / ○ No                                                 │
