@@ -87,19 +87,85 @@ You can customize the [Auto-Discover Models](/get-started/powergrid-configuratio
 
 <br/>
 
-#### 2.3. Fillable
+#### 2.3. Auto-import Fields
 
-If desired, PowerGrid has the capability to automatically generate certain Table Columns based on the fields specified in your Model's `fillable` property.
+If desired, PowerGrid has the capability to automatically generate Table Fields, Columns and Filters from your data source.
 
 Sure, let's proceed with "yes" for this example.
 
 ```shell
- ┌ Create columns based on Model's fillable property? ──────────┐
+ ┌ Auto-import Data Source fields from [Dish] Model? ───────────┐
  │ ● Yes / ○ No                                                 │
  └──────────────────────────────────────────────────────────────┘
 ```
 
+Answering "no" generates a Component containing only the `Action` Column, and you can add your Fields and Columns manually later.
+
 *Note: This feature is available only for MySQL, PostgreSQL, and SQLite databases.*
+
+<br/>
+
+#### 2.4. Select the Field Source
+
+Next, choose where the fields should be read from.
+
+- **`$fillable`** (default): only the fields listed in your Model's `fillable` property, plus the primary key and `created_at`. This is PowerGrid's long-standing behavior, unchanged.
+- **DB table**: every column of the table your Model is mapped to, read directly from the database schema.
+
+Both options remain available - just press `Enter` to keep using `$fillable`.
+
+Reading from the database table is handy when your Model keeps a short `fillable` list, or has no `fillable` at all because it relies on `guarded`.
+
+In our example, let's read all columns from the `dishes` table.
+
+```shell
+ ┌ Where should the fields come from? ──────────────────────────┐
+ │   ○ $fillable in [Dish] Model                                │
+ │ › ● Columns in [dishes] DB table                             │
+ └──────────────────────────────────────────────────────────────┘
+```
+
+This question is only asked for **Eloquent Builder** data sources. Query Builder Components always read the columns of the table you informed in the previous step.
+
+Columns holding sensitive data (`password`, `remember_token`, `email_verified_at`, `two_factor_secret`, `two_factor_recovery_codes` and `api_token`) are never generated. Attributes listed in your Model's `hidden` property are skipped as well.
+
+<br/>
+
+#### 2.5. Preview and Confirm the Fields
+
+Before writing anything to disk, PowerGrid shows exactly what it is about to generate and asks for your confirmation.
+
+```shell
+ 👀 Preview of the fields from the [dishes] table:
+
+ +------------+----------+---------------------------------------------------+
+ | Field      | Type     | Generated as                                      |
+ +------------+----------+---------------------------------------------------+
+ | id         | integer  | Plain column                                      |
+ | name       | string   | Sortable, searchable column + text filter         |
+ | in_stock   | boolean  | Toggleable column + boolean filter                |
+ | created_at | datetime | Sortable column, formatted d/m/Y H:i:s + datetime |
+ +------------+----------+---------------------------------------------------+
+
+ ┌ Generate the component with these fields? ───────────────────┐
+ │ ● Yes / ○ No                                                 │
+ └──────────────────────────────────────────────────────────────┘
+```
+
+Each column type generates a different set of Fields, Columns and Filters:
+
+| Type       | Generated as                                                     |
+|------------|------------------------------------------------------------------|
+| `integer`  | Plain Column.                                                     |
+| `string`   | Sortable and searchable Column + [Text Filter](/table-features/filters.html#text-filter). |
+| `boolean`  | [Toggleable](/table-features/columns.html#toggleable) Column + [Boolean Filter](/table-features/filters.html#boolean-filter). |
+| `date`     | Sortable Column formatted as `d/m/Y` + [Date Picker Filter](/table-features/filters.html#date-picker-filter). |
+| `datetime` | Sortable Column formatted as `d/m/Y H:i:s` + [Datetime Picker Filter](/table-features/filters.html#datetime-picker-filter). |
+| other      | Sortable and searchable Column, without Filter.                   |
+
+Answering "no" discards the fields and generates the Component with only the `Action` Column. Just run the command again if you want to try the other source.
+
+If the table cannot be read - for example, when your database has not been migrated yet - PowerGrid warns you and generates the Component with only the `Action` Column.
 
 <br/>
 
