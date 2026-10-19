@@ -1,0 +1,3 @@
+[build]
+  command = "bash scripts/netlify-build.sh"
+  publish = "docs/.vitepress/dist"

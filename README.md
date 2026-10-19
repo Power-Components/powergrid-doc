@@ -6,7 +6,12 @@
 
 # PowerGrid Doc
 
-Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid).
+Documentation for [Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid) 7.x.
+
+```bash
+npm install
+npm run docs:dev
+```
 
 ## Support
 

@@ -1,185 +1,153 @@
+---
+title: Release Notes
+description: Stay up to date with PowerGrid 7. Explore the new theme system, plugins, filter panels, and the changes designed to simplify your tables.
+---
+
 # Release Notes
+
+What is new in PowerGrid 7. For every breaking change and migration snippet, use the [Upgrade Guide](/release-notes-and-upgrade/upgrade-guide.html).
 
 [[toc]]
 
-### Deprecations
+## PowerGrid 7
 
-The following items have been deprecated in this release:
+Themes are built from section methods and inherit from each other. Inline editing, toggles, export, tabs, and truncation are plugins. Sorting, filtering, and paging update only the parts of the table that changed.
 
-* Using `dynamicProperties` in Button macros.
-* Drop support for `openspout/openspout` v3.
-* Removed `Cache::make()->forever()` method.
-* Removed Cache `rememberForever()` via config `cache_data` key.
-* Removed from `Button::make()->method()` method.
-* Removed `Button::make()->target()` method (now in route method).
-* Removed `Button::make()->bladeComponent()` method available only for `actionRules()`.
-* Removed `Button::make()->render()` method You can work around this by using `bladeComponent` in `actionRules()` method.
-* Removed `tom-select.css` from dist. Use native CSS instead of PowerGrid dist path
----
+## Requirements
 
-### New Properties
+| Requirement  | v6       | v7                        |
+| ------------ | -------- | ------------------------- |
+| PHP          | 8.2+     | **8.3+**                  |
+| Laravel      | 10+      | **12+** (13 is supported) |
+| Livewire     | 3.5.4+   | **4.0+**                  |
+| Tailwind CSS | v3 or v4 | **v4**                    |
 
-* `$supportModel` (default: true) to control model support. By default, forceFill on the model loads all model attributes.
-* `$withoutResourcesActions`: Disable process of icons in javascript memory
+`composer require power-components/livewire-powergrid:^7.0` also installs `power-components/turbine` and `power-components/partials`.
 
-### Config Keys
+## New Features
 
-**Added**:
+### Unified Theme Architecture
 
-- `cache_ttl`: (default: ) Value in seconds to keep some PowerGrid actions in the cache, such as actions and rules.
-- `icon_resources`: Specifies resources settings for load SVG icons in the Javascript window.
+`struct()` only sets the base view. Tokens live in section methods: `layout()`, `header()`, `table()`, `footer()`, `cols()`, `tabs()`, `filter()`, `editable()`, and `toggleable()`. A child theme sets `$parentTheme` and overrides only the sections it changes.
 
-**Removed**
+DaisyUI ships no Blade files — it reuses Tailwind markup and changes tokens. Flux has `<flux:*>` Blade files only where the HTML differs.
 
-* `cache_data` - Cache forever for collections.
-* `check_version` - Enable release notification in powergrid:create command.
+Restyle a few tokens with `theme_overrides` in the config, or write a plain-array theme with `ArrayTheme`. See [Custom Theme](/extending/custom-theme.html).
 
----
+### Theme Registry
 
-### Changes
+`config('livewire-powergrid.theme')` accepts a name from `PowerGridManager::DEFAULT_THEMES` (`tailwind`, `daisyui`, `flux`) or an FQCN:
 
-`Button::route` needs 3rd parameters called target (_self, _blank)
-`Button::toggleDetail()` button needs row id
-
-### Improves & Features
-
-### ✨ Javascript Actions Rendering
-
-::: info
-* Action rendering has been refactored for better performance and flexibility.
-:::
-
-**💡How it works**:
-
-PowerGrid will load SVG icons (using Blade) at the beginning of the request and store them in JavaScript memory (window). This is configured via the config file (`icon_resources`). JavaScript-based action processing
-
-Actions will be processed using JavaScript instead of PHP, reducing PHP memory usage and minimizing Livewire's payload. Reduced PHP memory usage
-
-By processing actions with JavaScript, unnecessary PHP memory usage is eliminated, resulting in more efficient performance.
-
----
-
-**Example**:
-
-When adding the icon paths, PowerGrid will keep them saved in javascript to be used in the actions.
-Suppose we are using icons provided by [wireui](https://wireui.dev/), and we want to use our actions, like this:
-
-```php [MyTable.php]
-Button::make('edit')
-    ->icon('solid-pencil', [
-       'x-tooltip' => __('Edit'),
-    ])
-    ->class('btn-icon-secondary')
-    ->dispatch('save', [
-         'payload' => ['key' => $row->id],
-    ]),
+```php [config/livewire-powergrid.php]
+'theme' => 'tailwind',
+// 'theme' => 'daisyui',
+// 'theme' => 'flux',
+// 'theme' => \PowerComponents\LivewirePowerGrid\Themes\Tailwind::class,
 ```
 
-So, our setup will look like this:
+Register your own name:
 
-`config/livewire-powergrid.php`
-```php
-    'icon_resources' => [
-        'paths' => [
-            'outline' => 'vendor/wireui/wireui/resources/views/components/icons/outline',
-            'solid'   => 'vendor/wireui/wireui/resources/views/components/icons/solid',
-        ],
+```php [app/Providers/AppServiceProvider.php]
+use App\PowerGridThemes\BrandTheme;
+use PowerComponents\LivewirePowerGrid\PowerGridManager;
 
-        'allowed' => [
-            'cog',
-            'pencil',
-            'arrow-right',
-        ],
-
-        'attributes' => ['class' => 'size-5'],
-    ],
-```
-
-| icon_resources | list of icons (SVG) that will be loaded into javascript memory              |
-|----------------|-----------------------------------------------------------------------------|
-| paths          | path containing the icons                                                   |
-| allowed        | Only the icons defined here will be processed. If empty, all will be loaded |
-| attributes     | attributes that will be added by default to the SVG                         |
-
-### ✨ Column Macros
-
-* If you need to add different query logic when searching for example, you can create a new macro (let's assume `searchableDateFormat`):
-
-`AppServiceProvider`, boot method.
-```php
-Column::macro('searchableDateFormat', function () {
-      $this->rawQueries[] = [
-          'method'   => 'orWhereRaw',
-          'sql'      => 'DATE_FORMAT('.$this->dataField.', "%d/%m/%Y") like ?',
-          'bindings' => ['%{search}%'],
-          'enabled'  => function (PowerGridComponent $component) {
-              return filled($component->search);
-          },
-      ];
-
-      return $this;
-});
-```
-
-Now, in any PowerGrid table component:
-```php
- Column::make('Created At', 'created_at')
-     ->searchableDateFormat(),
-```
-
-### Row Template
-
-If you want to customize a record in the table without using Blade's processing, you can use the rowTemplate() method. This approach prevents the unnecessary creation of Blade components for the same field across different rows by leveraging JavaScript instead.
-
-**Consider the following example:**
-
-::: info
-For each rendered row in the 'name' field, a view will be created in PHP during the rendering process:
-::: 
-
-```php
-public function fields(): PowerGridFields
+public function boot(): void
 {
-    return PowerGrid::fields()
-        ->add('id')
-        ->add('name', function ($row) {
-            return \Blade::render(<<<blade
-                <div id="custom-\$id" class="bg-red-100 py-1 rounded px-3">\$name</div>
-            blade, [
-                'id'   => $row->id,
-                'name' => $row->name,
-            ]);
-        })
+    PowerGridManager::registerTheme('brand', BrandTheme::class);
 }
 ```
 
-We can simplify this by using JavaScript to handle the rendering, as shown below:
+### Modular Plugin System
 
-```php{5-11,15-20}
- public function fields(): PowerGridFields
-{
-    return PowerGrid::fields()
-        ->add('id')
-        ->add('name', function ($row) {
-            return [
-                'template-name' => [
-                    'id'   => $row->id,
-                    'name' => $row->name,
-                ],
-            ];
-        });
-}
+`PowerGridManager::DEFAULT_PLUGINS` is always registered. `PowerGridManager::plugins()` merges extras on top and never drops the defaults:
 
-public function rowTemplates(): array
-{
-    return [
-        'template-name' => '<div id="custom-{{ id }}" class="bg-red-100 py-1 rounded px-3">{{ name }}</div>',
-    ];
-}
-```
+| Plugin | What it adds |
+| ------ | ------------ |
+| `EditablePlugin` | `Column::editOnClick()` |
+| `ToggleablePlugin` | `Column::toggleable()` |
+| `FlatpickrPlugin` | Date and date-time filters |
+| `MultiSelectPlugin` | Multi-select filters with TomSelect or SlimSelect |
+| `ExportPlugin` | Header export UI when `PowerGrid::exportable()` is set |
+| `FilterBuilderPlugin` | AND / OR filter modal |
+| `TabsPlugin` | Status tabs above the toolbar |
+| `TruncatePlugin` | `Column::limit()` and `Column::tooltip()` |
 
-In this setup, we instruct PowerGrid to look for 'template-name' and replace the HTML with the corresponding template during rendering. 
-By doing so, the layout and styling are managed by JavaScript, which dynamically populates the fields with the appropriate data for each row.
+See [Plugins](/extending/plugin-system.html).
 
-This approach reduces the overhead associated with generating Blade views for each row, leading to improved performance and easier maintenance, especially when dealing with large datasets. 
-Instead of repeatedly rendering Blade components, the JavaScript-based solution efficiently handles the customization directly in the browser, making your application more responsive and streamlined.
+### Filter Panels
+
+- `inline` — inside the table, live and debounced
+- `dropdown` — popover on a Filter button, committed on Apply
+- `flyout` — side drawer, committed on Apply
+
+See [Filters](/table-structure/filters.html).
+
+### Partials and Hot Zones
+
+`power-components/partials` updates only the fragments that changed. See [Partials and Hot Zones](/extending/partials-and-hot-zones.html).
+
+### Server-Side Action Rendering
+
+Row and header actions render as Blade on the server. `window.pgActions` and `window.pgActionsHeader` are gone.
+
+### PowerGrid Lite
+
+`<x-pg-*>` Blade components use the active theme for simple tables that do not need the full engine. See [PowerGrid Lite](/powergrid-lite/blade-components.html).
+
+### Status Tabs
+
+`PowerGrid::tabs()` adds a themed tab strip above the toolbar. `classes()` restyles it per grid. See [Tabs](/table-structure/tabs.html).
+
+### Filter Builder
+
+`PowerGrid::filterBuilder()` opens a modal where users compose AND / OR conditions from your `filters()` definitions. See [Filter Builder](/table-structure/filter-builder.html).
+
+### Configurable Header Buttons
+
+Header buttons resolve icon, title, and label from `setUp()`, then the theme token, then the package default. An icon is a Blade component name; an unknown one renders nothing. See [Header and Footer](/table-structure/header-and-footer.html#header-element-configuration).
+
+### Laravel Boost Skills
+
+Agent Skills for [Laravel Boost](https://laravel.com/docs/boost) ship in `resources/boost/skills`: `powergrid-theme`, `upgrade-theme-v6-to-v7`, and `create-powergrid-plugin`. See [AI Tools and Skills](/build-with-ai/tools-and-skills.html).
+
+### Portable Grid Definitions
+
+If the same grid also feeds Inertia or a REST endpoint, describe it once and swap the adapter. See [Portable Grid Definitions](/extending/portable-grid-definitions.html).
+
+### Other Changes
+
+- Plain string field values are escaped. Return `HtmlString` for markup.
+- `max_per_page` (default `1000`) caps the rows a page loads, including "All".
+- Changing rows per page keeps the selected rows.
+
+## Removed in v7
+
+See the [Upgrade Guide](/release-notes-and-upgrade/upgrade-guide.html) for replacements.
+
+- Bootstrap 5 theme and `Themes\Base`
+- `PowerGrid::lazy()` load-more API (Livewire `#[Lazy]` still works)
+- Laravel Pulse integration
+- `WithExport` trait (`PowerGrid::exportable()` is enough)
+- OpenSpout 4 export driver
+- Built-in batch-export progress UI — use `->progressView()`
+- `withSum()`, `withCount()`, `withAvg()`, `withMin()`, `withMax()` — use `summarize()` / `withSummary()`
+- `theme_style()` — use `theme()`. `isBootstrap5()` / `isTailwind()` — use `instanceof`
+- `pg-primary-*` — Tailwind uses `accent-*`. `pg-secondary-*` still exists in `tailwind4.css`
+- `window.pgActions` / `window.pgActionsHeader`
+- Nested Livewire `powergrid-detail`
+- View namespace `components.frameworks.*`
+- `filter_attributes` (use `filter_wire`)
+- Bundled TomSelect
+- Tailwind 3 and the pre-built `dist/` bundles
+
+## Unchanged Core API
+
+- `datasource()`, `fields()`, `columns()`, `filters()`, `setUp()`
+- `Column::make()` / `Column::add()`
+- `Button::add()` fluent API
+- Filter types: InputText, Boolean, Select, MultiSelect, Number, DatePicker, DateTimePicker (`$filters` is now keyed by field)
+- `actions()` and `actionRules()`
+- Sorting, searching, pagination
+- Persist drivers (cookies, session, cache). Filters saved by v6 are not applied
+- Cache configuration
+- Lifecycle hooks `transformQuery`, `transformRows`, `transformActions`

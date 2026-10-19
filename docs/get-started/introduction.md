@@ -1,68 +1,61 @@
-# Introduction
+---
+title: PowerGrid Documentation - Introduction
+description: Welcome to the official PowerGrid documentation. Explore how easily you can build beautiful, feature-rich data tables that save development time and enhance your data management.
+---
 
-## PowerGrid
+# Welcome to PowerGrid
 
-[Livewire PowerGrid](https://github.com/Power-Components/livewire-powergrid) creates modern, powerful and easy-to-customize data tables using  [Laravel Livewire](https://laravel-livewire.com).
+Livewire PowerGrid is a Livewire data table for Laravel. It handles columns, rows, sorting, filtering, pagination, and related features so you can ship an interactive table quickly.
 
-With PowerGrid, you can effortlessly create advanced data tables in a matter of minutes. To get started,  just head over to the [installation page](/get-started/install.html).
+Start at the [installation page](/get-started/install.html).
 
 ![Output](/screenshot.png)
 
+## What it is for
+
+Use PowerGrid when a static HTML table is not enough:
+
+- **Ops and admin lists** — users, orders, products, invoices. Filter, edit inline, run bulk actions, and hide buttons with rules.
+- **CRM and reporting** — leads, metrics, date-range filters, XLSX/CSV export, and column totals via `summarize()`.
+- **Progress and policy tables** — enrollments, status tabs, rule clauses, incident queues.
+
+## What it is not
+
+- Not an admin panel or CMS (no dashboards or app navigation).
+- Not a general UI kit (tables only).
+- Not a drag-and-drop builder or realtime collaboration tool.
+
 ## Features
 
-PowerGrid offers a range of features that are readily available:
-
-| Feature                                                            | PowerGrid                               |
-| :--------------------------------------------------------------------- | :-------------------------------------- |
-| Bootstrap 5 or Tailwind CSS 3x/4x                                      | ✅                                      |
-| Pagination                                                             | ✅                                      |
-| Column Sorting                                                         | ✅                                      |
-| Filters & Global Search                                                | ✅                                      |
-| Custom Filter Builder                                                  | ✅                                      |
-| Inline Editing (Click to edit)                                         | ✅                                      |
-| Row Buttons, Checkboxes, Dropdown menu, and Toggle Switch              | ✅                                      |
-| Custom Cell Content (Links, images, currency formatting)               | ✅                                      |
-| Multi-row Bulk Actions                                                 | ✅                                      |
-| Conditional Action Rules for Rows, Buttons, and Checkboxes             | ✅                                      |
-| Column Summaries (Sum, Count & Average)                                | ✅                                      |
-| Data Export to XLSX/CSV (OpenSpout)                                    | ✅                                      |
-| Queue Export for large datasets                                        | ✅                                      |
-| Responsive                                                             | ✅                                      |
-| Livewire Modal Integration (Wire Elements Modal)                       | ✅                                      |
-| Multi Language                                                         | Available in 🇺🇸 🇧🇷 🇪🇸 🇮🇹 🇩🇪 and [more...](https://github.com/Power-Components/livewire-powergrid/tree/5.x/resources/lang) |
-
-## Credits
-
-PowerGrid is an open-source project created by [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnalyst](https://github.com/dansysanalyst), built with contributions by over 80 [Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors) and the support of our sponsors.
-
-Logo & artwork by [Caneco](https://github.com/caneco)
+- **Theming** — Tailwind CSS 4, DaisyUI, Flux, or custom tokens via `theme_overrides`
+- **Core table features** — Pagination, column sorting, filters (inline, dropdown, flyout), global search
+- **Advanced features** — Custom filter builder, status tabs, inline editing, toggle switches, row buttons/checkboxes/dropdown menus, custom cell content, multi-row bulk actions, conditional action rules
+- **Data & export** — Column summaries via `summarize()` (sum, count, avg, min, max), XLSX/CSV export (OpenSpout), queue export for large datasets
+- **Architecture** — Server-side actions (Blade, no JS cache), Hot Zones for DOM isolation, portable grid definitions, PowerGrid Lite Blade components, plugin system, responsive
+- **Laravel Scout compatible** — Conditional macros when `laravel/scout` is installed
+- **Multi-language** — 🇺🇸 🇧🇷 🇪🇸 🇮🇹 🇩🇪 and more
 
 ## Sponsors
 
-<p>
-  <!--DevSquad-->
-  <a href="https://devsquad.com" target="_blank">
-    <img src="/sponsors/devsquad.png" alt="DevSquad" height="undefined">
-  </a>
+PowerGrid is an open-source project. You can support its development and sponsor creators via the GitHub repository.
 
+<p>
+  <a href="https://devsquad.com" target="_blank">
+    <img src="/sponsors/devsquad.png" alt="DevSquad">
+  </a>
 </p>
-<p></p>
-<p></p>
 <p>Supported by:</p>
 <p>
-  <!-- PHPStorm -->
   <a href="https://www.jetbrains.com/phpstorm/" target="_blank">
     <img src="/sponsors/phpstorm.png" alt="PHPStorm" width="32" height="32">
   </a>
-</p>
-<p>
-  <!-- Araxis Merge -->
   <a href="https://www.araxis.com/merge/" target="_blank">
     <img src="/sponsors/araxis.png" alt="Araxis Merge" width="32" height="32">
   </a>
 </p>
 
+## Credits
 
-## Disclaimer
+PowerGrid is an open-source project created by [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnalyst](https://github.com/dansysanalyst), built with the help of over [100 Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors) and the support of our sponsors.
 
-<sup><b>Notice of Non-Affiliation and Disclaimer:</b> Livewire PowerGrid is not affiliated with, associated with, endorsed by, or in any way officially connected with the <a href="https://laravel-livewire.com" target="_blank">Laravel Livewire</a> - copyright by Caleb Porzio. Laravel is a trademark of Taylor Otwell.</sup>
+Logo & artwork by [Caneco](https://github.com/caneco)

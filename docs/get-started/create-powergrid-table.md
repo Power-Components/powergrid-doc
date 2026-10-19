@@ -1,221 +1,140 @@
+---
+title: Create a PowerGrid Table
+description: Follow this straightforward walkthrough to generate your PowerGrid data table and see how quickly it handles your data.
+---
+
 # Create a PowerGrid Table
-
-This section covers the the process of creating a PowerGrid Component.
-
-Here you will find:
 
 [[toc]]
 
-## Introduction
+## Creating a PowerGrid Table
 
-Now that you've finished the PowerGrid [Essential Configuration](/get-started/powergrid-configuration.html#essential-configuration), it's time create your very first Table Component!
+After [base configuration](/get-started/configure-powergrid.html), run `php artisan powergrid:create`. This walkthrough creates a `ProductTable`. For flags and stubs, see [Create Table Command](/powergrid/artisan-commands.html#create-table).
 
-## Create a Table
-
-To create a PowerGrid Table, run the following command in your Laravel project.
+### 1. Component name
 
 ```bash
-php artisan powergrid:create  
+$ php artisan powergrid:create
+⚡ PowerGrid Table Generator
+
+Enter a name for your new PowerGrid Table: ProductTable
 ```
 
-The assistant will guide you through the process and help you generate your Table Component.
+`CamelCase` is recommended. The default suggestion is `UserTable`. If the component already exists, the generator asks before overwriting it.
 
-### 1. Name the Component
+### 2. Datasource
 
-First, you need to name your new Table Component.
-
-In this example, let's create a component called "__DishTable__" to list all dishes in a food menu.
-
-```shell
-     __     ____                          ______     _     __
-    / /_,  / __ \____ _      _____  _____/ ____/____(_)___/ /
-    /_ ,' / /_/ / __ \ | /| / / _ \/ ___/ / __/ ___/ / __  / 
-    /'   / ____/ /_/ / |/ |/ /  __/ /  / /_/ / /  / / /_/ /  
-        /_/    \____/|__/|__/\___/_/   \____/_/  /_/\__,_/     
-
- ┌ What is the name of your Table Component? ───────────────────┐
- │ DishTable                                                    │
+```bash
+ ┌ Select your preferred DataSource: ───────────────────────────┐
+ │ › Eloquent Builder                                           │
+ │   Query Builder                                              │
+ │   Collection                                                 │
  └──────────────────────────────────────────────────────────────┘
 ```
 
-To create your Component in a subdirectory, just enter the directory path followed by the component name. For example: `Tables/Dishes/DishTable`.
+See [DataSource](/table-structure/datasource.html) for when to use each type. This example uses [Eloquent Builder](https://laravel.com/docs/eloquent).
 
-If your application is organized in a different architecture (E.g, Domain-Driven Design), proceed to read more on how to configure a [Custom Namespace](/get-started/powergrid-configuration.html#custom-namespace) for PowerGrid Components.
+### 3. Model (Eloquent)
 
----
+Eloquent asks for a Model. Collection skips this step. Query Builder asks for a database table instead (see [Query Builder](#query-builder)).
 
-### 2. Select the Data Source
-
-Now, configure the data source from which your Table will pull data from.
-
-<br/>
-
-#### 2.1. Select the data source
-
-Select the data source type.
-
-In our example, we will use Laravel's [Eloquent Builder](https://laravel.com/docs/eloquent).
-
-```shell
- ┌ What type of data source will you use? ──────────────────────┐
- │ › ● Eloquent Builder                                         │
- │   ○ Query Builder                                            │
- │   ○ Collection                                               │
- └──────────────────────────────────────────────────────────────┘
-```
-
-<br/>
-
-#### 2.2. Model
-
-Here, you need to select a Model to be linked to the component.
-
-Following our example, we will use the `Dish` Model.
-
-```shell
+```bash
  ┌ Select a Model or enter its Fully qualified name. ───────────┐
  ├──────────────────────────────────────────────────────────────┤
- │› App\Models\Dish                                             │
+ │› App\Models\Product                                          │
  │  App\Models\FooBar                                           │
  │  App\Models\FoorBarBaz                                       │
  └──────────────────────────────────────────────────────────────┘
 ```
 
-By default, PowerGrid suggests Eloquent Models placed in the default path `app/Models`. 
+By default, PowerGrid lists Models under `app/Models`. Change that in [Customizing the Creation Process](/powergrid/create.html#customizing-the-creation-process).
 
-You can customize the [Auto-Discover Models](/get-started/powergrid-configuration.html#auto-discover-models) if your application is organized in a different architecture (E.g, Domain-Driven Design).
+### 4. Auto-import fields
 
-<br/>
-
-#### 2.3. Auto-import Fields
-
-PowerGrid can automatically generate Table Fields, Columns and Filters from your data source.
-
-```shell
- ┌ Auto-import Data Source fields from [Dish] Model? ───────────┐
+```bash
+ ┌ Auto-import Data Source fields from [Product] Model? ────────┐
  │ ● Yes / ○ No                                                 │
  └──────────────────────────────────────────────────────────────┘
 ```
 
-Answering "no" generates a Component containing only the `Action` Column, and you can add your Fields and Columns manually later.
+Answer **No** to skip import. The default stub still includes sample `id` / `name` / `created_at` columns plus Action.
 
-*Note: This feature is available only for MySQL, PostgreSQL, and SQLite databases.*
+If the database has no tables, this prompt is skipped.
 
-<br/>
+### 5. Column source (Eloquent only)
 
-#### 2.4. Select the Field Source
+Eloquent then asks where the fields should come from. Query Builder does not ask this — it always reads the selected table.
 
-Next, choose where the fields should be read from.
-
-- **`$fillable`** (default): only the fields listed in your Model's `fillable` property, plus the primary key and `created_at`. This is PowerGrid's long-standing behavior, unchanged.
-- **DB table**: every column of the table your Model is mapped to, read directly from the database schema.
-
-Both options remain available - just press `Enter` to keep using `$fillable`.
-
-Reading from the database table is handy when your Model keeps a short `fillable` list, or has no `fillable` at all because it relies on `guarded`.
-
-In our example, let's read all columns from the `dishes` table.
-
-```shell
+```bash
  ┌ Where should the fields come from? ──────────────────────────┐
- │   ○ $fillable in [Dish] Model                                │
- │ › ● Columns in [dishes] DB table                             │
+ │ › $fillable in [Product] Model                               │
+ │   Columns in [products] DB table                             │
  └──────────────────────────────────────────────────────────────┘
 ```
 
-This question is only asked for **Eloquent Builder** data sources. Query Builder Components always read the columns of the table you informed in the previous step.
+### 6. Preview and confirm
 
-Columns holding sensitive data (`password`, `remember_token`, `email_verified_at`, `two_factor_secret`, `two_factor_recovery_codes` and `api_token`) are never generated. Attributes listed in your Model's `hidden` property are skipped as well.
+```bash
+👀 Preview of the fields from $fillable in [Product]:
 
-<br/>
-
-#### 2.5. Preview and Confirm the Fields
-
-Before writing anything to disk, PowerGrid shows exactly what it is about to generate and asks for your confirmation.
-
-```shell
- 👀 Preview of the fields from the [dishes] table:
-
- +------------+----------+---------------------------------------------------+
- | Field      | Type     | Generated as                                      |
- +------------+----------+---------------------------------------------------+
- | id         | integer  | Plain column                                      |
- | name       | string   | Sortable, searchable column + text filter         |
- | in_stock   | boolean  | Toggleable column + boolean filter                |
- | created_at | datetime | Sortable column, formatted d/m/Y H:i:s + datetime |
- +------------+----------+---------------------------------------------------+
+  Field      Type      Generated as
+  id         integer   Plain column
+  name       string    Sortable, searchable column + text filter
+  price      other     Sortable, searchable column
+  in_stock   boolean   Toggleable column + boolean filter
+  created_at datetime  Sortable column, formatted d/m/Y H:i:s + datetime filter
 
  ┌ Generate the component with these fields? ───────────────────┐
  │ ● Yes / ○ No                                                 │
  └──────────────────────────────────────────────────────────────┘
 ```
 
-Each column type generates a different set of Fields, Columns and Filters:
+The **Type** column is the bucket the database type maps to:
 
-| Type       | Generated as                                                     |
-|------------|------------------------------------------------------------------|
-| `integer`  | Plain Column.                                                     |
-| `string`   | Sortable and searchable Column + [Text Filter](/table-features/filters.html#text-filter). |
-| `boolean`  | [Toggleable](/table-features/columns.html#toggleable) Column + [Boolean Filter](/table-features/filters.html#boolean-filter). |
-| `date`     | Sortable Column formatted as `d/m/Y` + [Date Picker Filter](/table-features/filters.html#date-picker-filter). |
-| `datetime` | Sortable Column formatted as `d/m/Y H:i:s` + [Datetime Picker Filter](/table-features/filters.html#datetime-picker-filter). |
-| other      | Sortable and searchable Column, without Filter.                   |
+| Type       | Database types                                      | Generated as                                                  |
+| ---------- | --------------------------------------------------- | ------------------------------------------------------------- |
+| `string`   | `varchar`, `char`, `text` variants, `uuid`, `enum`  | `sortable()` + `searchable()` + `Filter::inputText()`         |
+| `integer`  | `int` variants, `serial`                            | Plain column, no filter                                       |
+| `boolean`  | `bool`, `bit`, `tinyint(1)`                         | `toggleable()` + `Filter::boolean()`                          |
+| `date`     | `date`                                              | `sortable()`, formatted `d/m/Y` + `Filter::datepicker()`      |
+| `datetime` | `datetime`, `timestamp` variants                    | `sortable()`, formatted `d/m/Y H:i:s` + `Filter::datetimepicker()` |
+| `other`    | anything else (`decimal`, `json`, …)                | `sortable()` + `searchable()`, no filter                      |
 
-Answering "no" discards the fields and generates the Component with only the `Action` Column. Just run the command again if you want to try the other source.
+With `$fillable`, fields are ordered primary key, `$fillable`, then `created_at`. The model's `$hidden` attributes are always skipped, and the table-schema source also skips sensitive columns (`password`, `remember_token`, `api_token`, and similar). If the source has no fields, only the Action column is generated.
 
-If the table cannot be read - for example, when your database has not been migrated yet - PowerGrid warns you and generates the Component with only the `Action` Column.
+Answer **No** to discard the preview. The generator then uses the default stub (sample `id` / `name` / `created_at` plus Action), same as declining auto-import.
 
-<br/>
+### 7. Done
 
-### 3. Use Your Table
+```bash
+⚡ ProductTable was successfully created at [app/Livewire/ProductTable.php].
 
-⚡ Your PowerGrid Table is ready!
-
-At this step, you should see a message that looks like this:
-
-```plain
-⚡ DishTable was successfully created at [app/Livewire/DishTable.php].
-
-💡 include the DishTable component using the tag: <livewire:dish-table/>
+💡 include the ProductTable component using the tag: <livewire:product-table/>
 ```
-
-In the feedback message, you will find:
-
-- The file path where your Component was created.
-- The HTML tag to include it in your Blade View.
-
-<br/>
 
 <div class="success custom-block">
-  <p class="custom-block-title">🎉 That's it!</p>
-  <p>Now we can proceed to the <a href="/get-started/rendering-a-powergrid-table">Show a PowerGrid Table</a> section.</p>
+<p class="custom-block-title">🎉 Everything is in place</p>
+<p>Next: <a href="/get-started/rendering-a-powergrid-table.html">Render a PowerGrid Table</a>.</p>
 </div>
 
-## Customize the Component Creation
+## Query Builder
 
-### Component Stubs
-
-You may customize the default PowerGrid Component, adapting it to your needs.
-
-To publish the stub, run the following command:
+Query Builder asks for a table instead of a Model, then the same auto-import prompt. It does not ask column source.
 
 ```bash
-php artisan powergrid:publish --type=stub
+ ┌ Select your preferred DataSource: ───────────────────────────┐
+ │   Eloquent Builder                                           │
+ │ › Query Builder                                              │
+ │   Collection                                                 │
+ └──────────────────────────────────────────────────────────────┘
+
+ ┌ Enter or Select a DB Table ──────────────────────────────────┐
+ │ products                                                     │
+ └──────────────────────────────────────────────────────────────┘
+
+ ┌ Auto-import Data Source fields from [products] table? ───────┐
+ │ ● Yes / ○ No                                                 │
+ └──────────────────────────────────────────────────────────────┘
 ```
 
-If you need to create multiple stubs, be sure to rename the file after publishing each stub.
-
-You may use the flag `--template` passing the full location of your stub when creating a new component.
-
-```bash
-php artisan powergrid:create --template=stubs/custom-component.stub
-```
-
-### Custom Namespace
-
-See [Custom Namespace](/get-started/powergrid-configuration.html#custom-namespace).
-
-### Custom Model Location
-
-See [Auto-Discover Models](/get-started/powergrid-configuration.html#auto-discover-models).
-
+Collection skips Model, table, auto-import, and preview.
