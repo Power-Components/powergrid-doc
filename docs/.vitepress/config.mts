@@ -79,7 +79,6 @@ export default defineConfig({
         text: '🚀 Get Started',
         items: [
           { text: 'Introduction', link: '/get-started/introduction' },
-          { text: '⌨️ Code Examples', link: '/get-started/code-examples' },
           { text: '🧨 Troubleshooting', link: '/get-started/troubleshooting' },
           { text: '1. Install', link: '/get-started/install' },
           { text: '2. PowerGrid Configuration', link: '/get-started/powergrid-configuration' },

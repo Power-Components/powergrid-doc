@@ -219,11 +219,6 @@ public function fields(): PowerGridFields
 It's highly recommended to use Laravel's [`e() helper`](https://laravel.com/docs/strings#method-e) to escape data return in Custom Fields.
 :::
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example generating an <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-html-link">HTML Link</a>.</p>
-</div>
-
 ---
 
 ### Dropdown Menu
@@ -309,12 +304,6 @@ class SelectCategory extends Component
 
 :::
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-select">Dropdown Menu</a> on a Table.</p>
-
-</div>
-
 ---
 
 ### Image
@@ -336,12 +325,6 @@ public function fields(): PowerGridFields
         });
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-image">Images</a> on a Table.</p>
-
-</div>
 
 ---
 
@@ -365,12 +348,6 @@ public function fields(): PowerGridFields
         ->add('rating_stars', fn ($dish) => Blade::render('<x-rate rate="' . $dish->rating . '"/>')); // [!code ++]
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-field-blade-component">Custom Field Blade Component</a>.</p>
-
-</div>
 
 ---
 
@@ -416,12 +393,6 @@ public function fields(): PowerGridFields
         });
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/enum">Enums</a>.</p>
-
-</div>
 
 ## Exporting Data
 

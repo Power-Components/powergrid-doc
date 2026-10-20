@@ -39,12 +39,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/bulk-actions">Bulk Actions</a> in PowerGrid.</p>
-
-</div>
-
 ## Handling the Bulk Event
 
 You may handle the event using the [#[On]](https://livewire.laravel.com/docs/events#listening-for-events) Livewire Attribute.
