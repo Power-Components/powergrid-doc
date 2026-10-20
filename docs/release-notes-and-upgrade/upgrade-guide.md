@@ -366,6 +366,8 @@ Livewire::test(ProductTable::class)
 | Boolean | `filters.boolean.in_stock` | `filters.in_stock.value` |
 | Select | `filters.select.category_id` | `filters.category_id.value` |
 
+Table updates now send partial HTML, so `Livewire::test()` assertions see stale rows. Add `<env name="POWERGRID_PARTIALS_ENABLED" value="false"/>` to `phpunit.xml`. See [Testing Tables](/powergrid/testing-tables.html#livewire-testing).
+
 Dropdown and flyout: set the draft, then apply:
 
 ```php [tests/Feature/ProductTableTest.php]
@@ -593,6 +595,7 @@ For SlimSelect: `npm install slim-select` and `window.SlimSelect = SlimSelect`. 
 - **Detail rows:** `powergrid-detail` is gone. Rows render in the table body. Remove `<livewire:powergrid-detail>` and published `livewire/detail.blade.php`. `PowerGrid::detail()->view()` is unchanged.
 - **Empty state:** `noDataLabel()` still works but is deprecated. Override `renderEmptyState()`.
 - **Row templates:** `rowTemplates()` and `Column::template()` stay. They render on the server with escaped values. `pg-render-row-template.js` and `window.pgRowTemplates_*` are gone.
+- **Icons:** `icon_resources` is gone, so v6 aliases such as `->icon('default-trash')` no longer resolve. Pass a Blade component name instead: `->icon('svg.trash')` for `resources/views/components/svg/trash.blade.php`.
 - **Internal row keys:** `__powergrid_rules`, `__powergrid_loop`, and `__powergrid_actions` were renamed to `__turbine_*`.
 
 ## Configuration File
