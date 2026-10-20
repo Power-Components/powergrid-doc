@@ -44,12 +44,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Filters</a>.</p>
-
-</div>
-
 ## Filter Position
 
 To configure PowerGrid's Filter display position, visit [Filter Configuration](/get-started/powergrid-configuration.html#filter-position-configuration) section.
@@ -450,12 +444,6 @@ enum Diet: int
 
 :::
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Enum Filter</a>.</p>
-
-</div>
-
 ---
 
 #### Enum Filter Methods
@@ -578,12 +566,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filter-dynamic">Dynamic Filter</a>.</p>
-
-</div>
-
 ---
 
 **component(string $component)**
@@ -641,12 +623,6 @@ final class PowerGridTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filter-depends">Filter Depends</a> on a Table.</p>
-
-</div>
-
 ## Filter Builder
 
 Sometimes, you may need to customize a Filter functionality to deal with different data formats and improve user experience.
@@ -690,12 +666,6 @@ use Illuminate\Support\Collection;
     return $collection->where('some_field', '!=', $value);
 })
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/filters-inline">Filter Builder</a>.</p>
-
-</div>
 
 ## Filter by Relationship
 

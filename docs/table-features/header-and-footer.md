@@ -132,12 +132,6 @@ class DishTable extends PowerGridComponent
 
 By default, a message will be displayed to inform what records are being displayed. You can disable this message passing the parameter `$showMessage = false`.
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/show-soft-delete">Soft Deletes</a>.</p>
-
-</div>
-
 ## Footer
 
 In this subsection, you will find how to configure your Table Footer.
@@ -184,12 +178,6 @@ You may use your Component's property in your custom view as the demonstrated be
 </div>
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-theme">Include View on Top</a>.</p>
-
-</div>
-
 ---
 
 ### Include View on Bottom
@@ -230,8 +218,3 @@ You may use your Component's property in your custom view as the demonstrated be
 
 If you need to customize the pagination, visit the section to learn more about [Custom Pagination Component](/table-features/pagination.html#custom-pagination-component).
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/custom-theme">Include View on Bottom</a>.</p>
-
-</div>

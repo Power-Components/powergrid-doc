@@ -183,12 +183,6 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Sum</a>.</p>
-
-</div>
-
 ---
 
 ### Count
@@ -221,12 +215,6 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Count</a>.</p>
-
-</div>
-
 ---
 
 ### Average
@@ -258,12 +246,6 @@ class DishTable extends PowerGridComponent
 | (string) $label | The argument $label sets the summary caption.                             | 'Avg'   |
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Average</a>.</p>
-
-</div>
 
 ---
 
@@ -299,12 +281,6 @@ class DishTable extends PowerGridComponent
 
 ---
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Min</a>.</p>
-
-</div>
-
 ---
 
 ### Max
@@ -337,12 +313,6 @@ class DishTable extends PowerGridComponent
 | (bool) $header  | If `true`, results will be displayed in the Table header, under the filters. | `false`  |
 | (bool) $footer  | If `true`, results will be displayed in the Table footer.     | `false`  |
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Max</a>.</p>
-
-</div>
-
 ## Formatting Summarized Data
 
 To format the summarized data, you must add the `summaryFormat()` returning an associative array containing `column`.{`summary methods`},  and a `closure` to format data. You must provide the summary methods comma separated.
@@ -370,8 +340,3 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/summarize">Formatting Summarized Data</a>.</p>
-
-</div>

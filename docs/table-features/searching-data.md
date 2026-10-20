@@ -55,12 +55,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/beforesearch-hook">Before Search Hook</a>.</p>
-
-</div>
-
 ## Searching Custom Fields
 
 Here you will find examples using the [`beforeSearch()`](/table-features/searching-data.html#before-search-hook) method to reverse Custom Field [Data Formatting](/table-component/data-source-fields.html#formatting-data-examples), preparing data for database searches.
@@ -156,12 +150,6 @@ class DishTable extends PowerGridComponent
     }
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/search-with-relationship">Relation Search</a>.</p>
-
-</div>
 
 ## Custom Search Handler
 

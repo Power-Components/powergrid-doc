@@ -28,12 +28,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-checkbox">Checkboxes</a> on a Table.</p>
-
-</div>
-
 ## Radio Buttons
 
 To enable radio buttons on Table rows, call the `showRadioButton()` in your Component's `setUp()` method.
@@ -55,12 +49,6 @@ class DishTable extends PowerGridComponent
     }
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-checkbox">Radio Buttons</a> on a Table.</p>
-
-</div>
 
 ## Dropdown Menu
 
@@ -106,12 +94,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/input-button">Buttons</a> on a Table.</p>
-
-</div>
-
 ## Actions From Blade View
 
 PowerGrid offers the possibility to render a custom view inside each row's [Action Column](/table-features/columns.html#action-column).
@@ -146,12 +128,6 @@ Your view may look something like the example below.
     @endif
 </div>
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/actions-from-view">Action From View</a>.</p>
-
-</div>
 
 ## Image in Cell
 

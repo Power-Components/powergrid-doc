@@ -6,8 +6,7 @@ Create a test component inside the `tests` folder in your application, for examp
 
 [Pest Browser Testing](https://pestphp.com/docs/browser-testing) allows you to simulate authentic user interactions within your application—including clicking elements, typing input, and selecting options in real time.
 
-.
-The next example tests the [PowerGrid Demo](https://demo.livewire-powergrid.com/examples/demo-dish) component, ensuring that clicking and typing in the filter field will perform the search query and return the expected records.
+The next example tests a dishes table, ensuring that clicking and typing in the filter field will perform the search query and return the expected records.
 
 
 ```php
@@ -17,7 +16,7 @@ $searchField = '[wire\:model\.live\.debounce\.700ms="search"]';
 
 it('can filter by existing record')
     ->withVite() //enable Vite for this test
-    ->visit('/examples/demo-dish')
+    ->visit('/dishes')
     ->assertSee('Arkansas Possum Pie')
     ->fill($searchField, 'Bacalhau')
     ->assertDontSee('Arkansas Possum Pie')

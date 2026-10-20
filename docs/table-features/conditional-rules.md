@@ -62,12 +62,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/conditional-rules">Conditional Rules</a> on a Table.</p>
-
-</div>
-
 ## Performance
 
 Actions Rules are processed on the server side. If you are working with many Rules or [caching data](/table-component/component-configuration.html#cache), you should consider using [Actions From View](/table-features/rows.html#actions-from-blade-view) to improve your application's performance.

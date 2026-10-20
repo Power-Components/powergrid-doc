@@ -16,12 +16,12 @@ Currently, PowerGrid can receive data from the Eloquent Builder, Query Builder, 
 
 You may return the following types as in your Table's `datasource()` method.
 
-| Type      | Type                                         | Online Example                                                       |
-| ---------------- | -------------------------------------------- | -------------------------------------------------------------------- |
-| [Eloquent Builder](https://laravel.com/docs/eloquent) | Illuminate\Database\Eloquent\Builder::class | 🌎 [Eloquent Builder](https://demo.livewire-powergrid.com/examples/datasource-relationship) |
-| [Query Builder](https://laravel.com/docs/queries)    | Illuminate\Database\Query\Builder::class    | 🌎 [Query Builder](https://demo.livewire-powergrid.com/examples/datasource-query-builder)   |
-| [Collection](https://laravel.com/docs/collections)       | Illuminate\Support\Collection::class        | 🌎 [Collection](https://demo.livewire-powergrid.com/examples/datasource-collection)         |
-| Native PHP Array | `array`                                        | -                                                                    |
+| Type      | Type |
+| ---------------- | -------------------------------------------- |
+| [Eloquent Builder](https://laravel.com/docs/eloquent) | Illuminate\Database\Eloquent\Builder::class |
+| [Query Builder](https://laravel.com/docs/queries)    | Illuminate\Database\Query\Builder::class |
+| [Collection](https://laravel.com/docs/collections)       | Illuminate\Support\Collection::class |
+| Native PHP Array | `array` |
 
 Here is an example using Eloquent to get the data of the Model `Dish`.
 
@@ -85,12 +85,6 @@ class Dish extends Model
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/datasource-relationship">Relationships</a> in Data Source.</p>
-
-</div>
-
 ## Join Tables
 
 Some features like [Column sortable()](/table-component/component-columns.html#sortable) or [Column Filters](/table-features/filters.html) may require you to join your relationship in your data source. This will make the relationship Table fields available in the same result row.
@@ -121,12 +115,6 @@ class DishTable extends PowerGridComponent
   }
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/datasource-join">Join</a> in Data Source.</p>
-
-</div>
 
 ## Custom Primary Key
 

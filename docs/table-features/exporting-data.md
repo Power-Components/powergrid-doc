@@ -65,12 +65,6 @@ class DishTable extends PowerGridComponent
 
 The example above illustrates the Exportable featured enabled for Microsoft Excel and CSV files.
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/export">Data Export</a>.</p>
-
-</div>
-
 ## Exclude Columns From Exporting
 
 Sometimes, it may be necessary to omit certain Columns when exporting data but still show them in the grid. This might be the case with images or HTML links.

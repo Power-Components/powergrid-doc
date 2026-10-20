@@ -50,31 +50,6 @@
     color: #c8e18e !important;
 }
 
-.onlinedemo {
-  padding-top: 8px;
-  background-color: #F8D2F9;
-  outline: #841285 solid 1px;
-  color: #841285;
-}
-
-:root.dark .onlinedemo {
-  background-color: #7b487c;
-  color: #F3D7F4;
-  outline: #BA80F4 solid 1.5px;
-}
-
-:root.dark .onlinedemo a {
-    color: #ffdeff !important;
-}
-
-.onlinedemo a {
-    color: #841285 !important;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    transition: opacity 0.25s;
-}
-
 .danger {
   outline: var(--vp-c-danger-1) solid 1px;
 }

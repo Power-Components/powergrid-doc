@@ -55,12 +55,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example of customizing <a target="_blank" href="https://demo.livewire-powergrid.com/examples/no-results-found">No Records Found</a>.</p>
-
-</div>
-
 ## Defer Loading
 
 Occasionally, your PowerGrid Component might take a while to load when you are working with large datasets. In this case, you might want to show a "Loading" message to improve user experience.
@@ -98,12 +92,6 @@ class DishTable extends PowerGridComponent
 ```
 
 In addition, it might be useful for you to disable the [Loading Icon](/table-features/header-and-footer.html#loading-icon)  when using with Defer Loading.
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/defer-loading">Defer Loading</a> Table.</p>
-
-</div>
 
 ## Actions Method
 
@@ -199,12 +187,6 @@ class TableRefresher extends Component
 
 :::
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/auto-refresh">Auto Refresh</a> on a Table.</p>
-
-</div>
-
 ## Responsive Table
 
 To improve usability in large Tables, you may use the Responsive Table feature.
@@ -231,12 +213,6 @@ class DishTable extends PowerGridComponent
     }
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example of a PowerGrid <a target="_blank" href="https://demo.livewire-powergrid.com/examples/responsive">Responsive Table</a>.</p>
-
-</div>
 
 ### Fixed Columns
 
@@ -316,12 +292,6 @@ class DishTable extends PowerGridComponent
 }
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using  <a target="_blank" href="https://demo.livewire-powergrid.com/examples/detail">Detail Row</a> on a Table.</p>
-
-</div>
-
 ### Collapse Others
 
 By default, PowerGrid will keep the open state of other details when you toggle a row using `toggleDetail`. To close the last opened row, chain the `collapseOthers()` method:
@@ -383,12 +353,6 @@ class DishTable extends PowerGridComponent
 This feature does not support including other Livewire components (e.g. Actions)
 :::
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/lazy-load">Lazy Loading</a> Table.</p>
-
-</div>
-
 ### Load Content
 
 To specify the event or action that triggers the additional content chain a method `dispatchAfterToggleDetail()` to your `Lazy` class.
@@ -448,12 +412,6 @@ class DishTable extends PowerGridComponent
     }
 }
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example of a <a target="_blank" href="https://demo.livewire-powergrid.com/examples/persist">Persist</a> Table.</p>
-
-</div>
 
 The state data can be stored  in either cookies or session, depending on the [Persist Drive](/get-started/powergrid-configuration.html#persist-driver) configuration. However, you may customize the Persistent Drive settings for each component using Laravel's [`config()`](https://laravel.com/docs/helpers#method-config) helper within the Component's `boot()` method.
 

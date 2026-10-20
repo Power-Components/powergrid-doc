@@ -274,12 +274,6 @@ The next example illustrates a case where allowing to filter by date as "d/m/Y".
         ->searchableRaw('DATE_FORMAT(dishes.produced_at, "%d/%m/%Y") like ?'), // [!code highlight:1]
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/searchableraw">searchableRaw()</a>.</p>
-
-</div>
-
 ### sortable()
 
 Adds the sort control button to the column header.
@@ -361,12 +355,6 @@ Column::make('Dish name', 'name')
     ->hidden(isHidden: true, isForceHidden: true),
 ```
 
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/export">hidden()</a>.</p>
-
-</div>
-
 ---
 
 ### visibleInExport()
@@ -386,12 +374,6 @@ Column::make('Dish price', 'price')
     ->hidden()
     ->visibleInExport(false), // will not include in exported file
 ```
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/export">visibleInExport()</a>.</p>
-
-</div>
 
 ---
 
@@ -547,12 +529,6 @@ By doing so, the layout and styling are managed by JavaScript, which dynamically
 
 This approach reduces the overhead associated with generating Blade views for each row, leading to improved performance and easier maintenance, especially when dealing with large datasets.
 Instead of repeatedly rendering Blade components, the JavaScript-based solution efficiently handles the customization directly in the browser, making your application more responsive and streamlined.
-
-<div class="onlinedemo custom-block">
-  <p class="custom-block-title">🚀 See it in action</p>
-  <p>See an interactive example using <a target="_blank" href="https://demo.livewire-powergrid.com/examples/row-templates">rowTemplate()</a>.</p>
-
-</div>
 
 ## Custom Macros
 
