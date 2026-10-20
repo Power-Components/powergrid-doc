@@ -30,6 +30,14 @@ it('can filter products', function () {
 
 ## Livewire Testing
 
+::: warning Disable partials in tests
+Search, sort, pagination, `resetPage()`, and filter changes send only the changed [hot zones](/extending/partials-and-hot-zones.html) and skip the full render. `Livewire::test()` keeps the last full render, so `assertSee()` / `assertDontSee()` check stale rows after those updates. Turn partials off for the test suite:
+
+```xml [phpunit.xml]
+<env name="POWERGRID_PARTIALS_ENABLED" value="false"/>
+```
+:::
+
 ### Testing Actions Buttons
 
 See [action button](/performance-and-look/buttons.html). Helpers read `__turbine_actions` on the current page rows (collected in tests).
@@ -39,7 +47,7 @@ public function actions($row): array
 {
     return [
         Button::add('view')
-            ->icon('default-eye', [
+            ->icon('icons.eye', [
                 'class' => '!text-green-500',
             ])
             ->slot('View')
@@ -88,11 +96,11 @@ it('should be able to see "wire:click" in "view" action', function () {
 ### assertActionHasIcon
 
 ```php [tests/Livewire/ProductTable.php]
-it('should be able to see the "default-eye" icon in "view" action', function () {
+it('should be able to see the "icons.eye" icon in "view" action', function () {
     livewire(ProductTable::class)
         ->assertActionHasIcon(
             action: 'view',
-            icon: 'default-eye',
+            icon: 'icons.eye',
             iconClass: '!text-green-500'
         );
 });

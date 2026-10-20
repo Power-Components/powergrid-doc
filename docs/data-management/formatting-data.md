@@ -13,7 +13,7 @@ description: Transform datasource values with PowerGrid fields before they are r
 
 ## Security
 
-Never trust data being rendered. Scalar field values are escaped with `e()` automatically. If a `fields()` closure returns HTML (badges, images, Blade), wrap it in `Illuminate\Support\HtmlString`. A plain string that contains tags is shown as text.
+Never trust data being rendered. Field values are escaped with `e()` automatically. If a `fields()` closure returns HTML (badges, images, Blade), wrap it in `Illuminate\Support\HtmlString`. A plain string that contains tags is shown as text, unless [`escape_closure_fields`](/powergrid/configuration-options.html#escape-closure-fields) is `false`.
 
 ```php [app/Livewire/ProductTable.php]
 use Illuminate\Support\HtmlString;

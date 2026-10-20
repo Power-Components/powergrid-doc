@@ -72,7 +72,7 @@ php artisan vendor:publish --tag=livewire-powergrid-config --force
 | Filter placement | `inline`, `dropdown`, `flyout`, or `null`. `outside` is gone |
 | Filter state | `$filters` is keyed by field: `['type', 'value', 'op'?]` |
 | Dynamic filters | The value no longer filters the query on its own |
-| Field HTML | Plain strings are escaped. Return `HtmlString` for markup |
+| Field HTML | Closure strings are escaped. Return `HtmlString`, or set `escape_closure_fields` to `false` |
 | Plugin update hooks | Plugins call `onPluginUpdated()` only |
 | Rows per page | Capped by `max_per_page` (1000), including "All" (`0`) |
 | Editable / Toggleable views | Editable view under `powergrid-plugins`. The Toggleable switch has no view |
@@ -366,6 +366,8 @@ Livewire::test(ProductTable::class)
 | Boolean | `filters.boolean.in_stock` | `filters.in_stock.value` |
 | Select | `filters.select.category_id` | `filters.category_id.value` |
 
+Table updates now send partial HTML, so `Livewire::test()` assertions see stale rows. Add `<env name="POWERGRID_PARTIALS_ENABLED" value="false"/>` to `phpunit.xml`. See [Testing Tables](/powergrid/testing-tables.html#livewire-testing).
+
 Dropdown and flyout: set the draft, then apply:
 
 ```php [tests/Feature/ProductTableTest.php]
@@ -492,7 +494,7 @@ Queued (batch) exports show no progress bar unless you pass `->progressView('you
 
 🟥 Likelihood Of Impact: High
 
-v7 escapes plain string field values with `e()`. HTML that used to render now shows as text. Escape user data inside the `HtmlString` yourself. Search `fields()` for `return '<` and `Blade::render(`.
+v7 escapes plain string field values with `e()`. HTML that used to render now shows as text. Escape user data inside the `HtmlString` yourself. Search `fields()` for `return '<` and `Blade::render(`. To keep v6 behavior while you migrate, set `'escape_closure_fields' => false`. See [HTML shows up as text in a cell](#html-shows-up-as-text-in-a-cell).
 
 ```php [app/Livewire/ProductTable.php]
 use Illuminate\Support\HtmlString;
@@ -593,6 +595,7 @@ For SlimSelect: `npm install slim-select` and `window.SlimSelect = SlimSelect`. 
 - **Detail rows:** `powergrid-detail` is gone. Rows render in the table body. Remove `<livewire:powergrid-detail>` and published `livewire/detail.blade.php`. `PowerGrid::detail()->view()` is unchanged.
 - **Empty state:** `noDataLabel()` still works but is deprecated. Override `renderEmptyState()`.
 - **Row templates:** `rowTemplates()` and `Column::template()` stay. They render on the server with escaped values. `pg-render-row-template.js` and `window.pgRowTemplates_*` are gone.
+- **Icons:** `icon_resources` is gone, so v6 aliases such as `->icon('default-trash')` no longer resolve. Pass a Blade component name instead: `->icon('svg.trash')` for `resources/views/components/svg/trash.blade.php`.
 - **Internal row keys:** `__powergrid_rules`, `__powergrid_loop`, and `__powergrid_actions` were renamed to `__turbine_*`.
 
 ## Configuration File
@@ -661,7 +664,7 @@ find resources/views/vendor/livewire-powergrid/components/frameworks -type f
 - [ ] Published views republished from v7, nothing left in `frameworks/`
 - [ ] `PowerGrid::lazy()` removed
 - [ ] `WithExport` removed, export classes point to `Plugins\Export\OpenSpout\v5`
-- [ ] HTML in `fields()` wrapped in `HtmlString`
+- [ ] HTML in `fields()` wrapped in `HtmlString` (or `escape_closure_fields` set to `false`)
 - [ ] `withSum()` and friends replaced with `summarize()`
 - [ ] `onUpdatedEditable()` / `onUpdatedToggleable()` moved to `onPluginUpdated()`
 - [ ] Filter paths updated in tests, and dynamic filters applied in code
@@ -679,7 +682,7 @@ find resources/views/vendor/livewire-powergrid/components/frameworks -type f
 6. Republish views if you need them, and replace the old helpers
 7. Remove lazy loading
 8. Remove `WithExport` and update export classes
-9. Wrap HTML fields in `HtmlString`
+9. Wrap HTML fields in `HtmlString`, or set `escape_closure_fields` to `false`
 10. Replace summaries and plugin update hooks
 11. Fix filter placement, filter paths, dynamic filters, and tests
 12. Open every table and try sorting, filtering, pagination, export, editing, and toggles
@@ -712,7 +715,26 @@ The namespace is now `components.themes`.
 
 ### HTML shows up as text in a cell
 
-Return an `HtmlString` from the `fields()` closure.
+The cell shows markup like `<span class="badge">Yes</span>` instead of a badge. v7 escapes strings returned by `fields()` closures.
+
+Return an `HtmlString` from the closure:
+
+```php [app/Livewire/ProductTable.php]
+use Illuminate\Support\HtmlString;
+
+->add('status_badge', fn ($product): string => Blade::render( // [!code --]
+->add('status_badge', fn ($product): HtmlString => new HtmlString(Blade::render( // [!code ++]
+    '<span class="badge">{{ $label }}</span>',
+    ['label' => $product->in_stock ? 'Yes' : 'No'],
+)); // [!code --]
+))); // [!code ++]
+```
+
+Or keep v6 behavior for every table while you migrate. Closure strings then render as raw HTML, so escape user data with `e()` yourself:
+
+```php [config/livewire-powergrid.php]
+'escape_closure_fields' => false,
+```
 
 ### Inline edits or toggles don't save
 

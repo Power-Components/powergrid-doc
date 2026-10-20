@@ -116,7 +116,7 @@ If the same grid also feeds Inertia or a REST endpoint, describe it once and swa
 
 ### Other Changes
 
-- Plain string field values are escaped. Return `HtmlString` for markup.
+- Plain string field values are escaped. Return `HtmlString` for markup, or set `escape_closure_fields` to `false` to keep v6 behavior.
 - `max_per_page` (default `1000`) caps the rows a page loads, including "All".
 - Changing rows per page keeps the selected rows.
 
