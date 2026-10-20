@@ -52,6 +52,14 @@ Upper bound for rows fetched per page. The per-page value travels in component s
 'max_per_page' => 1000,
 ```
 
+### Escape Closure Fields
+
+Strings returned by `fields()` closures are escaped; return `Illuminate\Support\HtmlString` for fields that must render markup. Set to `false` to render closure strings as raw HTML (v6 behavior) and escape user data yourself. Fields added without a closure are always escaped.
+
+```php [config/livewire-powergrid.php]
+'escape_closure_fields' => true,
+```
+
 ### Persist Driver
 
 [Persist State](/performance-and-look/persist-state.html) saves columns, sorting, and filters.
