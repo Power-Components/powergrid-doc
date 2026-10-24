@@ -1,7 +1,15 @@
 import { defineConfig } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
 
 export default defineConfig({
   ignoreDeadLinks: true,
+  vite: {
+    // Publishes /llms.txt, /llms-full.txt and a .md copy of each page for AI tools.
+    plugins: [llmstxt({
+      domain: 'https://livewire-powergrid.com',
+      description: 'Livewire data table for Laravel: columns, sorting, filters, pagination, actions and exports.',
+    })],
+  },
   title: "Livewire PowerGrid",
   description: "PowerGrid Docs",
   head: [
