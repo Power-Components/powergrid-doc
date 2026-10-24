@@ -1,3 +1,65 @@
 [build]
   command = "bash scripts/netlify-build.sh"
   publish = "docs/.vitepress/dist"
+
+# Pages that exist only in the 6.x docs. Shared paths (install, introduction,
+# release notes) stay on 7.x. Without force, a future 7.x file at the same path wins.
+[[redirects]]
+  from = "/table-features/*"
+  to = "/6.x/table-features/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/table-component/*"
+  to = "/6.x/table-component/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/expanding-powergrid/*"
+  to = "/6.x/expanding-powergrid/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/testing"
+  to = "/6.x/testing/"
+  status = 301
+
+[[redirects]]
+  from = "/testing/"
+  to = "/6.x/testing/"
+  status = 301
+
+[[redirects]]
+  from = "/testing/*"
+  to = "/6.x/testing/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/community-and-support/contribute"
+  to = "/6.x/community-and-support/contribute"
+  status = 301
+
+[[redirects]]
+  from = "/community-and-support/contribute.html"
+  to = "/6.x/community-and-support/contribute.html"
+  status = 301
+
+[[redirects]]
+  from = "/get-started/powergrid-configuration"
+  to = "/6.x/get-started/powergrid-configuration"
+  status = 301
+
+[[redirects]]
+  from = "/get-started/powergrid-configuration.html"
+  to = "/6.x/get-started/powergrid-configuration.html"
+  status = 301
+
+[[redirects]]
+  from = "/get-started/troubleshooting"
+  to = "/6.x/get-started/troubleshooting"
+  status = 301
+
+[[redirects]]
+  from = "/get-started/troubleshooting.html"
+  to = "/6.x/get-started/troubleshooting.html"
+  status = 301
