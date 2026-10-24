@@ -1,17 +1,18 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: '/6.x/',
   ignoreDeadLinks: true,
   title: "Livewire PowerGrid",
   description: "PowerGrid Docs",
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: 'logomark2x.png' }],
-    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "favicon.ico"}],
-    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png"}],
-    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "favicon-32x32.png"}],
-    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "favicon-16x16.png"}],
-    ['link', { rel: "manifest", href: "site.webmanifest"}],
-    ['meta', { name: 'og:title', content: 'Livewire PowerGrid - Version 5'}],
+    ['link', { rel: 'icon', type: 'image/png', href: '/6.x/logomark2x.png' }],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/6.x/favicon.ico"}],
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/6.x/apple-touch-icon.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/6.x/favicon-32x32.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/6.x/favicon-16x16.png"}],
+    ['link', { rel: "manifest", href: "/6.x/site.webmanifest"}],
+    ['meta', { name: 'og:title', content: 'Livewire PowerGrid - Version 6'}],
     ['meta', { name: 'og:description', content: 'Livewire PowerGrid is a component for generating dynamic tables with your Laravel Models and Collections.'}],
     ['meta', { name: 'application-name', content: 'Livewire PowerGrid' }],
     ['meta', { name: 'apple-mobile-web-app-title', content: 'Livewire PowerGrid' }],
@@ -38,20 +39,25 @@ export default defineConfig({
         text: '6.x',
         items: [
           {
+            text: '7.x (latest)',
+            link: 'https://livewire-powergrid.com/',
+            target: '_self'
+          },
+          {
             text: '5.x',
-            link: 'https://github.com/Power-Components/powergrid-doc/tree/5x/docs'
+            link: 'https://github.com/Power-Components/powergrid-doc/tree/5.x/docs'
           },
           {
             text: '4.x',
-            link: 'https://github.com/Power-Components/powergrid-doc/tree/4x/docs'
+            link: 'https://github.com/Power-Components/powergrid-doc/tree/4.x/docs'
           },
           {
             text: '3.x',
-            link: 'https://github.com/Power-Components/powergrid-doc/tree/3x/docs'
+            link: 'https://github.com/Power-Components/powergrid-doc/tree/3.x/docs'
           },
           {
             text: '2.x',
-            link: 'https://github.com/Power-Components/powergrid-doc/tree/2x/docs'
+            link: 'https://github.com/Power-Components/powergrid-doc/tree/2.x/docs'
           }
         ]
       }
@@ -139,19 +145,14 @@ export default defineConfig({
       message: 'Created By Luan Freitas and @DanSysAnalyst',
     },
     editLink: {
-      pattern: 'https://github.com/power-components/powergrid-doc/edit/5x/docs/:path',
+      pattern: 'https://github.com/power-components/powergrid-doc/edit/6.x/docs/:path',
       text: 'Edit this page on GitHub'
     },
     search: {
-      provider: 'algolia',
-      options: {
-        appId: '7M4C366U6U',
-        apiKey: '0a0022f159f38849b0dbd2199c12f081',
-        indexName: 'livewire-powergridLivewire PowerGrid Site',
-      }
+      provider: 'local'
     }
   },
   sitemap: {
-    hostname: 'https://livewire-powergrid.com'
+    hostname: 'https://livewire-powergrid.com/6.x/'
   }
 })

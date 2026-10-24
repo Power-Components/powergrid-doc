@@ -43,7 +43,7 @@ class DishTable extends PowerGridComponent
 
 <div class="success custom-block">
   <p class="custom-block-title">🎉 Job done!</p>
-  <p>Let's jump to the <a href="/table-component/data-source-fields">Data Source Fields</a> section and configure the fields from your Data Source.</p>
+  <p>Let's jump to the <a href="/6.x/table-component/data-source-fields.html">Data Source Fields</a> section and configure the fields from your Data Source.</p>
 </div>
 
 ## Relationships

@@ -102,7 +102,7 @@ class DishTable extends PowerGridComponent
 
 <div class="success custom-block">
   <p class="custom-block-title">🎉 Ok, all done!</p>
-  <p>Let's explore the various <a href="/table-component/component-configuration.html">Configuration Options</a> available in our Component.</p>
+  <p>Let's explore the various <a href="/6.x/table-component/component-configuration.html">Configuration Options</a> available in our Component.</p>
 </div>
 
 ## Column Data Field

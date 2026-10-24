@@ -188,7 +188,7 @@ In the feedback message, you will find:
 
 <div class="success custom-block">
   <p class="custom-block-title">🎉 That's it!</p>
-  <p>Now we can proceed to the <a href="/get-started/rendering-a-powergrid-table">Show a PowerGrid Table</a> section.</p>
+  <p>Now we can proceed to the <a href="/6.x/get-started/rendering-a-powergrid-table.html">Show a PowerGrid Table</a> section.</p>
 </div>
 
 ## Customize the Component Creation

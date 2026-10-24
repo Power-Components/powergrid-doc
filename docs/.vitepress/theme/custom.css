@@ -61,3 +61,29 @@
 .info {
   outline: #c6c9d4 solid 1px;
 }
+
+:root {
+  --vp-layout-top-height: 36px;
+}
+
+.pg-version-banner {
+  position: fixed;
+  top: 0;
+  z-index: var(--vp-z-index-layout-top);
+  width: 100%;
+  height: var(--vp-layout-top-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  background: var(--vp-c-warning-soft);
+  color: var(--vp-c-text-1);
+}
+
+.pg-version-banner a {
+  margin-left: 4px;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+}

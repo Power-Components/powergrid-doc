@@ -197,7 +197,7 @@ Currently, there are no specific Bootstrap theme configuration instructions.
 
 <div class="success custom-block">
   <p class="custom-block-title">🎉 Everything ready!</p>
-  <p>Now, we can go to the next step and <a href="/get-started/create-powergrid-table.html">create a PowerGrid Table</a>.</p>
+  <p>Now, we can go to the next step and <a href="/6.x/get-started/create-powergrid-table.html">create a PowerGrid Table</a>.</p>
 </div>
 
 ## General Configuration
