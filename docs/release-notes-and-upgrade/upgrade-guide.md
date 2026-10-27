@@ -426,6 +426,18 @@ public function filters(): array
 
 Persist still uses cookies (default), session, or cache. v7 restores the payload and canonicalizes `$filters` into field records that must include `type`. v6 filters were keyed by type, so those saved filters are not applied. Sorting and column visibility still restore when the payload uses the same keys.
 
+Persistence is now **on by default**. Every table persists `columns`, `filters`, and `sorting` without calling `persist()`. Storage keys use a `pg7:` prefix, so state saved by v6 is ignored on the first visit. Opt out per table:
+
+```php [app/Livewire/ProductTable.php]
+public function setUp(): array
+{
+    $this->withoutPersist();                // persist nothing
+    // $this->withoutPersist(['filters']);  // keep columns and sorting
+
+    return [/* ... */];
+}
+```
+
 ## Lazy Loading
 
 🟧 Likelihood Of Impact: Medium
@@ -487,6 +499,8 @@ use PowerComponents\LivewirePowerGrid\Plugins\Export\OpenSpout\v5\{ExportToCsv, 
     'openspout_v4' => [...], // [!code --]
 ],
 ```
+
+OpenSpout is only suggested by Composer. Without `openspout/openspout` installed (and no custom XLSX exporter in `exportable`), the XLS option is hidden from the export dropdown. Custom exporters mapped in `exportable` are used for both synchronous and queued exports.
 
 Queued (batch) exports show no progress bar unless you pass `->progressView('your.view')`. The view receives `$exportState` and `$tableName`. See [Exporting Data](/data-management/exporting-data.html).
 
@@ -585,6 +599,27 @@ window.TomSelect = TomSelect
 
 For SlimSelect: `npm install slim-select` and `window.SlimSelect = SlimSelect`. If the library is missing, the filter does not load and the console says what to install.
 
+The `plugins.select.slim` and `plugins.select.tom` arrays are now passed to the library constructor as options. The v6 `cdn` and `css` keys are gone — remove them, or they reach the constructor as unknown options.
+
+## Date Picker
+
+🟧 Likelihood Of Impact: Medium
+
+`Filter::datetime()` and `Filter::date()` use flatpickr, which is not bundled. Install it and expose it on `window`:
+
+```bash
+npm install flatpickr
+```
+
+```javascript [resources/js/app.js]
+import flatpickr from 'flatpickr'
+window.flatpickr = flatpickr
+```
+
+Import flatpickr's CSS as well. Without `window.flatpickr` the date filter stays a plain input and the console says what to add.
+
+The `timezone` param is now honored: the picked range is read in that timezone and converted to `app.timezone` before it reaches the query or your `builder()`. In v6 it was ignored. If you converted the range yourself, drop that code or the shift is applied twice.
+
 `plugins.select.default` still chooses `tom` or `slim`. The default is now `slim` — set it back to `tom` if you republish the config and use TomSelect.
 
 ## Other Changes
@@ -634,6 +669,7 @@ For SlimSelect: `npm install slim-select` and `window.SlimSelect = SlimSelect`. 
 
 - `theme` accepts `'tailwind'`, `'daisyui'`, `'flux'`, or an FQCN.
 - `plugins.select.default` is `'slim'`.
+- `plugins.select.slim` / `plugins.select.tom` hold constructor options only (`cdn` / `css` removed).
 - `exportable` points at `Plugins\Export\OpenSpout\v5`.
 
 ## Public API
@@ -670,6 +706,8 @@ find resources/views/vendor/livewire-powergrid/components/frameworks -type f
 - [ ] Filter paths updated in tests, and dynamic filters applied in code
 - [ ] JS and CSS import from `resources/js` and `resources/css`
 - [ ] `filter` config is `inline`, `dropdown`, `flyout`, or `null`
+- [ ] Tables that must not remember state call `withoutPersist()`
+- [ ] flatpickr / TomSelect / SlimSelect exposed on `window` when used
 - [ ] Pulse integration removed
 
 ## Step-by-Step Order
