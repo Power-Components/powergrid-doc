@@ -9,7 +9,7 @@ description: Partials and Hot Zones update only the HTML fragments affected by s
 
 PowerGrid uses `power-components/partials` to isolate DOM updates. A sort, search, filter, page change, or tab switch renders only the affected fragments (Hot Zones) server-side, and the browser morphs only those elements instead of the whole Livewire component.
 
-If `partials()` is not available, PowerGrid falls back to a full-component render. There is no enable / disable flag.
+If `partials()` is not available, PowerGrid falls back to a full-component render. Set `POWERGRID_PARTIALS_ENABLED=false` (config `powergrid-partials.enabled`) to force full renders, for example in `Livewire::test()` suites. See [Testing Tables](/powergrid/testing-tables.html#livewire-testing).
 
 ## Hot Zones
 
