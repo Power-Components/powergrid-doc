@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "Livewire PowerGrid"
-  text: "Data tables for Laravel Livewire"
+  text: 'Data tables for <span class="hl">Laravel Livewire</span>'
   tagline: Tabs, filters, search, inline editing and export from a single PHP class. Tailwind, DaisyUI or Flux.
   actions:
     - theme: brand
@@ -34,3 +34,77 @@ features:
     details: Tailwind, DaisyUI or Flux out of the box. Override any token in config.
     link: /performance-and-look/ui-theme-override.md
 ---
+
+<div class="home-section">
+
+## From zero to a table in three steps
+
+<p class="lead">Install the package, generate a component, drop it in a view.</p>
+
+<div class="home-steps">
+  <div>
+    <strong>Install</strong>
+    <code>composer require power-components/livewire-powergrid</code>
+  </div>
+  <div>
+    <strong>Create</strong>
+    <code>php artisan powergrid:create</code>
+  </div>
+  <div>
+    <strong>Render</strong>
+    <code>&lt;livewire:dish-table /&gt;</code>
+  </div>
+</div>
+
+</div>
+
+<div class="home-section home-split">
+<div>
+
+## One class, the whole table
+
+<p class="lead">Columns, tabs, filters and actions live in a single Livewire component. No JavaScript to write.</p>
+
+- Tabs scope the query and count rows for the badge
+- Searchable and sortable columns in one chain
+- Toggles and click-to-edit save through your own code
+- Filters render inline, in a dropdown or in a flyout
+
+[Create your first table](/get-started/create-powergrid-table)
+
+</div>
+<div>
+
+```php [app/Livewire/DishTable.php]
+public function setUp(): array
+{
+    return [
+        PowerGrid::tabs()
+            ->add('all', label: 'All')
+            ->add('sold_out', label: 'Sold out',
+                scope: ['in_stock', false]),
+        PowerGrid::header()->showSearchInput(),
+    ];
+}
+
+public function columns(): array
+{
+    return [
+        Column::make('Name', 'name')->searchable()->sortable(),
+        Column::make('Price', 'price')->sortable(),
+        Column::make('Stock', 'in_stock')->toggleable(),
+    ];
+}
+```
+
+</div>
+</div>
+
+<div class="home-cta">
+  <h2>Ready to build your first table?</h2>
+  <p>Free and open source. MIT licensed.</p>
+  <div class="actions">
+    <a class="brand" href="./get-started/install">Get started</a>
+    <a href="https://github.com/Power-Components/livewire-powergrid" target="_blank" rel="noopener">Star on GitHub</a>
+  </div>
+</div>

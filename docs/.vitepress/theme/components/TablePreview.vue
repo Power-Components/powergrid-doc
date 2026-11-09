@@ -1,26 +1,73 @@
 <script setup>
 // HTML mock of a PowerGrid 7 table (Tailwind theme): tabs, header controls, active filter, rows, pagination.
-// Stays current with the docs and theme, unlike a screenshot.
+// Stays current with the docs and theme, unlike a screenshot. Plays a short demo loop unless reduced motion is set.
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+
 const tabs = [
-    { label: 'All', badge: 48, active: true },
-    { label: 'In stock', badge: 41 },
-    { label: 'Sold out', badge: 7 },
+    { label: 'All', total: 48 },
+    { label: 'In stock', total: 41, stock: true },
+    { label: 'Sold out', total: 7, stock: false },
 ]
-const rows = [
+const dishes = [
     { name: 'Pastel de Nata', category: 'Dessert', price: '$ 2.50', stock: true },
     { name: 'Feijoada', category: 'Main dish', price: '$ 14.90', stock: true },
     { name: 'Pão de Queijo', category: 'Snack', price: '$ 3.20', stock: false },
     { name: 'Moqueca', category: 'Main dish', price: '$ 18.00', stock: true },
     { name: 'Brigadeiro', category: 'Dessert', price: '$ 1.10', stock: true },
+    { name: 'Coxinha', category: 'Snack', price: '$ 2.80', stock: false },
+    { name: 'Acarajé', category: 'Snack', price: '$ 4.50', stock: true },
+    { name: 'Quindim', category: 'Dessert', price: '$ 2.20', stock: false },
+    { name: 'Bobó', category: 'Main dish', price: '$ 16.40', stock: false },
+    { name: 'Cocada', category: 'Dessert', price: '$ 1.60', stock: false },
 ]
+const PAGE = 5
+
+const tab = ref(0)
+const query = ref('')
+
+const matches = computed(() => dishes.filter((d) =>
+    (tabs[tab.value].stock === undefined || d.stock === tabs[tab.value].stock)
+    && d.name.toLowerCase().includes(query.value.toLowerCase())))
+const rows = computed(() => matches.value.slice(0, PAGE))
+// keep the table height fixed while rows come and go
+const fillers = computed(() => Math.max(0, PAGE - rows.value.length))
+const total = computed(() => (query.value ? matches.value.length : tabs[tab.value].total))
+
+// demo script: [delay ms, action]
+const typed = (text) => [...text].map((_, i) => [140, () => (query.value = text.slice(0, i + 1))])
+const script = [
+    [2200, () => (tab.value = 1)],
+    [2200, () => (tab.value = 2)],
+    [2200, () => (tab.value = 0)],
+    [900, () => {}],
+    ...typed('moq'),
+    [2200, () => (query.value = '')],
+    [1400, () => {}],
+]
+
+let timer
+let step = 0
+function next() {
+    const [delay, action] = script[step]
+    timer = setTimeout(() => {
+        action()
+        step = (step + 1) % script.length
+        next()
+    }, delay)
+}
+
+onMounted(() => {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) next()
+})
+onUnmounted(() => clearTimeout(timer))
 </script>
 
 <template>
-    <figure class="table-preview" role="img" aria-label="PowerGrid table with tabs, header controls, an active filter, five rows and pagination">
+    <figure class="table-preview" role="img" aria-label="PowerGrid table with tabs, header controls, an active filter, rows and pagination">
         <div aria-hidden="true">
             <div class="tp-tabs">
-                <span v-for="tab in tabs" :key="tab.label" :class="{ on: tab.active }">
-                    {{ tab.label }} <small>{{ tab.badge }}</small>
+                <span v-for="(t, i) in tabs" :key="t.label" :class="{ on: i === tab }">
+                    {{ t.label }} <small>{{ t.total }}</small>
                 </span>
             </div>
             <div class="tp-card">
@@ -37,9 +84,10 @@ const rows = [
                             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" /></svg>
                             <i>1</i>
                         </span>
-                        <div class="tp-search">
+                        <div class="tp-search" :class="{ typing: query }">
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-                            <span>Search...</span>
+                            <span v-if="query" class="tp-query">{{ query }}</span>
+                            <span v-else>Search...</span>
                         </div>
                     </div>
                 </div>
@@ -58,18 +106,21 @@ const rows = [
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(row, i) in rows" :key="row.name">
-                            <td class="tp-check"><i :class="{ on: i === 1 }"></i></td>
+                        <tr v-for="row in rows" :key="row.name" class="tp-row">
+                            <td class="tp-check"><i :class="{ on: row.name === 'Feijoada' }"></i></td>
                             <td>{{ row.name }}</td>
                             <td class="tp-hide">{{ row.category }}</td>
                             <td class="tp-num">{{ row.price }}</td>
                             <td><span class="tp-toggle" :class="{ on: row.stock }"></span></td>
                             <td class="tp-act"><span class="tp-btn tp-sm">Edit</span></td>
                         </tr>
+                        <tr v-for="n in fillers" :key="'filler' + n" class="tp-filler">
+                            <td colspan="6"></td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="tp-footer">
-                    <span><span class="tp-hide">Showing</span> 1 to 5 of 48 <span class="tp-hide">Results</span></span>
+                    <span><span class="tp-hide">Showing</span> 1 to {{ rows.length }} of {{ total }} <span class="tp-hide">Results</span></span>
                     <div class="tp-pages">
                         <span>&lsaquo;</span><b>1</b><span>2</span><span>3</span><span>&rsaquo;</span>
                     </div>
@@ -292,8 +343,51 @@ const rows = [
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314171d' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E")
         center / 10px no-repeat;
 }
-.tp-card tbody tr:nth-child(2) {
+.tp-card tbody tr:has(.tp-check i.on) {
     background: var(--vp-c-brand-soft);
+}
+.tp-row {
+    animation: tp-in 0.35s ease-out;
+}
+@keyframes tp-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+/* same height as a data row (24px button + 2 x 9px padding + border) */
+.tp-card .tp-filler td {
+    height: 43px;
+    padding: 0;
+    border-bottom-color: transparent;
+}
+.tp-tabs span {
+    transition: background-color 0.2s, color 0.2s;
+}
+.tp-search.typing {
+    border-color: var(--vp-c-brand-3);
+    color: var(--vp-c-text-1);
+}
+.tp-query::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    margin-left: 1px;
+    vertical-align: -2px;
+    background: currentColor;
+    animation: tp-caret 1s steps(1) infinite;
+}
+@keyframes tp-caret {
+    50% {
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .tp-row,
+    .tp-query::after {
+        animation: none;
+    }
 }
 .tp-toggle {
     display: inline-block;
