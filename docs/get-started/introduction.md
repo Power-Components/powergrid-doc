@@ -1,61 +1,57 @@
 ---
 title: PowerGrid Documentation - Introduction
-description: Welcome to the official PowerGrid documentation. Explore how easily you can build beautiful, feature-rich data tables that save development time and enhance your data management.
+description: Livewire PowerGrid builds data tables for Laravel Livewire with tabs, filters, search, inline editing and export.
 ---
 
-# Welcome to PowerGrid
+# Introduction
 
-Livewire PowerGrid is a Livewire data table for Laravel. It handles columns, rows, sorting, filtering, pagination, and related features so you can ship an interactive table quickly.
+Livewire PowerGrid is a data table for [Laravel Livewire](https://livewire.laravel.com). You describe columns, filters and actions in one PHP class; PowerGrid renders the table with Tailwind CSS, DaisyUI or Flux.
 
-Start at the [installation page](/get-started/install.html).
+<TablePreview />
 
-![Output](/screenshot.png)
+Ready to build one? Go to [Install](/get-started/install).
 
-## What it is for
+## When to use it
 
-Use PowerGrid when a static HTML table is not enough:
+| Use case | Typical table |
+| :--- | :--- |
+| Admin lists | Users, orders, products, invoices with inline edits, bulk actions and rules |
+| Reporting | Leads and metrics with date-range filters, totals and XLSX/CSV export |
+| Work queues | Enrollments, tickets, incidents split by status tabs |
 
-- **Ops and admin lists** — users, orders, products, invoices. Filter, edit inline, run bulk actions, and hide buttons with rules.
-- **CRM and reporting** — leads, metrics, date-range filters, XLSX/CSV export, and column totals via `summarize()`.
-- **Progress and policy tables** — enrollments, status tabs, rule clauses, incident queues.
-
-## What it is not
-
-- Not an admin panel or CMS (no dashboards or app navigation).
-- Not a general UI kit (tables only).
-- Not a drag-and-drop builder or realtime collaboration tool.
+PowerGrid is not an admin panel, a UI kit or a drag-and-drop builder. It renders tables only.
 
 ## Features
 
-- **Theming** — Tailwind CSS 4, DaisyUI, Flux, or custom tokens via `theme_overrides`
-- **Core table features** — Pagination, column sorting, filters (inline, dropdown, flyout), global search
-- **Advanced features** — Custom filter builder, status tabs, inline editing, toggle switches, row buttons/checkboxes/dropdown menus, custom cell content, multi-row bulk actions, conditional action rules
-- **Data & export** — Column summaries via `summarize()` (sum, count, avg, min, max), XLSX/CSV export (OpenSpout), queue export for large datasets
-- **Architecture** — Server-side actions (Blade, no JS cache), Hot Zones for DOM isolation, portable grid definitions, PowerGrid Lite Blade components, plugin system, responsive
-- **Laravel Scout compatible** — Conditional macros when `laravel/scout` is installed
-- **Multi-language** — 🇺🇸 🇧🇷 🇪🇸 🇮🇹 🇩🇪 and more
+| Area | What you get |
+| :--- | :--- |
+| Finding rows | [Search](/data-management/searching-data), [sorting](/data-management/sorting-data), [filters](/table-structure/filters) (inline, dropdown, flyout), [filter builder](/table-structure/filter-builder), [tabs](/table-structure/tabs), [pagination](/table-structure/pagination) |
+| Actions | [Inline editing](/data-management/editing-data), toggles, [row buttons](/table-structure/row-buttons), [bulk actions](/table-structure/bulk-actions), [conditional rules](/table-structure/conditional-rules) |
+| Data | [Summaries](/data-management/summarizing-data) with `summarize()` (sum, count, avg, min, max), [XLSX/CSV export](/data-management/exporting-data) via OpenSpout, queued for large datasets |
+| Look | Tailwind CSS 4, DaisyUI or Flux, [theme overrides](/performance-and-look/ui-theme-override), [responsive layout](/performance-and-look/responsive-layout) |
+| Architecture | Server-side actions in Blade, [Hot Zones](/extending/partials-and-hot-zones), [portable grid definitions](/extending/portable-grid-definitions), [PowerGrid Lite](/powergrid-lite/blade-components), [plugins](/extending/plugin-system) |
+| Search engines | Laravel Scout macros when `laravel/scout` is installed |
+| Language | [20 translations](/powergrid/internationalization) |
 
 ## Sponsors
 
-PowerGrid is an open-source project. You can support its development and sponsor creators via the GitHub repository.
+PowerGrid is open source. [Sponsor the creators on GitHub](https://github.com/sponsors/luanfreitasdev) to keep it going.
 
-<p>
-  <a href="https://devsquad.com" target="_blank">
+<div class="sponsors">
+  <a class="featured" href="https://devsquad.com" target="_blank" rel="noopener">
     <img src="/sponsors/devsquad.png" alt="DevSquad">
+    <small>Main sponsor</small>
   </a>
-</p>
-<p>Supported by:</p>
-<p>
-  <a href="https://www.jetbrains.com/phpstorm/" target="_blank">
-    <img src="/sponsors/phpstorm.png" alt="PHPStorm" width="32" height="32">
+  <a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="noopener">
+    <img src="/sponsors/phpstorm.png" alt="">
+    <span>PhpStorm<small>Supported by</small></span>
   </a>
-  <a href="https://www.araxis.com/merge/" target="_blank">
-    <img src="/sponsors/araxis.png" alt="Araxis Merge" width="32" height="32">
+  <a href="https://www.araxis.com/merge/" target="_blank" rel="noopener">
+    <img src="/sponsors/araxis.png" alt="">
+    <span>Araxis Merge<small>Supported by</small></span>
   </a>
-</p>
+</div>
 
 ## Credits
 
-PowerGrid is an open-source project created by [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnalyst](https://github.com/dansysanalyst), built with the help of over [100 Contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors) and the support of our sponsors.
-
-Logo & artwork by [Caneco](https://github.com/caneco)
+Created by [Luan Freitas](https://twitter.com/luanfreitasdev) and [@DanSysAnalyst](https://github.com/dansysanalyst), with over [100 contributors](https://github.com/Power-Components/livewire-powergrid/graphs/contributors) and our sponsors. Logo and artwork by [Caneco](https://github.com/caneco).
