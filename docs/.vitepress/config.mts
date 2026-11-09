@@ -13,6 +13,9 @@ export default defineConfig({
   title: "Livewire PowerGrid",
   description: "PowerGrid Docs",
   head: [
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap' }],
     ['link', { rel: 'icon', type: 'image/png', href: 'logomark2x.png' }],
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "favicon.ico"}],
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png"}],
@@ -24,7 +27,7 @@ export default defineConfig({
     ['meta', { name: 'application-name', content: 'Livewire PowerGrid' }],
     ['meta', { name: 'apple-mobile-web-app-title', content: 'Livewire PowerGrid' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#f69e08' }],
     ['meta', { name: 'author', content: '@luanfreitasdev and @dansysanalyst' }],
     ['meta', { name: 'keywords', content: 'laravel, livewire, datatable,  data table, grid, php, alpine, tall stack, tailwind, daisyui, flux, table example, laravel package, sorting tables, table ui, table html' }],
   ],
@@ -111,7 +114,7 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: '📄 Release Notes',
+        text: 'Release Notes',
         collapsed: false,
         items: [
           { text: 'Release Notes', link: '/release-notes-and-upgrade/release-notes' },
@@ -119,7 +122,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '🚀 Get Started',
+        text: 'Get Started',
         collapsed: false,
         items: [
           { text: 'Introduction', link: '/get-started/introduction' },
@@ -130,14 +133,14 @@ export default defineConfig({
         ],
       },
       {
-        text: '🤖 Build with AI',
+        text: 'Build with AI',
         collapsed: false,
         items: [
           { text: 'Tools & Skills', link: '/build-with-ai/tools-and-skills' },
         ],
       },
       {
-        text: '🧰 Table Structure',
+        text: 'Table Structure',
         collapsed: false,
         items: [
           { text: 'DataSource', link: '/table-structure/datasource' },
@@ -155,7 +158,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '💾 Data Management',
+        text: 'Data Management',
         collapsed: false,
         items: [
           { text: 'Formatting Data', link: '/data-management/formatting-data' },
@@ -169,14 +172,14 @@ export default defineConfig({
         ],
       },
       {
-        text: '🌩️ PowerGrid Lite',
+        text: 'PowerGrid Lite',
         collapsed: false,
         items: [
           { text: 'Blade Components', link: '/powergrid-lite/blade-components' },
         ],
       },
       {
-        text: '⚡ PowerGrid',
+        text: 'PowerGrid',
         collapsed: false,
         items: [
           { text: 'Configuration Options', link: '/powergrid/configuration-options' },
@@ -189,7 +192,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '⚙️ Performance & Look',
+        text: 'Performance & Look',
         collapsed: false,
         items: [
           { text: 'Table Reference Name', link: '/performance-and-look/table-reference-name' },
@@ -205,7 +208,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '🔌 Extending',
+        text: 'Extending',
         collapsed: false,
         items: [
           { text: 'Partials & Hot Zones', link: '/extending/partials-and-hot-zones' },
@@ -215,10 +218,10 @@ export default defineConfig({
         ],
       },
       {
-        text: '🛟 Community & Support',
+        text: 'Community & Support',
         collapsed: true,
         items: [
-          { text: '🧨 Troubleshooting', link: '/community-and-support/troubleshooting' },
+          { text: 'Troubleshooting', link: '/community-and-support/troubleshooting' },
           { text: 'Support', link: '/community-and-support/support' },
           { text: 'Community', link: '/community-and-support/community' },
         ],
