@@ -39,9 +39,13 @@ class ProductTable extends PowerGridComponent
 Header search does not match Enum labels. See [Searching Data - Enum](/data-management/searching-data.html#enum).
 :::
 
-### Toggle Column Visibility
+### Toggle and Reorder Columns {#toggle-column-visibility}
 
-Chain `showToggleColumns()` on `PowerGrid::header()`.
+Chain `showToggleColumns()` on `PowerGrid::header()`. It adds a Columns dropdown to show, hide, and reorder columns.
+
+Drag a column by its handle, or focus the handle and press the arrow up/down keys. Action columns keep their position.
+
+Apply rearranges the table in the browser. The datasource is not queried and the table is not re-rendered.
 
 ```php [app/Livewire/ProductTable.php]
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
@@ -58,6 +62,14 @@ class ProductTable extends PowerGridComponent
     }
 }
 ```
+
+Order and visibility are [persisted](/performance-and-look/persist-state.html) under `columns`. The order is stored only after a user reorders, so a change to the order in `columns()` still reaches everyone else. Reset restores the declared order and visibility.
+
+::: info
+Hidden columns stay in the query while `showToggleColumns()` is enabled, so they can be shown without a request.
+:::
+
+Style the drag handle with the optional theme token `header.toggle_columns.handle`.
 
 ### Header Alignment
 

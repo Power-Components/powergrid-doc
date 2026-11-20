@@ -29,6 +29,8 @@ class ProductTable extends PowerGridComponent
 
 See [Checkboxes](/table-structure/rows.html#checkboxes). Hide or disable a row checkbox with [Conditional Rules](/table-structure/conditional-rules.html). Hidden or disabled rows are skipped by "select all".
 
+"Select all" ticks the selectable rows of the current page in the browser, without a request. Selections from other pages are kept; unticking it clears the whole selection. The IDs reach the component with the next request, like a single ticked row.
+
 ## Header Buttons
 
 Return `Button` instances from `header()`. They render as Blade HTML in the table header.
@@ -87,6 +89,35 @@ class ProductTable extends PowerGridComponent
 ```
 
 `window.pgBulkActions.get('yourTableName')` returns the same IDs in JavaScript. `clear(tableName)` resets one table; `clearAll()` resets every table.
+
+## Skip the Re-render
+
+Every request to the table re-renders it and queries the datasource again. That is what you want after a delete or update.
+
+When the handler changes no table data (it opens a dialog, starts an export, copies the selected IDs), call `skipGridRender()`. The response renders nothing and the datasource is not queried.
+
+```php [app/Livewire/ProductTable.php]
+use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use App\Jobs\ExportProducts;
+use Livewire\Attributes\On;
+
+class ProductTable extends PowerGridComponent
+{
+    #[On('bulkExport.{tableName}')]
+    public function bulkExport(): void
+    {
+        ExportProducts::dispatch($this->checkboxValues);
+
+        $this->skipGridRender(); // [!code ++]
+    }
+}
+```
+
+It works in any action on the component: header buttons, row buttons, and your own listeners.
+
+::: warning
+Do not call it when the handler changes rows, or the table keeps showing the old data.
+:::
 
 ## Show Selected Items Count
 
